@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="shortcut icon" href="pagmaestra-favicon.ico">
+    <style>
+        /* Estilo para el logo de autobús */
+        .bus-logo {
+            width: 60px;
+            height: 60px;
+            margin-right: 5px;
+        }
+
+        .input-with-svg {
+            position: relative;
+        }
+
+        .input-with-svg input[type="text"] {
+            padding-left: 40px;
+            /* Ajusta el valor para dar espacio al SVG */
+            background-repeat: no-repeat;
+            background-position: left center;
+            background-size: 1px 1px;
+            /* Ajusta el tamaño del SVG */
+        }
+
+        .input-with-svg .bus-logo {
+            position: absolute;
+            left: 10px;
+            /* Ajusta la posición del SVG */
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+
+
+        .custom-placeholder::placeholder {
+            color: white;
+            /* Color del texto del placeholder */
+            white-space: normal;
+            /* Mostrar el texto en varias líneas */
+            line-height: 1.5;
+            /* Ajustar el espaciado entre líneas */
+        }
+    </style>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/datepicker.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Select2 CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+
+    <!-- Select2 JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
+
+
+    <style>
+        /* Ajusta la altura de las opciones en el desplegable */
+        .select2-container--default .select2-results__option {
+            padding: 10px 12px;
+            /* Ajusta el padding para cambiar la altura */
+        }
+
+        /* Ajusta la altura del select al mostrar la opción seleccionada */
+        .select2-container--default .select2-selection--single {
+            height: 50px;
+            /* Ajusta la altura según tu preferencia */
+            line-height: 44px;
+            /* Asegura que el texto esté centrado verticalmente */
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__rendered {
+            padding-left: 78px;
+            padding-top: 10px;
+            /* Ajusta el valor según tu preferencia */
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__arrow {
+            height: 45px;
+            position: absolute;
+            top: 1px;
+            right: 1px;
+            width: 20px;
+        }
+    </style>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap">
+    <style type="text/css">
+        .slider {
+            position: relative;
+            /* Asegura que el contenedor de la slide sea relativo */
+        }
+
+        .slide {
+            position: relative;
+            /* Asegura que el contenedor de la slide sea relativo */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slider-container {
+            width: 100%;
+            padding: 5px;
+
+        }
+
+        .slider img {
+            width: 100%;
+        }
+
+        .slide-text {
+            position: absolute;
+            /* Posicionamiento absoluto */
+            top: 50%;
+            /* Centra verticalmente */
+            left: 50%;
+            /* Centra horizontalmente */
+            transform: translate(-50%, -50%);
+            /* Ajusta el centrado */
+            background-color: transparent;
+            /* Fondo semi-transparente */
+            color: white;
+            padding: 10px;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.6/dist/flatpickr.min.css">
+</head>
+
+<body class="font-montserrat">
+    <div class="w-full flex justify-between items-center px-2 py-3">
+        <img src="logoODMplus.svg" alt="Mi SVG" class="mr-5 ml-2 w-72">
+        <button id="open-modal" class="lg:hidden">
+            <svg class="fill-current h-8 w-8 text-[#003368] mr-0" viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 3h20v2H0zm0 6h20v2H0zm0 6h20v2H0z" />
+            </svg>
+        </button>
+    </div>
+
+    <div id="modal-overlay"
+        class="hidden fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center z-50">
+        <div id="modal" class="bg-[#003368] p-4 rounded-lg ml-48 mb-40">
+            <img src="logoODMplus.svg" alt="logoODM" class="border-white">
+            <a href="#" class="text-white sm:text-gray-600 hover:bg-gray-200 block mt-4 px-4 py-2">Envíos ODM</a>
+            <a href="#" class="text-white sm:text-gray-600 hover:bg-gray-200 block mt-4 px-4 py-2">Cobertura</a>
+            <a href="#" class="text-white sm:text-gray-600 hover:bg-gray-200 block mt-4 px-4 py-2">Puntos de venta</a>
+            <a href="#" class="text-white sm:text-gray-600 hover:bg-gray-200 block mt-4 px-4 py-2">Servicios</a>
+            <a href="#" class="text-white sm:text-gray-600 hover:bg-gray-200 block mt-4 px-4 py-2">Facturación</a>
+            <a href="#" class="text-white sm:text-gray-600 hover:bg-gray-200 block mt-4 px-4 py-2">Chat en línea</a>
+            <button id="close-modal" class="text-white hover:text-gray-300 mt-4">Cerrar</button>
+        </div>
+    </div>
+    <hr class="border-red-600 pt-0 pb-0 h-0">
+
+    <div class="general h-full">
+        <div class="bg-[#1583C9]">
+            <div class="w-full inline-flex items-center bg-[#1583C9] pt-5">
+                <img src="Tel_Movil.svg" class="w-48 ml-8" alt="telefono CETAC">
+                <button
+                    class="bg-[#C82333] text-white border-white rounded rounded-lg ml-1 py-[8px] px-3">Intercambio</button>
+            </div>
+        </div>
+        <div class="bg-[#1583C9]">
+            <form action="">
+                <div class="mt-0 w-full">
+                    <div class="ml-8 py-3 space-x-5 flex">
+                        <label class="flex items-center">
+                            <input type="radio" name="opcion" id="redondo" class="form-radio text-green-400">
+                            <span class="ml-2 text-white">Redondo</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="opcion" id="sencillo" class="form-radio text-green-400">
+                            <span class="ml-2 text-white">Sencillo</span>
+                        </label>
+                    </div>
+
+                    <div class="input-with-svg m-2 ml-8">
+                        <select id="origenSelect"
+                            class="w-11/12 h-14 pl-20 pr-42 py-1 text-base placeholder-gray-500 border rounded-lg focus:shadow-outline ">
+                            <option selected="selected" disabled="">¿De Dónde Sales?</option>
+                            <option value="ACR">Acambaro Gto</option>
+                            <option value="ACT">Actopan Hgo</option>
+                            <option value="AEA">Aeropuerto Mty. A N.l</option>
+                            <option value="NLU">Aeropuerto Felipe Angeles</option>
+                            <option value="CNJ">Agencia Conejo</option>
+                            <option value="APS">Agua Prieta Son</option>
+                            <option value="AGU2">Aguascalientes Agr. Norte</option>
+                            <option value="AGU">Aguascalientes C. Autobus</option>
+                            <option value="AHU">Ahuacatlán Nay</option>
+                            <option value="AHT">Ahuetita</option>
+                            <option value="ALL">Allende Chih</option>
+                            <option value="CAO">Alvaro Obregon Chih</option>
+                            <option value="SAR">Altamira Tamaulipas</option>
+                            <option value="ANG">Angostura Chih</option>
+                            <option value="ASC">Ascención Chih</option>
+                            <option value="ATA">Atlacomulco Mex</option>
+                            <option value="ANA">Santa Ana Sonora</option>
+                            <option value="BAC">Bachiniva Chih</option>
+                            <option value="BJU">Benito Juarez Chih</option>
+                            <option value="SCD">Cadereyta Jimenez N.l.</option>
+                            <option value="CAC">Culiacán, Sin.</option>
+                            <option value="CAB">Caborca Sonora</option>
+                            <option value="CCA">Camargo Chih</option>
+                            <option value="CGT">Camargo Tamps.</option>
+                            <option value="C101">Campo 101 Chih</option>
+                            <option value="CSM">Campo Seis Y Medio Chih</option>
+                            <option value="CNE">Cananea Son</option>
+                            <option value="CIJ">Cañada De Islas Jal</option>
+                            <option value="CAS">Casas Grandes Chih</option>
+                            <option value="CYA">Celaya Gto</option>
+                            <option value="CHA">Chapulhuacán Hgo</option>
+                            <option value="CUU">Chihuahua Central Autobus</option>
+                            <option value="PIM">Chihuahua Pistolasmeneses</option>
+                            <option value="ZOO">Chihuahua Zootecnia</option>
+                            <option value="CHIN">China N.l.</option>
+                            <option value="ATG">Ciudad Altamirano Gro</option>
+                            <option value="CTO">Ciudad Cuauhtemoc Chih</option>
+                            <option value="DEL">Ciudad Delicias Chih</option>
+                            <option value="CGZ">Ciudad Guzman Jal</option>
+                            <option value="HID">Ciudad Hidalgo Mich</option>
+                            <option value="JIM">Ciudad Jimenez Chih</option>
+                            <option value="CJS">Ciudad Juarez Chih</option>
+                            <option value="CDM">Ciudad Mante Tamps</option>
+                            <option value="MIE">Ciudad Mier Tamps.</option>
+                            <option value="CEN">Ciudad Obregon, Son.</option>
+                            <option value="CEM">Ciudad Valles Slp</option>
+                            <option value="CVM">Ciudad Victoria Tamps</option>
+                            <option value="CIN">Col. Independencia Chih</option>
+                            <option value="COL">Colima Col</option>
+                            <option value="QVO">Colonia Quevedo Chih</option>
+                            <option value="CLT">Colotlán Jal</option>
+                            <option value="COO">Concepción Del Oro Zac</option>
+                            <option value="CBC">Corral Blanco</option>
+                            <option value="BEJ">Crucero Belén Jal</option>
+                            <option value="CPA">Crucero Palomas Chih</option>
+                            <option value="CTP">Crucero Tepatitlán Jal</option>
+                            <option value="CUE">Cuencamé Dgo</option>
+                            <option value="CUI">Cuitaca Son</option>
+                            <option value="CUT">Cutzamala Gro</option>
+                            <option value="DHI">Dolores Hidalgo Gto</option>
+                            <option value="DGO">Durango Central Autobus</option>
+                            <option value="EBA">Ebano Slp</option>
+                            <option value="BAT">El Batán Jal</option>
+                            <option value="ROD">El Rodeo Dgo</option>
+                            <option value="EML">Empalme, Sonora</option>
+                            <option value="ENC">Encarnación De Díaz Jal</option>
+                            <option value="FIM">Fco. I. Madero Dgo</option>
+                            <option value="FRE">Fresnillo Zac</option>
+                            <option value="GAL">Galeana Chih</option>
+                            <option value="VGC">Gema Cuitzeo Mich</option>
+                            <option value="GBRA">General Bravo N.l.</option>
+                            <option value="GFA">Gomez Farias Chih</option>
+                            <option value="GOP">Gomez Palacio C. Autobus</option>
+                            <option value="HAM">Terminal Hamburgo Gomez Palacio</option>
+                            <option value="SLU">Granjas Sta. Lucia Dgo</option>
+                            <option value="GDL">Guadalajara Jal. Modulo 6</option>
+                            <option value="GD1">Guadalajara Modulo 1 1/2</option>
+                            <option value="GCH">Guamuchil Sinaloa</option>
+                            <option value="GYM">Guaymas, Sonora</option>
+                            <option value="GSV">Guasave Sinaloa</option>
+                            <option value="AEG">Aeropuerto Gdl Jal</option>
+                            <option value="GVI">Guadalupe Victoria Dgo</option>
+                            <option value="GTO">Guanajuato Gto</option>
+                            <option value="HA2">Hamburgo Plaza Palmas Gomez Palacio</option>
+                            <option value="HMO">Hermosillo C. Autobuses</option>
+                            <option value="HET">Hermosillo Terminal</option>
+                            <option value="AHG">Hidalgo Reynosa</option>
+                            <option value="AHG">Hidalgo Reynosa Tamps</option>
+                            <option value="HUA">Huauchinango Pue</option>
+                            <option value="HUE">Huejucar Jal</option>
+                            <option value="ZAR">Ignacio Zaragoza Chih</option>
+                            <option value="IPO">Irapuato Gto</option>
+                            <option value="IXP">Ixtapa Zihuatanejo Gro</option>
+                            <option value="IXT">Ixtlan Del Rio Nay</option>
+                            <option value="JGY">Jagueyes Chih</option>
+                            <option value="JAP">Jalpa Zac</option>
+                            <option value="JAN">Janos Chih</option>
+                            <option value="JAR">Jaralillo Jal</option>
+                            <option value="JER">Jerez Zac</option>
+                            <option value="JSA">Jesus Aguirre</option>
+                            <option value="JU2">Juan Aldama 2 Zac</option>
+                            <option value="JUA">Juan Aldama Zac</option>
+                            <option value="JUC">Juchipila. Zac.</option>
+                            <option value="LBB">La Barca Jal</option>
+                            <option value="LCM">La Copa Matamoros Tamps</option>
+                            <option value="LJA">La Joya Coah</option>
+                            <option value="MIN">La Mina Chih</option>
+                            <option value="LPI">La Piedad Mich</option>
+                            <option value="LPN">La Pinta Chih</option>
+                            <option value="LQE">La Quemada Chih</option>
+                            <option value="LZA">La Zarca Dgo</option>
+                            <option value="LGS">Lagos De Moreno Jal</option>
+                            <option value="LAG">Lagunitas Chih</option>
+                            <option value="LNI">Las Nieve Dgo</option>
+                            <option value="LVA">Las Varas Chih</option>
+                            <option value="LAC">Lazaro Cardenas Chih</option>
+                            <option value="LZC">Lazaro Cardenas Mich</option>
+                            <option value="LEB">Lebaron Chih</option>
+                            <option value="BJX">Leon Gto</option>
+                            <option value="LOR">Loreto Zac</option>
+                            <option value="LRY">Los Reyes Mich</option>
+                            <option value="LMM">Los Mochis, Sin.</option>
+                            <option value="LNA">Linares Nl.</option>
+                            <option value="LMO">Luis Moya. Zac.</option>
+                            <option value="ZLO">Manzanillo Col</option>
+                            <option value="MVT">Maravatio Mich</option>
+                            <option value="PLF">Mat. Plaza Fiesta Tamps</option>
+                            <option value="MAC">Matamoros Coahuila Coah</option>
+                            <option value="MAM">Matamoros. Tamps.</option>
+                            <option value="MHN">Matehuala Noreste</option>
+                            <option value="MA57">Matehuala Terminal 57</option>
+                            <option value="MLP">Matlapa Slp</option>
+                            <option value="MZT">Mazatlan Sin.</option>
+                            <option value="MDM">Mercado Del Mar Zapopan Centro</option>
+                            <option value="MTP">Metro Plaza</option>
+                            <option value="MXL">Mexicali B.C.</option>
+                            <option value="SPC">Mexicali Plaza Cibeles</option>
+                            <option value="MEX">Mexico Central Norte</option>
+                            <option value="OBS">Mexico Observatorio</option>
+                            <option value="MEZ">Mezcales, Nay</option>
+                            <option value="MAL">Miguel Aleman. Tamps.</option>
+                            <option value="MTY">Monterrey Central Autobus</option>
+                            <option value="MTF">Monterrey Terminal Fierro</option>
+                            <option value="SUD">Monterrey Universidad</option>
+                            <option value="MLM">Morelia Mich</option>
+                            <option value="MRL">Moroleon Gto</option>
+                            <option value="LOV">Monclova Coah.</option>
+                            <option value="MNR">Montemorelos Nl.</option>
+                            <option value="MOY">Moyahua Zac</option>
+                            <option value="NOC">Nochistlán Zac</option>
+                            <option value="NOG">Nogales Son</option>
+                            <option value="NDI">Nombre De Dios Dgo</option>
+                            <option value="NLD">Nuevo Laredo Tamps.</option>
+                            <option value="NAV">Navojoa Sonora</option>
+                            <option value="NAJ">Navojoa Centro</option>
+                            <option value="OCO">Ocotlan Jal</option>
+                            <option value="OJI">Ojinaga Chih</option>
+                            <option value="OCN">Ojo Caliente Nte-sur Zac</option>
+                            <option value="PCA">Pachuca Hgo</option>
+                            <option value="PAR">Parral. Chih.</option>
+                            <option value="PJM">Penjamo Gto.</option>
+                            <option value="PVR">Puerto Vallarta Jal.</option>
+                            <option value="SAC">Plaza Agricultores</option>
+                            <option value="PAG">Suc. Paseos Agu.</option>
+                            <option value="PTC">Patzcuaro Mich</option>
+                            <option value="PEB">Peña Blanca Chih</option>
+                            <option value="PBC">Peñon Blanco Dgo</option>
+                            <option value="SPM">Periférico Matamoro tamps</option>
+                            <option value="PAZ">Poza Rica Ver</option>
+                            <option value="PUR">Puruandiro, Michoacan</option>
+                            <option value="VLL">Nuevo Vallarta, Nay.</option>
+                            <option value="PPA">Puerto Palomas Chih.</option>
+                            <option value="QET">Queretaro Qro</option>
+                            <option value="RCO">Rancho Colorado Chih</option>
+                            <option value="REX">Reynosa. Tams.</option>
+                            <option value="RFM">Ricardo Flores Magon. Chi</option>
+                            <option value="RIB">Rio Bravo Tamps.</option>
+                            <option value="RGR">Rio Grande Zac</option>
+                            <option value="SAI">Sain Alto Zac</option>
+                            <option value="SMX">Salamanca Gto</option>
+                            <option value="SLN">Salinas Slp</option>
+                            <option value="SWN">Saltillo Norte</option>
+                            <option value="SLW">Saltillo Central Autobus</option>
+                            <option value="SIO">Saltillo Suc. El Indio</option>
+                            <option value="SAV">Salvatierra Gto</option>
+                            <option value="SBV">San Buenaventura. Chih.</option>
+                            <option value="SFG">San Felipe Gto Gto</option>
+                            <option value="SJL">San Juan De Los Lagos jal</option>
+                            <option value="SJQ">San Juan Del Rio, Qro.</option>
+                            <option value="LZO">San Lorenzo Chih</option>
+                            <option value="UAC">San Luis Rio Colorado Son.</option>
+                            <option value="SPA">San Luis De La Paz Gto</option>
+                            <option value="SLP">San Luis Potosi. Slp.</option>
+                            <option value="SMA">San Miguel Allende Gto</option>
+                            <option value="APU">San Pedro Apulco Zac</option>
+                            <option value="STD">Santa Maria Del Oro Dgo</option>
+                            <option value="SAU">Saucillo Chih</option>
+                            <option value="SIL">Silao Gto</option>
+                            <option value="SOM">Sombrerete Zac</option>
+                            <option value="SON">Sonoyta Sonora</option>
+                            <option value="SOT">Soto Mainez Chih</option>
+                            <option value="CFN">Suc Contraflujo Norte</option>
+                            <option value="CZO">Suc. El Carrizo Hgo. Dgo</option>
+                            <option value="MXS">Suc. Mexticacan Jal</option>
+                            <option value="STZ">Suc. Tecnológico Zac</option>
+                            <option value="SMOR">Sucursal Morelos</option>
+                            <option value="PA2">Sucursal Parral Chih</option>
+                            <option value="SCA">Sucursal Santa Catarina</option>
+                            <option value="SLX">Super Lexo</option>
+                            <option value="TAB">Tabasco. Zac.</option>
+                            <option value="TMZ">Tamazunchale Slp</option>
+                            <option value="TAH">Tamiahua Ver</option>
+                            <option value="TAM">Tampico Central Autobus</option>
+                            <option value="TMN">Tampico Norte Tamps</option>
+                            <option value="TLE">Tampico Terminal Ejercito</option>
+                            <option value="TAN">Tamuin Slp</option>
+                            <option value="TEC">Tecoman Col</option>
+                            <option value="TEJ">Tejupilco Mex</option>
+                            <option value="TEO2">Teocaltiche 2 Jal</option>
+                            <option value="TEO">Teocaltiche Jal</option>
+                            <option value="TPT">Tepatitlan Jal</option>
+                            <option value="TNY">Tepic Central Autobus Nay</option>
+                            <option value="CLO">Tepic Terminal Colosio</option>
+                            <option value="TPZ">Tepotzotlán Mex</option>
+                            <option value="TEU">Teul De Glez Ortega Zac</option>
+                            <option value="TLA">Tlaltenango Zac</option>
+                            <option value="TIJ">Tijuana B.C.</option>
+                            <option value="TLC">Toluca Mex</option>
+                            <option value="TRC">Torreón Coah</option>
+                            <option value="TLI">Tren Ligero Jal</option>
+                            <option value="TCA">Tres Castillos. Chih.</option>
+                            <option value="THG">Tula Hgo</option>
+                            <option value="TUJ">Tuxpan Jalisco Jal</option>
+                            <option value="TXM">Tuxpan Michoacán Mich</option>
+                            <option value="TCT">Tuxpan Term. Centro Ver</option>
+                            <option value="TXP">Tuxpan Veracruz</option>
+                            <option value="URI">Uriangato</option>
+                            <option value="UPN">Uruapan Mich</option>
+                            <option value="VHT">Valle Hermoso Tamps</option>
+                            <option value="VENC">Venecia Tamps.</option>
+                            <option value="VGE">Vicente Guerrero Dgo</option>
+                            <option value="VAH">Villa Ahumada Chih</option>
+                            <option value="VOC">Villa Ocampo. Dgo</option>
+                            <option value="VIL">Villanueva Zac</option>
+                            <option value="VREA">Villarreales</option>
+                            <option value="VIG">Villas De Guadiana Dgo</option>
+                            <option value="YAH">Yahualica Jal</option>
+                            <option value="YUR">Yuriria Gto</option>
+                            <option value="ZCL">Zacatecas Central Autobus</option>
+                            <option value="GZA">Zacatecas Trmnl Guadalupe</option>
+                            <option value="ZAM">Zamora Mich</option>
+                            <option value="ZPP">Zapopan Jal</option>
+                            <option value="ZIH">Zihuatanejo Gro</option>
+                            <option value="ZTC">Zitacuaro Mich</option>
+                        </select>
+                        <img class="bus-logo" src="icono_ascenso.svg" alt="Autobús"
+                            style="width: 50px; height: 50px; margin-left: 10px">
+                    </div>
+
+                    <div class="input-with-svg m-2 ml-8">
+                        <select id="destinoSelect"
+                            class="w-11/12 h-14 pl-20 pr-42 py-1 text-base placeholder-gray-500 border rounded-lg focus:shadow-outline">
+                            <option selected="selected" disabled="">¿A dónde viajas?</option>
+                        </select>
+                        <img class="bus-logo" src="icono_descenso.svg" alt="Autobús"
+                            style="width: 50px; height: 50px; margin-left: 10px">
+                    </div>
+
+                </div>
+                <div class="flex w-full">
+                    <div class="relative w-1/2 ml-8 mr-2" id="pickerIda">
+                        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                            <svg class="w-8 h-8 text-gray-500 dark:text-[#003368]" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
+                            </svg>
+                        </div>
+                        <input type="text"
+                            class="pb-7 custom-placeholder h-16 bg-white border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-14 p-2.5 dark:bg-white dark:border-gray-600 dark:placeholder-gray-500 dark:text-gray-600 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            placeholder="Fecha de ida" id="flowbiteDatepickerIda">
+                    </div>
+                    <div class="relative w-1/2 mr-9" id="pickerRegreso">
+                        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                            <svg class="w-8 h-8 text-gray-500 dark:text-[#003368]" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
+                            </svg>
+                        </div>
+                        <input type="text" id="flowbiteDatepickerRegreso"
+                            class="pb-7 custom-placeholder h-16 bg-white border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-14 p-2.5 dark:bg-white dark:border-gray-600 dark:placeholder-gray-500 dark:text-gray-600 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            placeholder="Fecha de regreso">
+                    </div>
+                </div>
+                <div class="relative w-[82%] ml-8 mr-2 mt-2 hidden" id="nuevaFecha">
+                    <div class="absolute inset-y-0 left-0 flex items-center pl-9 pointer-events-none">
+                        <svg class="w-8 h-8 text-gray-500 dark:text-[#003368]" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                            <path
+                                d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
+                        </svg>
+                    </div>
+                    <input datepicker datepicker-autohide type="text" datepicker-format="dd/mm/yyyy"
+                        class="pb-3 custom-placeholder h-16 bg-white border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-24 p-2.5 dark:bg-white dark:border-gray-600 dark:placeholder-gray-500 dark:text-gray-600 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="Fecha de ida" id="datepicker">
+                </div>
+
+                <div class="mt-3 w-full">
+                    <div class="input-with-svg m-2  ml-8">
+                        <input
+                            class="w-11/12 h-14 pl-20 pr-42 py-1 text-base placeholder-gray-500 border rounded-lg focus:shadow-outline"
+                            type="search" placeholder="Selecciona tus boletos" id="openTicketModal">
+                        <input type="text" id="adultInput" class="hidden">
+                        <input type="text" id="childInput" class="hidden">
+                        <input type="text" id="inapamInput" class="hidden">
+                        <input type="text" id="professorInput" class="hidden">
+                        <input type="text" id="studentInput" class="hidden">
+                        <img class="bus-logo" src="icono_pasajeros.svg" alt="Autobús"
+                            style="width: 40px; height: 40px; margin-top:0px; margin-left:20px">
+                    </div>
+                </div>
+
+                <div class="fixed bottom-0 left-0 right-0 bg-black bg-opacity-50 h-screen flex justify-end z-50"
+                    id="ticketModal" style="display: none;">
+                    <div class="bg-white p-4 w-full max-w-md">
+                        <div class="grid grid-cols-2 gap-4 mb-4 py-2">
+                            <div class="flex items-center">
+                                <span class="pl-5 font-black text-[#003368]">Adulto <br>+12 años</span>
+                            </div>
+                            <div class="flex items-center">
+                                <button type="button"
+                                    class="ml-10 px-4 py-3 text-xs bg-[#DCDCDC] text-white rounded-full"
+                                    data-type="decrement-adult">-</button>
+                                <span class="mx-2 text-base font-semibold" id="adultCount">0</span>
+                                <button type="button" class="px-4 py-3 text-xs bg-[#0D8BFF] text-white rounded-full"
+                                    data-type="increment-adult">+</button>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4 mb-4 py-2">
+                            <div class="flex items-center">
+                                <span class="pl-5 font-black text-[#003368]">Niño <br>De 6 a 11 años</span>
+                            </div>
+                            <div class="flex items-center">
+                                <button type="button"
+                                    class="ml-10 px-4 py-3 text-xs bg-[#DCDCDC] text-white rounded-full"
+                                    data-type="decrement-child">-</button>
+                                <span class="mx-2 text-base font-semibold" id="childCount">0</span>
+                                <button type="button" class="px-4 py-3 text-xs bg-[#0D8BFF] text-white rounded-full"
+                                    data-type="increment-child">+</button>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4 mb-4 py-2">
+                            <div class="flex items-center">
+                                <span class="pl-5 font-black text-[#003368]">INAPAM <br>Presentar <br> documentación
+                                    oficial</span>
+                            </div>
+                            <div class="flex items-center">
+                                <button type="button"
+                                    class="ml-10 px-4 py-3 text-xs bg-[#DCDCDC] text-white rounded-full"
+                                    data-type="decrement-inapam">-</button>
+                                <span class="mx-2 text-base font-semibold" id="inapamCount">0</span>
+                                <button type="button" class="px-4 py-3 text-xs bg-[#0D8BFF] text-white rounded-full"
+                                    data-type="increment-inapam">+</button>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4 mb-4 py-2">
+                            <div class="flex items-center">
+                                <span class="pl-5 font-black text-[#003368]">Profesor <br>Presentar <br> credencial
+                                    vigente</span>
+                            </div>
+                            <div class="flex items-center">
+                                <button type="button"
+                                    class="ml-10 px-4 py-3 text-xs bg-[#DCDCDC] text-white rounded-full"
+                                    data-type="decrement-professor">-</button>
+                                <span class="mx-2 text-base font-semibold" id="professorCount">0</span>
+                                <button type="button" class="px-4 py-3 text-xs bg-[#0D8BFF] text-white rounded-full"
+                                    data-type="increment-professor">+</button>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4 mb-4 py-2">
+                            <div class="flex items-center">
+                                <span class="pl-5 font-black text-[#003368]">Estudiante <br
+                                        class="font-medium">Presentar credencial vigente</span>
+                            </div>
+                            <div class="flex items-center">
+                                <button type="button"
+                                    class="ml-10 px-4 py-3 text-xs bg-[#DCDCDC] text-white rounded-full"
+                                    data-type="decrement-student">-</button>
+                                <span class="mx-2 text-base font-semibold" id="studentCount">0</span>
+                                <button type="button" class="px-4 py-3 text-xs bg-[#0D8BFF] text-white rounded-full"
+                                    data-type="increment-student">+</button>
+                            </div>
+                        </div>
+
+                        <div class="flex justify-between">
+                            <button type="button" class="bg-[#C82333] text-white px-4 mx-auto py-2 rounded-lg mt-4"
+                                id="closeTicketModal">
+                                Aceptar
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <button
+                    class="w-10/12 ml-8 bg-[#C82333] text-white font-bold text-lg rounded-lg py-2 mt-4 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400">
+                    BUSCAR VIAJE
+                </button>
+            </form>
+        </div>
+        <div class="formas-de-pago w-full h-auto bg-[#1583C9] pt-3 flex flex-wrap justify-between">
+            <div class="visa mb-4">
+                <img src="Visa-01.svg" alt="visa" class="bg-white ml-8 w-12 h-9 border rounded-lg px-2 py-2">
+            </div>
+            <div class="mastercard mb-4">
+                <img src="master-card-02.svg" alt="mastercard" class="bg-white w-14 h-9 border rounded-lg">
+            </div>
+            <div class="citibanamex mb-4">
+                <img src="Banamex-03.svg" alt="citibanamex" class="bg-white w-20 h-9 border rounded-lg">
+            </div>
+            <div class="coppel mb-4">
+                <img src="Coppel-04.svg" alt="coppel" class="bg-white w-20 h-9 mr-8 border rounded-lg">
+            </div>
+            <div class="w-full mb-4 ml-8">
+                <div class="efectivo mx-auto text-center">
+                    <img src="Paga_tus_boletos_en_efectivo.svg" alt="efectivo"
+                        class="bg-white w-11/12 h-12 border rounded-lg">
+                </div>
+            </div>
+        </div>
+        <div class="flex justify-center items-center py-3 pl-8 pr-8 bg-[#1583C9]">
+            <div class="w-full md:w-3/4 lg:w-1/2 xl:w-1/3 rounded-lg overflow-hidden shadow-md bg-[#1583C9]">
+                <div class="slider-container">
+                    <div class="slider slider-1">
+                        <img src="venta_vacacional_2023.webp" alt="image 0" class="w-full">
+                        <img src="seguridad.webp" alt="image 1" class="w-full">
+                        <img src="Banner_Viaja_DD.webp" alt="image 2" class="w-full">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="flex justify-center items-center py-3 pl-8 pr-8 bg-[#1583C9]">
+            <div class="w-full md:w-3/4 lg:w-1/2 xl:w-1/3 rounded-lg overflow-hidden shadow-md bg-[#1583C9]">
+                <div class="slider-container">
+                    <div class="slider slider-2">
+                        <img src="/verticales/CEN_TIJ.png" alt="Image 0">
+                        <img src="/verticales/MEX_SAR.png" alt="Image 1">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="flex justify-center items-center py-3 pl-8 pr-8 bg-[#1583C9]">
+            <div class="w-full md:w-3/4 lg:w-1/2 xl:w-1/3 rounded-lg overflow-hidden shadow-md bg-[#1583C9]">
+                <div class="slider-container">
+                    <div class="slider slider-3">
+                        <div class="slide">
+                            <img src="banner_noreste.jpeg" alt="Image 0">
+                            <div class="slide-text">San Luis Potosi / Matehuala</div>
+                        </div>
+                        <div class="slide">
+                            <img src="banner_omex.jpeg" alt="Image 1">
+                            <div class="slide-text">
+                                <p class="text-white font-semibold text-sm">McAllen / Monterrey</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex justify-center items-center py-3 pl-8 pr-8 bg-[#1583C9]">
+            <div class="w-full md:w-3/4 lg:w-1/2 xl:w-1/3 rounded-lg overflow-hidden shadow-md bg-[#1583C9]">
+                <div class="slider-container">
+                    <div class="slider slider-4">
+                        <div class="slide">
+                            <img src="omnibus_mexico_destinos.jpeg" alt="Image 0">
+                            <div class="slide-text">
+                                <p class="text-white font-semibold text-sm">Turismo / Experiencias</p>
+                                <p class="text-white font-semibold text-sm">¿Qué actividades puedes realizar cuando
+                                    llegas a un nuevo lugar?</p>
+                                <p class="text-white font-semibold text-sm">Te contamos los imperdibles en cada uno de
+                                    nuestros #DestinosODM</p>
+                            </div>
+                        </div>
+                        <div class="slide">
+                            <img src="omnibus_mexico_gastronomia.jpeg" alt="Image 1">
+                            <div class="slide-text">
+                                <p class="text-white font-semibold text-sm">GASTR0NOMÍA</p>
+                                <p class="text-white font-semibold text-sm">Porque uno no conoce un lugar sin probar
+                                    <br> su comida típica. Traemos para ti los <br> platillos de cada uno de nuestros
+                                    destinos <br> para que tu viaje sea más placentero
+                                </p>
+                            </div>
+                        </div>
+                        <div class="slide">
+                            <img src="eventos-odm.jpeg" alt="Image 3">
+                            <div class="slide-text">EVENTOS CULTURALES
+                                <p class="text-white font-semibold text-sm">¿Vas a viajar sin un plan de actividades?
+                                </p>
+                                <p class="text-white font-semibold text-sm"> Omnibus de México te informa cuáles son
+                                </p>
+                                <p class="text-white font-semibold text-sm">los eventos culturales más
+                                    representativos </p>
+                                <p class="text-white font-semibold text-sm"> de cada región y que solo pasan una vez al
+                                </p>año para que no
+                                te los pierdas
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section class="bg-[#003368]">
+            <div class="max-w-screen-xl px-4 py-10 mx-auto space-y-8 overflow-hidden sm:px-6 lg:px-8">
+                <nav class="flex flex-wrap justify-center -mx-5 -my-2">
+                    <div class="px-5 py-2">
+                        <a href="https://odm.com.mx/quienes-somos2"
+                            class="text-base leading-6 text-white hover:text-neutral-600">
+                            ¿Quiénes somos?
+                        </a>
+                    </div>
+                    <div class="px-5 py-2">
+                        <a href="https://odm.com.mx/preguntas-frecuentes"
+                            class="text-base leading-6 text-white hover:text-neutral-600">
+                            Preguntas frecuentes
+                        </a>
+                    </div>
+                    <div class="px-5 py-2">
+                        <a href="http://venta.odm.com.mx/netScripts/request.aspx?APPNAME=Navegante&PRGNAME=AccesoEx&ARGUMENTS=-AAG&_gl=1*z7x1y0*_ga*NjAyODM2MzE2LjE2NzI0MjgyOTU.*_ga_6MKKJY80T1*MTY3OTY3MDk4NC4xMDQuMS4xNjc5NjcyNjE0LjQ5LjAuMA.."
+                            class="text-base leading-6 text-white hover:text-neutral-600">
+                            Agencias
+                        </a>
+                    </div>
+                    <div class="px-5 py-2">
+                        <a href="https://odm.com.mx/contactanos"
+                            class="text-base leading-6 text-white hover:text-neutral-600">
+                            Contáctanos
+                        </a>
+                    </div>
+                </nav>
+                <img src="logoblanco.png" alt="Logo" class="w-60 h-24 mx-auto" />
+                <div class="flex justify-center mt-5 space-x-6">
+                    <a href="#" class="text-white hover:text-neutral-600">
+                        <span class="sr-only">Facebook</span>
+                        <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24">
+                            <path fill-rule="evenodd"
+                                d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                    </a>
+                    <a href="#" class="text-white hover:text-gray-600">
+                        <span class="sr-only">Twitter</span>
+                        <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84">
+                            </path>
+                        </svg>
+                    </a>
+                    <a href="#" class="text-white hover:text-gray-600">
+                        <span class="sr-only">Instagram</span>
+                        <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24">
+                            <path fill-rule="evenodd"
+                                d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                    </a>
+                    <a href="#" class="text-white hover:text-gray-600">
+                        <span class="sr-only">YouTube</span>
+                        <svg aria-hidden="true" fill="currentColor" class="bi bi-youtube w-6 h-6" viewBox="0 0 16 16">
+                            <path
+                                d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408L6.4 5.209z"
+                                fill-rule="evenodd" clip-rule="evenodd"></path>
+                        </svg>
+                    </a>
+                </div>
+                <p class="mt-8 text-base leading-6 text-center text-white hover:text-neutral-600">
+                    <a href="https://odm.com.mx/aviso-privacidad">Aviso de privacidad | Políticas de viaje</a>
+                </p>
+                <p class="mt-8 text-base leading-6 text-center text-white">
+                    © 2023 Ómnibus de México. Todos los derechos reservados.
+                </p>
+            </div>
+        </section>
+    </div>
+    <!-- SCRIPT DEL 2DO SLIDER -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.6/dist/flatpickr.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.6/dist/l10n/es.js"></script>
+    <script>
+        flatpickr("#flowbiteDatepickerIda", {
+            dateFormat: "d/m/Y",
+            locale: "es",
+            disable: [
+                {
+                    to: "today"
+                }
+            ]
+        });
+
+        flatpickr("#flowbiteDatepickerRegreso", {
+            dateFormat: "d/m/Y",
+            locale: "es",
+            disable: [
+                {
+                    to: "today"
+                }
+            ]
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('#origenSelect').select2();
+
+            $('#origenSelect').on('select2:select', function (e) {
+                const selectedValue = e.params.data.id;
+                $('#origenSelect').val(selectedValue).trigger('change');
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            // Asociar evento change al select de origen
+            $('#origenSelect').on('change', function () {
+                var selectedValue = $(this).val(); // Obtener el valor seleccionado del origen
+
+                // Realizar una consulta AJAX para obtener los destinos asociados al origen
+                $.getJSON('destinos69/' + selectedValue + '.json', function (jsonRaw, textStatus) {
+                    var json = jsonRaw.filter((data, index, j) => index === j.findIndex((t) => (t.id === data.id)));
+
+                    // Limpiar y llenar el select de destinos
+                    var destinoSelect = $('#destinoSelect');
+                    destinoSelect.empty(); // Limpiar opciones anteriores
+
+                    // Agregar la opción predeterminada
+                    destinoSelect.append($('<option>').val('¿A dónde viajas?').text('¿A dónde viajas?'));
+
+                    // Agregar opciones de destinos
+                    $.each(json, function (i, val) {
+                        var id = json[i].id;
+                        var valor = json[i].value;
+                        destinoSelect.append($('<option>').val(id).text(valor));
+                    });
+
+                    // Actualizar el select de destinos usando select2
+                    destinoSelect.trigger('change.select2');
+                });
+            });
+
+            // Inicializar select2 para el select de origen y destino
+            $('#origenSelect, #destinoSelect').select2();
+        });
+    </script>
+
+    <!-- SCRIPT DEL MENU DE HAMBURGUESA -->
+    <script>
+        const openModalButton1 = document.getElementById("open-modal");
+        const closeModalButton1 = document.getElementById("close-modal");
+        const modalOverlay = document.getElementById("modal-overlay");
+
+        openModalButton1.addEventListener("click", () => {
+            modalOverlay.classList.remove("hidden");
+        });
+
+        closeModalButton1.addEventListener("click", () => {
+            modalOverlay.classList.add("hidden");
+        });
+
+        modalOverlay.addEventListener("click", (event) => {
+            if (event.target === modalOverlay) {
+                modalOverlay.classList.add("hidden");
+            }
+        });
+    </script>
+
+    <!-- SCRIPT DE SELECCION DE VIAJE -->
+    <script>
+        const redondoRadio = document.getElementById('redondo');
+        const sencilloRadio = document.getElementById('sencillo');
+        const fechaIdaPicker = document.getElementById('pickerIda');
+        const fechaRegresoPicker = document.getElementById('pickerRegreso');
+        const nuevaFechaPicker = document.getElementById('nuevaFecha');
+
+        const toggleDatepickers = () => {
+            if (redondoRadio.checked) {
+                fechaIdaPicker.classList.remove('hidden');
+                fechaRegresoPicker.classList.remove('hidden');
+                nuevaFechaPicker.classList.add('hidden');
+            } else if (sencilloRadio.checked) {
+                fechaIdaPicker.classList.add('hidden');
+                fechaRegresoPicker.classList.add('hidden');
+                nuevaFechaPicker.classList.remove('hidden');
+            }
+        };
+
+        redondoRadio.addEventListener('change', toggleDatepickers);
+        sencilloRadio.addEventListener('change', toggleDatepickers);
+    </script>
+    <!-- SCRIPT DE LA SELECCION DE BOLETOS -->
+    <script>
+        let selectedCounts = {
+            adult: 0,
+            child: 0,
+            inapam: 0,
+            professor: 0,
+            student: 0
+        };
+
+        const openModalButton = document.getElementById('openTicketModal');
+        const closeModalButton = document.getElementById('closeTicketModal');
+        const ticketModal = document.getElementById('ticketModal');
+        const incrementButtons = document.querySelectorAll('[data-type^="increment"]');
+        const decrementButtons = document.querySelectorAll('[data-type^="decrement"]');
+
+        openModalButton.addEventListener('click', () => {
+            ticketModal.style.display = 'flex';
+        });
+
+        closeModalButton.addEventListener('click', () => {
+            ticketModal.style.display = 'none';
+
+            for (const type in selectedCounts) {
+                const countElement = document.getElementById(`${type}Count`);
+                const inputElement = document.getElementById(`${type}Input`);
+                countElement.textContent = selectedCounts[type];
+                inputElement.value = selectedCounts[type];
+            }
+        });
+
+        incrementButtons.forEach((button) => {
+            button.addEventListener('click', (event) => {
+                event.stopPropagation();
+                const type = button.getAttribute('data-type').split('-')[1];
+                updateCount(type, 1);
+            });
+        });
+
+        decrementButtons.forEach((button) => {
+            button.addEventListener('click', (event) => {
+                event.stopPropagation();
+                const type = button.getAttribute('data-type').split('-')[1];
+                updateCount(type, -1);
+            });
+        });
+
+        function updateCount(type, increment) {
+            const maxCounts = {
+                adult: 10,
+                child: 9,
+                inapam: 6,
+                professor: 2,
+                student: 8
+            };
+
+            selectedCounts[type] = Math.min(Math.max(selectedCounts[type] + increment, 0), maxCounts[type]);
+
+            const countElement = document.getElementById(`${type}Count`);
+            countElement.textContent = selectedCounts[type];
+        }
+    </script>
+
+    <!-- SCRIPT DEL CAROUSEL -->
+
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.slider-1').slick({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 4000,
+                infinite: true,
+                dots: false,
+            });
+
+            $('.slider-2').slick({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 4000,
+                infinite: true,
+                dots: false,
+            });
+
+            $('.slider-3').slick({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 4000,
+                infinite: true,
+                dots: false,
+            });
+            $('.slider-4').slick({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 4000,
+                infinite: true,
+                dots: false,
+            });
+        });
+    </script>
+
+</body>
+
+</html>
