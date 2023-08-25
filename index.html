@@ -119,17 +119,20 @@
 
         .slide-text {
             position: absolute;
-            /* Posicionamiento absoluto */
-            top: 50%;
-            /* Centra verticalmente */
-            left: 50%;
-            /* Centra horizontalmente */
-            transform: translate(-50%, -50%);
-            /* Ajusta el centrado */
-            background-color: transparent;
-            /* Fondo semi-transparente */
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.7);
             color: white;
-            padding: 10px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+
+            /* Inicialmente, el texto estará oculto */
+            transition: opacity 0.3s ease-in-out;
         }
     </style>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.6/dist/flatpickr.min.css">
