@@ -16,6 +16,7 @@
 
         .input-with-svg {
             position: relative;
+
         }
 
         .input-with-svg input[type="text"] {
@@ -34,8 +35,6 @@
             top: 50%;
             transform: translateY(-50%);
         }
-
-
 
         .custom-placeholder::placeholder {
             color: white;
@@ -123,7 +122,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: rgba(0, 0, 0, 0.7);
+            background-color: transparent;
             color: white;
             padding: 20px;
             display: flex;
@@ -133,9 +132,22 @@
 
             /* Inicialmente, el texto estará oculto */
             transition: opacity 0.3s ease-in-out;
+            align-items: center;
+        }
+
+        .text-left {
+            align-items: flex-end;
         }
     </style>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.6/dist/flatpickr.min.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css">
+    <script defer src="https://unpkg.com/alpinejs@3.7.0/dist/cdn.min.js"></script>
+
+    <style>
+        [x-cloak] {
+            display: none;
+        }
+    </style>
 </head>
 
 <body class="font-montserrat">
@@ -151,15 +163,31 @@
 
     <div id="modal-overlay"
         class="hidden fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center z-50">
-        <div id="modal" class="bg-[#003368] p-4 rounded-lg ml-48 mb-40">
-            <img src="logoODMplus.svg" alt="logoODM" class="border-white">
-            <a href="#" class="text-white sm:text-gray-600 hover:bg-gray-200 block mt-4 px-4 py-2">Envíos ODM</a>
-            <a href="#" class="text-white sm:text-gray-600 hover:bg-gray-200 block mt-4 px-4 py-2">Cobertura</a>
-            <a href="#" class="text-white sm:text-gray-600 hover:bg-gray-200 block mt-4 px-4 py-2">Puntos de venta</a>
-            <a href="#" class="text-white sm:text-gray-600 hover:bg-gray-200 block mt-4 px-4 py-2">Servicios</a>
-            <a href="#" class="text-white sm:text-gray-600 hover:bg-gray-200 block mt-4 px-4 py-2">Facturación</a>
-            <a href="#" class="text-white sm:text-gray-600 hover:bg-gray-200 block mt-4 px-4 py-2">Chat en línea</a>
-            <button id="close-modal" class="text-white hover:text-gray-300 mt-4">Cerrar</button>
+        <div id="modal" class="bg-white p-4 rounded-lg ml-48 mb-40 sm:ml-80 sm:mb-[270px]">
+            <img src="logoODMplus.svg" alt="logoODM" class="w-full">
+            <a href="https://odm.com.mx/envios/dist"
+                class="text-blue-800 sm:text-gray-600 hover:bg-gray-200 block mt-4 px-0 py-2">
+                <i class="fas fa-shipping-fast mr-2 text-gray-500"></i> Envíos ODM
+            </a>
+            <a href="https://odm.com.mx/cobertura"
+                class="text-blue-800 sm:text-gray-600 hover:bg-gray-200 block mt-4 px-0 py-2">
+                <i class="fas fa-bus mr-2 text-gray-500"></i> Cobertura
+            </a>
+            <a href="https://odm.com.mx/puntosgoogle"
+                class="text-blue-800 sm:text-gray-600 hover:bg-gray-200 block mt-4 px-0 py-2">
+                <i class="fas fa-map mr-2 text-gray-500"></i> Puntos de venta
+            </a>
+            <a href="https://odm.com.mx/servicios"
+                class="text-blue-800 sm:text-gray-600 hover:bg-gray-200 block mt-4 px-0 py-2">
+                <i class="far fa-handshake mr-2 text-gray-500"></i> Servicios
+            </a>
+            <a href="https://venta.odm.com.mx/FacturacionElectronica/IndexFacturaElec.html?_gl=1*npi68v*_gcl_au*MzUyNDcxNDA2LjE2ODg0ODU4MDA.*_ga*NjAyODM2MzE2LjE2NzI0MjgyOTU.*_ga_6MKKJY80T1*MTY5MzQyMDU5MC4yNDQuMC4xNjkzNDIwNTkwLjYwLjAuMA.."
+                class="text-blue-800 sm:text-gray-600 hover:bg-gray-200 block mt-4 px-0 py-2">
+                <i class="fas fa-file-alt mr-2 text-gray-500"></i> Facturación
+            </a>
+            <a href="#" class="text-blue-800 sm:text-gray-600 hover:bg-gray-200 block mt-4 px-0 py-2">
+                <i class="fas fa-comments mr-2 text-gray-500"></i> Chat en línea
+            </a>
         </div>
     </div>
     <hr class="border-red-600 pt-0 pb-0 h-0">
@@ -168,8 +196,8 @@
         <div class="bg-[#1583C9]">
             <div class="w-full inline-flex items-center bg-[#1583C9] pt-5">
                 <img src="Tel_Movil.svg" class="w-48 ml-8" alt="telefono CETAC">
-                <button
-                    class="bg-[#C82333] text-white border-white rounded rounded-lg ml-1 py-[8px] px-3">Intercambio</button>
+                <button class="bg-[#C82333] text-white border-white rounded rounded-lg ml-1 py-[8px] px-3"><a
+                        href="intercambio.html">Intercambio</a></button>
             </div>
         </div>
         <div class="bg-[#1583C9]">
@@ -177,7 +205,7 @@
                 <div class="mt-0 w-full">
                     <div class="ml-8 py-3 space-x-5 flex">
                         <label class="flex items-center">
-                            <input type="radio" name="opcion" id="redondo" class="form-radio text-green-400">
+                            <input type="radio" name="opcion" id="redondo" class="form-radio text-green-400" checked>
                             <span class="ml-2 text-white">Redondo</span>
                         </label>
                         <label class="flex items-center">
@@ -188,7 +216,7 @@
 
                     <div class="input-with-svg m-2 ml-8">
                         <select id="origenSelect"
-                            class="w-11/12 h-14 pl-20 pr-42 py-1 text-base placeholder-gray-500 border rounded-lg focus:shadow-outline ">
+                            class="w-11/12 sm:w-[400px] h-14 pl-20 pr-42 py-1 text-base placeholder-gray-500 border rounded-lg focus:shadow-outline">
                             <option selected="selected" disabled="">¿De Dónde Sales?</option>
                             <option value="ACR">Acambaro Gto</option>
                             <option value="ACT">Actopan Hgo</option>
@@ -459,66 +487,223 @@
                     </div>
 
                 </div>
-                <div class="flex w-full">
-                    <div class="relative w-1/2 ml-8 mr-2" id="pickerIda">
-                        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                            <svg class="w-8 h-8 text-gray-500 dark:text-[#003368]" aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                <path
-                                    d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
-                            </svg>
+                <div class="flex w-full hidden" id="datepickerRange">
+                    <div x-data="app" x-cloak>
+                        <div class="container mx-auto py-2 md:py-10">
+                            <div class="flex items-center ml-8 mr-4 ">
+                                <div class="flex space-x-2" @keydown.escape="closeDatepicker()"
+                                    @click.outside="closeDatepicker()">
+                                    <div class="flex items-center space-x-4 border rounded-md mt-0 bg-gray-200">
+                                        <div class="relative">
+                                            <img src="calendario.svg" alt="" class="absolute w-8 h-8 ml-3 mt-4">
+                                            <input type="text"
+                                                @click="endToShow = 'from'; init(); showDatepicker = true"
+                                                :value="formatDate(dateFrom)"
+                                                :class="{'font-semibold': endToShow == 'from' }"
+                                                class="focus:outline-none border-none pl-12 w-36 rounded-l-md border-r border-gray-300 h-16"
+                                                placeholder="Fecha de salida" />
+                                        </div>
+                                        <div class="relative">
+                                            <img src="calendario.svg" alt="" class="absolute w-8 h-8 ml-3 mt-4">
+                                            <input type="text" @click="endToShow = 'to'; init(); showDatepicker = true"
+                                                :value="formatDate(dateTo)"
+                                                :class="{'font-semibold': endToShow == 'to' }"
+                                                class="focus:outline-none border-none pl-12 w-36 rounded-r-md border-l border-gray-300 h-16"
+                                                placeholder="Fecha de regreso" />
+                                        </div>
+                                    </div>
+
+                                    <div class="absolute bg-white mt-2 rounded-lg shadow p-4 sm:w-80 w-10/12 z-50"
+                                        x-show="showDatepicker" x-transition>
+                                        <div class="flex flex-col items-center">
+
+                                            <div class="w-full flex justify-between items-center mb-2">
+                                                <div>
+                                                    <span x-text="MONTH_NAMES[month]"
+                                                        class="text-lg font-bold text-gray-800"></span>
+                                                    <span x-text="year"
+                                                        class="ml-1 text-lg text-gray-600 font-normal"></span>
+                                                </div>
+                                                <div>
+                                                    <button type="button"
+                                                        class="transition ease-in-out duration-100 inline-flex cursor-pointer hover:bg-gray-200 p-1 rounded-full"
+                                                        @click="if (month == 0) {year--; month=11;} else {month--;} getNoOfDays()">
+                                                        <svg class="h-6 w-6 text-gray-500 inline-flex" fill="none"
+                                                            viewBox="0 0 24 24" stroke="currentColor">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                stroke-width="2" d="M15 19l-7-7 7-7" />
+                                                        </svg>
+                                                    </button>
+                                                    <button type="button"
+                                                        class="transition ease-in-out duration-100 inline-flex cursor-pointer hover:bg-gray-200 p-1 rounded-full"
+                                                        @click="if (month == 11) {year++; month=0;} else {month++;}; getNoOfDays()">
+                                                        <svg class="h-6 w-6 text-gray-500 inline-flex" fill="none"
+                                                            viewBox="0 0 24 24" stroke="currentColor">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                stroke-width="2" d="M9 5l7 7-7 7" />
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                            <div class="w-full flex flex-wrap mb-3 -mx-1">
+                                                <template x-for="(day, index) in DAYS" :key="index">
+                                                    <div style="width: 14.26%" class="px-1">
+                                                        <div x-text="day"
+                                                            class="text-gray-800 font-medium text-center text-xs"></div>
+                                                    </div>
+                                                </template>
+                                            </div>
+
+                                            <div class="flex flex-wrap -mx-1">
+                                                <template x-for="blankday in blankdays">
+                                                    <div style="width: 14.28%"
+                                                        class="text-center border p-1 border-transparent text-sm"></div>
+                                                </template>
+                                                <template x-for="(date, dateIndex) in no_of_days" :key="dateIndex">
+                                                    <div style="width: 14.28%">
+                                                        <div @click="getDateValue(date, false)"
+                                                            @mouseenter="getDateValue(date, true)" x-text="date"
+                                                            class="p-1 cursor-pointer text-center text-sm leading-none leading-loose transition ease-in-out duration-100"
+                                                            :class="{'font-bold': isToday(date) == true, 'bg-blue-800 text-white rounded-l-full': isDateFrom(date) == true, 'bg-blue-800 text-white rounded-r-full': isDateTo(date) == true, 'bg-blue-200': isInRange(date) == true }">
+                                                        </div>
+                                                    </div>
+                                                </template>
+                                            </div>
+
+                                            <div>
+                                                <button @click.prevent="showDatepicker = false"
+                                                    class="px-2 py-1 border border-gray-300 hover:border-gray-500 rounded-md">Cancelar</button>
+                                                <button @click.prevent="outputDateValues(); showDatepicker = false"
+                                                    @click="showDatepickerRange = true"
+                                                    class="px-2 py-1 border border-blue-600 bg-[#1583C9] hover:bg-blue-300 text-white rounded-md">OK</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <input type="text"
-                            class="pb-7 custom-placeholder h-16 bg-white border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-14 p-2.5 dark:bg-white dark:border-gray-600 dark:placeholder-gray-500 dark:text-gray-600 dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            placeholder="Fecha de ida" id="flowbiteDatepickerIda">
-                    </div>
-                    <div class="relative w-1/2 mr-9" id="pickerRegreso">
-                        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                            <svg class="w-8 h-8 text-gray-500 dark:text-[#003368]" aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                <path
-                                    d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
-                            </svg>
-                        </div>
-                        <input type="text" id="flowbiteDatepickerRegreso"
-                            class="pb-7 custom-placeholder h-16 bg-white border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-14 p-2.5 dark:bg-white dark:border-gray-600 dark:placeholder-gray-500 dark:text-gray-600 dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            placeholder="Fecha de regreso">
                     </div>
                 </div>
-                <div class="relative w-[82%] ml-8 mr-2 mt-2 hidden" id="nuevaFecha">
-                    <div class="absolute inset-y-0 left-0 flex items-center pl-9 pointer-events-none">
-                        <svg class="w-8 h-8 text-gray-500 dark:text-[#003368]" aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                            <path
-                                d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
-                        </svg>
+                <div class="flex w-full hidden" id="datepickerSingle" x-show="showDatepicker">
+                    <div x-data="app" x-cloak>
+                        <div class="container mx-auto py-2 md:py-10">
+                            <div class="flex items-center ml-8 mr-4 w-full">
+                                <div class="flex space-x-2 w-full" @keydown.escape="closeDatepicker()"
+                                    @click.outside="closeDatepicker()">
+                                    <div class="w-full flex items-center space-x-4 border rounded-md mt-0 bg-gray-200">
+                                        <div class="w-full">
+                                            <img src="calendario.svg" alt="" class="absolute w-8 h-8 ml-8 mr- mt-4">
+                                            <input type="text"
+                                                @click="endToShow = 'from'; init(); showDatepicker = true"
+                                                :value="formatDate(dateFrom)"
+                                                :class="{'font-semibold': endToShow == 'from' }"
+                                                class="focus:outline-none border-none pl-20 w-full rounded-l-md border-r border-gray-300 h-16"
+                                                placeholder="Fecha de salida" />
+                                        </div>
+
+                                    </div>
+
+                                    <div class="absolute bg-white mt-2 rounded-lg shadow p-4 sm:w-80 w-10/12 z-50"
+                                        x-show="showDatepicker" x-transition>
+                                        <div class="flex flex-col items-center">
+
+                                            <div class="w-full flex justify-between items-center mb-2">
+                                                <div>
+                                                    <span x-text="MONTH_NAMES[month]"
+                                                        class="text-lg font-bold text-gray-800"></span>
+                                                    <span x-text="year"
+                                                        class="ml-1 text-lg text-gray-600 font-normal"></span>
+                                                </div>
+                                                <div>
+                                                    <button type="button"
+                                                        class="transition ease-in-out duration-100 inline-flex cursor-pointer hover:bg-gray-200 p-1 rounded-full"
+                                                        @click="if (month == 0) {year--; month=11;} else {month--;} getNoOfDays()">
+                                                        <svg class="h-6 w-6 text-gray-500 inline-flex" fill="none"
+                                                            viewBox="0 0 24 24" stroke="currentColor">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                stroke-width="2" d="M15 19l-7-7 7-7" />
+                                                        </svg>
+                                                    </button>
+                                                    <button type="button"
+                                                        class="transition ease-in-out duration-100 inline-flex cursor-pointer hover:bg-gray-200 p-1 rounded-full"
+                                                        @click="if (month == 11) {year++; month=0;} else {month++;}; getNoOfDays()">
+                                                        <svg class="h-6 w-6 text-gray-500 inline-flex" fill="none"
+                                                            viewBox="0 0 24 24" stroke="currentColor">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                stroke-width="2" d="M9 5l7 7-7 7" />
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                            <div class="w-full flex flex-wrap mb-3 -mx-1">
+                                                <template x-for="(day, index) in DAYS" :key="index">
+                                                    <div style="width: 14.26%" class="px-1">
+                                                        <div x-text="day"
+                                                            class="text-gray-800 font-medium text-center text-xs"></div>
+                                                    </div>
+                                                </template>
+                                            </div>
+
+                                            <div class="flex flex-wrap -mx-1">
+                                                <template x-for="blankday in blankdays">
+                                                    <div style="width: 14.28%"
+                                                        class="text-center border p-1 border-transparent text-sm"></div>
+                                                </template>
+                                                <template x-for="(date, dateIndex) in no_of_days" :key="dateIndex">
+                                                    <div style="width: 14.28%">
+                                                        <div @click="getDateValue(date, false)"
+                                                            @mouseenter="getDateValue(date, true)" x-text="date"
+                                                            class="p-1 cursor-pointer text-center text-sm leading-none leading-loose transition ease-in-out duration-100"
+                                                            :class="{'font-bold': isToday(date) == true, 'bg-blue-800 text-white rounded-l-full': isDateFrom(date) == true, 'bg-blue-800 text-white rounded-r-full': isDateFrom(date) == true, 'bg-blue-200': isInRange(date) == true }">
+                                                        </div>
+                                                    </div>
+                                                </template>
+                                            </div>
+
+                                            <div class="flex inline-flex">
+                                                <p class="px-0 py-1 text-blue-500 text-xs">
+                                                    ¿No conoces tu fecha de regreso? Puedes dejar tu boleto abierto</p>
+
+                                                <button @click.prevent=" outputDateValues(); showDatepicker=false"
+                                                    @click="showDatepickerSingle = true"
+                                                    class="px-10 py-1 border border-blue-600 bg-[#C82333] hover:bg-blue-300 text-white rounded-md">
+                                                    Boleto
+                                                    abierto</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <input datepicker datepicker-autohide type="text" datepicker-format="dd/mm/yyyy"
-                        class="pb-3 custom-placeholder h-16 bg-white border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-24 p-2.5 dark:bg-white dark:border-gray-600 dark:placeholder-gray-500 dark:text-gray-600 dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="Fecha de ida" id="datepicker">
                 </div>
 
-                <div class="mt-3 w-full">
-                    <div class="input-with-svg m-2  ml-8">
-                        <input
-                            class="w-11/12 h-14 pl-20 pr-42 py-1 text-base placeholder-gray-500 border rounded-lg focus:shadow-outline"
-                            type="search" placeholder="Selecciona tus boletos" id="openTicketModal">
+                <div class="mt-3 w-full" id="datepickerSingle" x-show="showDatepickerSingle">
+                    <div class="input-with-svg m-2 ml-8">
+                        <button
+                            class="w-11/12 h-14 pl-8 pr-42 py-1 text-lg bg-gray-100 border rounded-lg focus:shadow-outline"
+                            id="openTicketModal"> Selecciona tus boletos
+                            <div id="totalMessage" class="text-center mt-0 mr-48"></div>
+                        </button>
                         <input type="text" id="adultInput" class="hidden">
                         <input type="text" id="childInput" class="hidden">
                         <input type="text" id="inapamInput" class="hidden">
                         <input type="text" id="professorInput" class="hidden">
                         <input type="text" id="studentInput" class="hidden">
-                        <img class="bus-logo" src="icono_pasajeros.svg" alt="Autobús"
-                            style="width: 40px; height: 40px; margin-top:0px; margin-left:20px">
+                        <img class="bus-logo ml-5" src="icono_pasajeros.svg" alt="Autobús"
+                            style="width: 40px; height: 40px; margin-top:0px;">
                     </div>
                 </div>
 
                 <div class="fixed bottom-0 left-0 right-0 bg-black bg-opacity-50 h-screen flex justify-end z-50"
                     id="ticketModal" style="display: none;">
-                    <div class="bg-white p-4 w-full max-w-md">
-                        <div class="grid grid-cols-2 gap-4 mb-4 py-2">
+                    <div class="bg-white p-4 w-full max-w-md mt-16">
+                        <div class="grid grid-cols-2 gap-4 mb-4 py-2 mt-3">
                             <div class="flex items-center">
-                                <span class="pl-5 font-black text-[#003368]">Adulto <br>+12 años</span>
+                                <span class="pl-5 font-black text-[#003368]">Adulto <p class="font-normal">+12 años</p>
+                                </span>
                             </div>
                             <div class="flex items-center">
                                 <button type="button"
@@ -531,7 +716,8 @@
                         </div>
                         <div class="grid grid-cols-2 gap-4 mb-4 py-2">
                             <div class="flex items-center">
-                                <span class="pl-5 font-black text-[#003368]">Niño <br>De 6 a 11 años</span>
+                                <span class="pl-5 font-black text-[#003368]">Niño <p class="font-normal">De 6 a 11 años
+                                    </p></span>
                             </div>
                             <div class="flex items-center">
                                 <button type="button"
@@ -544,8 +730,10 @@
                         </div>
                         <div class="grid grid-cols-2 gap-4 mb-4 py-2">
                             <div class="flex items-center">
-                                <span class="pl-5 font-black text-[#003368]">INAPAM <br>Presentar <br> documentación
-                                    oficial</span>
+                                <span class="pl-5 font-black text-[#003368]">INAPAM <p class="font-normal">Presentar</p>
+                                    <p class="font-normal"> documentación
+                                        oficial</p>
+                                </span>
                             </div>
                             <div class="flex items-center">
                                 <button type="button"
@@ -559,8 +747,11 @@
 
                         <div class="grid grid-cols-2 gap-4 mb-4 py-2">
                             <div class="flex items-center">
-                                <span class="pl-5 font-black text-[#003368]">Profesor <br>Presentar <br> credencial
-                                    vigente</span>
+                                <span class="pl-5 font-black text-[#003368]">Profesor <p class="font-normal">Presentar
+                                    </p>
+                                    <p class="font-normal"> credencial
+                                        vigente </p>
+                                </span>
                             </div>
                             <div class="flex items-center">
                                 <button type="button"
@@ -574,8 +765,8 @@
 
                         <div class="grid grid-cols-2 gap-4 mb-4 py-2">
                             <div class="flex items-center">
-                                <span class="pl-5 font-black text-[#003368]">Estudiante <br
-                                        class="font-medium">Presentar credencial vigente</span>
+                                <span class="pl-5 font-black text-[#003368]">Estudiante <p class="font-normal">Presentar
+                                        credencial vigente </p></span>
                             </div>
                             <div class="flex items-center">
                                 <button type="button"
@@ -597,14 +788,15 @@
                     </div>
                 </div>
 
-
                 <button
-                    class="w-10/12 ml-8 bg-[#C82333] text-white font-bold text-lg rounded-lg py-2 mt-4 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400">
+                    class="w-10/12 ml-8 bg-[#C82333] text-white font-bold text-lg rounded-lg py-2 mt-4 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                    disabled>
                     BUSCAR VIAJE
                 </button>
             </form>
         </div>
-        <div class="formas-de-pago w-full h-auto bg-[#1583C9] pt-3 flex flex-wrap justify-between">
+        <!-- FORMAS DE PAGO -->
+        <div class="formas-de-pago w-full h-auto bg-[#1583C9] pt-3 flex flex-wrap justify-between px-0">
             <div class="visa mb-4">
                 <img src="Visa-01.svg" alt="visa" class="bg-white ml-8 w-12 h-9 border rounded-lg px-2 py-2">
             </div>
@@ -624,13 +816,16 @@
                 </div>
             </div>
         </div>
+        <!-- SLIDERS -->
         <div class="flex justify-center items-center py-3 pl-8 pr-8 bg-[#1583C9]">
-            <div class="w-full md:w-3/4 lg:w-1/2 xl:w-1/3 rounded-lg overflow-hidden shadow-md bg-[#1583C9]">
+            <div class="w-full sm:w-9/12 md:w-3/4 lg:w-1/2 xl:w-1/3 rounded-lg overflow-hidden shadow-md bg-[#1583C9]">
                 <div class="slider-container">
                     <div class="slider slider-1">
-                        <img src="venta_vacacional_2023.webp" alt="image 0" class="w-full">
-                        <img src="seguridad.webp" alt="image 1" class="w-full">
-                        <img src="Banner_Viaja_DD.webp" alt="image 2" class="w-full">
+                        <img src="Banner_App.webp" alt="image 0" class="w-full">
+                        <img src="Banner_servicios_DD.webp" alt="image 1" class="w-full">
+                        <img src="seguridad.webp" alt="image 2" class="w-full">
+                        <img src="Banner_ODM_pacifico.webp" alt="image 3" class="w-full">
+                        <img src="Banner_Viaja_DD.webp" alt="image 4" class="w-full">
                     </div>
 
                 </div>
@@ -638,7 +833,7 @@
         </div>
 
         <div class="flex justify-center items-center py-3 pl-8 pr-8 bg-[#1583C9]">
-            <div class="w-full md:w-3/4 lg:w-1/2 xl:w-1/3 rounded-lg overflow-hidden shadow-md bg-[#1583C9]">
+            <div class="w-full sm:w-9/12 md:w-3/4 lg:w-1/2 xl:w-1/3 rounded-lg overflow-hidden shadow-md bg-[#1583C9]">
                 <div class="slider-container">
                     <div class="slider slider-2">
                         <img src="/verticales/CEN_TIJ.png" alt="Image 0">
@@ -654,12 +849,15 @@
                     <div class="slider slider-3">
                         <div class="slide">
                             <img src="banner_noreste.jpeg" alt="Image 0">
-                            <div class="slide-text">San Luis Potosi / Matehuala</div>
+                            <div class="slide-text text-xs text-left">
+                                <p class="text-white font-semibold text-xs text-center">Nuevo Laredo / Reynosa</p>
+                                <p class="text-white font-semibold text-xs text-center">Matamoros / Monterrey</p>
+                            </div>
                         </div>
                         <div class="slide">
                             <img src="banner_omex.jpeg" alt="Image 1">
-                            <div class="slide-text">
-                                <p class="text-white font-semibold text-sm">McAllen / Monterrey</p>
+                            <div class="slide-text text-left">
+                                <p class="text-white font-semibold text-xs">McAllen / Monterrey</p>
                             </div>
                         </div>
                     </div>
@@ -673,36 +871,36 @@
                     <div class="slider slider-4">
                         <div class="slide">
                             <img src="omnibus_mexico_destinos.jpeg" alt="Image 0">
-                            <div class="slide-text">
-                                <p class="text-white font-semibold text-sm">Turismo / Experiencias</p>
-                                <p class="text-white font-semibold text-sm">¿Qué actividades puedes realizar cuando
+                            <div class="slide-text text-sm">
+                                <p class="text-white font-semibold text-xs text-center">TURISMO / EXPERIENCIAS</p>
+                                <p class="text-white font-semibold text-xs">¿Qué actividades puedes realizar cuando
                                     llegas a un nuevo lugar?</p>
-                                <p class="text-white font-semibold text-sm">Te contamos los imperdibles en cada uno de
+                                <p class="text-white font-semibold text-xs">Te contamos los imperdibles en cada uno de
                                     nuestros #DestinosODM</p>
                             </div>
                         </div>
                         <div class="slide">
                             <img src="omnibus_mexico_gastronomia.jpeg" alt="Image 1">
-                            <div class="slide-text">
-                                <p class="text-white font-semibold text-sm">GASTR0NOMÍA</p>
-                                <p class="text-white font-semibold text-sm">Porque uno no conoce un lugar sin probar
+                            <div class="slide-text text-sm">
+                                <p class=" text-white font-semibold text-xs text-center">GASTRONOMÍA</p>
+                                <p class="text-white font-semibold text-xs">Porque uno no conoce un lugar sin probar
                                     <br> su comida típica. Traemos para ti los <br> platillos de cada uno de nuestros
-                                    destinos <br> para que tu viaje sea más placentero
+                                    destinos <br> para que tu viaje sea más placentero.
                                 </p>
                             </div>
                         </div>
                         <div class="slide">
                             <img src="eventos-odm.jpeg" alt="Image 3">
-                            <div class="slide-text">EVENTOS CULTURALES
-                                <p class="text-white font-semibold text-sm">¿Vas a viajar sin un plan de actividades?
+                            <div class="slide-text text-sm text-center">EVENTOS CULTURALES
+                                <p class=" text-white font-semibold text-xs">¿Vas a viajar sin un plan de actividades?
                                 </p>
-                                <p class="text-white font-semibold text-sm"> Omnibus de México te informa cuáles son
+                                <p class="text-white font-semibold text-xs"> Omnibus de México te informa cuáles son
                                 </p>
-                                <p class="text-white font-semibold text-sm">los eventos culturales más
+                                <p class="text-white font-semibold text-xs">los eventos culturales más
                                     representativos </p>
-                                <p class="text-white font-semibold text-sm"> de cada región y que solo pasan una vez al
+                                <p class="text-white font-semibold text-xs"> de cada región y que solo pasan una vez al
                                 </p>año para que no
-                                te los pierdas
+                                te los pierdas.
 
                             </div>
 
@@ -711,102 +909,602 @@
                 </div>
             </div>
         </div>
-        <section class="bg-[#003368]">
-            <div class="max-w-screen-xl px-4 py-10 mx-auto space-y-8 overflow-hidden sm:px-6 lg:px-8">
-                <nav class="flex flex-wrap justify-center -mx-5 -my-2">
-                    <div class="px-5 py-2">
-                        <a href="https://odm.com.mx/quienes-somos2"
-                            class="text-base leading-6 text-white hover:text-neutral-600">
-                            ¿Quiénes somos?
-                        </a>
-                    </div>
-                    <div class="px-5 py-2">
-                        <a href="https://odm.com.mx/preguntas-frecuentes"
-                            class="text-base leading-6 text-white hover:text-neutral-600">
-                            Preguntas frecuentes
-                        </a>
-                    </div>
-                    <div class="px-5 py-2">
-                        <a href="http://venta.odm.com.mx/netScripts/request.aspx?APPNAME=Navegante&PRGNAME=AccesoEx&ARGUMENTS=-AAG&_gl=1*z7x1y0*_ga*NjAyODM2MzE2LjE2NzI0MjgyOTU.*_ga_6MKKJY80T1*MTY3OTY3MDk4NC4xMDQuMS4xNjc5NjcyNjE0LjQ5LjAuMA.."
-                            class="text-base leading-6 text-white hover:text-neutral-600">
-                            Agencias
-                        </a>
-                    </div>
-                    <div class="px-5 py-2">
-                        <a href="https://odm.com.mx/contactanos"
-                            class="text-base leading-6 text-white hover:text-neutral-600">
-                            Contáctanos
-                        </a>
-                    </div>
-                </nav>
-                <img src="logoblanco.png" alt="Logo" class="w-60 h-24 mx-auto" />
-                <div class="flex justify-center mt-5 space-x-6">
-                    <a href="#" class="text-white hover:text-neutral-600">
-                        <span class="sr-only">Facebook</span>
-                        <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24">
-                            <path fill-rule="evenodd"
-                                d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
-                                clip-rule="evenodd"></path>
-                        </svg>
-                    </a>
-                    <a href="#" class="text-white hover:text-gray-600">
-                        <span class="sr-only">Twitter</span>
-                        <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24">
-                            <path
-                                d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84">
-                            </path>
-                        </svg>
-                    </a>
-                    <a href="#" class="text-white hover:text-gray-600">
-                        <span class="sr-only">Instagram</span>
-                        <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24">
-                            <path fill-rule="evenodd"
-                                d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"
-                                clip-rule="evenodd"></path>
-                        </svg>
-                    </a>
-                    <a href="#" class="text-white hover:text-gray-600">
-                        <span class="sr-only">YouTube</span>
-                        <svg aria-hidden="true" fill="currentColor" class="bi bi-youtube w-6 h-6" viewBox="0 0 16 16">
-                            <path
-                                d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408L6.4 5.209z"
-                                fill-rule="evenodd" clip-rule="evenodd"></path>
-                        </svg>
+    </div>
+    <!-- FOOTER -->
+    <section class="bg-[#003368]">
+        <div class="max-w-screen-xl px-4 py-10 mx-auto space-y-8 overflow-hidden sm:px-6 lg:px-8">
+            <nav class="flex flex-wrap justify-center -mx-5 -my-2">
+                <div class="px-5 py-2">
+                    <a href="https://odm.com.mx/quienes-somos2"
+                        class="text-base leading-6 text-white hover:text-neutral-600">
+                        ¿Quiénes somos?
                     </a>
                 </div>
-                <p class="mt-8 text-base leading-6 text-center text-white hover:text-neutral-600">
-                    <a href="https://odm.com.mx/aviso-privacidad">Aviso de privacidad | Políticas de viaje</a>
-                </p>
-                <p class="mt-8 text-base leading-6 text-center text-white">
-                    © 2023 Ómnibus de México. Todos los derechos reservados.
-                </p>
+                <div class="px-5 py-2">
+                    <a href="https://odm.com.mx/preguntas-frecuentes"
+                        class="text-base leading-6 text-white hover:text-neutral-600">
+                        Preguntas frecuentes
+                    </a>
+                </div>
+                <div class="px-5 py-2">
+                    <a href="http://venta.odm.com.mx/netScripts/request.aspx?APPNAME=Navegante&PRGNAME=AccesoEx&ARGUMENTS=-AAG&_gl=1*z7x1y0*_ga*NjAyODM2MzE2LjE2NzI0MjgyOTU.*_ga_6MKKJY80T1*MTY3OTY3MDk4NC4xMDQuMS4xNjc5NjcyNjE0LjQ5LjAuMA.."
+                        class="text-base leading-6 text-white hover:text-neutral-600">
+                        Agencias
+                    </a>
+                </div>
+                <div class="px-5 py-2">
+                    <a href="https://odm.com.mx/contactanos"
+                        class="text-base leading-6 text-white hover:text-neutral-600">
+                        Contáctanos
+                    </a>
+                </div>
+            </nav>
+            <img src="logoblanco.png" alt="Logo" class="w-60 h-24 mx-auto" />
+            <div class="flex justify-center mt-5 space-x-6">
+                <a href="https://www.facebook.com/OmnibusdeMexicoOficial/?fref=ts"
+                    class="text-white hover:text-neutral-600">
+                    <span class="sr-only">Facebook</span>
+                    <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24">
+                        <path fill-rule="evenodd"
+                            d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+                            clip-rule="evenodd"></path>
+                    </svg>
+                </a>
+                <a href="https://twitter.com/omnibus_oficial" class="text-white hover:text-gray-600">
+                    <span class="sr-only">Twitter</span>
+                    <img src="twitterxlogo.png" class="w-6 h-6" alt="">
+                </a>
+                <a href="https://www.instagram.com/omnibus_oficial/" class="text-white hover:text-gray-600">
+                    <span class="sr-only">Instagram</span>
+                    <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24">
+                        <path fill-rule="evenodd"
+                            d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"
+                            clip-rule="evenodd"></path>
+                    </svg>
+                </a>
+                <a href="https://www.youtube.com/channel/UCyQ_-uZqptGN2M45DNOl7CQ"
+                    class="text-white hover:text-gray-600">
+                    <span class="sr-only">YouTube</span>
+                    <svg aria-hidden="true" fill="currentColor" class="bi bi-youtube w-6 h-6" viewBox="0 0 16 16">
+                        <path
+                            d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408L6.4 5.209z"
+                            fill-rule="evenodd" clip-rule="evenodd"></path>
+                    </svg>
+                </a>
             </div>
-        </section>
-    </div>
-    <!-- SCRIPT DEL 2DO SLIDER -->
+            <p class="mt-8 text-base leading-6 text-center text-white hover:text-neutral-600">
+                <a href="https://odm.com.mx/aviso-privacidad">Aviso de privacidad | Políticas de viaje</a>
+            </p>
+            <p class="mt-8 text-base leading-6 text-center text-white">
+                © 2023 Ómnibus de México. Todos los derechos reservados.
+            </p>
+        </div>
+    </section>
+    <!-- SCRIPT DEL MENU DE HAMBURGUESA -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const modalOverlay = document.getElementById('modal-overlay');
+            const modal = document.getElementById('modal');
+            const openModalButton = document.getElementById('open-modal'); // Agregado
+
+            // Abre el modal
+            function openmodal() {
+                modalOverlay.classList.remove("hidden");
+            }
+
+            // Cierra el modal
+            function closemodal() {
+                modalOverlay.classList.add("hidden");
+            }
+
+            // Abre el modal al hacer clic en el botón
+            openModalButton.addEventListener("click", () => {
+                openmodal();
+            });
+
+            // Cierra el modal si se hace clic en cualquier parte fuera del contenido del modal
+            modalOverlay.addEventListener("click", (event) => {
+                if (event.target === modalOverlay) {
+                    closemodal();
+                }
+            });
+        });
+    </script>
+
+    <!-- SCRIPT DEL CALENDARIO -->
     <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.6/dist/flatpickr.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.6/dist/l10n/es.js"></script>
     <script>
-        flatpickr("#flowbiteDatepickerIda", {
-            dateFormat: "d/m/Y",
-            locale: "es",
-            disable: [
-                {
-                    to: "today"
-                }
-            ]
-        });
+        const MONTH_NAMES = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Novimiembre', 'Diciembre'];
+        const DAYS = ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'];
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('app', () => ({
+                showDatepicker: false,
+                showFromHourPicker: false,
+                showToHourPicker: false,
+                showFromMinutePicker: false,
+                showToMinutePicker: false,
+                timePickerDisabled: true,
+                dateFromYmdHis: '',
+                dateToYmdHis: '',
+                outputDateFromValue: '',
+                outputDateToValue: '',
+                currentDate: null,
+                dateFrom: null,
+                dateTo: null,
+                endToShow: '',
+                timeMode: 12,
+                hourFromValue: 12,
+                hourToValue: 11,
+                hour24FromValue: 0,
+                hour24ToValue: 23,
+                meridiemFrom: 'am',
+                meridiemTo: 'pm',
+                minuteFromValue: '00',
+                minuteToValue: '59',
+                selecting: false,
+                month: '',
+                year: '',
+                no_of_days: [],
+                blankdays: [],
+                hoursFrom: [],
+                hoursTo: [],
+                minutesFrom: [],
+                minutesTo: [],
+                meridiemsFrom: [],
+                meridiemsTo: [],
+                showDatepickerRange: false,
+                showDatepickerSingle: false,
+                openDatepickerRange() {
+                    this.showDatepickerRange = true;
+                },
 
-        flatpickr("#flowbiteDatepickerRegreso", {
-            dateFormat: "d/m/Y",
-            locale: "es",
-            disable: [
-                {
-                    to: "today"
+                openDatepickerSingle() {
+                    this.showDatepickerSingle = true;
+                },
+
+                convertFromYmd(dateYmd) {
+                    const year = Number(dateYmd.substr(0, 4));
+                    const month = Number(dateYmd.substr(5, 2)) - 1;
+                    const date = Number(dateYmd.substr(8, 2));
+
+                    return new Date(year, month, date);
+                },
+
+                convertToYmd(dateObject) {
+                    const year = dateObject.getFullYear();
+                    const month = dateObject.getMonth() + 1;
+                    const date = dateObject.getDate();
+
+                    return year + "-" + ('0' + month).slice(-2) + "-" + ('0' + date).slice(-2);
+                },
+
+                init() {
+                    if (!this.dateFrom) {
+                        if (this.dateFromYmd) {
+                            this.dateFrom = this.convertFromYmd(this.dateFromYmd);
+                        }
+                    }
+                    if (!this.dateTo) {
+                        if (this.dateToYmd) {
+                            this.dateTo = this.convertFromYmd(this.dateToYmd);
+                        }
+                    }
+                    if (!this.dateFrom) {
+                        this.dateFrom = this.dateTo;
+                    }
+                    if (!this.dateTo) {
+                        this.dateTo = this.dateFrom;
+                    }
+                    if (this.endToShow === 'from' && this.dateFrom) {
+                        this.currentDate = this.dateFrom;
+                    } else if (this.endToShow === 'to' && this.dateTo) {
+                        this.currentDate = this.dateTo;
+                    } else {
+                        this.currentDate = new Date();
+                    }
+                    currentMonth = this.currentDate.getMonth();
+                    currentYear = this.currentDate.getFullYear();
+                    if (this.month !== currentMonth || this.year !== currentYear) {
+                        this.month = currentMonth;
+                        this.year = currentYear;
+                        this.getNoOfDays();
+                    }
+                    this.setDateValues();
+                    this.getMeridansFrom();
+                    this.getMeridansTo();
+                },
+
+                changeTimeMode() {
+                    if (this.timeMode == 12) {
+                        let hourFrom = this.hour24FromValue;
+                        if (hourFrom === 0) {
+                            hourFrom = 12;
+                        } else if (hourFrom > 12) {
+                            hourFrom = hourFrom - 12;
+                        }
+                        let hourTo = this.hour24ToValue;
+                        if (hourTo === 0) {
+                            hourTo = 12;
+                        } else if (hourTo > 12) {
+                            hourTo = hourTo - 12;
+                        }
+                        this.meridiemFrom = this.hour24FromValue > 11 ? 'pm' : 'am';
+                        this.meridiemTo = this.hour24ToValue > 11 ? 'pm' : 'am';
+                        this.getHour('from', hourFrom);
+                        this.getHour('to', hourTo);
+                    } else {
+                        this.getHour('from', this.hour24FromValue);
+                        this.getHour('to', this.hour24ToValue);
+                    }
+                },
+
+                isToday(date) {
+                    const today = new Date();
+                    const d = new Date(this.year, this.month, date);
+
+                    return today.toDateString() === d.toDateString();
+                },
+
+                isDateFrom(date) {
+                    const d = new Date(this.year, this.month, date);
+
+                    if (!this.dateFrom) {
+                        return false;
+                    }
+
+                    return d.getTime() === this.dateFrom.getTime();
+                },
+
+                isDateTo(date) {
+                    const d = new Date(this.year, this.month, date);
+
+                    if (!this.dateTo) {
+                        return false;
+                    }
+
+                    return d.getTime() === this.dateTo.getTime();
+                },
+
+                isSingleDay() {
+                    if (!this.dateFrom || !this.dateTo) {
+                        return false;
+                    }
+                    return this.dateFrom.getTime() === this.dateTo.getTime();
+                },
+
+                isInRange(date) {
+                    const d = new Date(this.year, this.month, date);
+
+                    return d > this.dateFrom && d < this.dateTo;
+                },
+
+                isDisabledFromHour(hour) {
+                    let hour24 = hour;
+                    if (this.timeMode == 12) {
+                        if (hour === 12 && this.meridiemFrom === 'am') {
+                            hour24 = 0;
+                        } else if (hour < 12 && this.meridiemFrom === 'pm') {
+                            hour24 = hour + 12;
+                        }
+                    }
+                    if (this.isSingleDay() && hour24 > this.hour24ToValue) {
+                        return true;
+                    }
+                    return false;
+                },
+
+                isDisabledToHour(hour) {
+                    let hour24 = hour;
+                    if (this.timeMode == 12) {
+                        if (hour === 12 && this.meridiemTo === 'am') {
+                            hour24 = 0;
+                        } else if (hour < 12 && this.meridiemTo === 'pm') {
+                            hour24 = hour + 12;
+                        }
+                    }
+                    if (this.isSingleDay() && hour24 < this.hour24FromValue) {
+                        return true;
+                    }
+                    return false;
+                },
+
+                outputDateValues() {
+                    if (this.dateFrom) {
+                        const timeFromString = this.getTimeString('from');
+                        const dateFromString = this.convertToYmd(this.dateFrom);
+                        const dateTimeFrom = new Date(dateFromString + 'T' + timeFromString);
+                        this.outputDateFromValue = this.formatDateTime(dateTimeFrom, this.meridiemFrom);
+                        this.dateFromYmdHis = dateFromString + ' ' + timeFromString;
+                    }
+                    if (this.dateTo) {
+                        const timeToString = this.getTimeString('to');
+                        const dateToString = this.convertToYmd(this.dateTo);
+                        const dateTimeTo = new Date(dateToString + 'T' + timeToString);
+                        this.outputDateToValue = this.formatDateTime(dateTimeTo, this.meridiemTo);
+                        this.dateToYmdHis = dateToString + ' ' + timeToString;
+                    }
+                    this.showDatepickerSingle = !this.showDatepickerSingle;
+
+                    this.endToShow = '';
+                },
+
+                formatDateTime(dateTime, meridiem) {
+                    const dayName = DAYS[dateTime.getDay()];
+                    const month = MONTH_NAMES[dateTime.getMonth()];
+                    const date = dateTime.getDate();
+                    const year = dateTime.getFullYear();
+                    let hour = dateTime.getHours();
+                    if (this.timeMode == 12) {
+                        if (meridiem === 'am' && hour === 0) {
+                            hour = 12;
+                        } else if (meridiem === 'pm' && hour > 12) {
+                            hour = hour - 12;
+                        }
+                        hourString = hour.toString();
+                        meridiem = ' ' + meridiem;
+                    } else {
+                        hourString = hour.toString().padStart(2, '0');
+                        meridiem = '';
+                    }
+                    const minute = dateTime.getMinutes().toString().padStart(2, '0');
+                    //const second  = dateTime.getSeconds().toString().padStart(2, '0');
+                    return dayName + ' ' + month + ' ' + date + ' ' + year + ' ' + hourString + ':' + minute + meridiem;
+                },
+
+                getTimeString(end) {
+                    const hour = end === 'from' ? this.hour24FromValue : this.hour24ToValue;
+                    const minute = end === 'from' ? this.minuteFromValue : this.minuteToValue;
+                    const second = end === 'from' ? '00' : '59';
+                    return hour.toString().padStart(2, '0') + ':' + minute + ':' + second;
+                },
+
+                getHour(end, hour) {
+                    let hour24 = hour;
+                    if (this.timeMode == 12) {
+                        const meridan = end === 'from' ? this.meridiemFrom : this.meridiemTo;
+                        if (hour === 12 && meridan === 'am') {
+                            hour24 = 0;
+                        } else if (hour < 12 && meridan === 'pm') {
+                            hour24 = hour + 12;
+                        }
+                    }
+                    if (end === 'from') {
+                        this.hourFromValue = this.timeMode == 12 ? hour : hour24;
+                        this.hour24FromValue = hour24;
+                        this.getHoursTo();
+                    } else {
+                        this.hourToValue = this.timeMode == 12 ? hour : hour24;
+                        this.hour24ToValue = hour24;
+                        this.getHoursFrom();
+                    }
+                    this.getMinutesFrom();
+                    this.getMinutesTo();
+                    this.getMeridansFrom();
+                    this.getMeridansTo();
+                },
+
+                setDateValues() {
+                    if (this.dateFrom) {
+                        const dateFromString = this.convertToYmd(this.dateFrom);
+                        const dateFrom = new Date(dateFromString);
+                    }
+                    if (this.dateTo) {
+                        const dateToString = this.convertToYmd(this.dateTo);
+                        const dateTo = new Date(dateToString);
+                    }
+                },
+
+                getDateValue(date, temp) {
+                    // if we are in mouse over mode but have not started selecting a range, there is nothing more to do.
+                    if (temp && !this.selecting) {
+                        return;
+                    }
+                    let selectedDate = new Date(this.year, this.month, date);
+                    const today = new Date();
+                    today.setHours(0, 0, 0, 0); // Establecer la hora en 00:00:00 para comparar solo las fechas
+                    if (selectedDate < today) {
+                        return;
+                    }
+                    if (this.endToShow === 'from') {
+                        this.dateFrom = selectedDate;
+                        if (!this.dateTo) {
+                            this.dateTo = selectedDate;
+                        } else if (selectedDate > this.dateTo) {
+                            this.endToShow = 'to';
+                            this.dateFrom = this.dateTo;
+                            this.dateTo = selectedDate;
+                        }
+                    } else if (this.endToShow === 'to') {
+                        this.dateTo = selectedDate;
+                        if (!this.dateFrom) {
+                            this.dateFrom = selectedDate;
+                        } else if (selectedDate < this.dateFrom) {
+                            this.endToShow = 'from';
+                            this.dateTo = this.dateFrom;
+                            this.dateFrom = selectedDate;
+                        }
+                    }
+                    this.setDateValues();
+
+                    this.timePickerDisabled = !this.dateFrom;
+
+                    if (!this.timePickerDisabled) {
+                        /* If a time tange has already been set with the from time > to time and date range is now for a single day, reset the time the range */
+                        if (!temp && this.isSingleDay() && parseInt(this.hour24FromValue + '' + this.minuteFromValue) > parseInt(this.hour24ToValue + '' + this.minuteToValue)) {
+                            this.hourFromValue = this.timeMode == 12 ? 12 : 0;
+                            this.hourToValue = this.timeMode == 12 ? 11 : 23;
+                            this.hour24FromValue = 0;
+                            this.hour24ToValue = 23;
+                            this.meridiemFrom = 'am';
+                            this.meridiemTo = 'pm';
+                            this.minuteFromValue = '00';
+                            this.minuteToValue = '59';
+                        }
+                        this.getHoursFrom();
+                        this.getHoursTo();
+                        this.getMinutesFrom();
+                        this.getMinutesTo();
+                        this.getMeridansFrom();
+                        this.getMeridansTo();
+                    }
+
+                    if (!temp) {
+                        this.selecting = !this.selecting;
+                    }
+                },
+
+                getNoOfDays() {
+                    let daysInMonth = new Date(this.year, this.month + 1, 0).getDate();
+
+                    // find where to start calendar day of week
+                    let dayOfWeek = new Date(this.year, this.month).getDay();
+                    let blankdaysArray = [];
+                    for (var i = 1; i <= dayOfWeek; i++) {
+                        blankdaysArray.push(i);
+                    }
+
+                    let daysArray = [];
+                    for (var i = 1; i <= daysInMonth; i++) {
+                        daysArray.push(i);
+                    }
+
+                    this.blankdays = blankdaysArray;
+                    this.no_of_days = daysArray;
                 }
-            ]
-        });
+                ,
+
+                getHoursFrom() {
+                    this.hoursFrom = [];
+                    for (let i = 0; i < this.timeMode; i++) {
+                        let value = this.timeMode == 12 && i === 0 ? 12 : i;
+                        let hour = new Object();
+                        hour.id = value;
+                        hour.label = this.timeMode == 12 ? value : i.toString().padStart(2, '0');
+                        hour.disabled = this.isDisabledFromHour(value);
+                        this.hoursFrom.push(hour);
+                    }
+                },
+
+                getHoursTo() {
+                    this.hoursTo = [];
+                    for (let i = 0; i < this.timeMode; i++) {
+                        let value = this.timeMode == 12 && i === 0 ? 12 : i;
+                        let hour = new Object();
+                        hour.id = value;
+                        hour.label = this.timeMode == 12 ? value : i.toString().padStart(2, '0');
+                        hour.disabled = this.isDisabledToHour(value);
+                        this.hoursTo.push(hour);
+                    }
+                },
+
+                changeMinutesFrom(minute) {
+                    this.minuteFromValue = minute;
+                    this.showFromMinutePicker = false;
+                    this.getMinutesTo();
+                },
+
+                changeMinutesTo(minute) {
+                    this.minuteToValue = minute;
+                    this.showToMinutePicker = false;
+                    this.getMinutesFrom();
+                },
+
+                getMinutesFrom() {
+                    this.minutesFrom = [];
+                    for (let i = 0; i < 60; i++) {
+                        let minute = new Object();
+                        minute.id = i;
+                        minute.label = i.toString().padStart(2, '0');
+                        minute.disabled = this.isSingleDay() && this.hour24FromValue === this.hour24ToValue && minute.label > this.minuteToValue;
+                        this.minutesFrom.push(minute);
+                    }
+                },
+
+                getMinutesTo() {
+                    this.minutesTo = [];
+                    for (let i = 0; i < 60; i++) {
+                        let minute = new Object();
+                        minute.id = i;
+                        minute.label = i.toString().padStart(2, '0');
+                        minute.disabled = this.isSingleDay() && this.hour24FromValue === this.hour24ToValue && this.minuteFromValue > minute.label;
+                        this.minutesTo.push(minute);
+                    }
+                },
+
+                changeMeridansFrom() {
+                    this.getHour('from', this.hourFromValue);
+                    this.getHoursFrom();
+                    this.getHoursTo();
+                    this.getMinutesFrom();
+                    this.getMinutesTo();
+                    this.getMeridansTo();
+                },
+
+                changeMeridansTo() {
+                    this.getHour('to', this.hourToValue);
+                    this.getHoursFrom();
+                    this.getHoursTo();
+                    this.getMinutesFrom();
+                    this.getMinutesTo();
+                    this.getMeridansFrom();
+                },
+
+                getMeridansFrom() {
+                    this.meridiemsFrom = [];
+                    let meridiemAM = new Object();
+                    meridiemAM.id = 1;
+                    meridiemAM.value = 'am';
+                    meridiemAM.label = 'AM';
+                    meridiemAM.disabled = false;
+                    meridiemAM.selected = this.meridiemFrom === 'am';
+                    let meridiemPM = new Object();
+                    meridiemPM.id = 2;
+                    meridiemPM.value = 'pm';
+                    meridiemPM.label = 'PM';
+                    meridiemPM.disabled = this.isSingleDay() && (this.meridiemTo === 'am' || this.hour24FromValue > this.hour24ToValue);
+                    meridiemPM.selected = this.meridiemFrom === 'pm';
+                    this.meridiemsFrom.push(meridiemAM);
+                    this.meridiemsFrom.push(meridiemPM);
+                },
+
+                getMeridansTo() {
+                    this.meridiemsTo = [];
+                    let meridiemAM = new Object();
+                    meridiemAM.id = 1;
+                    meridiemAM.value = 'am';
+                    meridiemAM.label = 'AM';
+                    meridiemAM.disabled = this.isSingleDay() && (this.meridiemFrom === 'pm' || this.hour24FromValue > this.hour24ToValue);
+                    meridiemAM.selected = this.meridiemTo === 'am';
+                    let meridiemPM = new Object();
+                    meridiemPM.id = 2;
+                    meridiemPM.value = 'pm';
+                    meridiemPM.label = 'PM';
+                    meridiemPM.disabled = false;
+                    meridiemPM.selected = this.meridiemTo === 'pm';
+                    this.meridiemsTo.push(meridiemAM);
+                    this.meridiemsTo.push(meridiemPM);
+                },
+
+                closeDatepicker() {
+                    this.endToShow = '';
+                    this.showDatepicker = false;
+                },
+                formatDate(date) {
+                    if (date === null) {
+                        return ""; // O cualquier otro valor que desees para representar una fecha no definida
+                    }
+                    const day = ('0' + date.getDate()).slice(-2);
+                    const month = ('0' + (date.getMonth() + 1)).slice(-2);
+                    const year = date.getFullYear();
+                    return `${day}/${month}/${year}`;
+                },
+                dateFrom: null, // Agrega este valor inicial
+                dateTo: null,   // Agrega este valor inicial
+            }))
+        })
     </script>
+    <!-- SCRIPT DE SELECCION DE ORIGEN -->
     <script>
         $(document).ready(function () {
             $('#origenSelect').select2();
@@ -817,6 +1515,7 @@
             });
         });
     </script>
+    <!-- SCRIPT DE SELECCION DE DESTINO Y OCULTAR/MOSTRAR LOS DATEPICKER -->
     <script>
         $(document).ready(function () {
             // Asociar evento change al select de origen
@@ -849,46 +1548,64 @@
             // Inicializar select2 para el select de origen y destino
             $('#origenSelect, #destinoSelect').select2();
         });
-    </script>
+        $('#datepickerRange').addClass('hidden');
+        $('#datepickerSingle').addClass('hidden');
 
-    <!-- SCRIPT DEL MENU DE HAMBURGUESA -->
-    <script>
-        const openModalButton1 = document.getElementById("open-modal");
-        const closeModalButton1 = document.getElementById("close-modal");
-        const modalOverlay = document.getElementById("modal-overlay");
+        // Asociar eventos change a los selectores de origen y destino
+        $('#origenSelect, #destinoSelect').on('change', function () {
+            var origenValue = $('#origenSelect').val();
+            var destinoValue = $('#destinoSelect').val();
 
-        openModalButton1.addEventListener("click", () => {
-            modalOverlay.classList.remove("hidden");
+            // Mostrar el datepicker correspondiente solo si ambos valores están seleccionados
+            if (origenValue && destinoValue) {
+                if ($('#redondo').prop('checked')) {
+                    $('#datepickerRange').removeClass('hidden');
+                    $('#datepickerSingle').addClass('hidden');
+                } else if ($('#sencillo').prop('checked')) {
+                    $('#datepickerSingle').removeClass('hidden');
+                    $('#datepickerRange').addClass('hidden');
+                }
+            } else {
+                // Ocultar ambos datepickers si no hay selección de origen y destino
+                $('#datepickerRange').addClass('hidden');
+                $('#datepickerSingle').addClass('hidden');
+            }
         });
 
-        closeModalButton1.addEventListener("click", () => {
-            modalOverlay.classList.add("hidden");
-        });
+        $('input[type="radio"][name="opcion"]').on('change', function () {
+            var origenValue = $('#origenSelect').val();
+            var destinoValue = $('#destinoSelect').val();
 
-        modalOverlay.addEventListener("click", (event) => {
-            if (event.target === modalOverlay) {
-                modalOverlay.classList.add("hidden");
+            // Mostrar el datepicker correspondiente solo si ambos valores están seleccionados
+            if (origenValue && destinoValue) {
+                if ($(this).attr('id') === 'redondo') {
+                    $('#datepickerRange').removeClass('hidden');
+                    $('#datepickerSingle').addClass('hidden');
+                } else if ($(this).attr('id') === 'sencillo') {
+                    $('#datepickerSingle').removeClass('hidden');
+                    $('#datepickerRange').addClass('hidden');
+                }
+            } else {
+                // Ocultar ambos datepickers si no hay selección de origen y destino
+                $('#datepickerRange').addClass('hidden');
+                $('#datepickerSingle').addClass('hidden');
             }
         });
     </script>
-
     <!-- SCRIPT DE SELECCION DE VIAJE -->
     <script>
         const redondoRadio = document.getElementById('redondo');
         const sencilloRadio = document.getElementById('sencillo');
-        const fechaIdaPicker = document.getElementById('pickerIda');
-        const fechaRegresoPicker = document.getElementById('pickerRegreso');
-        const nuevaFechaPicker = document.getElementById('nuevaFecha');
+        const datepickerRange = document.getElementById('datepickerRange');
+        const datepickerSingle = document.getElementById('datepickerSingle');
 
         const toggleDatepickers = () => {
             if (redondoRadio.checked) {
-                fechaIdaPicker.classList.remove('hidden');
-                fechaRegresoPicker.classList.remove('hidden');
-                nuevaFechaPicker.classList.add('hidden');
+                datepickerRange.classList.remove('hidden');
+                datepickerSingle.classList.add('hidden');
             } else if (sencilloRadio.checked) {
-                fechaIdaPicker.classList.add('hidden');
-                fechaRegresoPicker.classList.add('hidden');
-                nuevaFechaPicker.classList.remove('hidden');
+                datepickerRange.classList.add('hidden');
+                datepickerSingle.classList.remove('hidden');
             }
         };
 
@@ -910,20 +1627,30 @@
         const ticketModal = document.getElementById('ticketModal');
         const incrementButtons = document.querySelectorAll('[data-type^="increment"]');
         const decrementButtons = document.querySelectorAll('[data-type^="decrement"]');
+        const totalMessageElement = document.getElementById('totalMessage'); // Elemento para mostrar el mensaje
+
 
         openModalButton.addEventListener('click', () => {
+            event.preventDefault();
             ticketModal.style.display = 'flex';
         });
 
         closeModalButton.addEventListener('click', () => {
             ticketModal.style.display = 'none';
+            let totalTickets = 0;
 
             for (const type in selectedCounts) {
                 const countElement = document.getElementById(`${type}Count`);
                 const inputElement = document.getElementById(`${type}Input`);
                 countElement.textContent = selectedCounts[type];
                 inputElement.value = selectedCounts[type];
+
+                totalTickets += selectedCounts[type]; // Sumar al total de boletos
             }
+            const totalMessage = `${totalTickets} pasajeros`;
+            totalMessageElement.textContent = totalMessage;
+
+            openModalButton.textContent = `${totalTickets} pasajeros`; // Actualizar el contenido del botón
         });
 
         incrementButtons.forEach((button) => {
@@ -959,7 +1686,6 @@
     </script>
 
     <!-- SCRIPT DEL CAROUSEL -->
-
     <script type="text/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
     <script type="text/javascript">
