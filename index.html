@@ -583,8 +583,8 @@
                                                     @click="endToShow = 'from'; init(); showDatepicker = true"
                                                     :value="formatDate(dateFrom)"
                                                     :class="{'font-semibold': endToShow == 'from' }"
-                                                    class="focus:outline-none border-none pl-12 w-full lg:w-52 rounded-l-md border-r border-gray-300 h-14 sm:w-64 sm:pl-20 md:w-80"
-                                                    placeholder="Fecha de salida" />
+                                                    class="focus:outline-none border-none pl-12 w-[295px] lg:w-52 rounded-l-md border-r border-gray-300 h-14 sm:w-64 sm:pl-20 md:w-80"
+                                                    placeholder="Fecha de ida" />
                                             </div>
                                         </div>
                                         <div class="input-with-svg mx-0 ml-8 sm:ml-[50px] lg:col-span-1 px-2 w-1/2">
@@ -682,12 +682,12 @@
                                         @click.outside="closeDatepicker()">
                                         <div class="input-with-svg mx-0 ml-8 sm:ml-[50px] lg:col-span-1 px-2">
                                             <div class="relative">
-                                                <img src="calendario.svg" alt="" class="absolute w-8 h-8 ml-8  mt-3">
+                                                <img src="calendario.svg" alt="" class="absolute w-8 h-8 ml-7 mt-2">
                                                 <input type="text"
                                                     @click="endToShow = 'from'; init(); showDatepicker = true"
                                                     :value="formatDate(dateFrom)"
                                                     :class="{'font-semibold': endToShow == 'from' }"
-                                                    class="focus:outline-none border-none pl-20 w-full sm:w-[460px] lg:w-[370px] rounded-l-md border-r border-gray-300 h-12 sm:w-[465px] sm:pl-[210px] md:w-[580px]"
+                                                    class="focus:outline-none border-none pl-32 w-[295px] sm:w-[460px] lg:w-[370px] rounded-l-md border-r border-gray-300 h-12 sm:w-[465px] sm:pl-[210px] md:w-[580px]"
                                                     placeholder="Fecha de salida" />
                                             </div>
 
@@ -775,7 +775,7 @@
                         <div class="mt-3 w-full" id="datepickerSingle" x-show="showDatepickerSingle">
                             <div class="input-with-svg m-2 ml-10 sm:ml-[50px]">
                                 <button
-                                    class="w-4/5 lg:w-4/5 h-14 pl-8 lg:ml-40 pr-42 py-1 text-lg bg-gray-100 border rounded-lg focus:shadow-outline"
+                                    class="w-[295px] h-14 pl-10 pr-42 py-1 text-lg bg-gray-100 border rounded-lg focus:shadow-outline"
                                     id="openTicketModal" x-show="dateFrom"> Selecciona tus boletos
                                     <div id="totalMessage" class="text-center mt-0 mr-48"></div>
                                 </button>
@@ -784,7 +784,7 @@
                                 <input type="text" id="inapamInput" class="hidden">
                                 <input type="text" id="professorInput" class="hidden">
                                 <input type="text" id="studentInput" class="hidden">
-                                <img class="bus-logo ml-5" src="icono_pasajeros.svg" alt="Autobús"
+                                <img class="bus-logo ml-3" src="icono_pasajeros.svg" alt="Autobús"
                                     style="width: 40px; height: 40px; margin-top:0px;">
                             </div>
                         </div>
