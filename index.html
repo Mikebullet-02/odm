@@ -200,8 +200,8 @@
     </div>
 
     <div id="modal-overlay"
-        class="hidden fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center z-50">
-        <div id="modal" class="bg-white p-4 rounded-lg ml-48 mb-80 sm:ml-80 sm:mb-[295px] md:ml-[430px]">
+        class="hidden fixed top-0 right-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center z-50">
+        <div id="modal" class="bg-white p-4 rounded-lg ml-48 mb-80 sm:ml-auto sm:mb-[295px] md:ml-[430px]">
             <img src="logoODMplus.svg" alt="logoODM" class="w-full">
             <a href="https://odm.com.mx/envios/dist"
                 class="text-blue-800 sm:text-gray-600 hover:bg-gray-200 block mt-4 px-0 py-2">
@@ -280,9 +280,9 @@
                         <span class="ml-2 text-white">Sencillo</span>
                     </label>
                 </div>
-                <div class="lg:grid lg:grid-cols-3 lg:gap-1 mx-0 lg:mx-28 items-center">
+                <div class="lg:grid lg:grid-cols-3 lg:gap-1 mx-0 lg:mx-auto justify-center items-center p-0 space-y-3">
                     <!-- Nivel 1-->
-                    <div class="input-with-svg m-2 ml-8 sm:ml-[50px] lg:col-span-1">
+                    <div class="input-with-svg mx-0 ml-8 sm:ml-[50px] lg:col-span-1 px-2">
                         <select id="origenSelect">
                             <option selected="selected" disabled="">¿De Dónde Sales?</option>
                             <option value="ACR">Acambaro Gto</option>
@@ -545,7 +545,7 @@
                     </div>
 
 
-                    <div class="input-with-svg m-2 ml-8 sm:ml-[50px] lg:col-span-1">
+                    <div class="input-with-svg mx-0 ml-8 sm:ml-[50px] lg:col-span-1 px-2">
                         <select id="destinoSelect">
                             <option selected="selected" disabled="">¿A dónde viajas?</option>
                         </select>
@@ -554,25 +554,28 @@
                     </div>
                     <style>
                         .select2-container--default {
-                            width: 91% !important;
+                            width: 90% !important;
+
                         }
 
                         @media (min-width: 1024px) {
                             .input-with-svg {
-                                width: 50%;
+                                width: 110%;
                                 /* Cambia el valor de acuerdo a tus necesidades */
+                                margin: 0 0.5rem;
+                                /* Margen parejo en ambos lados */
+                                padding: 0 0.5rem;
+                                /* Relleno parejo en ambos lados */
                             }
                         }
                     </style>
-                </div>
-                <div class="lg:w-1/3">
                     <div class="flex w-full hidden" id="datepickerRange">
-                        <div x-data="app" x-cloak>
+                        <div x-data="app" x-cloak class="w-full">
                             <div class="container mx-auto py-0 md:py-0">
                                 <div class="flex items-center ml-8 mr-4 sm:ml-[50px] lg:ml-40">
                                     <div class="flex space-x-2" @keydown.escape="closeDatepicker()"
                                         @click.outside="closeDatepicker()">
-                                        <div class="flex items-center space-x-4 border rounded-md mt-0 bg-gray-200">
+                                        <div class="input-with-svg mx-0 ml-0 sm:ml-[50px] lg:col-span-1 px-2 w-1/2">
                                             <div class="relative">
                                                 <img src="calendario.svg" alt=""
                                                     class="absolute w-8 h-8 ml-3 mt-3 sm:ml-8">
@@ -580,9 +583,11 @@
                                                     @click="endToShow = 'from'; init(); showDatepicker = true"
                                                     :value="formatDate(dateFrom)"
                                                     :class="{'font-semibold': endToShow == 'from' }"
-                                                    class="focus:outline-none border-none pl-12 w-36 lg:w-52 rounded-l-md border-r border-gray-300 h-14 sm:w-64 sm:pl-20 md:w-80 "
+                                                    class="focus:outline-none border-none pl-12 w-full lg:w-52 rounded-l-md border-r border-gray-300 h-14 sm:w-64 sm:pl-20 md:w-80"
                                                     placeholder="Fecha de salida" />
                                             </div>
+                                        </div>
+                                        <div class="input-with-svg mx-0 ml-8 sm:ml-[50px] lg:col-span-1 px-2 w-1/2">
                                             <div class="relative">
                                                 <img src="calendario.svg" alt=""
                                                     class="absolute w-8 h-8 ml-3 mt-3 sm:ml-8">
@@ -670,19 +675,19 @@
                         </div>
                     </div>
                     <div class="flex w-full hidden" id="datepickerSingle" x-show="showDatepicker">
-                        <div x-data="app" x-cloak>
+                        <div x-data="app" x-cloak class="w-full">
                             <div class="container mx-auto py-0 md:py-0">
-                                <div class="flex items-center ml-8 mr-4 sm:ml-[50px] lg:ml-40 w-full">
+                                <div class="flex items-center ml-0 mr-4 sm:ml-[50px] lg:ml-40 w-full">
                                     <div class="flex space-x-2 w-full" @keydown.escape="closeDatepicker()"
                                         @click.outside="closeDatepicker()">
-                                        <div class="w-full flex items-center space-x-4 border rounded-md mt-0 bg-white">
-                                            <div class="w-full">
+                                        <div class="input-with-svg mx-0 ml-8 sm:ml-[50px] lg:col-span-1 px-2">
+                                            <div class="relative">
                                                 <img src="calendario.svg" alt="" class="absolute w-8 h-8 ml-8  mt-3">
                                                 <input type="text"
                                                     @click="endToShow = 'from'; init(); showDatepicker = true"
                                                     :value="formatDate(dateFrom)"
                                                     :class="{'font-semibold': endToShow == 'from' }"
-                                                    class="focus:outline-none border-none pl-20 w-full sm:w-[460px] lg:w-[370px] rounded-l-md border-r border-gray-300 h-14 sm:w-[465px] sm:pl-[210px] md:w-[580px]"
+                                                    class="focus:outline-none border-none pl-20 w-full sm:w-[460px] lg:w-[370px] rounded-l-md border-r border-gray-300 h-12 sm:w-[465px] sm:pl-[210px] md:w-[580px]"
                                                     placeholder="Fecha de salida" />
                                             </div>
 
@@ -766,130 +771,133 @@
                             </div>
                         </div>
                     </div>
-                    <div class="mt-3 w-full" id="datepickerSingle" x-show="showDatepickerSingle">
-                        <div class="input-with-svg m-2 ml-8 sm:ml-[50px]">
-                            <button
-                                class="w-11/12 lg:w-[440px] h-14 pl-8 pr-42 py-1 text-lg bg-gray-100 border rounded-lg focus:shadow-outline"
-                                id="openTicketModal" x-show="dateFrom"> Selecciona tus boletos
-                                <div id="totalMessage" class="text-center mt-0 mr-48"></div>
-                            </button>
-                            <input type="text" id="adultInput" class="hidden">
-                            <input type="text" id="childInput" class="hidden">
-                            <input type="text" id="inapamInput" class="hidden">
-                            <input type="text" id="professorInput" class="hidden">
-                            <input type="text" id="studentInput" class="hidden">
-                            <img class="bus-logo ml-5" src="icono_pasajeros.svg" alt="Autobús"
-                                style="width: 40px; height: 40px; margin-top:0px;">
-                        </div>
-                    </div>
-
-                    <div class="fixed bottom-0 left-0 right-0 bg-black bg-opacity-50 h-screen flex justify-end z-50"
-                        id="ticketModal" style="display: none;">
-                        <div class="bg-white p-4 w-full max-w-2xl mt-56">
-
-                            <!-- Adulto -->
-                            <div class="grid grid-cols-2 gap-4 mb-4 py-2 mt-3">
-                                <div class="flex items-center">
-                                    <span class="pl-5 sm:pl-24 font-black text-[#003368]">Adulto <p class="font-normal">
-                                            +12
-                                            años</p>
-                                    </span>
-                                </div>
-                                <div class="flex items-center">
-                                    <button type="button"
-                                        class="ml-10 px-4 py-3 sm:ml-20 text-xs bg-[#DCDCDC] text-white rounded-full"
-                                        data-type="decrement-adult">-</button>
-                                    <span class="mx-2 text-base font-semibold" id="adultCount">0</span>
-                                    <button type="button" class="px-4 py-3 text-xs bg-[#0D8BFF] text-white rounded-full"
-                                        data-type="increment-adult">+</button>
-                                </div>
-                            </div>
-
-                            <!-- Niño -->
-                            <div class="grid grid-cols-2 gap-4 mb-4 py-2">
-                                <div class="flex items-center">
-                                    <span class="pl-5 sm:pl-24 font-black text-[#003368]">Niño <p class="font-normal">De
-                                            6 a
-                                            11 años
-                                        </p></span>
-                                </div>
-                                <div class="flex items-center">
-                                    <button type="button"
-                                        class="ml-10 px-4 py-3 sm:ml-20 text-xs bg-[#DCDCDC] text-white rounded-full"
-                                        data-type="decrement-child">-</button>
-                                    <span class="mx-2 text-base font-semibold" id="childCount">0</span>
-                                    <button type="button" class="px-4 py-3 text-xs bg-[#0D8BFF] text-white rounded-full"
-                                        data-type="increment-child">+</button>
-                                </div>
-                            </div>
-
-                            <!-- INAPAM -->
-                            <div class="grid grid-cols-2 gap-4 mb-4 py-2">
-                                <div class="flex items-center">
-                                    <span class="pl-5 sm:pl-24 font-black text-[#003368]">INAPAM <p class="font-normal">
-                                            Presentar</p>
-                                        <p class="font-normal"> documentación oficial</p>
-                                    </span>
-                                </div>
-                                <div class="flex items-center">
-                                    <button type="button"
-                                        class="ml-10 px-4 py-3 sm:ml-20 text-xs bg-[#DCDCDC] text-white rounded-full"
-                                        data-type="decrement-inapam">-</button>
-                                    <span class="mx-2 text-base font-semibold" id="inapamCount">0</span>
-                                    <button type="button" class="px-4 py-3 text-xs bg-[#0D8BFF] text-white rounded-full"
-                                        data-type="increment-inapam">+</button>
-                                </div>
-                            </div>
-
-                            <!-- Profesor -->
-                            <div class="grid grid-cols-2 gap-4 mb-4 py-2">
-                                <div class="flex items-center">
-                                    <span class="pl-5 sm:pl-24 font-black text-[#003368]">Profesor <p
-                                            class="font-normal">
-                                            Presentar
-                                        </p>
-                                        <p class="font-normal"> credencial vigente </p>
-                                    </span>
-                                </div>
-                                <div class="flex items-center">
-                                    <button type="button"
-                                        class="ml-10 px-4 py-3 sm:ml-20 text-xs bg-[#DCDCDC] text-white rounded-full"
-                                        data-type="decrement-professor">-</button>
-                                    <span class="mx-2 text-base font-semibold" id="professorCount">0</span>
-                                    <button type="button" class="px-4 py-3 text-xs bg-[#0D8BFF] text-white rounded-full"
-                                        data-type="increment-professor">+</button>
-                                </div>
-                            </div>
-
-                            <!-- Estudiante -->
-                            <div class="grid grid-cols-2 gap-4 mb-4 py-2">
-                                <div class="flex items-center">
-                                    <span class="pl-5 sm:pl-24 font-black text-[#003368]">Estudiante <p
-                                            class="font-normal">
-                                            Presentar
-                                            credencial vigente </p></span>
-                                </div>
-                                <div class="flex items-center">
-                                    <button type="button"
-                                        class="ml-10 px-4 py-3 sm:ml-20 text-xs bg-[#DCDCDC] text-white rounded-full"
-                                        data-type="decrement-student">-</button>
-                                    <span class="mx-2 text-base font-semibold" id="studentCount">0</span>
-                                    <button type="button" class="px-4 py-3 text-xs bg-[#0D8BFF] text-white rounded-full"
-                                        data-type="increment-student">+</button>
-                                </div>
-                            </div>
-
-                            <div class="flex justify-between">
-                                <button type="button"
-                                    class="bg-[#C82333] text-white px-4 mx-auto py-2 rounded-lg mt-4 sm:px-10 sm:py-3"
-                                    id="closeTicketModal">
-                                    ACEPTAR
+                    <div class="mx-auto p-0">
+                        <div class="mt-3 w-full" id="datepickerSingle" x-show="showDatepickerSingle">
+                            <div class="input-with-svg m-2 ml-10 sm:ml-[50px]">
+                                <button
+                                    class="w-4/5 lg:w-4/5 h-14 pl-8 lg:ml-40 pr-42 py-1 text-lg bg-gray-100 border rounded-lg focus:shadow-outline"
+                                    id="openTicketModal" x-show="dateFrom"> Selecciona tus boletos
+                                    <div id="totalMessage" class="text-center mt-0 mr-48"></div>
                                 </button>
+                                <input type="text" id="adultInput" class="hidden">
+                                <input type="text" id="childInput" class="hidden">
+                                <input type="text" id="inapamInput" class="hidden">
+                                <input type="text" id="professorInput" class="hidden">
+                                <input type="text" id="studentInput" class="hidden">
+                                <img class="bus-logo ml-5" src="icono_pasajeros.svg" alt="Autobús"
+                                    style="width: 40px; height: 40px; margin-top:0px;">
                             </div>
-
                         </div>
                     </div>
                 </div>
+
+
+
+                <div class="fixed bottom-0 left-0 right-0 bg-black bg-opacity-50 h-screen flex justify-center items-center z-50"
+                    id="ticketModal" style="display: none;">
+                    <div class="bg-white p-4 max-w-2xl">
+
+                        <!-- Adulto -->
+                        <div class="grid grid-cols-2 gap-4 mb-4 py-2 mt-3">
+                            <div class="flex items-center">
+                                <span class="pl-5 sm:pl-24 font-black text-[#003368]">Adulto <p class="font-normal">
+                                        +12
+                                        años</p>
+                                </span>
+                            </div>
+                            <div class="flex items-center">
+                                <button type="button"
+                                    class="ml-10 px-4 py-3 sm:ml-20 text-xs bg-[#DCDCDC] text-white rounded-full"
+                                    data-type="decrement-adult">-</button>
+                                <span class="mx-2 text-base font-semibold" id="adultCount">0</span>
+                                <button type="button" class="px-4 py-3 text-xs bg-[#0D8BFF] text-white rounded-full"
+                                    data-type="increment-adult">+</button>
+                            </div>
+                        </div>
+
+                        <!-- Niño -->
+                        <div class="grid grid-cols-2 gap-4 mb-4 py-2">
+                            <div class="flex items-center">
+                                <span class="pl-5 sm:pl-24 font-black text-[#003368]">Niño <p class="font-normal">De
+                                        6 a
+                                        11 años
+                                    </p></span>
+                            </div>
+                            <div class="flex items-center">
+                                <button type="button"
+                                    class="ml-10 px-4 py-3 sm:ml-20 text-xs bg-[#DCDCDC] text-white rounded-full"
+                                    data-type="decrement-child">-</button>
+                                <span class="mx-2 text-base font-semibold" id="childCount">0</span>
+                                <button type="button" class="px-4 py-3 text-xs bg-[#0D8BFF] text-white rounded-full"
+                                    data-type="increment-child">+</button>
+                            </div>
+                        </div>
+
+                        <!-- INAPAM -->
+                        <div class="grid grid-cols-2 gap-4 mb-4 py-2">
+                            <div class="flex items-center">
+                                <span class="pl-5 sm:pl-24 font-black text-[#003368]">INAPAM <p class="font-normal">
+                                        Presentar</p>
+                                    <p class="font-normal"> documentación oficial</p>
+                                </span>
+                            </div>
+                            <div class="flex items-center">
+                                <button type="button"
+                                    class="ml-10 px-4 py-3 sm:ml-20 text-xs bg-[#DCDCDC] text-white rounded-full"
+                                    data-type="decrement-inapam">-</button>
+                                <span class="mx-2 text-base font-semibold" id="inapamCount">0</span>
+                                <button type="button" class="px-4 py-3 text-xs bg-[#0D8BFF] text-white rounded-full"
+                                    data-type="increment-inapam">+</button>
+                            </div>
+                        </div>
+
+                        <!-- Profesor -->
+                        <div class="grid grid-cols-2 gap-4 mb-4 py-2">
+                            <div class="flex items-center">
+                                <span class="pl-5 sm:pl-24 font-black text-[#003368]">Profesor <p class="font-normal">
+                                        Presentar
+                                    </p>
+                                    <p class="font-normal"> credencial vigente </p>
+                                </span>
+                            </div>
+                            <div class="flex items-center">
+                                <button type="button"
+                                    class="ml-10 px-4 py-3 sm:ml-20 text-xs bg-[#DCDCDC] text-white rounded-full"
+                                    data-type="decrement-professor">-</button>
+                                <span class="mx-2 text-base font-semibold" id="professorCount">0</span>
+                                <button type="button" class="px-4 py-3 text-xs bg-[#0D8BFF] text-white rounded-full"
+                                    data-type="increment-professor">+</button>
+                            </div>
+                        </div>
+
+                        <!-- Estudiante -->
+                        <div class="grid grid-cols-2 gap-4 mb-4 py-2">
+                            <div class="flex items-center">
+                                <span class="pl-5 sm:pl-24 font-black text-[#003368]">Estudiante <p class="font-normal">
+                                        Presentar
+                                        credencial vigente </p></span>
+                            </div>
+                            <div class="flex items-center">
+                                <button type="button"
+                                    class="ml-10 px-4 py-3 sm:ml-20 text-xs bg-[#DCDCDC] text-white rounded-full"
+                                    data-type="decrement-student">-</button>
+                                <span class="mx-2 text-base font-semibold" id="studentCount">0</span>
+                                <button type="button" class="px-4 py-3 text-xs bg-[#0D8BFF] text-white rounded-full"
+                                    data-type="increment-student">+</button>
+                            </div>
+                        </div>
+
+                        <div class="flex justify-between">
+                            <button type="button"
+                                class="bg-[#C82333] text-white px-4 mx-auto py-2 rounded-lg mt-4 sm:px-10 sm:py-3"
+                                id="closeTicketModal">
+                                ACEPTAR
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+
                 <button
                     class="w-10/12 ml-8 sm:ml-[50px] bg-[#C82333] text-white font-bold text-lg rounded-lg py-2 mt-4 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
                     disabled>
