@@ -152,6 +152,16 @@
             /* Inicialmente, el texto estará oculto */
             transition: opacity 0.3s ease-in-out;
             align-items: center;
+
+        }
+
+        @media (min-width: 768px) {
+            .slide-text1 {
+                top: 1304px;
+                /* Posicionamiento en el centro de la imagen */
+                left: 47%;
+                transform: translate(-50%, -50%);
+            }
         }
 
         .slide-text2 {
@@ -171,6 +181,20 @@
             /* Inicialmente, el texto estará oculto */
             transition: opacity 0.3s ease-in-out;
             align-items: center;
+        }
+
+        @media (min-width: 768px) {
+            .slide-text2 {
+                top: 1310px;
+                /* Posicionamiento en el centro de la imagen */
+                left: 86%;
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        .slide-text1 p,
+        .slide-text2 p {
+            white-space: nowrap;
         }
 
         .text-left {
@@ -270,7 +294,7 @@
         </div>
         <div class="bg-[#1583C9]">
             <form action="">
-                <div class="ml-8 sm:ml-14 lg:ml-32 pt-3 lg:pt-5 py-3 space-x-5 flex">
+                <div class="ml-8 sm:ml-14 lg:ml-40 pt-3 lg:pt-5 py-3 space-x-5 flex">
                     <label class="flex items-center">
                         <input type="radio" name="opcion" id="redondo" class="form-radio text-green-400" checked>
                         <span class="ml-2 text-white">Redondo</span>
@@ -280,9 +304,10 @@
                         <span class="ml-2 text-white">Sencillo</span>
                     </label>
                 </div>
-                <div class="lg:grid lg:grid-cols-3 lg:gap-1 mx-0 lg:mx-auto justify-center items-center p-0 space-y-3">
+                <div
+                    class="lg:grid lg:grid-cols-3 lg:gap-1 mx-0 lg:mx-36 justify-center items-center p-0 space-y-3 lg:space-y-0">
                     <!-- Nivel 1-->
-                    <div class="input-with-svg mx-0 ml-8 sm:ml-[50px] lg:col-span-1 px-2">
+                    <div class="input-with-svg mx-0 ml-8 sm:ml-[50px] lg:col-span-1 px-1">
                         <select id="origenSelect">
                             <option selected="selected" disabled="">¿De Dónde Sales?</option>
                             <option value="ACR">Acambaro Gto</option>
@@ -545,7 +570,7 @@
                     </div>
 
 
-                    <div class="input-with-svg mx-0 ml-8 sm:ml-[50px] lg:col-span-1 px-2">
+                    <div class="input-with-svg mx-0 ml-8 sm:ml-[50px] lg:col-span-1 px-1">
                         <select id="destinoSelect">
                             <option selected="selected" disabled="">¿A dónde viajas?</option>
                         </select>
@@ -569,34 +594,54 @@
                             }
                         }
                     </style>
-                    <div class="flex w-full hidden" id="datepickerRange">
+                    <div class="hidden lg:flex mx-auto p-0">
+
+                        <div class="mt-0 w-full">
+                            <div class="input-with-svg mx-9 sm:ml-[50px]">
+                                <button
+                                    class="w-full bg-[#C82333] text-white font-bold text-lg rounded-lg py-3 px-7 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                    disabled>
+                                    Buscar viaje
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex w-full hidden lg:col-span-1" id="datepickerRange">
                         <div x-data="app" x-cloak class="w-full">
                             <div class="container mx-auto py-0 md:py-0">
-                                <div class="flex items-center ml-8 mr-4 sm:ml-[50px] lg:ml-40">
+                                <div class="flex items-center ml-8 mr-4 sm:ml-[50px] lg:ml-0">
                                     <div class="flex space-x-2" @keydown.escape="closeDatepicker()"
                                         @click.outside="closeDatepicker()">
-                                        <div class="input-with-svg mx-0 ml-0 sm:ml-[50px] lg:col-span-1 px-2 w-1/2">
-                                            <div class="relative">
-                                                <img src="calendario.svg" alt=""
-                                                    class="absolute w-8 h-8 ml-3 mt-3 sm:ml-8">
-                                                <input type="text"
-                                                    @click="endToShow = 'from'; init(); showDatepicker = true"
-                                                    :value="formatDate(dateFrom)"
-                                                    :class="{'font-semibold': endToShow == 'from' }"
-                                                    class="focus:outline-none border-none pl-12 w-full lg:w-52 rounded-l-md border-r border-gray-300 h-14 sm:w-64 sm:pl-20 md:w-80"
-                                                    placeholder="Fecha de ida" />
+                                        <div class="input-container flex flex-nowrap">
+                                            <div class="input-container flex items-center">
+                                                <div class="input-with-svg mx-0 ml-0 sm:ml-0 lg:col-span-1 px-1 w-full">
+                                                    <div class="relative">
+                                                        <img src="calendario.svg" alt=""
+                                                            class="absolute w-8 h-8 ml-3 mt-3 sm:ml-8">
+                                                        <label class="absolute left-14 top-2 text-black text-sm"
+                                                            for="fecha-ida">FECHA DE<br>IDA</label>
+                                                        <input type="text"
+                                                            @click="endToShow = 'from'; init(); showDatepicker = true"
+                                                            :value="formatDate(dateFrom)"
+                                                            :class="{'font-semibold': endToShow == 'from' }"
+                                                            id="fecha-ida"
+                                                            class="w-full border border-gray-300 rounded-lg py-2 lg:w-full pl-10 pr-3 focus:outline-none h-14" />
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="input-with-svg mx-0 ml-8 sm:ml-[50px] lg:col-span-1 px-2 w-1/2">
-                                            <div class="relative">
-                                                <img src="calendario.svg" alt=""
-                                                    class="absolute w-8 h-8 ml-3 mt-3 sm:ml-8">
-                                                <input type="text"
-                                                    @click="endToShow = 'to'; init(); showDatepicker = true"
-                                                    :value="formatDate(dateTo)"
-                                                    :class="{'font-semibold': endToShow == 'to' }"
-                                                    class="focus:outline-none border-none pl-12 w-36 lg:w-52 rounded-r-md border-l border-gray-300 h-14 sm:w-64 sm:pl-20 md:w-[310px]"
-                                                    placeholder="Fecha de regreso" />
+                                            <div class="input-container flex items-center">
+                                                <div
+                                                    class="input-with-svg mx-0 ml-6 sm:ml-0 mr-4 sm:mr-10 lg:col-span-1 px-2 w-full">
+                                                    <div class="relative">
+                                                        <label class="absolute left-8 top-2 text-black text-sm"
+                                                            for="fecha-regreso">FECHA DE<br>REGRESO</label>
+                                                        <input type="text"
+                                                            @click="endToShow = 'to'; init(); showDatepicker = true"
+                                                            :value="formatDate(dateTo)"
+                                                            :class="{'font-semibold': endToShow == 'to' }"
+                                                            class="focus:outline-none border-none pl-12 w-full lg:w-full rounded-md border border-gray-300 h-14 sm:w-64 sm:pl-20 md:w-[310px] placeholder-center" />
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
 
@@ -659,13 +704,16 @@
                                                         </div>
                                                     </template>
                                                 </div>
+                                                <div class="flex inline-flex">
+                                                    <p class="px-0 py-1 text-blue-500 text-xs">
+                                                        ¿No conoces tu fecha de regreso? Puedes dejar tu boleto abierto
+                                                    </p>
 
-                                                <div>
-                                                    <button @click.prevent="showDatepicker = false"
-                                                        class="px-2 py-1 border border-gray-300 hover:border-gray-500 rounded-md">Cancelar</button>
-                                                    <button @click.prevent="outputDateValues(); showDatepicker = false"
-                                                        @click="showDatepickerRange = true"
-                                                        class="px-2 py-1 border border-blue-600 bg-[#1583C9] hover:bg-blue-300 text-white rounded-md">OK</button>
+                                                    <button @click.prevent=" outputDateValues(); showDatepicker=false"
+                                                        @click="showDatepickerSingle = true"
+                                                        class="px-10 py-1 border border-blue-600 bg-[#C82333] hover:bg-blue-300 text-white rounded-md">
+                                                        Boleto
+                                                        abierto</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -674,21 +722,22 @@
                             </div>
                         </div>
                     </div>
-                    <div class="flex w-full hidden" id="datepickerSingle" x-show="showDatepicker">
+                    <div class="flex w-full hidden lg:col-span-1" id="datepickerSingle" x-show="showDatepicker">
                         <div x-data="app" x-cloak class="w-full">
                             <div class="container mx-auto py-0 md:py-0">
-                                <div class="flex items-center ml-0 mr-4 sm:ml-[50px] lg:ml-40 w-full">
+                                <div class="flex items-center ml-0 mr-4 sm:ml-0 w-full">
                                     <div class="flex space-x-2 w-full" @keydown.escape="closeDatepicker()"
                                         @click.outside="closeDatepicker()">
-                                        <div class="input-with-svg mx-0 ml-8 sm:ml-[50px] lg:col-span-1 px-2">
+                                        <div class="input-with-svg mx-7 sm:ml-[50px] lg:col-span-1 px-2 w-full">
                                             <div class="relative">
                                                 <img src="calendario.svg" alt="" class="absolute w-8 h-8 ml-7 mt-2">
+                                                <label class="absolute left-24 top-3 text-base text-black"
+                                                    for="fecha-ida">FECHA DE IDA</label>
                                                 <input type="text"
                                                     @click="endToShow = 'from'; init(); showDatepicker = true"
                                                     :value="formatDate(dateFrom)"
                                                     :class="{'font-semibold': endToShow == 'from' }"
-                                                    class="focus:outline-none border-none pl-32 w-[295px] sm:w-[460px] lg:w-[370px] rounded-l-md border-r border-gray-300 h-12 sm:w-[465px] sm:pl-[210px] md:w-[580px]"
-                                                    placeholder="Fecha de salida" />
+                                                    class="focus:outline-none border-none pl-32 w-full rounded-md border-r border-gray-300 h-12 sm:w-full lg:w-[107%] sm:pl-[210px] md:w-full placeholder-center" />
                                             </div>
 
                                         </div>
@@ -753,16 +802,13 @@
                                                     </template>
                                                 </div>
 
-                                                <div class="flex inline-flex">
-                                                    <p class="px-0 py-1 text-blue-500 text-xs">
-                                                        ¿No conoces tu fecha de regreso? Puedes dejar tu boleto abierto
-                                                    </p>
 
-                                                    <button @click.prevent=" outputDateValues(); showDatepicker=false"
-                                                        @click="showDatepickerSingle = true"
-                                                        class="px-10 py-1 border border-blue-600 bg-[#C82333] hover:bg-blue-300 text-white rounded-md">
-                                                        Boleto
-                                                        abierto</button>
+                                                <div>
+                                                    <button @click.prevent="showDatepicker = false"
+                                                        class="px-2 py-1 border border-gray-300 hover:border-gray-500 rounded-md">Cancelar</button>
+                                                    <button @click.prevent="outputDateValues(); showDatepicker = false"
+                                                        @click="showDatepickerRange = true"
+                                                        class="px-2 py-1 border border-blue-600 bg-[#1583C9] hover:bg-blue-300 text-white rounded-md">OK</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -771,143 +817,164 @@
                             </div>
                         </div>
                     </div>
-                    <div class="mx-auto p-0">
-                        <div class="mt-3 w-full" id="datepickerSingle" x-show="showDatepickerSingle">
-                            <div class="input-with-svg m-2 ml-10 sm:ml-[50px]">
-                                <button
-                                    class="w-[295px] h-14 pl-10 pr-42 py-1 text-lg bg-gray-100 border rounded-lg focus:shadow-outline"
-                                    id="openTicketModal" x-show="dateFrom"> Selecciona tus boletos
-                                    <div id="totalMessage" class="text-center mt-0 mr-48"></div>
+                    <style>
+                        input::placeholder {
+                            font-size: 1em;
+                            /* Tamaño de fuente relativo */
+                            line-height: 1.5;
+                            width: 100%;
+                            padding-left: 10px;
+                        }
+                    </style>
+                    <div class="lg:col-span-1 lg:row-span-2">
+                        <div class="mx-auto p-0 text-center lg:col-span-2">
+                            <div class="mt-3 lg:mt-0 w-full" id="datepickerSingle" x-show="showDatepickerSingle">
+                                <div class="input-with-svg mx-9 sm:mx-14">
+                                    <button
+                                        class="w-full h-14 px-2 py-1 px-7 text-lg bg-gray-100 border rounded-lg focus:shadow-outline"
+                                        id="openTicketModal" x-show="dateFrom">
+                                        Selecciona tus boletos
+                                        <div id="totalMessage" id="openTicketModal" class="text-center mt-0 mr-48">
+                                        </div>
+                                    </button>
+                                    <input type="text" id="adultInput" class="hidden form-control">
+                                    <input type="text" id="childInput" class="hidden form-control">
+                                    <input type="text" id="inapamInput" class="hidden form-control">
+                                    <input type="text" id="professorInput" class="hidden form-control">
+                                    <input type="text" id="studentInput" class="hidden form-control">
+                                    <img class="bus-logo ml-3" src="icono_pasajeros.svg" alt="Autobús"
+                                        style="width: 40px; height: 40px; margin-top:0px;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="fixed bottom-0 left-0 right-0 bg-black bg-opacity-50 h-screen flex justify-center items-center z-50"
+                        id="ticketModal" style="display: none;">
+                        <div class="bg-white p-4 max-w-2xl">
+
+                            <!-- Adulto -->
+                            <div class="grid grid-cols-2 gap-4 mb-4 py-2 mt-3">
+                                <div class="flex items-center">
+                                    <span class="pl-5 sm:pl-24 font-black text-[#003368]">Adulto <p class="font-normal">
+                                            +12
+                                            años</p>
+                                    </span>
+                                </div>
+                                <div class="flex items-center">
+                                    <button type="button"
+                                        class="ml-10 px-4 py-3 sm:ml-20 text-xs bg-[#DCDCDC] text-white rounded-full"
+                                        data-type="decrement-adult">-</button>
+                                    <span class="mx-2 text-base font-semibold" id="adultCount">0</span>
+                                    <button type="button" class="px-4 py-3 text-xs bg-[#0D8BFF] text-white rounded-full"
+                                        data-type="increment-adult">+</button>
+                                </div>
+                            </div>
+
+                            <!-- Niño -->
+                            <div class="grid grid-cols-2 gap-4 mb-4 py-2">
+                                <div class="flex items-center">
+                                    <span class="pl-5 sm:pl-24 font-black text-[#003368]">Niño <p class="font-normal">De
+                                            6 a
+                                            11 años
+                                        </p></span>
+                                </div>
+                                <div class="flex items-center">
+                                    <button type="button"
+                                        class="ml-10 px-4 py-3 sm:ml-20 text-xs bg-[#DCDCDC] text-white rounded-full"
+                                        data-type="decrement-child">-</button>
+                                    <span class="mx-2 text-base font-semibold" id="childCount">0</span>
+                                    <button type="button" class="px-4 py-3 text-xs bg-[#0D8BFF] text-white rounded-full"
+                                        data-type="increment-child">+</button>
+                                </div>
+                            </div>
+
+                            <!-- INAPAM -->
+                            <div class="grid grid-cols-2 gap-4 mb-4 py-2">
+                                <div class="flex items-center">
+                                    <span class="pl-5 sm:pl-24 font-black text-[#003368]">INAPAM <p class="font-normal">
+                                            Presentar</p>
+                                        <p class="font-normal"> documentación oficial</p>
+                                    </span>
+                                </div>
+                                <div class="flex items-center">
+                                    <button type="button"
+                                        class="ml-10 px-4 py-3 sm:ml-20 text-xs bg-[#DCDCDC] text-white rounded-full"
+                                        data-type="decrement-inapam">-</button>
+                                    <span class="mx-2 text-base font-semibold" id="inapamCount">0</span>
+                                    <button type="button" class="px-4 py-3 text-xs bg-[#0D8BFF] text-white rounded-full"
+                                        data-type="increment-inapam">+</button>
+                                </div>
+                            </div>
+
+                            <!-- Profesor -->
+                            <div class="grid grid-cols-2 gap-4 mb-4 py-2">
+                                <div class="flex items-center">
+                                    <span class="pl-5 sm:pl-24 font-black text-[#003368]">Profesor <p
+                                            class="font-normal">
+                                            Presentar
+                                        </p>
+                                        <p class="font-normal"> credencial vigente </p>
+                                    </span>
+                                </div>
+                                <div class="flex items-center">
+                                    <button type="button"
+                                        class="ml-10 px-4 py-3 sm:ml-20 text-xs bg-[#DCDCDC] text-white rounded-full"
+                                        data-type="decrement-professor">-</button>
+                                    <span class="mx-2 text-base font-semibold" id="professorCount">0</span>
+                                    <button type="button" class="px-4 py-3 text-xs bg-[#0D8BFF] text-white rounded-full"
+                                        data-type="increment-professor">+</button>
+                                </div>
+                            </div>
+
+                            <!-- Estudiante -->
+                            <div class="grid grid-cols-2 gap-4 mb-4 py-2">
+                                <div class="flex items-center">
+                                    <span class="pl-5 sm:pl-24 font-black text-[#003368]">Estudiante <p
+                                            class="font-normal">
+                                            Presentar
+                                            credencial vigente </p></span>
+                                </div>
+                                <div class="flex items-center">
+                                    <button type="button"
+                                        class="ml-10 px-4 py-3 sm:ml-20 text-xs bg-[#DCDCDC] text-white rounded-full"
+                                        data-type="decrement-student">-</button>
+                                    <span class="mx-2 text-base font-semibold" id="studentCount">0</span>
+                                    <button type="button" class="px-4 py-3 text-xs bg-[#0D8BFF] text-white rounded-full"
+                                        data-type="increment-student">+</button>
+                                </div>
+                            </div>
+
+                            <div class="flex justify-between">
+                                <button type="button"
+                                    class="bg-[#C82333] text-white px-4 mx-auto py-2 rounded-lg mt-4 sm:px-10 sm:py-3"
+                                    id="closeTicketModal">
+                                    ACEPTAR
                                 </button>
-                                <input type="text" id="adultInput" class="hidden">
-                                <input type="text" id="childInput" class="hidden">
-                                <input type="text" id="inapamInput" class="hidden">
-                                <input type="text" id="professorInput" class="hidden">
-                                <input type="text" id="studentInput" class="hidden">
-                                <img class="bus-logo ml-3" src="icono_pasajeros.svg" alt="Autobús"
-                                    style="width: 40px; height: 40px; margin-top:0px;">
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="mx-auto p-0">
+
+                        <div class="mt-3 w-full lg:hidden">
+                            <div class="input-with-svg mx-9 sm:ml-[50px]">
+                                <button
+                                    class="w-full bg-[#C82333] text-white font-bold text-lg rounded-lg py-1 px-7 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                    disabled>
+                                    BUSCAR VIAJE
+                                </button>
                             </div>
                         </div>
                     </div>
+
                 </div>
-
-
-
-                <div class="fixed bottom-0 left-0 right-0 bg-black bg-opacity-50 h-screen flex justify-center items-center z-50"
-                    id="ticketModal" style="display: none;">
-                    <div class="bg-white p-4 max-w-2xl">
-
-                        <!-- Adulto -->
-                        <div class="grid grid-cols-2 gap-4 mb-4 py-2 mt-3">
-                            <div class="flex items-center">
-                                <span class="pl-5 sm:pl-24 font-black text-[#003368]">Adulto <p class="font-normal">
-                                        +12
-                                        años</p>
-                                </span>
-                            </div>
-                            <div class="flex items-center">
-                                <button type="button"
-                                    class="ml-10 px-4 py-3 sm:ml-20 text-xs bg-[#DCDCDC] text-white rounded-full"
-                                    data-type="decrement-adult">-</button>
-                                <span class="mx-2 text-base font-semibold" id="adultCount">0</span>
-                                <button type="button" class="px-4 py-3 text-xs bg-[#0D8BFF] text-white rounded-full"
-                                    data-type="increment-adult">+</button>
-                            </div>
-                        </div>
-
-                        <!-- Niño -->
-                        <div class="grid grid-cols-2 gap-4 mb-4 py-2">
-                            <div class="flex items-center">
-                                <span class="pl-5 sm:pl-24 font-black text-[#003368]">Niño <p class="font-normal">De
-                                        6 a
-                                        11 años
-                                    </p></span>
-                            </div>
-                            <div class="flex items-center">
-                                <button type="button"
-                                    class="ml-10 px-4 py-3 sm:ml-20 text-xs bg-[#DCDCDC] text-white rounded-full"
-                                    data-type="decrement-child">-</button>
-                                <span class="mx-2 text-base font-semibold" id="childCount">0</span>
-                                <button type="button" class="px-4 py-3 text-xs bg-[#0D8BFF] text-white rounded-full"
-                                    data-type="increment-child">+</button>
-                            </div>
-                        </div>
-
-                        <!-- INAPAM -->
-                        <div class="grid grid-cols-2 gap-4 mb-4 py-2">
-                            <div class="flex items-center">
-                                <span class="pl-5 sm:pl-24 font-black text-[#003368]">INAPAM <p class="font-normal">
-                                        Presentar</p>
-                                    <p class="font-normal"> documentación oficial</p>
-                                </span>
-                            </div>
-                            <div class="flex items-center">
-                                <button type="button"
-                                    class="ml-10 px-4 py-3 sm:ml-20 text-xs bg-[#DCDCDC] text-white rounded-full"
-                                    data-type="decrement-inapam">-</button>
-                                <span class="mx-2 text-base font-semibold" id="inapamCount">0</span>
-                                <button type="button" class="px-4 py-3 text-xs bg-[#0D8BFF] text-white rounded-full"
-                                    data-type="increment-inapam">+</button>
-                            </div>
-                        </div>
-
-                        <!-- Profesor -->
-                        <div class="grid grid-cols-2 gap-4 mb-4 py-2">
-                            <div class="flex items-center">
-                                <span class="pl-5 sm:pl-24 font-black text-[#003368]">Profesor <p class="font-normal">
-                                        Presentar
-                                    </p>
-                                    <p class="font-normal"> credencial vigente </p>
-                                </span>
-                            </div>
-                            <div class="flex items-center">
-                                <button type="button"
-                                    class="ml-10 px-4 py-3 sm:ml-20 text-xs bg-[#DCDCDC] text-white rounded-full"
-                                    data-type="decrement-professor">-</button>
-                                <span class="mx-2 text-base font-semibold" id="professorCount">0</span>
-                                <button type="button" class="px-4 py-3 text-xs bg-[#0D8BFF] text-white rounded-full"
-                                    data-type="increment-professor">+</button>
-                            </div>
-                        </div>
-
-                        <!-- Estudiante -->
-                        <div class="grid grid-cols-2 gap-4 mb-4 py-2">
-                            <div class="flex items-center">
-                                <span class="pl-5 sm:pl-24 font-black text-[#003368]">Estudiante <p class="font-normal">
-                                        Presentar
-                                        credencial vigente </p></span>
-                            </div>
-                            <div class="flex items-center">
-                                <button type="button"
-                                    class="ml-10 px-4 py-3 sm:ml-20 text-xs bg-[#DCDCDC] text-white rounded-full"
-                                    data-type="decrement-student">-</button>
-                                <span class="mx-2 text-base font-semibold" id="studentCount">0</span>
-                                <button type="button" class="px-4 py-3 text-xs bg-[#0D8BFF] text-white rounded-full"
-                                    data-type="increment-student">+</button>
-                            </div>
-                        </div>
-
-                        <div class="flex justify-between">
-                            <button type="button"
-                                class="bg-[#C82333] text-white px-4 mx-auto py-2 rounded-lg mt-4 sm:px-10 sm:py-3"
-                                id="closeTicketModal">
-                                ACEPTAR
-                            </button>
-                        </div>
-
-                    </div>
-                </div>
-
-                <button
-                    class="w-10/12 ml-8 sm:ml-[50px] bg-[#C82333] text-white font-bold text-lg rounded-lg py-2 mt-4 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
-                    disabled>
-                    BUSCAR VIAJE
-                </button>
             </form>
         </div>
         <!-- FORMAS DE PAGO -->
-        <div class="formas-de-pago w-full h-auto bg-[#1583C9] pt-3 flex flex-wrap justify-between px-0">
-            <div class="w-full flex justify-between items-center space-x-6 px-8 sm:px-14 md:px-16 lg:px-16">
+        <div class="formas-de-pago w-full h-auto bg-[#1583C9] pt-3 px-10">
+            <!-- Formas de Pago Electrónico (Móvil) -->
+            <div class="flex justify-center items-center space-x-6 sm:hidden">
                 <div class="visa mb-4">
                     <img src="Visa-01.svg" alt="visa" class="bg-white w-12 h-9 border rounded-lg px-2 py-2">
                 </div>
@@ -921,7 +988,33 @@
                     <img src="Coppel-04.svg" alt="coppel" class="bg-white w-20 h-9 border rounded-lg">
                 </div>
             </div>
-            <div class="w-full mb-4 ml-8 sm:ml-14">
+
+            <!-- Pago en efectivo (Móvil) -->
+            <div class="flex justify-center items-center sm:hidden">
+                <div class="efectivo mx-auto text-center">
+                    <img src="Paga_tus_boletos_en_efectivo.svg" alt="efectivo"
+                        class="bg-white w-full h-12 border rounded-lg">
+                </div>
+            </div>
+
+            <!-- Formas de Pago Electrónico (Escritorio) -->
+            <div class="hidden sm:flex justify-center items-center space-x-6">
+                <div class="visa mb-4">
+                    <img src="Visa-01.svg" alt="visa" class="bg-white w-12 h-9 border rounded-lg px-2 py-2">
+                </div>
+                <div class="mastercard mb-4">
+                    <img src="master-card-02.svg" alt="mastercard" class="bg-white w-14 h-9 border rounded-lg">
+                </div>
+                <div class="citibanamex mb-4">
+                    <img src="Banamex-03.svg" alt="citibanamex" class="bg-white w-20 h-9 border rounded-lg">
+                </div>
+                <div class="coppel mb-4">
+                    <img src="Coppel-04.svg" alt="coppel" class="bg-white w-20 h-9 border rounded-lg">
+                </div>
+            </div>
+
+            <!-- Pago en efectivo (Escritorio) -->
+            <div class="hidden sm:flex justify-center items-center">
                 <div class="efectivo mx-auto text-center">
                     <img src="Paga_tus_boletos_en_efectivo.svg" alt="efectivo"
                         class="bg-white w-11/12 h-12 border rounded-lg">
@@ -929,9 +1022,10 @@
             </div>
         </div>
 
+
         <!-- SLIDERS -->
         <div class="flex justify-center items-center py-3 pl-8 pr-8 bg-[#1583C9]">
-            <div class="w-full sm:w-9/12 md:w-3/4 lg:w-9/12 xl:w-1/3 rounded-lg overflow-hidden shadow-md bg-[#1583C9]">
+            <div class="w-full sm:w-9/12 md:w-3/4 lg:w-7/12 xl:w-1/3 rounded-lg overflow-hidden shadow-md bg-[#1583C9]">
                 <div class="slider-container">
                     <div class="slider slider-1">
                         <img src="Banner_App.webp" alt="image 0" class="w-full md:w-1/2">
@@ -949,7 +1043,8 @@
 
         <div class="flex justify-center items-center py-3 pl-8 pr-8 bg-[#1583C9]">
 
-            <div class="w-full sm:w-9/12 md:w-3/4 lg:w-9/12 xl:w-1/3 rounded-lg overflow-hidden shadow-md bg-[#1583C9]">
+            <div
+                class="w-full sm:w-9/12 md:w-3/4 lg:w-10/12 xl:w-1/3 rounded-lg overflow-hidden shadow-md bg-[#1583C9]">
                 <div class="slider-container lg:hidden">
                     <div class="slider slider-2">
                         <img src="/verticales/CEN_TIJ.png" alt="Image 0">
@@ -975,7 +1070,8 @@
         </div>
 
         <div class="flex justify-center items-center py-3 pl-8 pr-8 bg-[#1583C9]">
-            <div class="w-full md:w-3/4 lg:w-3/4 xl:w-1/3 rounded-lg overflow-hidden shadow-md bg-[#1583C9]">
+            <div
+                class="w-full sm:w-9/12 md:w-3/4 lg:w-10/12 xl:w-1/3 rounded-lg overflow-hidden shadow-md bg-[#1583C9]">
                 <div class="slider-container lg:hidden">
                     <div class="slider slider-3">
                         <div class="slide">
@@ -1018,18 +1114,22 @@
         </div>
 
         <div class="flex justify-center items-center py-3 pl-8 pr-8 bg-[#1583C9]">
-            <div class="w-full md:w-3/4 lg:w-1/2 xl:w-1/3 rounded-lg overflow-hidden shadow-md bg-[#1583C9]">
+            <div
+                class="w-full sm:w-9/12 md:w-3/4 lg:w-10/12 xl:w-1/3 rounded-lg overflow-hidden shadow-md bg-[#1583C9]">
                 <div class="slider-container">
                     <div class="slider slider-4">
                         <div class="slide">
                             <img src="omnibus_mexico_destinos.jpeg" alt="Image 0">
                             <div class="slide-text text-sm">
-                                <p class="text-white font-semibold text-xs text-center sm:text-base">TURISMO /
+                                <p class="text-white font-semibold text-xs text-center sm:text-base lg:text-lg">TURISMO
+                                    /
                                     EXPERIENCIAS</p>
-                                <p class="text-white font-semibold text-xs sm:text-base">¿Qué actividades puedes
+                                <p class="text-white font-semibold text-xs sm:text-base lg:text-lg">¿Qué actividades
+                                    puedes
                                     realizar cuando
                                     llegas a un nuevo lugar?</p>
-                                <p class="text-white font-semibold text-xs sm:text-base">Te contamos los imperdibles en
+                                <p class="text-white font-semibold text-xs sm:text-base lg:text-lg">Te contamos los
+                                    imperdibles en
                                     cada uno de
                                     nuestros #DestinosODM</p>
                             </div>
@@ -1037,8 +1137,10 @@
                         <div class="slide">
                             <img src="omnibus_mexico_gastronomia.jpeg" alt="Image 1">
                             <div class="slide-text text-sm">
-                                <p class=" text-white font-semibold text-xs text-center sm:text-base">GASTRONOMÍA</p>
-                                <p class="text-white font-semibold text-xs sm:text-base">Porque uno no conoce un lugar
+                                <p class=" text-white font-semibold text-xs text-center sm:text-base lg:text-lg">
+                                    GASTRONOMÍA</p>
+                                <p class="text-white font-semibold text-xs sm:text-base lg:text-lg">Porque uno no conoce
+                                    un lugar
                                     sin probar
                                     <br> su comida típica. Traemos para ti los <br> platillos de cada uno de nuestros
                                     destinos <br> para que tu viaje sea más placentero.
@@ -1047,19 +1149,26 @@
                         </div>
                         <div class="slide">
                             <img src="eventos-odm.jpeg" alt="Image 3">
-                            <div class="slide-text text-sm text-center sm:text-base">EVENTOS CULTURALES
-                                <p class=" text-white font-semibold text-xs sm:text-base">¿Vas a viajar sin un plan de
+                            <div class="slide-text text-sm text-center sm:text-base lg:text-lg">EVENTOS CULTURALES
+                                <p class=" text-white font-semibold text-xs sm:text-base lg:text-lg">¿Vas a viajar sin
+                                    un plan de
                                     actividades?
                                 </p>
-                                <p class="text-white font-semibold text-xs sm:text-base"> Omnibus de México te informa
+                                <p class="text-white font-semibold text-xs sm:text-base lg:text-lg"> Omnibus de México
+                                    te informa
                                     cuáles son
                                 </p>
-                                <p class="text-white font-semibold text-xs sm:text-base">los eventos culturales más
+                                <p class="text-white font-semibold text-xs sm:text-base lg:text-lg">los eventos
+                                    culturales más
                                     representativos </p>
-                                <p class="text-white font-semibold text-xs sm:text-base"> de cada región y que solo
+                                <p class="text-white font-semibold text-xs sm:text-base lg:text-lg"> de cada región y
+                                    que solo
                                     pasan una vez al
-                                </p>año para que no
-                                te los pierdas.
+                                </p>
+                                <p class="text-white font-semibold text-xs sm:text-base lg:text-lg">
+                                    año para que no
+                                    te los pierdas.
+                                </p>
 
                             </div>
 
