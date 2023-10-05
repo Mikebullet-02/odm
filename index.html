@@ -192,6 +192,25 @@
             }
         }
 
+        @media (min-width: 1024px) {
+            .slide-text2 {
+                top: 1195px;
+                /* Posicionamiento en el centro de la imagen */
+                left: 86%;
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .slide-text1 {
+                top: 1190px;
+                /* Posicionamiento en el centro de la imagen */
+                left: 46%;
+                transform: translate(-50%, -50%);
+            }
+        }
+
+
         .slide-text1 p,
         .slide-text2 p {
             white-space: nowrap;
@@ -281,6 +300,18 @@
             </button>
         </div>
     </div>
+    <style>
+        @media (min-width: 1280px) {
+            #navbar {
+                display: flex;
+                justify-content: center;
+            }
+
+            #navbar>* {
+                flex-shrink: 0;
+            }
+        }
+    </style>
 
     <hr class="border-red-600 pt-0 pb-0 h-0">
 
@@ -307,7 +338,7 @@
                 <div
                     class="lg:grid lg:grid-cols-3 lg:gap-1 mx-0 lg:mx-36 xl:mx-48 justify-center items-center p-0 space-y-3 lg:space-y-0">
                     <!-- Nivel 1-->
-                    <div class="input-with-svg mx-0 ml-8 sm:ml-[50px] lg:col-span-1 px-1">
+                    <div class="input-with-svg mx-8 lg:mx-0 sm:ml-[50px] lg:col-span-1 px-0 lg:ml-0">
                         <select id="origenSelect">
                             <option selected="selected" disabled="">¿De Dónde Sales?</option>
                             <option value="ACR">Acambaro Gto</option>
@@ -570,7 +601,7 @@
                     </div>
 
 
-                    <div class="input-with-svg mx-0 ml-8 sm:ml-[50px] lg:col-span-1 px-1">
+                    <div class="input-with-svg mx-8 sm:ml-[50px] lg:col-span-1 px-0 lg:ml-0">
                         <select id="destinoSelect">
                             <option selected="selected" disabled="">¿A dónde viajas?</option>
                         </select>
@@ -579,13 +610,13 @@
                     </div>
                     <style>
                         .select2-container--default {
-                            width: 90% !important;
+                            width: 100% !important;
 
                         }
 
                         @media (min-width: 1024px) {
                             .input-with-svg {
-                                width: 110%;
+                                width: 100%;
                                 /* Cambia el valor de acuerdo a tus necesidades */
                                 margin: 0 0.5rem;
                                 /* Margen parejo en ambos lados */
@@ -609,13 +640,12 @@
                     <div class="flex w-full hidden lg:col-span-1" id="datepickerRange">
                         <div x-data="app" x-cloak class="w-full">
                             <div class="container mx-auto py-0 md:py-0">
-                                <div class="flex items-center ml-8 mr-4 sm:ml-[50px] lg:ml-0">
-                                    <div class="flex space-x-0" @keydown.escape="closeDatepicker()"
+                                <div class="flex items-center sm:ml-[50px] lg:ml-0">
+                                    <div class="flex space-x-8" @keydown.escape="closeDatepicker()"
                                         @click.outside="closeDatepicker()">
-                                        <div class="input-container flex flex-nowrap">
+                                        <div class="input-container flex justify-center flex-nowrap mx-8">
                                             <div class="input-container flex items-center">
-                                                <div
-                                                    class="input-with-svg mx-0 ml-0 sm:ml-0 lg:col-span-1 px-1 w-full lg:mr-2">
+                                                <div class="input-with-svg mr-2 sm:ml-0 lg:col-span-1 w-full lg:mr-2">
                                                     <div class="relative">
                                                         <img src="calendario.svg" alt=""
                                                             class="absolute w-8 h-8 ml-3 mt-3 sm:ml-8 lg:ml-2">
@@ -631,13 +661,13 @@
                                             </div>
                                             <div class="input-container flex items-center">
                                                 <div
-                                                    class="input-with-svg mx-0 ml-2 sm:ml-0 mr-4 sm:mr-10 lg:col-span-1 px-2 w-full">
+                                                    class="input-with-svg mx-0 sm:ml-0 mr-0 sm:mr-10 lg:col-span-1 px-0 w-full">
                                                     <div class="relative">
                                                         <input type="text"
                                                             @click="endToShow = 'to'; init(); showDatepicker = true"
-                                                            :value="formatDate(dateTo)"
+                                                            :value="boletoAbierto ? 'FECHA ABIERTA' : formatDate(dateTo)"
                                                             :class="{'font-semibold': endToShow == 'to' }"
-                                                            class="focus:outline-none border-none pl-12 w-full lg:w-[140%] rounded-md border border-gray-300 h-14 sm:w-64 sm:pl-20 md:w-[310px] placeholder-center"
+                                                            class="focus:outline-none border-none pl-0 w-full lg:w-[140%] rounded-md border border-gray-300 h-14 sm:w-64 placeholder-center"
                                                             placeholder="FECHA DE REGRESO" />
                                                     </div>
                                                 </div>
@@ -708,11 +738,12 @@
                                                         ¿No conoces tu fecha de regreso? Puedes dejar tu boleto abierto
                                                     </p>
 
-                                                    <button @click.prevent=" outputDateValues(); showDatepicker=false"
-                                                        @click="showDatepickerSingle = true"
+                                                    <button type="button"
+                                                        @click="boletoAbierto = true; outputDateValues(); showDatepicker=false"
+                                                        @click="showTicketSelector = true"
                                                         class="px-10 py-1 border border-blue-600 bg-[#C82333] hover:bg-blue-300 text-white rounded-md">
-                                                        Boleto
-                                                        abierto</button>
+                                                        Boleto abierto
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
@@ -723,11 +754,11 @@
                     </div>
                     <div class="flex w-full hidden lg:col-span-1" id="datepickerSingle" x-show="showDatepicker">
                         <div x-data="app" x-cloak class="w-full">
-                            <div class="container mx-auto py-0 md:py-0">
-                                <div class="flex items-center ml-0 mr-4 sm:ml-0 w-full">
-                                    <div class="flex space-x-0 w-full" @keydown.escape="closeDatepicker()"
+                            <div class="container py-0 md:py-0">
+                                <div class="flex items-center mx-0 sm:ml-0 w-full">
+                                    <div class="flex space-x-8 w-full" @keydown.escape="closeDatepicker()"
                                         @click.outside="closeDatepicker()">
-                                        <div class="input-with-svg mx-7 sm:ml-[50px] lg:col-span-1 px-2 w-full">
+                                        <div class="input-with-svg mx-6 sm:ml-[50px] lg:col-span-1 px-2 w-full">
                                             <div class="relative">
                                                 <img src="calendario.svg" alt="" class="absolute w-8 h-8 ml-7 mt-2">
                                                 <input type="text"
@@ -737,6 +768,12 @@
                                                     class="focus:outline-none border-none pl-32 w-full rounded-md border-r border-gray-300 h-12 sm:w-full lg:w-[107%] sm:pl-[210px] md:w-full placeholder-center"
                                                     placeholder="FECHA DE IDA" />
                                             </div>
+                                            <style>
+                                                .pl-32 {
+                                                    /* Agrega un padding-left de 8rem (32 * 0.25rem) */
+                                                    padding-left: 8rem;
+                                                }
+                                            </style>
 
                                         </div>
 
@@ -803,10 +840,9 @@
 
                                                 <div>
                                                     <button @click.prevent="showDatepicker = false"
-                                                        class="px-2 py-1 border border-gray-300 hover:border-gray-500 rounded-md">Cancelar</button>
-                                                    <button @click.prevent="outputDateValues(); showDatepicker = false"
-                                                        @click="showDatepickerRange = true"
-                                                        class="px-2 py-1 border border-blue-600 bg-[#1583C9] hover:bg-blue-300 text-white rounded-md">OK</button>
+                                                        class="px-2 py-1 border border-gray-300 hover:border-gray-500 bg-[#C82333] text-white font-bold rounded-md">Cancelar</button>
+
+
                                                 </div>
                                             </div>
                                         </div>
@@ -824,10 +860,10 @@
                             padding-left: 10px;
                         }
                     </style>
-                    <div class="lg:col-span-1 lg:row-span-2">
+                    <div class="lg:col-span-1 lg:row-span-2 hidden" id="ticketSelector" x-show="showTicketSelector">
                         <div class="mx-auto p-0 text-center lg:col-span-2">
-                            <div class="mt-3 lg:mt-0 w-full" id="datepickerSingle" x-show="showDatepickerSingle">
-                                <div class="input-with-svg mx-9 sm:mx-14">
+                            <div class="mt-3 lg:mt-0 w-full" id="datepickerSingle" x-show="showTicketSelector">
+                                <div class="input-with-svg mx-8 sm:mx-14">
                                     <button
                                         class="w-full h-14 lg:h-12 px-2 py-1 px-7 text-lg bg-gray-100 border rounded-lg focus:shadow-outline"
                                         id="openTicketModal" x-show="dateFrom">
@@ -956,9 +992,9 @@
                     <div class="mx-auto p-0">
 
                         <div class="mt-3 w-full lg:hidden">
-                            <div class="input-with-svg mx-9 sm:ml-[50px]">
+                            <div class="input-with-svg mx-8 sm:ml-[50px]">
                                 <button
-                                    class="w-full bg-[#C82333] text-white font-bold text-lg rounded-lg py-1 px-7 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                    class="w-full bg-[#C82333] text-white font-bold text-lg rounded-lg py-3 px-7 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
                                     disabled>
                                     BUSCAR VIAJE
                                 </button>
@@ -996,7 +1032,7 @@
             </div>
 
             <!-- Formas de Pago Electrónico (Escritorio) -->
-            <div class="hidden lg:flex justify-center flex-wrap px-32 xl:px-44">
+            <div class="hidden lg:flex justify-center flex-wrap px-32 xl:px-44 py-2" id="escritorio">
                 <div class="hidden sm:flex justify-center items-center space-x-5">
                     <div class="visa">
                         <img src="Visa-01.svg" alt="visa" class="bg-white w-32 h-9 border rounded-lg px-2 py-2">
@@ -1015,12 +1051,20 @@
                             class="bg-white w-full h-9 border rounded-lg">
                     </div>
                 </div>
-
-
-
-
             </div>
         </div>
+        <style>
+            @media (min-width: 1024px) {
+                #navbar {
+                    display: flex;
+                    justify-content: center;
+                }
+
+                #navbar>* {
+                    flex-shrink: 0;
+                }
+            }
+        </style>
 
 
         <!-- SLIDERS -->
@@ -1045,7 +1089,7 @@
         <div class="flex justify-center items-center py-3 pl-8 pr-8 bg-[#1583C9]">
 
             <div
-                class="w-full sm:w-9/12 md:w-3/4 lg:w-10/12 xl:w-7/12 rounded-lg overflow-hidden shadow-md bg-[#1583C9]">
+                class="w-full sm:w-9/12 md:w-3/4 lg:w-10/12 xl:w-8/12 rounded-lg overflow-hidden shadow-md bg-[#1583C9]">
                 <div class="slider-container lg:hidden">
                     <div class="slider slider-2">
                         <img src="/verticales/CEN_TIJ.png" alt="Image 0">
@@ -1122,14 +1166,18 @@
                         <div class="slide">
                             <img src="omnibus_mexico_destinos.jpeg" alt="Image 0">
                             <div class="slide-text text-sm">
-                                <p class="text-white font-semibold text-xs text-center sm:text-base lg:text-lg">TURISMO
+                                <p
+                                    class="text-white font-semibold text-xs text-center sm:text-base lg:text-lg xl:text-xl">
+                                    TURISMO
                                     /
                                     EXPERIENCIAS</p>
-                                <p class="text-white font-semibold text-xs sm:text-base lg:text-lg">¿Qué actividades
+                                <p class="text-white font-semibold text-xs sm:text-base lg:text-lg xl:text-xl">¿Qué
+                                    actividades
                                     puedes
                                     realizar cuando
                                     llegas a un nuevo lugar?</p>
-                                <p class="text-white font-semibold text-xs sm:text-base lg:text-lg">Te contamos los
+                                <p class="text-white font-semibold text-xs sm:text-base lg:text-lg xl:text-xl">Te
+                                    contamos los
                                     imperdibles en
                                     cada uno de
                                     nuestros #DestinosODM</p>
@@ -1138,9 +1186,11 @@
                         <div class="slide">
                             <img src="omnibus_mexico_gastronomia.jpeg" alt="Image 1">
                             <div class="slide-text text-sm">
-                                <p class=" text-white font-semibold text-xs text-center sm:text-base lg:text-lg">
+                                <p
+                                    class=" text-white font-semibold text-xs text-center sm:text-base lg:text-lg xl:text-xl">
                                     GASTRONOMÍA</p>
-                                <p class="text-white font-semibold text-xs sm:text-base lg:text-lg">Porque uno no conoce
+                                <p class="text-white font-semibold text-xs sm:text-base lg:text-lg xl:text-xl">Porque
+                                    uno no conoce
                                     un lugar
                                     sin probar
                                     <br> su comida típica. Traemos para ti los <br> platillos de cada uno de nuestros
@@ -1150,23 +1200,31 @@
                         </div>
                         <div class="slide">
                             <img src="eventos-odm.jpeg" alt="Image 3">
-                            <div class="slide-text text-sm text-center sm:text-base lg:text-lg">EVENTOS CULTURALES
-                                <p class=" text-white font-semibold text-xs sm:text-base lg:text-lg">¿Vas a viajar sin
+                            <div
+                                class="slide-text text-sm text-center sm:text-base lg:text-lg xl:text-xl font-semibold">
+                                EVENTOS
+                                CULTURALES
+                                <p class=" text-white font-semibold text-xs sm:text-base lg:text-lg xl:text-xl">¿Vas a
+                                    viajar sin
                                     un plan de
                                     actividades?
                                 </p>
-                                <p class="text-white font-semibold text-xs sm:text-base lg:text-lg"> Omnibus de México
+                                <p class="text-white font-semibold text-xs sm:text-base lg:text-lg xl:text-xl"> Omnibus
+                                    de
+                                    México
                                     te informa
                                     cuáles son
                                 </p>
-                                <p class="text-white font-semibold text-xs sm:text-base lg:text-lg">los eventos
+                                <p class="text-white font-semibold text-xs sm:text-base lg:text-lg xl:text-xl">los
+                                    eventos
                                     culturales más
                                     representativos </p>
-                                <p class="text-white font-semibold text-xs sm:text-base lg:text-lg"> de cada región y
+                                <p class="text-white font-semibold text-xs sm:text-base lg:text-lg xl:text-xl"> de cada
+                                    región y
                                     que solo
                                     pasan una vez al
                                 </p>
-                                <p class="text-white font-semibold text-xs sm:text-base lg:text-lg">
+                                <p class="text-white font-semibold text-xs sm:text-base lg:text-lg xl:text-xl">
                                     año para que no
                                     te los pierdas.
                                 </p>
@@ -1325,6 +1383,8 @@
                 meridiemsTo: [],
                 showDatepickerRange: false,
                 showDatepickerSingle: false,
+                boletoAbierto: false,
+                showTicketSelector: false,
                 openDatepickerRange() {
                     this.showDatepickerRange = true;
                 },
@@ -1494,9 +1554,17 @@
                         this.outputDateToValue = this.formatDateTime(dateTimeTo, this.meridiemTo);
                         this.dateToYmdHis = dateToString + ' ' + timeToString;
                     }
+                    if (this.boletoAbierto) {
+                        this.outputDateToValue = "Boleto abierto";
+                    } else {
+                        // Resto del código que actualiza las fechas como lo tienes actualmente
+                    }
                     this.showDatepickerSingle = !this.showDatepickerSingle;
-
                     this.endToShow = '';
+                    this.showDatepickerSingle = !this.showDatepickerSingle;
+                    this.endToShow = '';
+                    this.showTicketSelector = true;
+                    document.getElementById('ticketSelector').classList.remove('hidden');
                 },
 
                 formatDateTime(dateTime, meridiem) {
@@ -1596,8 +1664,8 @@
                         }
                     }
                     this.setDateValues();
-
                     this.timePickerDisabled = !this.dateFrom;
+                    this.showDatepicker = false;
 
                     if (!this.timePickerDisabled) {
                         /* If a time tange has already been set with the from time > to time and date range is now for a single day, reset the time the range */
