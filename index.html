@@ -233,7 +233,7 @@
 
 <body class="font-montserrat">
     <div class="w-full lg:hidden flex justify-between items-center px-2 py-3">
-        <img src="logoODMplus.svg" alt="Mi SVG" class="mr-0 ml-1 sm:ml-16 sm:w-20 w-72 sm:w-80">
+        <img src="logoODMplus.svg" alt="Mi SVG" class="mr-0 ml-1 sm:mx-auto  w-72 sm:w-80">
         <button id="open-modal" class="lg:hidden mr-3">
             <svg class="fill-current h-8 w-8 text-[#003368] mr-0" viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg">
@@ -272,25 +272,25 @@
         </div>
     </div>
     <div id="navbar" class="hidden lg:flex lg:bg-white lg:p-2 lg:rounded-lg xl:mx-28">
-        <img src="logoODMplus.svg" alt="logoODM" class="w-44 mt-0 mr-5">
+        <img src="logoODMplus.svg" alt="logoODM" class="w-44 xl:w-56 mt-0 mr-0">
         <a href="https://odm.com.mx/envios/dist"
-            class="text-blue-800 sm:text-gray-600 hover:bg-gray-200 block mt-4 ml-3 mb-4 px-0 py-2 text-xs">
+            class="text-blue-800 sm:text-gray-600 xl:text-base hover:bg-gray-200 block mt-4 ml-3 mb-4 px-0 py-2 text-xs">
             <i class="fas fa-shipping-fast mr-2 text-gray-500"></i> Envíos ODM
         </a>
         <a href="https://odm.com.mx/cobertura"
-            class="text-blue-800 sm:text-gray-600 hover:bg-gray-200 block mt-4 ml-3 px-0 py-2 text-xs">
+            class="text-blue-800 sm:text-gray-600 xl:text-base hover:bg-gray-200 block mt-4 ml-3 px-0 py-2 text-xs">
             <i class="fas fa-bus mr-2 text-gray-500"></i> Cobertura
         </a>
         <a href="https://odm.com.mx/puntosgoogle"
-            class="text-blue-800 sm:text-gray-600 hover:bg-gray-200 block mt-4 ml-3 px-0 py-2 text-xs">
+            class="text-blue-800 sm:text-gray-600 xl:text-base hover:bg-gray-200 block mt-4 ml-3 px-0 py-2 text-xs">
             <i class="fas fa-map mr-2 text-gray-500"></i> Puntos de venta
         </a>
         <a href="https://odm.com.mx/servicios"
-            class="text-blue-800 sm:text-gray-600 hover:bg-gray-200 block mt-4 ml-3 px-0 py-2 text-xs">
+            class="text-blue-800 sm:text-gray-600 xl:text-base hover:bg-gray-200 block mt-4 ml-3 px-0 py-2 text-xs">
             <i class="far fa-handshake mr-2 text-gray-500"></i> Servicios
         </a>
         <a href="https://venta.odm.com.mx/FacturacionElectronica/IndexFacturaElec.html?_gl=1*npi68v*_gcl_au*MzUyNDcxNDA2LjE2ODg4MDIzODA.*_ga*NjAyODM2MzE2LjE2NzI0MjgyOTU.*_ga_6MKKJY80T1*MTY5MzU4MjM4MC4yNC4wLjAuMC4wLjA.."
-            class="text-blue-800 sm:text-gray-600 hover:bg-gray-200 block mt-4 ml-3 px-0 py-2 text-xs">
+            class="text-blue-800 sm:text-gray-600 xl:text-base hover:bg-gray-200 block mt-4 ml-3 px-0 py-2 text-xs">
             <i class="fas fa-file-alt mr-2 text-gray-500"></i> Facturación
         </a>
         <div class="flex items-center ml-3">
@@ -336,7 +336,7 @@
                     </label>
                 </div>
                 <div
-                    class="lg:grid lg:grid-cols-3 lg:gap-1 mx-0 lg:mx-36 xl:mx-48 justify-center items-center p-0 space-y-3 lg:space-y-0">
+                    class="lg:grid lg:grid-cols-3 lg:gap-1 mx-0 lg:mx-36 xl:mx-72 justify-center items-center p-0 space-y-3 lg:space-y-0">
                     <!-- Nivel 1-->
                     <div class="input-with-svg mx-8 lg:mx-0 sm:ml-[50px] lg:col-span-1 px-0 lg:ml-0">
                         <select id="origenSelect">
@@ -643,9 +643,9 @@
                                 <div class="flex items-center sm:ml-[50px] lg:ml-0">
                                     <div class="flex space-x-8" @keydown.escape="closeDatepicker()"
                                         @click.outside="closeDatepicker()">
-                                        <div class="input-container flex justify-center flex-nowrap mx-8">
+                                        <div class="input-container flex justify-center flex-nowrap mx-8 lg:mx-0">
                                             <div class="input-container flex items-center">
-                                                <div class="input-with-svg mr-2 sm:ml-0 lg:col-span-1 w-full lg:mr-2">
+                                                <div class="input-with-svg mr-2 sm:ml-0 lg:col-span-1 w-full lg:mr-0">
                                                     <div class="relative">
                                                         <img src="calendario.svg" alt=""
                                                             class="absolute w-8 h-8 ml-3 mt-3 sm:ml-8 lg:ml-2">
@@ -654,7 +654,7 @@
                                                             :value="formatDate(dateFrom)"
                                                             :class="{'font-semibold': endToShow == 'from' }"
                                                             id="fecha-ida"
-                                                            class="w-full border border-gray-300 rounded-lg py-2 lg:w-[135%] pl-10 pr-3 focus:outline-none h-14"
+                                                            class="w-full border border-gray-300 rounded-lg py-2 lg:w-[125%] pl-10 pr-3 focus:outline-none h-14"
                                                             placeholder="FECHA DE IDA" />
                                                     </div>
                                                 </div>
@@ -667,7 +667,8 @@
                                                             @click="endToShow = 'to'; init(); showDatepicker = true"
                                                             :value="boletoAbierto ? 'FECHA ABIERTA' : formatDate(dateTo)"
                                                             :class="{'font-semibold': endToShow == 'to' }"
-                                                            class="focus:outline-none border-none pl-0 w-full lg:w-[140%] rounded-md border border-gray-300 h-14 sm:w-64 placeholder-center"
+                                                            id="fechaEspecifica" @click="selectDateFrom"
+                                                            class="focus:outline-none border-none pl-0 w-full lg:w-[119%] rounded-md border border-gray-300 h-14 sm:w-64 placeholder-center"
                                                             placeholder="FECHA DE REGRESO" />
                                                     </div>
                                                 </div>
@@ -740,7 +741,7 @@
 
                                                     <button type="button"
                                                         @click="boletoAbierto = true; outputDateValues(); showDatepicker=false"
-                                                        @click="showTicketSelector = true"
+                                                        @click="showTicketSelector = true" id="boletoAbiertoButton"
                                                         class="px-10 py-1 border border-blue-600 bg-[#C82333] hover:bg-blue-300 text-white rounded-md">
                                                         Boleto abierto
                                                     </button>
@@ -765,15 +766,11 @@
                                                     @click="endToShow = 'from'; init(); showDatepicker = true"
                                                     :value="formatDate(dateFrom)"
                                                     :class="{'font-semibold': endToShow == 'from' }"
+                                                    @click="selectDateFrom"
                                                     class="focus:outline-none border-none pl-32 w-full rounded-md border-r border-gray-300 h-12 sm:w-full lg:w-[107%] sm:pl-[210px] md:w-full placeholder-center"
                                                     placeholder="FECHA DE IDA" />
                                             </div>
-                                            <style>
-                                                .pl-32 {
-                                                    /* Agrega un padding-left de 8rem (32 * 0.25rem) */
-                                                    padding-left: 8rem;
-                                                }
-                                            </style>
+
 
                                         </div>
 
@@ -862,10 +859,10 @@
                     </style>
                     <div class="lg:col-span-1 lg:row-span-2 hidden" id="ticketSelector" x-show="showTicketSelector">
                         <div class="mx-auto p-0 text-center lg:col-span-2">
-                            <div class="mt-3 lg:mt-0 w-full" id="datepickerSingle" x-show="showTicketSelector">
+                            <div class="mt-3 lg:mt-0 w-full" id="datepickerSingle">
                                 <div class="input-with-svg mx-8 sm:mx-14">
                                     <button
-                                        class="w-full h-14 lg:h-12 px-2 py-1 px-7 text-lg bg-gray-100 border rounded-lg focus:shadow-outline"
+                                        class="w-full h-14 lg:h-12 px-0 py-1 lg:py-0 px-7 lg:px-14 text-lg lg:text-base bg-gray-100 border rounded-lg focus:shadow-outline pl-14 lg:pl-20"
                                         id="openTicketModal" x-show="dateFrom">
                                         Selecciona tus boletos
                                         <div id="totalMessage" id="openTicketModal" class="text-center mt-0 mr-48">
@@ -1069,8 +1066,7 @@
 
         <!-- SLIDERS -->
         <div class="flex justify-center items-center py-3 pl-8 pr-8 bg-[#1583C9]">
-            <div
-                class="w-full sm:w-9/12 md:w-3/4 lg:w-7/12 xl:w-8/12 rounded-lg overflow-hidden shadow-md bg-[#1583C9]">
+            <div class="w-full sm:w-9/12 md:w-3/4 lg:w-7/12 xl:w-1/2 rounded-lg overflow-hidden shadow-md bg-[#1583C9]">
                 <div class="slider-container">
                     <div class="slider slider-1">
                         <img src="Banner_App.webp" alt="image 0" class="w-full md:w-1/2">
@@ -1089,7 +1085,7 @@
         <div class="flex justify-center items-center py-3 pl-8 pr-8 bg-[#1583C9]">
 
             <div
-                class="w-full sm:w-9/12 md:w-3/4 lg:w-10/12 xl:w-8/12 rounded-lg overflow-hidden shadow-md bg-[#1583C9]">
+                class="w-full sm:w-9/12 md:w-3/4 lg:w-10/12 xl:w-9/12 rounded-lg overflow-hidden shadow-md bg-[#1583C9]">
                 <div class="slider-container lg:hidden">
                     <div class="slider slider-2">
                         <img src="/verticales/CEN_TIJ.png" alt="Image 0">
@@ -1116,7 +1112,7 @@
 
         <div class="flex justify-center items-center py-3 pl-8 pr-8 bg-[#1583C9]">
             <div
-                class="w-full sm:w-9/12 md:w-3/4 lg:w-10/12 xl:w-8/12 rounded-lg overflow-hidden shadow-md bg-[#1583C9]">
+                class="w-full sm:w-9/12 md:w-3/4 lg:w-10/12 xl:w-9/12 rounded-lg overflow-hidden shadow-md bg-[#1583C9]">
                 <div class="slider-container lg:hidden">
                     <div class="slider slider-3">
                         <div class="slide">
@@ -1160,7 +1156,7 @@
 
         <div class="flex justify-center items-center py-3 pl-8 pr-8 bg-[#1583C9]">
             <div
-                class="w-full sm:w-9/12 md:w-3/4 lg:w-10/12 xl:w-8/12 rounded-lg overflow-hidden shadow-md bg-[#1583C9]">
+                class="w-full sm:w-9/12 md:w-3/4 lg:w-10/12 xl:w-9/12 rounded-lg overflow-hidden shadow-md bg-[#1583C9]">
                 <div class="slider-container">
                     <div class="slider slider-4">
                         <div class="slide">
@@ -1563,7 +1559,7 @@
                     this.endToShow = '';
                     this.showDatepickerSingle = !this.showDatepickerSingle;
                     this.endToShow = '';
-                    this.showTicketSelector = true;
+                    this.showTicketSelector = false;
                     document.getElementById('ticketSelector').classList.remove('hidden');
                 },
 
@@ -1690,6 +1686,7 @@
                     if (!temp) {
                         this.selecting = !this.selecting;
                     }
+                    this.showTicketSelector = true;
                 },
 
                 getNoOfDays() {
@@ -1990,7 +1987,61 @@
 
             openModalButton.textContent = `${totalTickets} Pasajero(s)`; // Actualizar el contenido del botón
         });
+        document.addEventListener('DOMContentLoaded', function () {
+            const boletoAbiertoButton = document.getElementById('boletoAbiertoButton');
+            const fechaEspecificaInput = document.getElementById('fechaEspecifica');
+            const professorCount = document.getElementById('professorCount');
+            const studentCount = document.getElementById('studentCount');
 
+            boletoAbiertoButton.addEventListener('click', function () {
+                fechaEspecificaInput.disabled = true;
+                professorCount.textContent = '0';
+                studentCount.textContent = '0';
+                selectedCounts.professor = 0;
+                selectedCounts.student = 0;
+
+                const incrementProfessorButton = document.querySelector('[data-type="increment-professor"]');
+                const decrementProfessorButton = document.querySelector('[data-type="decrement-professor"]');
+                const incrementStudentButton = document.querySelector('[data-type="increment-student"]');
+                const decrementStudentButton = document.querySelector('[data-type="decrement-student"]');
+
+                incrementProfessorButton.disabled = true;
+                decrementProfessorButton.disabled = true;
+                incrementStudentButton.disabled = true;
+                decrementStudentButton.disabled = true;
+
+                // Habilitar el input de fecha específica
+                fechaEspecificaInput.disabled = false;
+                fechaEspecificaInput.value = ""; // Limpiar el valor del input al cambiar a "Boleto Abierto"
+            });
+
+            fechaEspecificaInput.addEventListener('change', function () {
+                const selectedDate = this.value;
+
+                if (selectedDate) {
+                    // Habilitar los contadores y los botones según lo que necesites
+                    const incrementProfessorButton = document.querySelector('[data-type="increment-professor"]');
+                    const decrementProfessorButton = document.querySelector('[data-type="decrement-professor"]');
+                    const incrementStudentButton = document.querySelector('[data-type="increment-student"]');
+                    const decrementStudentButton = document.querySelector('[data-type="decrement-student"]');
+
+                    incrementProfessorButton.disabled = false;
+                    decrementProfessorButton.disabled = false;
+                    incrementStudentButton.disabled = false;
+                    decrementStudentButton.disabled = false;
+
+                    // Deshabilitar el input de fecha específica si lo deseas
+                    fechaEspecificaInput.disabled = true;
+
+                    // Habilitar el botón de "Boleto Abierto"
+                    boletoAbiertoButton.disabled = false;
+                }
+            });
+            // Añadir un evento al botón de "Boleto Abierto" para limpiar el valor del input al hacer clic
+            boletoAbiertoButton.addEventListener('click', function () {
+                fechaEspecificaInput.value = "";
+            });
+        });
         incrementButtons.forEach((button) => {
             button.addEventListener('click', (event) => {
                 event.stopPropagation();
