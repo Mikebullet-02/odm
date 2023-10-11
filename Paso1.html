@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -40,34 +40,40 @@
     </div>
     <div class="bg-[#C82333] w-full h-1">
     </div>
-    <div class="bg-[#C82333] w-full h-28 mx-auto flex items-center justify-between">
-        <p class="text-center text-white font-bold mb-4">Selecciona tu horario</p>
-        <div class="flex items-center space-x-4">
-            <img src="celularB.svg" alt="celular" class="w-5">
-            <div class="w-6 h-6 bg-green-500 text-white rounded-full flex items-center justify-center relative">
-                <div class="bg-green-200 w-6 h-6 rounded-full"></div>
+    <div class="bg-[#C82333] flex flex-col items-center justify-center h-24">
+        <p class="text-center text-white font-bold my-4">Selecciona tu horario</p>
+
+        <div class="w-full max-w-screen-2xl mx-auto flex items-center justify-center">
+            <div class="flex items-center space-x-4">
+                <img src="celularB.svg" alt="celular" class="w-5">
+                <div class="w-6 h-6 bg-green-500 text-white rounded-full flex items-center justify-center relative">
+                    <div class="bg-[#00FF29] w-6 h-6 rounded-full"></div>
+                </div>
+                <hr class="border-white border-t-2 flex-grow">
+                <div
+                    class="w-6 h-6 bg-transparent border border-white rounded-full flex items-center justify-center relative">
+                    <div class="bg-transparent border border-white w-6 h-6 rounded-full"></div>
+                </div>
+                <hr class="border-white border-t-2 flex-grow">
+                <div
+                    class="w-6 h-6 bg-transparent border border-white rounded-full flex items-center justify-center relative">
+                    <div class="bg-transparent border border-white w-6 h-6 rounded-full"></div>
+                </div>
+                <img src=" Bus_1b-01.svg" alt="Bus blanco" class="w-8">
+                <div id="contador" class="text-[#C82333] text-lg bg-white p-0 rounded">
+                    5:00
+                </div>
             </div>
-            <hr class="border-white border-t-2 flex-grow">
-            <div
-                class="w-6 h-6 bg-transparent border border-white rounded-full flex items-center justify-center relative">
-                <div class="bg-transparent border border-white w-6 h-6 rounded-full"></div>
-            </div>
-            <hr class="border-white border-t-2 flex-grow">
-            <div
-                class="w-6 h-6 bg-transparent border border-white rounded-full flex items-center justify-center relative">
-                <div class="bg-transparent border border-white w-6 h-6 rounded-full"></div>
-            </div>
-            <img src=" Bus_1b-01.svg" alt="Bus blanco" class="w-8">
-        </div>
-        <div id="contador" class="text-white text-4xl bg-[#C82333] p-4 rounded">
-            5:00
+
+
         </div>
     </div>
 
-    <div class="bg-[#1583C9] h-screen flex justify-center items-center">
-        <div class="bg-[#003368] p-4 text-white text-center">
-            <p>Origen</p>
-            <p>Destino</p>
+
+    <div class="bg-[#1583C9] h-32 flex justify-center items-center">
+        <div class="bg-[#003368] p-4 text-white text-center font-bold rounded-lg">
+            <p class="uppercase">Origen: México Central Norte</p>
+            <p class="uppercase">Destino: Colima, Col.</p>
         </div>
     </div>
     <section class="bg-[#003368]">
@@ -161,7 +167,7 @@
                 // Detener el contador cuando llegue a cero
                 if (tiempoRestante < 0) {
                     clearInterval(intervalo);
-                    document.getElementById('contador').textContent = '¡Tiempo agotado!';
+                    //document.getElementById('contador').textContent = '¡Tiempo agotado!';
                 }
             }, 1000); // Intervalo de actualización: 1 segundo
         }

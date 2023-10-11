@@ -194,7 +194,7 @@
 
         @media (min-width: 1024px) {
             .slide-text2 {
-                top: 1195px;
+                top: 1215px;
                 /* Posicionamiento en el centro de la imagen */
                 left: 86%;
                 transform: translate(-50%, -50%);
@@ -203,9 +203,27 @@
 
         @media (min-width: 1024px) {
             .slide-text1 {
-                top: 1190px;
+                top: 1215px;
                 /* Posicionamiento en el centro de la imagen */
                 left: 46%;
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        @media (min-width: 1280px) {
+            .slide-text2 {
+                top: 1315px;
+                /* Posicionamiento en el centro de la imagen */
+                left: 80%;
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        @media (min-width: 1280px) {
+            .slide-text1 {
+                top: 1315px;
+                /* Posicionamiento en el centro de la imagen */
+                left: 36%;
                 transform: translate(-50%, -50%);
             }
         }
@@ -325,7 +343,8 @@
         </div>
         <div class="bg-[#1583C9]">
             <form action="">
-                <div class="ml-8 sm:ml-14 lg:ml-40 xl:ml-64 2xl:ml-80 pt-3 lg:pt-5 py-3 space-x-5 flex">
+                <div
+                    class="ml-8 sm:ml-14 lg:ml-40 xl:ml-64 2xl:ml-80 pt-3 lg:pt-5 py-3 space-x-5 flex max-w-2xl mx-auto">
                     <label class="flex items-center">
                         <input type="radio" name="opcion" id="redondo" class="form-radio text-green-400" checked>
                         <span class="ml-2 text-white">Redondo</span>
@@ -345,7 +364,7 @@
                 <div
                     class="lg:grid lg:grid-cols-3 lg:gap-1 mx-0 lg:mx-36 xl:mx-56 2xl:mx-72 justify-center items-center p-0 space-y-3 lg:space-y-0">
                     <!-- Nivel 1-->
-                    <div class="input-with-svg mx-8 lg:mx-0 sm:ml-[50px] lg:col-span-1 px-0 lg:ml-0">
+                    <div class="input-with-svg mx-8 lg:mx-0  lg:col-span-1 px-0 sm:mx-10 lg:ml-0">
                         <select id="origenSelect">
                             <option selected="selected" disabled="">¿De Dónde Sales?</option>
                             <option value="ACR">Acambaro Gto</option>
@@ -608,7 +627,7 @@
                     </div>
 
 
-                    <div class="input-with-svg mx-8 sm:ml-[50px] lg:col-span-1 px-0 lg:ml-0">
+                    <div class="input-with-svg mx-8 lg:mx-0 lg:col-span-1 px-0 sm:mx-10 lg:ml-0">
                         <select id="destinoSelect">
                             <option selected="selected" disabled="">¿A dónde viajas?</option>
                         </select>
@@ -658,12 +677,14 @@
                     <div class="flex w-full hidden lg:col-span-1" id="datepickerRange">
                         <div x-data="app" x-cloak class="w-full">
                             <div class="container mx-auto py-0 md:py-0">
-                                <div class="flex items-center sm:ml-[50px] lg:ml-0">
-                                    <div class="flex space-x-8 lg:space-x-4" @keydown.escape="closeDatepicker()"
+                                <div class="flex items-center sm:ml-0 lg:ml-0">
+                                    <div class="flex space-x-8 lg:space-x-4 w-full" @keydown.escape="closeDatepicker()"
                                         @click.outside="closeDatepicker()">
-                                        <div class="input-container flex justify-center flex-nowrap mx-8 lg:mx-0">
+                                        <div
+                                            class="input-container flex justify-center flex-nowrap mx-8 sm:mx-10 lg:mx-0 w-full">
                                             <div class="input-container flex items-center">
-                                                <div class="input-with-svg mr-2 sm:ml-0 lg:col-span-1 w-full lg:mr-0">
+                                                <div
+                                                    class="input-with-svg mr-2 sm:mr-28 sm:ml-0 lg:col-span-1 w-full lg:mr-0">
                                                     <div class="relative">
                                                         <img src="calendario.svg" alt=""
                                                             class="absolute w-8 h-8 ml-3 mt-3 sm:ml-8 lg:ml-2">
@@ -679,14 +700,14 @@
                                             </div>
                                             <div class="input-container flex items-center">
                                                 <div
-                                                    class="input-with-svg mx-0 sm:ml-0 mr-0 sm:mr-10 lg:col-span-1 px-0 w-full">
+                                                    class="input-with-svg mx-0 sm:ml-0 mr-0 sm:mr-0 lg:col-span-1 px-0 w-full">
                                                     <div class="relative">
                                                         <input type="text"
                                                             @click="endToShow = 'to'; init(); showDatepicker = true"
                                                             :value="boletoAbierto ? 'FECHA ABIERTA' : formatDate(dateTo)"
                                                             :class="{'font-semibold': endToShow == 'to' }"
                                                             id="fechaEspecifica" @click="selectDateFrom"
-                                                            class="focus:outline-none border-none pl-0 w-full lg:w-[119%] 2xl:w-[112%] rounded-md border border-gray-300 h-14 sm:w-64 placeholder-center"
+                                                            class="focus:outline-none border-none pl-0 w-full lg:w-[119%] 2xl:w-[112%] rounded-md border border-gray-300 h-14 placeholder-center"
                                                             placeholder="FECHA DE REGRESO" />
                                                     </div>
                                                 </div>
@@ -777,19 +798,17 @@
                                 <div class="flex items-center mx-0 sm:ml-0 w-full">
                                     <div class="flex space-x-8 lg:space-x-4 w-full" @keydown.escape="closeDatepicker()"
                                         @click.outside="closeDatepicker()">
-                                        <div class="input-with-svg mx-6 sm:ml-[50px] lg:col-span-1 px-2 w-full">
-                                            <div class="relative">
-                                                <img src="calendario.svg" alt="" class="absolute w-8 h-8 ml-7 mt-2">
+                                        <div class="input-with-svg mx-6 sm:mx-10 lg:col-span-1 px-2 sm:px-0 w-full">
+                                            <div class="relative flex items-center">
                                                 <input type="text"
                                                     @click="endToShow = 'from'; init(); showDatepicker = true"
                                                     :value="formatDate(dateFrom)"
                                                     :class="{'font-semibold': endToShow == 'from' }"
                                                     @click="selectDateFrom"
-                                                    class="focus:outline-none border-none pl-32 w-full rounded-md border-r border-gray-300 h-12 sm:w-full lg:w-[107%] 2xl:w-[105%] sm:pl-[210px] md:w-full placeholder-center"
+                                                    class="focus:outline-none border-none pl-12 w-full rounded-md border-r border-gray-300 h-12 sm:w-full lg:w-[107%] 2xl:w-[105%] md:w-full"
                                                     placeholder="FECHA DE IDA" />
+                                                <img src="calendario.svg" alt="" class="absolute w-8 h-8 ml-8">
                                             </div>
-
-
                                         </div>
 
                                         <div class="absolute bg-white mt-2 rounded-lg shadow p-4 sm:w-80 w-10/12 z-50"
@@ -885,7 +904,7 @@
                     <div class="lg:col-span-1 lg:row-span-2 hidden" id="ticketSelector" x-show="showTicketSelector">
                         <div class="mx-auto p-0 text-center lg:col-span-2">
                             <div class="mt-3 lg:mt-0 w-full" id="datepickerSingle">
-                                <div class="input-with-svg mx-8 sm:mx-14">
+                                <div class="input-with-svg mx-8 sm:mx-10">
                                     <button
                                         class="w-full h-14 lg:h-12 px-0 py-1 lg:py-0 px-7 lg:px-14 text-lg lg:text-base bg-gray-100 border rounded-lg focus:shadow-outline pl-14 lg:pl-20"
                                         id="openTicketModal" x-show="dateFrom">
@@ -1014,7 +1033,7 @@
                     <div class="mx-auto p-0">
 
                         <div class="mt-3 w-full lg:hidden">
-                            <div class="input-with-svg mx-8 sm:ml-[50px]">
+                            <div class="input-with-svg mx-8 sm:mx-10">
                                 <button
                                     class="w-full bg-[#C82333] text-white font-bold text-lg rounded-lg py-3 px-7 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
                                     disabled>
@@ -1329,6 +1348,7 @@
             </p>
         </div>
     </section>
+
     <!-- SCRIPT DEL MENU DE HAMBURGUESA -->
     <script>
         document.addEventListener("DOMContentLoaded", function () {
