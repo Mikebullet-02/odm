@@ -344,7 +344,7 @@
         <div class="bg-[#1583C9]">
             <form action="">
                 <div
-                    class="ml-8 sm:ml-14 lg:ml-40 xl:ml-64 2xl:ml-80 pt-3 lg:pt-5 py-3 space-x-5 flex max-w-2xl mx-auto">
+                    class="ml-8 sm:ml-14 lg:ml-40 xl:ml-64 2xl:ml-[400px] pt-3 lg:pt-5 py-3 space-x-5 flex max-w-2xl mx-auto">
                     <label class="flex items-center">
                         <input type="radio" name="opcion" id="redondo" class="form-radio text-green-400" checked>
                         <span class="ml-2 text-white">Redondo</span>
@@ -362,7 +362,7 @@
                     }
                 </style>
                 <div
-                    class="lg:grid lg:grid-cols-3 lg:gap-1 mx-0 lg:mx-36 xl:mx-56 2xl:mx-72 justify-center items-center p-0 space-y-3 lg:space-y-0">
+                    class="lg:grid lg:grid-cols-3 lg:gap-1 mx-0 lg:mx-36 xl:mx-56 2xl:mx-96 justify-center items-center p-0 space-y-3 lg:space-y-0">
                     <!-- Nivel 1-->
                     <div class="input-with-svg mx-8 lg:mx-0  lg:col-span-1 px-0 sm:mx-10 lg:ml-0">
                         <select id="origenSelect">
@@ -707,7 +707,7 @@
                                                             :value="boletoAbierto ? 'FECHA ABIERTA' : formatDate(dateTo)"
                                                             :class="{'font-semibold': endToShow == 'to' }"
                                                             id="fechaEspecifica" @click="selectDateFrom"
-                                                            class="focus:outline-none border-none pl-0 w-full lg:w-[119%] 2xl:w-[112%] rounded-md border border-gray-300 h-14 placeholder-center"
+                                                            class="focus:outline-none border-none pl-0 w-full lg:w-[115%] 2xl:w-[117%] rounded-md border border-gray-300 h-14 placeholder-center"
                                                             placeholder="FECHA DE REGRESO" />
                                                     </div>
                                                 </div>
@@ -805,7 +805,7 @@
                                                     :value="formatDate(dateFrom)"
                                                     :class="{'font-semibold': endToShow == 'from' }"
                                                     @click="selectDateFrom"
-                                                    class="focus:outline-none border-none pl-12 w-full rounded-md border-r border-gray-300 h-12 sm:w-full lg:w-[107%] 2xl:w-[105%] md:w-full"
+                                                    class="focus:outline-none border-none pl-12 w-full rounded-md border-r border-gray-300 h-12 sm:w-full lg:w-[310px] 2xl:w-[105%] md:w-full"
                                                     placeholder="FECHA DE IDA" />
                                                 <img src="calendario.svg" alt="" class="absolute w-8 h-8 ml-8">
                                             </div>
@@ -864,6 +864,7 @@
                                                         <div style="width: 14.28%">
                                                             <div @click="getDateValue(date, false)"
                                                                 @mouseenter="getDateValue(date, true)" x-text="date"
+                                                                @click="showTicketSelectorOnDateClick(date)"
                                                                 class="p-1 cursor-pointer text-center text-sm leading-none leading-loose transition ease-in-out duration-100"
                                                                 :class="{'font-bold': isToday(date) == true, 'bg-blue-800 text-white rounded-l-full': isDateFrom(date) == true, 'bg-blue-800 text-white rounded-r-full': isDateFrom(date) == true, 'bg-blue-200': isInRange(date) == true }">
                                                             </div>
@@ -1073,7 +1074,7 @@
             </div>
 
             <!-- Formas de Pago Electrónico (Escritorio) -->
-            <div class="hidden lg:flex justify-center flex-wrap px-32 xl:px-52 py-2" id="escritorio">
+            <div class="hidden lg:flex justify-center flex-wrap px-32 xl:px-52 2xl:px-[370px] py-2" id="escritorio">
                 <div class="hidden sm:flex justify-center items-center space-x-4">
                     <div class="visa">
                         <img src="Visa-01.svg" alt="visa" class="bg-white w-20 h-9 border rounded-lg px-2 py-2">
@@ -1752,9 +1753,12 @@
 
                     this.blankdays = blankdaysArray;
                     this.no_of_days = daysArray;
-                }
-                ,
-
+                },
+                methods: {
+                    showTicketSelectorOnDateClick(date) {
+                        this.showTicketSelector = false;
+                    },
+                },
                 getHoursFrom() {
                     this.hoursFrom = [];
                     for (let i = 0; i < this.timeMode; i++) {
@@ -1880,8 +1884,10 @@
                     const year = date.getFullYear();
                     return `${day}/${month}/${year}`;
                 },
+
                 dateFrom: null, // Agrega este valor inicial
                 dateTo: null,   // Agrega este valor inicial
+
             }))
         })
     </script>
