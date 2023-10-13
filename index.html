@@ -693,7 +693,7 @@
                                                             :value="formatDate(dateFrom)"
                                                             :class="{'font-semibold': endToShow == 'from' }"
                                                             id="fecha-ida"
-                                                            class="w-full border border-gray-300 rounded-lg py-2 lg:w-[125%] xl:w-[115%] 2xl:w-[120%] pl-10 pr-3 focus:outline-none h-14"
+                                                            class="w-full border border-gray-300 rounded-lg py-2 lg:w-[125%] xl:w-[115%] 2xl:w-[120%] pl-10 pr-3 focus:outline-none h-12"
                                                             placeholder="FECHA DE IDA" />
                                                     </div>
                                                 </div>
@@ -707,7 +707,7 @@
                                                             :value="boletoAbierto ? 'FECHA ABIERTA' : formatDate(dateTo)"
                                                             :class="{'font-semibold': endToShow == 'to' }"
                                                             id="fechaEspecifica" @click="selectDateFrom"
-                                                            class="focus:outline-none border-none pl-0 w-full lg:w-[115%] 2xl:w-[117%] rounded-md border border-gray-300 h-14 placeholder-center"
+                                                            class="focus:outline-none border-none pl-0 w-full lg:w-[115%] 2xl:w-[117%] rounded-md border border-gray-300 h-12 placeholder-center"
                                                             placeholder="FECHA DE REGRESO" />
                                                     </div>
                                                 </div>
@@ -862,9 +862,8 @@
                                                     </template>
                                                     <template x-for="(date, dateIndex) in no_of_days" :key="dateIndex">
                                                         <div style="width: 14.28%">
-                                                            <div @click="getDateValue(date, false)"
+                                                            <div @click="getDateValue(date, false); showTicketSelector = true"
                                                                 @mouseenter="getDateValue(date, true)" x-text="date"
-                                                                @click="showTicketSelectorOnDateClick(date)"
                                                                 class="p-1 cursor-pointer text-center text-sm leading-none leading-loose transition ease-in-out duration-100"
                                                                 :class="{'font-bold': isToday(date) == true, 'bg-blue-800 text-white rounded-l-full': isDateFrom(date) == true, 'bg-blue-800 text-white rounded-r-full': isDateFrom(date) == true, 'bg-blue-200': isInRange(date) == true }">
                                                             </div>
@@ -1606,7 +1605,7 @@
                     this.endToShow = '';
                     this.showDatepickerSingle = !this.showDatepickerSingle;
                     this.endToShow = '';
-                    this.showTicketSelector = false;
+                    this.showTicketSelector = true;
                     document.getElementById('ticketSelector').classList.remove('hidden');
                 },
 
@@ -1753,11 +1752,6 @@
 
                     this.blankdays = blankdaysArray;
                     this.no_of_days = daysArray;
-                },
-                methods: {
-                    showTicketSelectorOnDateClick(date) {
-                        this.showTicketSelector = false;
-                    },
                 },
                 getHoursFrom() {
                     this.hoursFrom = [];

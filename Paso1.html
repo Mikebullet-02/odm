@@ -36,7 +36,7 @@
 
 <body>
     <div class="bg-white p-4 md:p-2">
-        <img src="logoODMplus.svg" alt="logoODM" class="w-full h-auto">
+        <img src="logoODMplus.svg" alt="logoODM" class="w-full sm:w-2/3 h-auto mx-auto">
     </div>
     <div class="bg-[#C82333] w-full h-1">
     </div>
@@ -70,12 +70,58 @@
     </div>
 
 
-    <div class="bg-[#1583C9] h-32 flex justify-center items-center">
-        <div class="bg-[#003368] p-4 text-white text-center font-bold rounded-lg">
+    <div class="bg-[#1583C9] h-screen py-4">
+        <div class="bg-[#003368] p-4 pt-5 mx-8 text-white text-center font-bold rounded-lg mb-8">
             <p class="uppercase">Origen: México Central Norte</p>
             <p class="uppercase">Destino: Colima, Col.</p>
         </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 bg-white mx-8 border rounded-lg">
+            <!-- Logo en el centro -->
+            <div class="col-span-1 md:col-span-2 flex justify-center items-center p-4">
+                <img src="logoODMplus.svg" alt="LogoODM" class="w-44 h-20">
+            </div>
+
+            <!-- Primera fila -->
+            <div class="col-span-1 flex flex-col justify-center items-center p-4 border-b border-r border-gray-300">
+                <p class="font-bold text-lg text-[#003565] mb-2">Salida</p>
+                <p class="text-base text-[#003565]">01:30 Hrs</p>
+                <p class="text-base text-[#003565]">15/03/2023</p>
+            </div>
+
+            <!-- Segunda fila -->
+            <div class="col-span-1 flex flex-col justify-center items-center p-4 border-b border-gray-300">
+                <p class="font-bold text-lg text-[#003565] mb-2">Llegada</p>
+                <p class="text-base text-[#003565]">12:00 Hrs</p>
+                <p class="text-base text-[#003565]">15/03/2023</p>
+            </div>
+
+            <!-- Tercera fila (Amenidades) -->
+            <div class="col-span-2 hidden md:flex justify-center items-center p-4 border-b border-r border-gray-300">
+                <img src="amenidades.svg" alt="Amenidades" class="w-24 h-24">
+            </div>
+
+            <!-- Cuarta fila (Precios) -->
+            <div class="col-span-1 flex flex-col justify-center items-center p-4">
+                <p class="text-gray-500 line-through mb-2">$1,440.00</p>
+                <p class="text-base text-[#003565] mb-2">Precio normal</p>
+                <p class="text-red-500 font-bold mb-2">$1,295.00</p>
+                <p class="text-base text-[#003565] mb-2">Precio por internet</p>
+                <div class="flex items-center">
+                    <p class="text-gray-500 mr-2">→</p>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-500" viewBox="0 0 20 20"
+                        fill="currentColor">
+                        <path fill-rule="evenodd"
+                            d="M6.293 16.707a1 1 0 0 1-1.414 0L1 12.414a1 1 0 0 1 0-1.414l4.293-4.293a1 1 0 1 1 1.414 1.414L4.414 11H17a1 1 0 1 1 0 2H4.414l1.293 1.293a1 1 0 0 1 0 1.414z" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+
     </div>
+
+
+
     <section class="bg-[#003368]">
         <div class="max-w-screen-xl px-4 py-10 mx-auto space-y-8 overflow-hidden sm:px-6 lg:px-8">
             <nav class="flex flex-wrap justify-center -mx-5 -my-2">
