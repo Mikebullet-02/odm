@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="shortcut icon" href="pagmaestra-favicon.ico">
+    <title> Omnibus de México | Boletos de Autobús con Descuento </title>
+    <meta name="description"
+        content="Omnibus de México  compra tus boletos de autobús en línea y obten 10% de descuento en viaje sencillo ó 15% en viaje redondo *Aplican restricciones. *" />
     <style>
         /* Estilo para el logo de autobús */
         .bus-logo {
@@ -681,7 +684,7 @@
                                     <div class="flex space-x-8 lg:space-x-4 w-full" @keydown.escape="closeDatepicker()"
                                         @click.outside="closeDatepicker()">
                                         <div
-                                            class="input-container flex justify-center flex-nowrap mx-8 sm:mx-10 lg:mx-0 w-full">
+                                            class="input-container flex justify-between flex-nowrap mx-8 sm:mx-10 lg:mx-0 w-full">
                                             <div class="input-container flex items-center">
                                                 <div
                                                     class="input-with-svg mr-2 sm:mr-28 sm:ml-0 lg:col-span-1 w-full lg:mr-0">
@@ -692,7 +695,7 @@
                                                             @click="endToShow = 'from'; init(); showDatepicker = true"
                                                             :value="formatDate(dateFrom)"
                                                             :class="{'font-semibold': endToShow == 'from' }"
-                                                            id="fecha-ida"
+                                                            autocomplete="off" id="fecha-ida"
                                                             class="w-full border border-gray-300 rounded-lg py-2 lg:w-[125%] xl:w-[115%] 2xl:w-[120%] pl-10 pr-3 focus:outline-none h-12"
                                                             placeholder="FECHA DE IDA" />
                                                     </div>
@@ -704,11 +707,12 @@
                                                     <div class="relative">
                                                         <input type="text"
                                                             @click="endToShow = 'to'; init(); showDatepicker = true"
+                                                            placeholder="FECHA DE REGRESO"
                                                             :value="boletoAbierto ? 'FECHA ABIERTA' : formatDate(dateTo)"
                                                             :class="{'font-semibold': endToShow == 'to' }"
                                                             id="fechaEspecifica" @click="selectDateFrom"
-                                                            class="focus:outline-none border-none pl-0 w-full lg:w-[115%] 2xl:w-[117%] rounded-md border border-gray-300 h-12 placeholder-center"
-                                                            placeholder="FECHA DE REGRESO" />
+                                                            autocomplete="off"
+                                                            class="focus:outline-none border-none pl-0 w-full lg:w-[115%] 2xl:w-[117%] rounded-md border border-gray-300 h-12 placeholder-center" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -901,13 +905,13 @@
                             /* O cualquier otra propiedad de posicionamiento que desees */
                         }
                     </style>
-                    <div class="lg:col-span-1 lg:row-span-2 hidden" id="ticketSelector" x-show="showTicketSelector">
+                    <div class="lg:col-span-1 lg:row-span-2" id="ticketSelector" :x-show="true">
                         <div class="mx-auto p-0 text-center lg:col-span-2">
                             <div class="mt-3 lg:mt-0 w-full" id="datepickerSingle">
                                 <div class="input-with-svg mx-8 sm:mx-10">
                                     <button
                                         class="w-full h-14 lg:h-12 px-0 py-1 lg:py-0 px-7 lg:px-14 text-lg lg:text-base bg-gray-100 border rounded-lg focus:shadow-outline pl-14 lg:pl-20"
-                                        id="openTicketModal" x-show="dateFrom">
+                                        id="openTicketModal" :x-show="true">
                                         Selecciona tus boletos
                                         <div id="totalMessage" id="openTicketModal" class="text-center mt-0 mr-48">
                                         </div>
@@ -1150,6 +1154,40 @@
                     <!-- Imagen 3 -->
                     <div class="w-full lg:w-1/2">
                         <img src="/verticales/CEN_TIJ.png" alt="Image 1" class="w-full h-auto">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="relative flex min-h-screen flex-col justify-center overflow-hidden bg-gray-50">
+            <div
+                class="relative flex h-72 w-64 flex-col bg-white shadow-xl ring-1 ring-gray-900/5 sm:mx-auto sm:max-w-lg sm:rounded-lg">
+                <div class="text-center w-full">
+                    <div class="bg-blue-900">
+                        <p class="text-white font-bold">
+                            Cd. Obregón, Sin.
+                            <span class="text-yellow-400">a</span>
+                            Tijuana, B.C
+                        </p>
+                    </div>
+                </div>
+                <div class="flex-1 mx-auto flex max-w-md flex-row">
+                    <img src="/img/logo.svg" class="h-6 w-1/2 flex-1" alt="Tailwind Play" />
+                    <img src="/img/logo.svg" class="h-6 w-1/2 flex-1" alt="Tailwind Play" />
+                </div>
+                <div class="flex-2 mx-auto flex w-full max-w-md flex-row bg-white m-2 p-1">
+                    <div class="justify-start text-center">
+                        <p class="flex-1 text-[#003368] text-xl">Precio por internet</p>
+                        <p class="text-red-600 font-bold text-xl">$1,564.00<span class="text-xs">MX</span></p>
+                        <p class="flex-1 text-[#003368] text-xl">Ahorras</p>
+                        <p class="text-red-600 font-bold text-xl">$10%</p>
+                    </div>
+                    <hr class="my-3 h-auto w-1 bg-[#003368]" />
+
+                    <div class="justify-end text-center">
+                        <p class="flex-1 text-[#003368] text-xl">Viaje redondo</p>
+                        <p class="text-red-600 font-bold text-xl">$1,564.00<span class="text-xs">MX</span></p>
+                        <p class="flex-1 text-[#003368] text-xl">Ahorras</p>
+                        <p class="text-red-600 font-bold text-xl">$10%</p>
                     </div>
                 </div>
             </div>
@@ -1452,6 +1490,7 @@
                 },
 
                 init() {
+                    this.boletoAbierto = false;
                     if (!this.dateFrom) {
                         if (this.dateFromYmd) {
                             this.dateFrom = this.convertFromYmd(this.dateFromYmd);
