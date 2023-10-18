@@ -688,7 +688,7 @@
                                                     class="input-with-svg mr-2 sm:mr-28 sm:ml-0 lg:col-span-1 w-full lg:mr-0">
                                                     <div class="relative">
                                                         <img src="calendario.svg" alt=""
-                                                            class="absolute w-8 h-8 ml-3 mt-3 sm:ml-8 lg:ml-2">
+                                                            class="absolute w-8 h-8 ml-3 mt-1.5 sm:ml-8 lg:ml-2">
                                                         <input type="text"
                                                             @click="endToShow = 'from'; init(); showDatepicker = true"
                                                             :value="formatDate(dateFrom)"
@@ -703,9 +703,8 @@
                                                 <div
                                                     class="input-with-svg mx-0 sm:ml-0 mr-0 sm:mr-0 lg:col-span-1 px-0 w-full">
                                                     <div class="relative">
-                                                        <input type="text"
+                                                        <input type="text" placeholder="FECHA DE REGRESO"
                                                             @click="endToShow = 'to'; init(); showDatepicker = true"
-                                                            placeholder="FECHA DE REGRESO"
                                                             :value="boletoAbierto ? 'FECHA ABIERTA' : formatDate(dateTo)"
                                                             :class="{'font-semibold': endToShow == 'to' }"
                                                             id="fechaEspecifica" @click="selectDateFrom"
@@ -887,22 +886,7 @@
                             </div>
                         </div>
                     </div>
-                    <style>
-                        input::placeholder {
-                            font-size: 1em;
-                            /* Tamaño de fuente relativo */
-                            line-height: 1.5;
-                            width: 100%;
-                            padding-left: 10px;
-                        }
 
-                        .placeholder-left::placeholder {
-                            /* Ajusta el desplazamiento hacia la izquierda según tus preferencias */
-                            text-indent: 10px;
-                            /* Por ejemplo, desplazamiento de 10px */
-                            /* O cualquier otra propiedad de posicionamiento que desees */
-                        }
-                    </style>
                     <div class="lg:col-span-1 lg:row-span-2" id="ticketSelector" :x-show="true">
                         <div class="mx-auto p-0 text-center lg:col-span-2">
                             <div class="mt-3 lg:mt-0 w-full" id="datepickerSingle">
@@ -1051,7 +1035,7 @@
         <!-- FORMAS DE PAGO -->
         <div class="formas-de-pago w-full h-auto bg-[#1583C9] pt-3 px-8">
             <!-- Formas de Pago Electrónico (Móvil) -->
-            <div class="flex justify-center items-center space-x-6 sm:hidden">
+            <div class="flex justify-center items-center space-x-6 lg:hidden">
                 <div class="visa mb-4">
                     <img src="Visa-01.svg" alt="visa" class="bg-white w-12 h-9 border rounded-lg px-2 py-2">
                 </div>
@@ -1067,7 +1051,7 @@
             </div>
 
             <!-- Pago en efectivo (Móvil) -->
-            <div class="flex justify-center items-center sm:hidden">
+            <div class="flex justify-center items-center lg:hidden">
                 <div class="efectivo mx-auto text-center">
                     <img src="Paga_tus_boletos_en_efectivo.svg" alt="efectivo"
                         class="bg-white w-full h-12 border rounded-lg">
@@ -1112,15 +1096,14 @@
 
         <!-- SLIDERS -->
         <div class="flex justify-center items-center py-3 pl-8 pr-8 bg-[#1583C9]">
-            <div
-                class="w-full sm:w-9/12 md:w-3/4 lg:w-7/12 xl:w-1/2 2xl:w-2/5 rounded-lg overflow-hidden shadow-md bg-[#1583C9]">
+            <div class="w-full sm:w-9/12 md:w-3/4 lg:w-7/12 xl:w-1/2 2xl:w-2/5 rounded-lg overflow-hidden bg-[#1583C9]">
                 <div class="slider-container">
                     <div class="slider slider-1">
-                        <img src="Banner_App.webp" alt="image 0" class="w-full md:w-1/2">
-                        <img src="Banner_servicios_DD.webp" alt="image 1" class="w-full md:w-1/2">
-                        <img src="seguridad.webp" alt="image 2" class="w-full md:w-1/2">
-                        <img src="Banner_ODM_pacifico.webp" alt="image 3" class="w-full md:w-1/2">
-                        <img src="Banner_Viaja_DD.webp" alt="image 4" class="w-full md:w-1/2">
+                        <img src="Banner_App.webp" alt="Banner Aplicacion" class="w-96 md:w-1/2 rounded-lg">
+                        <img src="Banner_servicios_DD.webp" alt="Servicios" class="w-96 md:w-1/2 rounded-lg">
+                        <img src="seguridad.webp" alt="Aviso de seguridad" class="w-96 md:w-1/2 rounded-lg">
+                        <img src="Banner_ODM_pacifico.webp" alt="Banner pacifico" class="w-96 md:w-1/2 rounded-lg">
+                        <img src="Banner_Viaja_DD.webp" alt="Euro 6" class="w-96 md:w-1/2 rounded-lg">
                     </div>
 
                 </div>
@@ -1130,11 +1113,9 @@
         <h1 class="text-white text-xl bg-[#1583C9] text-center font-bold pt-5">VIAJES MÁS SOLICITADOS</h1>
 
         <div class="flex justify-center items-center py-3 pl-8 pr-8 bg-[#1583C9]">
-
-            <div
-                class="w-full sm:w-9/12 md:w-3/4 lg:w-10/12 xl:w-9/12 rounded-lg overflow-hidden shadow-md bg-[#1583C9]">
+            <div class="w-full sm:w-9/12 md:w-3/4 lg:w-10/12 xl:w-9/12 rounded-lg overflow-hidden bg-[#1583C9]">
                 <div class="slider-container lg:hidden">
-                    <div class="slider slider-2">
+                    <div class="slider-2">
                         <div class="relative flex flex-col justify-center overflow-hidden bg-[#1583C9]">
                             <div
                                 class="relative flex h-auto w-72 flex-col bg-white sm:mx-auto sm:max-w-2xl mx-auto my-auto rounded-lg">
@@ -1157,9 +1138,9 @@
                                     </div>
                                 </div>
                                 <div class="flex-1 mx-auto flex max-w-2xl flex-row">
-                                    <img src="Palacio_CD_OBREGON.webp" class="h-24 w-full flex-1"
+                                    <img src="Palacio_CD_OBREGON.webp" class="h-24 w-1/2 flex-1 object-cover"
                                         alt="Palacio Cd. Obregon" />
-                                    <img src="Tijuana.webp" class="h-24 w-full flex-1" alt="Tijuana" />
+                                    <img src="Tijuana.webp" class="h-24 w-1/2 flex-1 object-cover" alt="Tijuana" />
                                 </div>
                                 <div
                                     class="flex-2 mx-auto px-3 pt-3 flex w-full max-w-md flex-row bg-white justify-center">
@@ -1210,7 +1191,7 @@
                                 <div class="flex-1 mx-auto flex max-w-2xl flex-row">
                                     <img src="cdmx_central_norte.webp" class="h-24 w-1/2 flex-1"
                                         alt="CDMX Central Norte" />
-                                    <img src="Altamira_Tam.webp" class="h-24 w-full flex-1" alt="Altamira Tamaulipas" />
+                                    <img src="Altamira_Tam.webp" class="h-24 w-1/2 flex-1" alt="Altamira Tamaulipas" />
                                 </div>
                                 <div
                                     class="flex-2 mx-auto px-3 pt-3 flex w-full max-w-md flex-row bg-white justify-center">
@@ -1261,7 +1242,7 @@
                                 <div class="flex-1 mx-auto flex max-w-2xl flex-row">
                                     <img src="Catedral_culiacan.webp" class="h-24 w-1/2 flex-1"
                                         alt="Catedral Culiacán" />
-                                    <img src="Tijuana.webp" class="h-24 w-full flex-1" alt="Tijuana" />
+                                    <img src="Tijuana.webp" class="h-24 w-1/2 flex-1" alt="Tijuana" />
                                 </div>
                                 <div
                                     class="flex-2 mx-auto px-3 pt-3 flex w-full max-w-md flex-row bg-white justify-center">
@@ -1462,12 +1443,11 @@
 
 
         <div class="flex justify-center items-center py-3 pl-8 pr-8 bg-[#1583C9]">
-            <div
-                class="w-full sm:w-9/12 md:w-3/4 lg:w-10/12 xl:w-9/12 rounded-lg overflow-hidden shadow-md bg-[#1583C9]">
+            <div class="w-full sm:w-9/12 md:w-3/4 lg:w-10/12 xl:w-9/12 rounded-lg overflow-hidden bg-[#1583C9]">
                 <div class="slider-container lg:hidden">
                     <div class="slider slider-3">
                         <div class="slide">
-                            <img src="banner_noreste.webp" alt="Banner Noreste" class="w-auto h-auto">
+                            <img src="banner_noreste.webp" alt="Banner Noreste" class="w-36 h-32 rounded-lg">
                             <div class="slide-text text-xs text-left">
                                 <p class="text-white font-semibold text-xs text-center sm:text-base">Nuevo Laredo /
                                     Reynosa</p>
@@ -1476,7 +1456,7 @@
                             </div>
                         </div>
                         <div class="slide">
-                            <img src="banner_omex.webp" alt="Banner OMEX" class="w-auto h-auto">
+                            <img src="banner_omex.webp" alt="Banner OMEX" class="w-36 h-32 rounded-lg">
                             <div class="slide-text text-left">
                                 <p class="text-white font-semibold text-xs sm:text-base">McAllen / Monterrey</p>
                             </div>
@@ -1486,7 +1466,7 @@
                 <div class="hidden lg:flex lg:space-x-4 w-full">
                     <!-- Imagen 1 -->
                     <div class="w-full">
-                        <img src="banner_noreste.webp" alt="Banner Noreste" class="w-auto h-auto">
+                        <img src="banner_noreste.webp" alt="Banner Noreste" class="w-auto h-auto rounded-lg">
                         <div class="slide-text1 text-xs text-left">
                             <p class="text-white font-semibold text-xs text-center sm:text-base">Nuevo Laredo /
                                 Reynosa</p>
@@ -1496,7 +1476,7 @@
                     </div>
                     <!-- Imagen 2 -->
                     <div class="w-full">
-                        <img src="banner_omex.webp" alt="Banner OMEX" class="w-auto h-auto">
+                        <img src="banner_omex.webp" alt="Banner OMEX" class="w-auto h-auto rounded-lg">
                         <div class="slide-text2 text-left">
                             <p class="text-white font-semibold text-xs sm:text-base">McAllen / Monterrey</p>
                         </div>
@@ -1506,12 +1486,11 @@
         </div>
 
         <div class="flex justify-center items-center py-3 pl-8 pr-8 bg-[#1583C9]">
-            <div
-                class="w-full sm:w-9/12 md:w-3/4 lg:w-10/12 xl:w-9/12 rounded-lg overflow-hidden shadow-md bg-[#1583C9]">
+            <div class="w-full sm:w-9/12 md:w-3/4 lg:w-10/12 xl:w-9/12 rounded-lg overflow-hidden bg-[#1583C9]">
                 <div class="slider-container">
                     <div class="slider slider-4">
                         <div class="slide">
-                            <img src="omnibus_mexico_destinos.webp" alt="ODM Desinos" class="w-auto h-auto">
+                            <img src="omnibus_mexico_destinos.webp" alt="ODM Desinos" class="w-80 h-full rounded-lg">
                             <div class="slide-text text-sm">
                                 <p
                                     class="text-white font-semibold text-xs text-center sm:text-base lg:text-lg xl:text-xl">
@@ -1531,7 +1510,8 @@
                             </div>
                         </div>
                         <div class="slide">
-                            <img src="omnibus_mexico_gastronomia.webp" alt="ODM Gastronomia" class="w-auto h-auto">
+                            <img src="omnibus_mexico_gastronomia.webp" alt="ODM Gastronomia"
+                                class="w-80 h-full rounded-lg">
                             <div class="slide-text text-sm">
                                 <p
                                     class=" text-white font-semibold text-xs text-center sm:text-base lg:text-lg xl:text-xl">
@@ -1546,7 +1526,7 @@
                             </div>
                         </div>
                         <div class="slide">
-                            <img src="eventos-odm.webp" alt="ODM Eventos" class="w-auto h-auto">
+                            <img src="eventos-odm.webp" alt="ODM Eventos" class="w-80 h-full rounded-lg">
                             <div
                                 class="slide-text text-sm text-center sm:text-base lg:text-lg xl:text-xl font-semibold">
                                 EVENTOS
