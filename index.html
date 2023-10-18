@@ -10,6 +10,13 @@
     <meta name="description"
         content="Omnibus de México  compra tus boletos de autobús en línea y obten 10% de descuento en viaje sencillo ó 15% en viaje redondo *Aplican restricciones. *" />
     <style>
+        @font-face {
+            font-family: 'Roboto';
+            src: url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap');
+            font-display: swap;
+        }
+    </style>
+    <style>
         /* Estilo para el logo de autobús */
         .bus-logo {
             width: 60px;
@@ -667,7 +674,7 @@
                         <div class="mt-0 w-full">
                             <div class="input-with-svg mx-9 sm:ml-[50px] lg:ml-0">
                                 <button id="buscarViajeBtn"
-                                    class="w-full bg-[#C82333] text-white font-bold text-lg rounded-lg py-3 px-7 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                    class="w-full bg-[#C82333] text-white font-bold text-lg rounded-lg py-3 px-7"
                                     disabled>
                                     Buscar viaje
                                 </button>
@@ -1098,11 +1105,12 @@
             <div class="w-full sm:w-9/12 md:w-3/4 lg:w-7/12 xl:w-1/2 2xl:w-2/5 rounded-lg overflow-hidden bg-[#1583C9]">
                 <div class="slider-container">
                     <div class="slider slider-1">
-                        <img src="Banner_App.webp" alt="Banner Aplicacion" class="w-96 md:w-1/2 rounded-lg">
-                        <img src="Banner_servicios_DD.webp" alt="Servicios" class="w-96 md:w-1/2 rounded-lg">
-                        <img src="seguridad.webp" alt="Aviso de seguridad" class="w-96 md:w-1/2 rounded-lg">
-                        <img src="Banner_ODM_pacifico.webp" alt="Banner pacifico" class="w-96 md:w-1/2 rounded-lg">
-                        <img src="Banner_Viaja_DD.webp" alt="Euro 6" class="w-96 md:w-1/2 rounded-lg">
+                        <img src="Banner_App.webp" alt="Banner Aplicacion" class="w-32 h-auto md:w-1/2 rounded-lg">
+                        <img src="Banner_servicios_DD.webp" alt="Servicios" class="w-32 h-auto md:w-1/2 rounded-lg">
+                        <img src="seguridad.webp" alt="Aviso de seguridad" class="w-32 h-auto md:w-1/2 rounded-lg">
+                        <img src="Banner_ODM_pacifico.webp" alt="Banner pacifico"
+                            class="w-32 h-auto md:w-1/2 rounded-lg">
+                        <img src="Banner_Viaja_DD.webp" alt="Euro 6" class="w-32 h-auto md:w-1/2 rounded-lg">
                     </div>
 
                 </div>
@@ -1489,7 +1497,7 @@
                 <div class="slider-container">
                     <div class="slider slider-4">
                         <div class="slide">
-                            <img src="omnibus_mexico_destinos.webp" alt="ODM Desinos" class="w-80 h-full rounded-lg">
+                            <img src="omnibus_mexico_destinos.webp" alt="ODM Destinos" class="w-80 h-full rounded-lg">
                             <div class="slide-text text-sm">
                                 <p
                                     class="text-white font-semibold text-xs text-center sm:text-base lg:text-lg xl:text-xl">
@@ -1682,23 +1690,14 @@
                 showDatepicker: false,
                 showFromHourPicker: false,
                 showToHourPicker: false,
-                showFromMinutePicker: false,
-                showToMinutePicker: false,
                 timePickerDisabled: true,
-                dateFromYmdHis: '',
-                dateToYmdHis: '',
                 outputDateToValue: '',
                 currentDate: null,
                 dateFrom: null,
                 dateTo: null,
                 endToShow: '',
-                timeMode: 12,
-                hourFromValue: 12,
-                hourToValue: 11,
                 hour24FromValue: 0,
                 hour24ToValue: 23,
-                meridiemFrom: 'am',
-                meridiemTo: 'pm',
                 minuteFromValue: '00',
                 minuteToValue: '59',
                 selecting: false,
@@ -1802,24 +1801,17 @@
                     return d.getTime() === this.dateTo.getTime();
                 },
 
-
-
                 isInRange(date) {
                     const d = new Date(this.year, this.month, date);
 
                     return d > this.dateFrom && d < this.dateTo;
                 },
 
-
-
-
-
                 outputDateValues() {
                     if (this.dateFrom) {
                         const timeFromString = this.getTimeString('from');
                         const dateFromString = this.convertToYmd(this.dateFrom);
                         const dateTimeFrom = new Date(dateFromString + 'T' + timeFromString);
-                        this.dateFromYmdHis = dateFromString + ' ' + timeFromString;
                     }
                     if (this.boletoAbierto) {
                         this.outputDateToValue = "Boleto abierto";
@@ -1849,10 +1841,6 @@
                     const second = end === 'from' ? '00' : '59';
                     return hour.toString().padStart(2, '0') + ':' + minute + ':' + second;
                 },
-
-
-
-
 
                 getDateValue(date, temp) {
                     // if we are in mouse over mode but have not started selecting a range, there is nothing more to do.
@@ -1887,8 +1875,6 @@
                     this.timePickerDisabled = !this.dateFrom;
                     this.showDatepicker = false;
 
-
-
                     if (!temp) {
                         this.selecting = !this.selecting;
                     }
@@ -1913,8 +1899,6 @@
                     this.blankdays = blankdaysArray;
                     this.no_of_days = daysArray;
                 },
-
-
 
                 closeDatepicker() {
                     this.endToShow = '';
