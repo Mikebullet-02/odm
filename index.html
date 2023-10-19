@@ -1923,6 +1923,16 @@
             // Inicializar select2 para el select de origen y destino
             $('#origenSelect, #destinoSelect').select2();
         });
+        $(document).ready(function () {
+            // ... Tu código actual ...
+        });
+
+        // Coloca el fragmento aquí
+        if (/Mobi/.test(navigator.userAgent)) {
+            $(document).on('touchstart touchmove wheel', function (e) {
+                e.preventDefault();
+            }, { passive: true });
+        }
         $('#datepickerRange').addClass('hidden');
         $('#datepickerSingle').addClass('hidden');
 
