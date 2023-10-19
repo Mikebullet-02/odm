@@ -9,33 +9,12 @@
     <title> Omnibus de México | Boletos de Autobús con Descuento </title>
     <meta name="description"
         content="Omnibus de México  compra tus boletos de autobús en línea y obten 10% de descuento en viaje sencillo ó 15% en viaje redondo *Aplican restricciones. *" />
-    <style>
-        @font-face {
-            font-family: 'Roboto';
-            src: url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap');
-            font-display: swap;
-        }
-    </style>
+
     <style>
         /* Estilo para el logo de autobús */
-        .bus-logo {
-            width: 60px;
-            height: 60px;
-            margin-right: 5px;
-        }
-
         .input-with-svg {
             position: relative;
 
-        }
-
-        .input-with-svg input[type="text"] {
-            padding-left: 40px;
-            /* Ajusta el valor para dar espacio al SVG */
-            background-repeat: no-repeat;
-            background-position: left center;
-            background-size: 1px 1px;
-            /* Ajusta el tamaño del SVG */
         }
 
         .input-with-svg .bus-logo {
@@ -44,15 +23,6 @@
             /* Ajusta la posición del SVG */
             top: 50%;
             transform: translateY(-50%);
-        }
-
-        .custom-placeholder::placeholder {
-            color: white;
-            /* Color del texto del placeholder */
-            white-space: normal;
-            /* Mostrar el texto en varias líneas */
-            line-height: 1.5;
-            /* Ajustar el espaciado entre líneas */
         }
     </style>
 
@@ -72,12 +42,6 @@
 
 
     <style>
-        /* Ajusta la altura de las opciones en el desplegable */
-        .select2-container--default .select2-results__option {
-            padding: 10px 12px;
-            /* Ajusta el padding para cambiar la altura */
-        }
-
         /* Ajusta la altura del select al mostrar la opción seleccionada */
         .select2-container--default .select2-selection--single {
             height: 50px;
@@ -101,12 +65,18 @@
         }
     </style>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap">
-    <style type="text/css">
-        .slider {
-            position: relative;
-            /* Asegura que el contenedor de la slide sea relativo */
+    <style>
+        @font-face {
+            font-family: 'Roboto';
+            src: url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap');
+            font-display: swap;
         }
 
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+    </style>
+    <style type="text/css">
         .slide {
             position: relative;
             /* Asegura que el contenedor de la slide sea relativo */
@@ -339,7 +309,7 @@
         }
     </style>
 
-    <hr class="border-red-600 pt-0 pb-0 h-0">
+    <hr class="w-full h-1.5 bg-[#C82333] pt-0 pb-0 h-0">
 
     <div class="general h-full">
         <div class="bg-[#1583C9] lg:hidden">
@@ -362,13 +332,7 @@
                         <span class="ml-2 text-white font-bold text-lg">Sencillo</span>
                     </label>
                 </div>
-                <style>
-                    @media (min-width: 1280px) {
-                        .xl\:ml-60 {
-                            margin-left: 60px;
-                        }
-                    }
-                </style>
+
                 <div
                     class="lg:grid lg:grid-cols-3 lg:gap-1 mx-0 lg:mx-36 xl:mx-56 2xl:mx-96 justify-center items-center p-0 space-y-3 lg:space-y-0">
                     <!-- Nivel 1-->
@@ -1086,31 +1050,17 @@
                 </div>
             </div>
         </div>
-        <style>
-            @media (min-width: 1024px) {
-                #navbar {
-                    display: flex;
-                    justify-content: center;
-                }
-
-                #navbar>* {
-                    flex-shrink: 0;
-                }
-            }
-        </style>
-
-
         <!-- SLIDERS -->
         <div class="flex justify-center items-center py-3 pl-8 pr-8 bg-[#1583C9]">
             <div class="w-full sm:w-9/12 md:w-3/4 lg:w-7/12 xl:w-1/2 2xl:w-2/5 rounded-lg overflow-hidden bg-[#1583C9]">
                 <div class="slider-container">
                     <div class="slider slider-1">
-                        <img src="Banner_App.webp" alt="Banner Aplicacion" class="w-32 h-auto md:w-1/2 rounded-lg">
-                        <img src="Banner_servicios_DD.webp" alt="Servicios" class="w-32 h-auto md:w-1/2 rounded-lg">
-                        <img src="seguridad.webp" alt="Aviso de seguridad" class="w-32 h-auto md:w-1/2 rounded-lg">
+                        <img src="Banner_App.webp" alt="Banner Aplicacion" class="w-auto h-auto md:w-1/2 rounded-lg">
+                        <img src="Banner_servicios_DD.webp" alt="Servicios" class="w-auto h-auto md:w-1/2 rounded-lg">
+                        <img src="seguridad.webp" alt="Aviso de seguridad" class="w-auto h-auto md:w-1/2 rounded-lg">
                         <img src="Banner_ODM_pacifico.webp" alt="Banner pacifico"
-                            class="w-32 h-auto md:w-1/2 rounded-lg">
-                        <img src="Banner_Viaja_DD.webp" alt="Euro 6" class="w-32 h-auto md:w-1/2 rounded-lg">
+                            class="w-auto h-auto md:w-1/2 rounded-lg">
+                        <img src="Banner_Viaja_DD.webp" alt="Euro 6" class="w-auto h-auto md:w-1/2 rounded-lg">
                     </div>
 
                 </div>
