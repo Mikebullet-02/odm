@@ -103,98 +103,7 @@
             align-items: center;
         }
 
-        .slide-text1 {
-            position: absolute;
-            top: 1150px;
-            left: 0;
-            right: 515px;
-            bottom: 0;
-            background-color: transparent;
-            color: white;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: flex-start;
 
-            /* Inicialmente, el texto estará oculto */
-            transition: opacity 0.3s ease-in-out;
-            align-items: center;
-
-        }
-
-        @media (min-width: 768px) {
-            .slide-text1 {
-                top: 1304px;
-                /* Posicionamiento en el centro de la imagen */
-                left: 47%;
-                transform: translate(-50%, -50%);
-            }
-        }
-
-        .slide-text2 {
-            position: absolute;
-            top: 1150px;
-            left: 0;
-            right: 150px;
-            bottom: 0;
-            background-color: transparent;
-            color: white;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: flex-start;
-
-            /* Inicialmente, el texto estará oculto */
-            transition: opacity 0.3s ease-in-out;
-            align-items: center;
-        }
-
-        @media (min-width: 768px) {
-            .slide-text2 {
-                top: 1310px;
-                /* Posicionamiento en el centro de la imagen */
-                left: 86%;
-                transform: translate(-50%, -50%);
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .slide-text2 {
-                top: 1215px;
-                /* Posicionamiento en el centro de la imagen */
-                left: 86%;
-                transform: translate(-50%, -50%);
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .slide-text1 {
-                top: 1215px;
-                /* Posicionamiento en el centro de la imagen */
-                left: 46%;
-                transform: translate(-50%, -50%);
-            }
-        }
-
-        @media (min-width: 1280px) {
-            .slide-text2 {
-                top: 1315px;
-                /* Posicionamiento en el centro de la imagen */
-                left: 80%;
-                transform: translate(-50%, -50%);
-            }
-        }
-
-        @media (min-width: 1280px) {
-            .slide-text1 {
-                top: 1315px;
-                /* Posicionamiento en el centro de la imagen */
-                left: 36%;
-                transform: translate(-50%, -50%);
-            }
-        }
 
 
         .slide-text1 p,
@@ -317,7 +226,7 @@
             </div>
         </div>
         <div class="bg-[#1583C9]">
-            <form action="">
+            <form action="Paso1.html">
                 <div
                     class="ml-8 sm:ml-14 lg:ml-40 xl:ml-64 2xl:ml-[400px] pt-3 lg:pt-5 py-3 space-x-5 flex max-w-2xl mx-auto">
                     <label class="flex items-center">
@@ -636,7 +545,7 @@
                             <div class="input-with-svg mx-9 sm:ml-[50px] lg:ml-0">
                                 <button id="buscarViajeBtn"
                                     class="w-full bg-[#C82333] text-white font-bold text-lg rounded-lg py-3 px-7"
-                                    disabled>
+                                    onclick="redireccionarPaso1()" disabled>
                                     Buscar viaje
                                 </button>
                             </div>
@@ -661,7 +570,7 @@
                                                             :value="formatDate(dateFrom)"
                                                             :class="{'font-semibold': endToShow == 'from' }"
                                                             autocomplete="off" id="fecha-ida"
-                                                            class="w-full border border-gray-300 rounded-lg py-2 lg:w-[125%] xl:w-[115%] 2xl:w-[120%] pl-10 pr-3 focus:outline-none h-12"
+                                                            class="w-full border border-gray-300 rounded-lg py-2 lg:w-[125%] xl:w-[115%] 2xl:w-[120%] pl-11 pr-3 focus:outline-none h-12"
                                                             placeholder="FECHA DE IDA" />
                                                     </div>
                                                 </div>
@@ -672,11 +581,11 @@
                                                     <div class="relative">
                                                         <input type="text" placeholder="FECHA DE REGRESO"
                                                             @click="endToShow = 'to'; init(); showDatepicker = true"
-                                                            :value="boletoAbierto ? 'FECHA ABIERTA' : formatDate(dateTo)"
                                                             :class="{'font-semibold': endToShow == 'to' }"
                                                             id="fechaEspecifica" @click="selectDateFrom"
                                                             autocomplete="off"
-                                                            class="focus:outline-none border-none pl-0 w-full lg:w-[115%] 2xl:w-[117%] rounded-md border border-gray-300 h-12 placeholder-center" />
+                                                            class="focus:outline-none border-none pl-5 lg:pl-3 w-full lg:w-[115%] 2xl:w-[117%] rounded-md border border-gray-300 h-12 placeholder-center"
+                                                            :value="boletoAbierto ? 'FECHA ABIERTA' : formatDate(dateTo)" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -687,13 +596,11 @@
                                             <div class="flex flex-col items-center">
 
                                                 <div class="w-full flex justify-between items-center mb-2">
-                                                    <div>
-                                                        <span x-text="MONTH_NAMES[month]"
-                                                            class="text-lg font-bold text-gray-800"></span>
-                                                        <span x-text="year"
-                                                            class="ml-1 text-lg text-gray-600 font-normal"></span>
-                                                    </div>
-                                                    <div>
+                                                    <span x-text="MONTH_NAMES[month]"
+                                                        class="text-lg font-bold text-gray-800"></span>
+                                                    <span x-text="year"
+                                                        class="ml-1 text-lg text-gray-600 font-normal"></span>
+                                                    <div class="pl-16">
                                                         <button type="button"
                                                             class="transition ease-in-out duration-100 inline-flex cursor-pointer hover:bg-gray-200 p-1 rounded-full"
                                                             @click="if (month == 0) {year--; month=11;} else {month--;} getNoOfDays()">
@@ -784,13 +691,11 @@
                                             <div class="flex flex-col items-center">
 
                                                 <div class="w-full flex justify-between items-center mb-2">
-                                                    <div>
-                                                        <span x-text="MONTH_NAMES[month]"
-                                                            class="text-lg font-bold text-gray-800"></span>
-                                                        <span x-text="year"
-                                                            class="ml-1 text-lg text-gray-600 font-normal"></span>
-                                                    </div>
-                                                    <div>
+                                                    <span x-text="MONTH_NAMES[month]"
+                                                        class="text-lg font-bold text-gray-800"></span>
+                                                    <span x-text="year"
+                                                        class="ml-1 text-lg text-gray-600 font-normal"></span>
+                                                    <div class="pl-16">
                                                         <button type="button"
                                                             class="transition ease-in-out duration-100 inline-flex cursor-pointer hover:bg-gray-200 p-1 rounded-full"
                                                             @click="if (month == 0) {year--; month=11;} else {month--;} getNoOfDays()">
@@ -837,14 +742,6 @@
                                                             </div>
                                                         </div>
                                                     </template>
-                                                </div>
-
-
-                                                <div>
-                                                    <button @click.prevent="showDatepicker = false"
-                                                        class="px-2 py-1 border border-gray-300 hover:border-gray-500 bg-[#C82333] text-white font-bold rounded-md">Cancelar</button>
-
-
                                                 </div>
                                             </div>
                                         </div>
@@ -980,7 +877,7 @@
                                     ACEPTAR
                                 </button>
                             </div>
-
+                            <input type="hidden" id="tipoViaje" name="tipoViaje" value="ida">
                         </div>
                     </div>
                     <div class="mx-auto p-0">
@@ -989,7 +886,7 @@
                             <div class="input-with-svg mx-8 sm:mx-10">
                                 <button
                                     class="w-full bg-[#C82333] text-white font-bold text-lg rounded-lg py-3 px-7 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
-                                    disabled>
+                                    id="buscarViajeBtn" onclick="redireccionarPaso1()" disabled>
                                     BUSCAR VIAJE
                                 </button>
                             </div>
@@ -1406,43 +1303,26 @@
                 <div class="slider-container lg:hidden">
                     <div class="slider slider-3">
                         <div class="slide">
-                            <img src="banner_noreste.webp" alt="Banner Noreste"
+                            <img src="noreste.webp" alt="Banner Noreste"
                                 class="w-36 h-auto rounded-lg sm:h-auto sm:w-auto" width="30px" height="30px">
-                            <div class="slide-text text-xs text-left">
-                                <p class="text-white font-semibold text-xs text-center sm:text-base">Nuevo Laredo /
-                                    Reynosa</p>
-                                <p class="text-white font-semibold text-xs text-center sm:text-base">Matamoros /
-                                    Monterrey</p>
-                            </div>
+
                         </div>
                         <div class="slide">
-                            <img src="banner_omex.webp" alt="Banner OMEX" class="w-36 h-auto rounded-lg" width="30px"
+                            <img src="omex.webp" alt="Banner OMEX" class="w-36 h-auto rounded-lg" width="30px"
                                 height="30px">
-                            <div class="slide-text text-left">
-                                <p class="text-white font-semibold text-xs sm:text-base">McAllen / Monterrey</p>
-                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="hidden lg:flex lg:space-x-4 w-full">
                     <!-- Imagen 1 -->
                     <div class="w-full">
-                        <img src="banner_noreste_lg.webp" alt="Banner Noreste" class="w-auto h-auto rounded-lg"
-                            width="0px" height="0px">
-                        <div class="slide-text1 text-xs text-left">
-                            <p class="text-white font-semibold text-xs text-center sm:text-base">Nuevo Laredo /
-                                Reynosa</p>
-                            <p class="text-white font-semibold text-xs text-center sm:text-base">Matamoros /
-                                Monterrey</p>
-                        </div>
+                        <img src="noreste.webp" alt="Banner Noreste" class="w-auto h-auto rounded-lg" width="0px"
+                            height="0px">
                     </div>
                     <!-- Imagen 2 -->
                     <div class="w-full">
-                        <img src="banner_omex_lg.webp" alt="Banner OMEX" class="w-auto h-auto rounded-lg" width="0px"
+                        <img src="omex.webp" alt="Banner OMEX" class="w-auto h-auto rounded-lg" width="0px"
                             height="0px">
-                        <div class="slide-text2 text-left">
-                            <p class="text-white font-semibold text-xs sm:text-base">McAllen / Monterrey</p>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -1641,6 +1521,7 @@
     <!-- SCRIPT DEL CALENDARIO -->
     <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.6/dist/flatpickr.min.js"></script>
     <script>
+
         const MONTH_NAMES = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Novimiembre', 'Diciembre'];
         const DAYS = ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'];
         document.addEventListener('alpine:init', () => {
@@ -2122,6 +2003,16 @@
             const countElement = document.getElementById(`${type}Count`);
             countElement.textContent = selectedCounts[type];
         }
+    </script>
+    <script>
+        function redireccionarPaso1() {
+            // Obtener el tipo de viaje seleccionado
+            var tipoViaje = document.getElementById("tipoViaje").value;
+
+            // Redirigir a la página paso1
+            window.location.href = "Paso1.html?tipoViaje=" + tipoViaje;
+        }
+
     </script>
 
     <!-- SCRIPT DEL CAROUSEL -->
