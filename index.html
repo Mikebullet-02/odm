@@ -214,23 +214,6 @@
     <hr class="w-full h-1.5 bg-[#C82333] pt-0 pb-0 h-0">
 
     <div class="general h-full">
-        <script>
-            function cargarJQuery() {
-                var script = document.createElement('script');
-                script.src = 'https://code.jquery.com/jquery-3.6.0.min.js';
-                script.onload = function () {
-                    $(document).ready(function () {
-                        $('#origenSelect').select2();
-
-                        $('#origenSelect').on('select2:select', function (e) {
-                            const selectedValue = e.params.data.id;
-                            $('#origenSelect').val(selectedValue).trigger('change');
-                        });
-                    });
-                };
-                document.head.appendChild(script);
-            }
-        </script>
         <div class="bg-[#1583C9] lg:hidden">
             <div class="w-full inline-flex items-center bg-[#1583C9] pt-5">
                 <img src="Tel_Movil.svg" class="ml-8 sm:ml-14" alt="telefono CETAC" width="192px" height="10px">
@@ -256,7 +239,7 @@
                     class="lg:grid lg:grid-cols-3 lg:gap-1 mx-0 lg:mx-36 xl:mx-56 2xl:mx-96 justify-center items-center p-0 space-y-3 lg:space-y-0">
                     <!-- Nivel 1-->
                     <div class="input-with-svg mx-8 lg:mx-0  lg:col-span-1 px-0 sm:mx-10 lg:ml-0">
-                        <select id="origenSelect" onclick="cargarJQuery()">
+                        <select id="origenSelect">
                             <option selected="selected" disabled="">¿De Dónde Sales?</option>
                             <option value="ACR">Acambaro Gto</option>
                             <option value="ACT">Actopan Hgo</option>
