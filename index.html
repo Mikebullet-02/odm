@@ -636,8 +636,7 @@
                                                     </template>
                                                     <template x-for="(date, dateIndex) in no_of_days" :key="dateIndex">
                                                         <div style="width: 14.28%">
-                                                            <div @click="getDateValue(date, false)"
-                                                                @mouseenter="getDateValue(date, true)" x-text="date"
+                                                            <div @click="getDateValue(date, false)" x-text="date"
                                                                 class="p-1 cursor-pointer text-center text-sm leading-none leading-loose transition ease-in-out duration-100"
                                                                 :class="{'font-bold': isToday(date) == true, 'bg-blue-800 text-white rounded-l-full': isDateFrom(date) == true, 'bg-blue-800 text-white rounded-r-full': isDateTo(date) == true, 'bg-blue-200': isInRange(date) == true }">
                                                             </div>
