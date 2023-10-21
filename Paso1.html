@@ -4,6 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="pagmaestra-favicon.ico">
+    <title> ODM | Selecciona tu horario </title>
+    <meta name="description"
+        content="Viaja a destinos en Estados Unidos, Houston, Dallas, San Antonio, El Paso, 10% de descuento comprando por internet" />
+    <meta name="keywords"
+        content="Viaja a destinos en Estados Unidos, Houston, Dallas, San Antonio, El Paso, 10% de descuento comprando por internet">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="shortcut icon" href="pagmaestra-favicon.ico">
 
@@ -71,6 +77,205 @@
             <div class="lg:w-1/3 bg-[#003368] p-4 pt-5 mx-0 text-white text-center font-bold rounded-lg mb-8 lg:h-28">
                 <p class="uppercase">Origen: México Central Norte</p>
                 <p class="uppercase">Destino: Colima, Col.</p>
+            </div>
+            <div class="flex w-full  lg:col-span-1" id="datepickerRange">
+                <div x-data="app" x-cloak class="w-full">
+                    <div class="container mx-auto py-0 md:py-0">
+                        <div class="flex items-center sm:ml-0 lg:ml-0">
+                            <div class="flex space-x-8 lg:space-x-4 w-full" @keydown.escape="closeDatepicker()"
+                                @click.outside="closeDatepicker()">
+                                <div
+                                    class="input-container flex justify-between flex-nowrap mx-0 sm:mx-10 lg:mx-0 w-full lg:mr-2">
+                                    <div class="input-container flex items-center mr-2">
+                                        <div class="input-with-svg mr-0 sm:ml-0 mr-0 sm:mr-0 lg:col-span-1 px-0 w-full">
+                                            <div class="relative">
+                                                <input type="text" placeholder="FECHA DE REGRESO"
+                                                    @click="endToShow = 'to'; init(); showDatepicker = true"
+                                                    :value="boletoAbierto ? 'FECHA ABIERTA' : formatDate(dateTo)"
+                                                    :class="{'font-semibold': endToShow == 'to' }" id="fechaEspecifica"
+                                                    @click="selectDateFrom" autocomplete="off"
+                                                    class="border border-white pl-0 w-full lg:w-[115%] 2xl:w-[117%] rounded-md border border-white h-12 placeholder-center bg-[#C82333] text-white font-semibold" />
+                                                <img src="calendario.svg" alt="" class="absolute w-8 h-8 right-3 top-3">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="input-container flex items-center">
+                                        <div
+                                            class="input-with-svg mx-0 sm:ml-0 mr-0 sm:mr-0 lg:col-span-1 px-0 w-full lg:mr-2">
+                                            <div class="relative">
+                                                <input type="text" placeholder="FECHA DE REGRESO"
+                                                    @click="endToShow = 'to'; init(); showDatepicker = true"
+                                                    :value="boletoAbierto ? 'FECHA ABIERTA' : formatDate(dateTo)"
+                                                    :class="{'font-semibold': endToShow == 'to' }" id="fechaEspecifica"
+                                                    @click="selectDateFrom" autocomplete="off"
+                                                    class="border border-white pl-0 w-full lg:w-[115%] 2xl:w-[117%] rounded-md border border-white h-12 placeholder-center bg-transparent text-white font-semibold" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <style>
+                                    #fecha-ida::placeholder,
+                                    #fechaEspecifica::placeholder {
+                                        color: white;
+                                    }
+                                </style>
+
+                                <div class="absolute bg-white mt-2 rounded-lg shadow p-4 sm:w-80 w-10/12 z-50"
+                                    x-show="showDatepicker" x-transition>
+                                    <div class="flex flex-col items-center">
+
+                                        <div class="w-full flex justify-between items-center mb-2">
+                                            <div>
+                                                <span x-text="MONTH_NAMES[month]"
+                                                    class="text-lg font-bold text-gray-800"></span>
+                                                <span x-text="year"
+                                                    class="ml-1 text-lg text-gray-600 font-normal"></span>
+                                            </div>
+                                            <div>
+                                                <button type="button"
+                                                    class="transition ease-in-out duration-100 inline-flex cursor-pointer hover:bg-gray-200 p-1 rounded-full"
+                                                    @click="if (month == 0) {year--; month=11;} else {month--;} getNoOfDays()">
+                                                    <svg class="h-6 w-6 text-gray-500 inline-flex" fill="none"
+                                                        viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="2" d="M15 19l-7-7 7-7" />
+                                                    </svg>
+                                                </button>
+                                                <button type="button"
+                                                    class="transition ease-in-out duration-100 inline-flex cursor-pointer hover:bg-gray-200 p-1 rounded-full"
+                                                    @click="if (month == 11) {year++; month=0;} else {month++;}; getNoOfDays()">
+                                                    <svg class="h-6 w-6 text-gray-500 inline-flex" fill="none"
+                                                        viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="2" d="M9 5l7 7-7 7" />
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <div class="w-full flex flex-wrap mb-3 -mx-1">
+                                            <template x-for="(day, index) in DAYS" :key="index">
+                                                <div style="width: 14.26%" class="px-1">
+                                                    <div x-text="day"
+                                                        class="text-gray-800 font-medium text-center text-xs">
+                                                    </div>
+                                                </div>
+                                            </template>
+                                        </div>
+
+                                        <div class="flex flex-wrap -mx-1">
+                                            <template x-for="blankday in blankdays">
+                                                <div style="width: 14.28%"
+                                                    class="text-center border p-1 border-transparent text-sm">
+                                                </div>
+                                            </template>
+                                            <template x-for="(date, dateIndex) in no_of_days" :key="dateIndex">
+                                                <div style="width: 14.28%">
+                                                    <div @click="getDateValue(date, false)"
+                                                        @mouseenter="getDateValue(date, true)" x-text="date"
+                                                        class="p-1 cursor-pointer text-center text-sm leading-none leading-loose transition ease-in-out duration-100"
+                                                        :class="{'font-bold': isToday(date) == true, 'bg-blue-800 text-white rounded-l-full': isDateFrom(date) == true, 'bg-blue-800 text-white rounded-r-full': isDateTo(date) == true, 'bg-blue-200': isInRange(date) == true }">
+                                                    </div>
+                                                </div>
+                                            </template>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex w-full  lg:col-span-1" id="datepickerSingle" x-show="showDatepicker">
+                <div x-data="app" x-cloak class="w-full">
+                    <div class="container py-0 md:py-0">
+                        <div class="flex items-center mx-0 sm:ml-0 w-full">
+                            <div class="flex space-x-8 lg:space-x-4 w-full" @keydown.escape="closeDatepicker()"
+                                @click.outside="closeDatepicker()">
+                                <div class="input-with-svg mx-6 sm:mx-10 lg:col-span-1 px-2 sm:px-0 w-full">
+                                    <div class="relative flex items-center">
+                                        <input type="text" @click="endToShow = 'from'; init(); showDatepicker = true"
+                                            :value="formatDate(dateFrom)"
+                                            :class="{'font-semibold': endToShow == 'from' }" @click="selectDateFrom"
+                                            class="focus:outline-none border-none pl-12 w-full rounded-md border-r border-gray-300 h-12 sm:w-full lg:w-[310px] 2xl:w-[105%] md:w-full"
+                                            placeholder="FECHA DE IDA" />
+                                        <img src="calendario.svg" alt="" class="absolute w-8 h-8 ml-8">
+                                    </div>
+                                </div>
+
+                                <div class="absolute bg-white mt-2 rounded-lg shadow p-4 sm:w-80 w-10/12 z-50"
+                                    x-show="showDatepicker" x-transition>
+                                    <div class="flex flex-col items-center">
+
+                                        <div class="w-full flex justify-between items-center mb-2">
+                                            <div>
+                                                <span x-text="MONTH_NAMES[month]"
+                                                    class="text-lg font-bold text-gray-800"></span>
+                                                <span x-text="year"
+                                                    class="ml-1 text-lg text-gray-600 font-normal"></span>
+                                            </div>
+                                            <div>
+                                                <button type="button"
+                                                    class="transition ease-in-out duration-100 inline-flex cursor-pointer hover:bg-gray-200 p-1 rounded-full"
+                                                    @click="if (month == 0) {year--; month=11;} else {month--;} getNoOfDays()">
+                                                    <svg class="h-6 w-6 text-gray-500 inline-flex" fill="none"
+                                                        viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="2" d="M15 19l-7-7 7-7" />
+                                                    </svg>
+                                                </button>
+                                                <button type="button"
+                                                    class="transition ease-in-out duration-100 inline-flex cursor-pointer hover:bg-gray-200 p-1 rounded-full"
+                                                    @click="if (month == 11) {year++; month=0;} else {month++;}; getNoOfDays()">
+                                                    <svg class="h-6 w-6 text-gray-500 inline-flex" fill="none"
+                                                        viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="2" d="M9 5l7 7-7 7" />
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <div class="w-full flex flex-wrap mb-3 -mx-1">
+                                            <template x-for="(day, index) in DAYS" :key="index">
+                                                <div style="width: 14.26%" class="px-1">
+                                                    <div x-text="day"
+                                                        class="text-gray-800 font-medium text-center text-xs">
+                                                    </div>
+                                                </div>
+                                            </template>
+                                        </div>
+
+                                        <div class="flex flex-wrap -mx-1">
+                                            <template x-for="blankday in blankdays">
+                                                <div style="width: 14.28%"
+                                                    class="text-center border p-1 border-transparent text-sm">
+                                                </div>
+                                            </template>
+                                            <template x-for="(date, dateIndex) in no_of_days" :key="dateIndex">
+                                                <div style="width: 14.28%">
+                                                    <div @click="getDateValue(date, false); showTicketSelector = true"
+                                                        @mouseenter="getDateValue(date, true)" x-text="date"
+                                                        class="p-1 cursor-pointer text-center text-sm leading-none leading-loose transition ease-in-out duration-100"
+                                                        :class="{'font-bold': isToday(date) == true, 'bg-blue-800 text-white rounded-l-full': isDateFrom(date) == true, 'bg-blue-800 text-white rounded-r-full': isDateFrom(date) == true, 'bg-blue-200': isInRange(date) == true }">
+                                                    </div>
+                                                </div>
+                                            </template>
+                                        </div>
+
+
+                                        <div>
+                                            <button @click.prevent="showDatepicker = false"
+                                                class="px-2 py-1 border border-gray-300 hover:border-gray-500 bg-[#C82333] text-white font-bold rounded-md">Cancelar</button>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="lg:w-2/3 space-y-4">
@@ -461,6 +666,263 @@
             iniciarContador();
         }
     </script>
+    <!-- SCRIPT DEL CALENDARIO -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.6/dist/flatpickr.min.js"></script>
+    <script>
+        const MONTH_NAMES = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Novimiembre', 'Diciembre'];
+        const DAYS = ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'];
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('app', () => ({
+                dateFrom: null,
+                showDatepicker: false,
+                showFromHourPicker: false,
+                showToHourPicker: false,
+                timePickerDisabled: true,
+                outputDateToValue: '',
+                currentDate: null,
+                dateFrom: null,
+                dateTo: null,
+                endToShow: '',
+                hour24FromValue: 0,
+                hour24ToValue: 23,
+                minuteFromValue: '00',
+                minuteToValue: '59',
+                selecting: false,
+                month: '',
+                year: '',
+                no_of_days: [],
+                blankdays: [],
+                hoursFrom: [],
+                hoursTo: [],
+                minutesFrom: [],
+                minutesTo: [],
+                meridiemsFrom: [],
+                meridiemsTo: [],
+                showDatepickerRange: false,
+                showDatepickerSingle: false,
+                boletoAbierto: false,
+                showTicketSelector: false,
+                openDatepickerRange() {
+                    this.showDatepickerRange = true;
+                },
+
+                openDatepickerSingle() {
+                    this.showDatepickerSingle = true;
+                },
+
+                convertFromYmd(dateYmd) {
+                    const year = Number(dateYmd.substr(0, 4));
+                    const month = Number(dateYmd.substr(5, 2)) - 1;
+                    const date = Number(dateYmd.substr(8, 2));
+
+                    return new Date(year, month, date);
+                },
+
+                convertToYmd(dateObject) {
+                    const year = dateObject.getFullYear();
+                    const month = dateObject.getMonth() + 1;
+                    const date = dateObject.getDate();
+
+                    return year + "-" + ('0' + month).slice(-2) + "-" + ('0' + date).slice(-2);
+                },
+
+                init() {
+                    this.boletoAbierto = false;
+                    if (!this.dateFrom) {
+                        if (this.dateFromYmd) {
+                            this.dateFrom = this.convertFromYmd(this.dateFromYmd);
+                        }
+                    }
+                    if (!this.dateTo) {
+                        if (this.dateToYmd) {
+                            this.dateTo = this.convertFromYmd(this.dateToYmd);
+                        }
+                    }
+                    if (!this.dateFrom) {
+                        this.dateFrom = this.dateTo;
+                    }
+                    if (!this.dateTo) {
+                        this.dateTo = this.dateFrom;
+                    }
+                    if (this.endToShow === 'from' && this.dateFrom) {
+                        this.currentDate = this.dateFrom;
+                    } else if (this.endToShow === 'to' && this.dateTo) {
+                        this.currentDate = this.dateTo;
+                    } else {
+                        this.currentDate = new Date();
+                    }
+                    currentMonth = this.currentDate.getMonth();
+                    currentYear = this.currentDate.getFullYear();
+                    if (this.month !== currentMonth || this.year !== currentYear) {
+                        this.month = currentMonth;
+                        this.year = currentYear;
+                        this.getNoOfDays();
+                    }
+                },
+
+
+                isToday(date) {
+                    const today = new Date();
+                    const d = new Date(this.year, this.month, date);
+
+                    return today.toDateString() === d.toDateString();
+                },
+
+                isDateFrom(date) {
+                    const d = new Date(this.year, this.month, date);
+
+                    if (!this.dateFrom) {
+                        return false;
+                    }
+
+                    return d.getTime() === this.dateFrom.getTime();
+                },
+
+                isDateTo(date) {
+                    const d = new Date(this.year, this.month, date);
+
+                    if (!this.dateTo) {
+                        return false;
+                    }
+
+                    return d.getTime() === this.dateTo.getTime();
+                },
+
+                isInRange(date) {
+                    const d = new Date(this.year, this.month, date);
+
+                    return d > this.dateFrom && d < this.dateTo;
+                },
+
+                outputDateValues() {
+                    if (this.dateFrom) {
+                        const timeFromString = this.getTimeString('from');
+                        const dateFromString = this.convertToYmd(this.dateFrom);
+                        const dateTimeFrom = new Date(dateFromString + 'T' + timeFromString);
+                    }
+                    if (this.boletoAbierto) {
+                        this.outputDateToValue = "Boleto abierto";
+                    } else {
+                        // Resto del código que actualiza las fechas como lo tienes actualmente
+                    }
+                    this.showDatepickerSingle = !this.showDatepickerSingle;
+                    this.endToShow = '';
+                    this.showDatepickerSingle = !this.showDatepickerSingle;
+                    this.endToShow = '';
+                    this.showTicketSelector = true;
+                    document.getElementById('ticketSelector').classList.remove('hidden');
+                },
+
+                formatDateTime(dateTime, meridiem) {
+                    const dayName = DAYS[dateTime.getDay()];
+                    const month = MONTH_NAMES[dateTime.getMonth()];
+                    const date = dateTime.getDate();
+                    const year = dateTime.getFullYear();
+                    //const second  = dateTime.getSeconds().toString().padStart(2, '0');
+                    return dayName + ' ' + month + ' ' + date + ' ' + year + ' ' + hourString + ':' + minute + meridiem;
+                },
+
+                getTimeString(end) {
+                    const hour = end === 'from' ? this.hour24FromValue : this.hour24ToValue;
+                    const minute = end === 'from' ? this.minuteFromValue : this.minuteToValue;
+                    const second = end === 'from' ? '00' : '59';
+                    return hour.toString().padStart(2, '0') + ':' + minute + ':' + second;
+                },
+
+                getDateValue(date, temp) {
+                    // if we are in mouse over mode but have not started selecting a range, there is nothing more to do.
+                    if (temp && !this.selecting) {
+                        return;
+                    }
+                    let selectedDate = new Date(this.year, this.month, date);
+                    const today = new Date();
+                    today.setHours(0, 0, 0, 0); // Establecer la hora en 00:00:00 para comparar solo las fechas
+                    if (selectedDate < today) {
+                        return;
+                    }
+                    if (this.endToShow === 'from') {
+                        this.dateFrom = selectedDate;
+                        if (!this.dateTo) {
+                            this.dateTo = selectedDate;
+                        } else if (selectedDate > this.dateTo) {
+                            this.endToShow = 'to';
+                            this.dateFrom = this.dateTo;
+                            this.dateTo = selectedDate;
+                        }
+                    } else if (this.endToShow === 'to') {
+                        this.dateTo = selectedDate;
+                        if (!this.dateFrom) {
+                            this.dateFrom = selectedDate;
+                        } else if (selectedDate < this.dateFrom) {
+                            this.endToShow = 'from';
+                            this.dateTo = this.dateFrom;
+                            this.dateFrom = selectedDate;
+                        }
+                    }
+                    this.timePickerDisabled = !this.dateFrom;
+                    this.showDatepicker = false;
+
+                    if (!temp) {
+                        this.selecting = !this.selecting;
+                    }
+                    this.showTicketSelector = true;
+                },
+
+                getNoOfDays() {
+                    let daysInMonth = new Date(this.year, this.month + 1, 0).getDate();
+
+                    // find where to start calendar day of week
+                    let dayOfWeek = new Date(this.year, this.month).getDay();
+                    let blankdaysArray = [];
+                    for (var i = 1; i <= dayOfWeek; i++) {
+                        blankdaysArray.push(i);
+                    }
+
+                    let daysArray = [];
+                    for (var i = 1; i <= daysInMonth; i++) {
+                        daysArray.push(i);
+                    }
+
+                    this.blankdays = blankdaysArray;
+                    this.no_of_days = daysArray;
+                },
+
+                closeDatepicker() {
+                    this.endToShow = '';
+                    this.showDatepicker = false;
+                },
+                formatDate(date) {
+                    if (date === null) {
+                        return ""; // O cualquier otro valor que desees para representar una fecha no definida
+                    }
+                    const day = ('0' + date.getDate()).slice(-2);
+                    const month = ('0' + (date.getMonth() + 1)).slice(-2);
+                    const year = date.getFullYear();
+                    return `${day}/${month}/${year}`;
+                },
+
+                dateFrom: null, // Agrega este valor inicial
+                dateTo: null,   // Agrega este valor inicial
+
+            }))
+        })
+    </script>
+    <script>document.addEventListener("DOMContentLoaded", function () {
+            var params = new URLSearchParams(window.location.search);
+            var tipoViaje = params.get("tipoViaje");
+
+            // Dependiendo del tipo de viaje, mostrar el datepicker correspondiente
+            if (tipoViaje === "ida") {
+                // Mostrar datepicker de viaje de ida
+                // ...
+            } else if (tipoViaje === "redondoAbierto") {
+                // Mostrar datepicker de viaje redondo con fecha de regreso abierta
+                // ...
+            } else if (tipoViaje === "redondoEspecifico") {
+                // Mostrar datepicker de viaje redondo con fechas específicas
+                // ...
+            }
+        });</script>
 </body>
 
 </html>
