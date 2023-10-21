@@ -9,7 +9,7 @@
     <title> Omnibus de México | Boletos de Autobús con Descuento </title>
     <meta name="description"
         content="Omnibus de México  compra tus boletos de autobús en línea y obten 10% de descuento en viaje sencillo ó 15% en viaje redondo *Aplican restricciones. *" />
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com/3.3.3"></script>
     <style>
         /* Estilo para el logo de autobús */
         .input-with-svg {
@@ -29,7 +29,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <!-- jQuery -->
 
-
     <!-- Select2 CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
 
@@ -39,7 +38,6 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
     <link rel="stylesheet" type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
-
 
     <style>
         /* Ajusta la altura del select al mostrar la opción seleccionada */
@@ -123,8 +121,6 @@
             font-display: swap;
         }
     </style>
-
-
 
     <style>
         [x-cloak] {
@@ -218,6 +214,23 @@
     <hr class="w-full h-1.5 bg-[#C82333] pt-0 pb-0 h-0">
 
     <div class="general h-full">
+        <script>
+            function cargarJQuery() {
+                var script = document.createElement('script');
+                script.src = 'https://code.jquery.com/jquery-3.6.0.min.js';
+                script.onload = function () {
+                    $(document).ready(function () {
+                        $('#origenSelect').select2();
+
+                        $('#origenSelect').on('select2:select', function (e) {
+                            const selectedValue = e.params.data.id;
+                            $('#origenSelect').val(selectedValue).trigger('change');
+                        });
+                    });
+                };
+                document.head.appendChild(script);
+            }
+        </script>
         <div class="bg-[#1583C9] lg:hidden">
             <div class="w-full inline-flex items-center bg-[#1583C9] pt-5">
                 <img src="Tel_Movil.svg" class="ml-8 sm:ml-14" alt="telefono CETAC" width="192px" height="10px">
@@ -243,7 +256,7 @@
                     class="lg:grid lg:grid-cols-3 lg:gap-1 mx-0 lg:mx-36 xl:mx-56 2xl:mx-96 justify-center items-center p-0 space-y-3 lg:space-y-0">
                     <!-- Nivel 1-->
                     <div class="input-with-svg mx-8 lg:mx-0  lg:col-span-1 px-0 sm:mx-10 lg:ml-0">
-                        <select id="origenSelect">
+                        <select id="origenSelect" onclick="cargarJQuery()">
                             <option selected="selected" disabled="">¿De Dónde Sales?</option>
                             <option value="ACR">Acambaro Gto</option>
                             <option value="ACT">Actopan Hgo</option>
