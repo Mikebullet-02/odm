@@ -1477,8 +1477,8 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
     <link rel="stylesheet" type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script defer src="https://unpkg.com/alpinejs@3.7.0/dist/cdn.min.js"></script>
     <!-- SCRIPT DEL MENU DE HAMBURGUESA -->
@@ -1779,9 +1779,18 @@
         $(document).ready(function () {
             $('#origenSelect').select2();
 
+            var isButtonDisabled = false; // Variable para rastrear si el botón está deshabilitado
+
             $('#origenSelect').on('select2:select', function (e) {
-                const selectedValue = e.params.data.id;
-                $('#origenSelect').val(selectedValue).trigger('change');
+                if (!isButtonDisabled) {
+                    isButtonDisabled = true; // Deshabilitar el botón
+                    setTimeout(function () {
+                        isButtonDisabled = false; // Habilitar el botón después de un tiempo
+                    }, 2000); // Después de 2 segundos (puedes ajustar el tiempo según tus necesidades)
+
+                    const selectedValue = e.params.data.id;
+                    $('#origenSelect').val(selectedValue).trigger('change');
+                }
             });
         });
     </script>
@@ -1822,12 +1831,7 @@
             // ... Tu código actual ...
         });
 
-        // Coloca el fragmento aquí
-        if (/Mobi/.test(navigator.userAgent)) {
-            $(document).on('touchstart touchmove wheel', function (e) {
-                e.preventDefault();
-            }, { passive: true });
-        }
+
         $('#datepickerRange').addClass('hidden');
         $('#datepickerSingle').addClass('hidden');
 
