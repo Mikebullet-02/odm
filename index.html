@@ -572,13 +572,14 @@
                                                 <div
                                                     class="input-with-svg mx-0 sm:ml-0 mr-0 sm:mr-0 lg:col-span-1 px-0 w-full">
                                                     <div class="relative">
-                                                        <input type="text" placeholder="FECHA DE REGRESO"
+                                                        <input type="text"
                                                             @click="endToShow = 'to'; init(); showDatepicker = true"
                                                             :class="{'font-semibold': endToShow == 'to' }"
                                                             id="fechaEspecifica" @click="selectDateFrom"
                                                             autocomplete="off"
-                                                            class="focus:outline-none border-none pl-5 lg:pl-3 w-full lg:w-[115%] 2xl:w-[117%] rounded-md border border-gray-300 h-12 placeholder-center"
-                                                            :value="boletoAbierto ? 'FECHA ABIERTA' : formatDate(dateTo)" />
+                                                            class="focus:outline-none border-none pl-5 sm:pl-7 lg:pl-3 w-full lg:w-[115%] 2xl:w-[117%] rounded-md border border-gray-300 h-12 placeholder-center"
+                                                            :value="boletoAbierto ? 'FECHA ABIERTA' : formatDate(dateTo)"
+                                                            :placeholder="boletoAbierto ? 'ABIERTO' : 'FECHA DE REGRESO'" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -1653,7 +1654,7 @@
                         const dateTimeFrom = new Date(dateFromString + 'T' + timeFromString);
                     }
                     if (this.boletoAbierto) {
-                        this.outputDateToValue = "Boleto abierto";
+                        this.outputDateToValue = "ABIERTO";
                     } else {
                         // Resto del código que actualiza las fechas como lo tienes actualmente
                     }
