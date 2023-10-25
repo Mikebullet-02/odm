@@ -210,14 +210,14 @@
     <hr class="w-full h-1.5 bg-[#C82333] pt-0 pb-0 h-0">
 
     <div class="general h-full">
-        <div class="bg-[#1583C9] lg:hidden">
-            <div class="w-full inline-flex items-center bg-[#1583C9] pt-5">
+        <div class="bg-[#1D93D2] lg:hidden">
+            <div class="w-full inline-flex items-center bg-[#1D93D2] pt-5">
                 <img src="Tel_Movil.svg" class="ml-8 sm:ml-14" alt="telefono CETAC" width="192px" height="10px">
                 <button class="bg-[#C82333] text-white border-white rounded rounded-lg ml-1 py-[8px] px-3"><a
                         href="intercambio.html">Intercambio</a></button>
             </div>
         </div>
-        <div class="bg-[#1583C9]">
+        <div class="bg-[#1D93D2]">
             <form action="Paso1.html">
                 <div
                     class="ml-8 sm:ml-14 lg:ml-40 xl:ml-64 2xl:ml-[400px] pt-3 lg:pt-5 py-3 space-x-5 flex max-w-2xl mx-auto">
@@ -550,7 +550,7 @@
                                     <div class="flex space-x-8 lg:space-x-4 w-full" @keydown.escape="closeDatepicker()"
                                         @click.outside="closeDatepicker()">
                                         <div
-                                            class="input-container flex justify-between flex-nowrap mx-8 sm:mx-10 lg:mx-0 w-full">
+                                            class="input-container flex justify-between flex-nowrap mx-8 sm:mx-10 lg:mx-0 w-full max-w-[1500px]">
                                             <div class="input-container flex items-center">
                                                 <div
                                                     class="input-with-svg mr-2 sm:mr-28 sm:ml-0 lg:col-span-1 w-full lg:mr-0">
@@ -562,7 +562,7 @@
                                                             :value="formatDate(dateFrom)"
                                                             :class="{'font-semibold': endToShow == 'from' }"
                                                             autocomplete="off" id="fecha-ida"
-                                                            class="w-full border border-gray-300 rounded-lg py-2 lg:w-[125%] xl:w-[115%] 2xl:w-[120%] pl-11 pr-3 focus:outline-none h-12"
+                                                            class="w-full border border-gray-300 rounded-lg py-2 lg:w-[125%] xl:w-[115%] 2xl:w-full pl-11 pr-3 focus:outline-none h-12"
                                                             placeholder="FECHA DE IDA" />
                                                     </div>
                                                 </div>
@@ -576,7 +576,7 @@
                                                             :class="{'font-semibold': endToShow == 'to' }"
                                                             id="fechaEspecifica" @click="selectDateFrom"
                                                             autocomplete="off"
-                                                            class="focus:outline-none border-none pl-5 sm:pl-7 lg:pl-3 w-full lg:w-[115%] 2xl:w-[117%] rounded-md border border-gray-300 h-12 placeholder-center"
+                                                            class="focus:outline-none border-none pl-5 sm:pl-7 lg:pl-3 w-full lg:w-[115%] 2xl:w-[110%] rounded-md border border-gray-300 h-12 placeholder-center"
                                                             :value="boletoAbierto ? 'FECHA ABIERTA' : formatDate(dateTo)"
                                                             :placeholder="boletoAbierto ? 'ABIERTO' : 'FECHA DE REGRESO'" />
                                                     </div>
@@ -672,7 +672,7 @@
                                                     :value="formatDate(dateFrom)"
                                                     :class="{'font-semibold': endToShow == 'from' }"
                                                     @click="selectDateFrom"
-                                                    class="focus:outline-none border-none pl-12 w-full rounded-md border-r border-gray-300 h-12 sm:w-full lg:w-[310px] 2xl:w-[330px] md:w-full"
+                                                    class="focus:outline-none border-none pl-12 w-full rounded-md border-r border-gray-300 h-12 sm:w-full lg:w-[310px] 2xl:w-[370px] md:w-full"
                                                     placeholder="FECHA DE IDA" />
                                                 <img src="calendario.svg" alt="" class="absolute w-8 h-8 ml-8">
                                             </div>
@@ -890,7 +890,7 @@
             </form>
         </div>
         <!-- FORMAS DE PAGO -->
-        <div class="formas-de-pago w-full h-auto bg-[#1583C9] pt-3 px-8">
+        <div class="formas-de-pago w-full h-auto bg-[#1D93D2] pt-3 px-8">
             <!-- Formas de Pago Electrónico (Móvil) -->
             <div class="flex justify-center items-center space-x-6 lg:hidden">
                 <div class="visa mb-4">
@@ -938,9 +938,9 @@
             </div>
         </div>
         <!-- SLIDERS -->
-        <div class="flex justify-center items-center py-3 pl-8 pr-8 bg-[#1583C9]">
+        <div class="flex justify-center items-center py-3 pl-8 pr-8 bg-[#1D93D2]">
             <div
-                class="w-full sm:w-9/12 md:w-6/12 lg:w-7/12 xl:w-1/2 2xl:w-2/5 rounded-lg overflow-hidden bg-[#1583C9]">
+                class="w-full sm:w-9/12 md:w-6/12 lg:w-7/12 xl:w-1/2 2xl:w-2/5 rounded-lg overflow-hidden bg-[#1D93D2]">
                 <div class="slider-container">
                     <div class="slider slider-1">
                         <img src="Banner_App.webp" alt="Banner Aplicacion" loading="lazy"
@@ -959,13 +959,13 @@
             </div>
         </div>
 
-        <h1 class="text-white text-xl bg-[#1583C9] text-center font-bold pt-5">VIAJES MÁS SOLICITADOS</h1>
+        <h1 class="text-white text-xl bg-[#1D93D2] text-center font-bold pt-5">VIAJES MÁS SOLICITADOS</h1>
 
-        <div class="flex justify-center items-center py-3 pl-8 pr-8 bg-[#1583C9]">
-            <div class="w-full sm:w-9/12 md:w-3/4 lg:w-10/12 xl:w-9/12 rounded-lg overflow-hidden bg-[#1583C9]">
+        <div class="flex justify-center items-center py-3 pl-8 pr-8 bg-[#1D93D2]">
+            <div class="w-full sm:w-9/12 md:w-3/4 lg:w-10/12 xl:w-9/12 rounded-lg overflow-hidden bg-[#1D93D2]">
                 <div class="slider-container lg:hidden">
                     <div class="slider-2">
-                        <div class="relative flex flex-col justify-center overflow-hidden bg-[#1583C9]">
+                        <div class="relative flex flex-col justify-center overflow-hidden bg-[#1D93D2]">
                             <div
                                 class="relative flex h-auto w-72 flex-col bg-white sm:mx-auto sm:max-w-2xl mx-auto my-auto rounded-lg">
                                 <div class="text-center w-full flex items-center relative">
@@ -988,8 +988,9 @@
                                 </div>
                                 <div class="flex-1 mx-auto flex max-w-2xl flex-row">
                                     <img src="Palacio_CD_OBREGON.webp" class="h-24 w-1/2 flex-1 object-cover"
-                                        alt="Palacio Cd. Obregon" />
-                                    <img src="Tijuana.webp" class="h-24 w-1/2 flex-1 object-cover" alt="Tijuana" />
+                                        alt="Palacio Cd. Obregon" loading="lazy" />
+                                    <img src="Tijuana.webp" class="h-24 w-1/2 flex-1 object-cover" alt="Tijuana"
+                                        loading="lazy" />
                                 </div>
                                 <div
                                     class="flex-2 mx-auto px-3 pt-3 flex w-full max-w-md flex-row bg-white justify-center">
@@ -1016,7 +1017,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="relative flex flex-col justify-center overflow-hidden bg-[#1583C9]">
+                        <div class="relative flex flex-col justify-center overflow-hidden bg-[#1D93D2]">
                             <div
                                 class="relative flex h-auto w-72 flex-col bg-white sm:mx-auto sm:max-w-2xl mx-auto my-auto rounded-lg">
                                 <div class="text-center w-full flex items-center relative">
@@ -1039,8 +1040,9 @@
                                 </div>
                                 <div class="flex-1 mx-auto flex max-w-2xl flex-row">
                                     <img src="cdmx_central_norte.webp" class="h-24 w-1/2 flex-1"
-                                        alt="CDMX Central Norte" />
-                                    <img src="Altamira_Tam.webp" class="h-24 w-1/2 flex-1" alt="Altamira Tamaulipas" />
+                                        alt="CDMX Central Norte" loading="lazy" />
+                                    <img src="Altamira_Tam.webp" class="h-24 w-1/2 flex-1" alt="Altamira Tamaulipas"
+                                        loading="lazy" />
                                 </div>
                                 <div
                                     class="flex-2 mx-auto px-3 pt-3 flex w-full max-w-md flex-row bg-white justify-center">
@@ -1067,7 +1069,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="relative flex flex-col justify-center overflow-hidden bg-[#1583C9]">
+                        <div class="relative flex flex-col justify-center overflow-hidden bg-[#1D93D2]">
                             <div
                                 class="relative flex h-auto w-72 flex-col bg-white sm:mx-auto sm:max-w-2xl mx-auto my-auto rounded-lg">
                                 <div class="text-center w-full flex items-center relative">
@@ -1089,9 +1091,9 @@
                                     </div>
                                 </div>
                                 <div class="flex-1 mx-auto flex max-w-2xl flex-row">
-                                    <img src="Catedral_culiacan.webp" class="h-24 w-1/2 flex-1"
-                                        alt="Catedral Culiacán" />
-                                    <img src="Tijuana.webp" class="h-24 w-1/2 flex-1" alt="Tijuana" />
+                                    <img src="Catedral_culiacan.webp" class="h-24 w-1/2 flex-1" alt="Catedral Culiacán"
+                                        loading="lazy" />
+                                    <img src="Tijuana.webp" class="h-24 w-1/2 flex-1" alt="Tijuana" loading="lazy" />
                                 </div>
                                 <div
                                     class="flex-2 mx-auto px-3 pt-3 flex w-full max-w-md flex-row bg-white justify-center">
@@ -1124,7 +1126,7 @@
                 <div class="hidden lg:flex lg:space-x-4">
                     <!-- Imagen 1 -->
                     <div class="flex xl:flex-1 w-auto">
-                        <div class="relative flex flex-col justify-center overflow-hidden bg-[#1583C9]">
+                        <div class="relative flex flex-col justify-center overflow-hidden bg-[#1D93D2]">
                             <div
                                 class="relative flex h-auto w-64 flex-col bg-white sm:mx-auto sm:max-w-2xl mx-auto my-auto rounded-lg">
                                 <div class="text-center w-full flex items-center relative">
@@ -1147,8 +1149,8 @@
                                 </div>
                                 <div class="flex-1 mx-auto flex max-w-2xl flex-row">
                                     <img src="Palacio_CD_OBREGON.webp" class="h-24 w-1/2 flex-1"
-                                        alt="Palacio Cd. Obregon" />
-                                    <img src="Tijuana.webp" class="h-24 w-1/2 flex-1" alt="Tijuana" />
+                                        alt="Palacio Cd. Obregon" loading="lazy" />
+                                    <img src="Tijuana.webp" class="h-24 w-1/2 flex-1" alt="Tijuana" loading="lazy" />
                                 </div>
                                 <div
                                     class="flex-2 mx-auto px-3 pt-3 flex w-full max-w-md flex-row bg-white justify-center">
@@ -1178,7 +1180,7 @@
                     </div>
                     <!-- Imagen 2 -->
                     <div class="flex xl:flex-1 w-auto">
-                        <div class="relative flex flex-col justify-center overflow-hidden bg-[#1583C9]">
+                        <div class="relative flex flex-col justify-center overflow-hidden bg-[#1D93D2]">
                             <div
                                 class="relative flex h-auto w-64 flex-col bg-white sm:mx-auto sm:max-w-2xl mx-auto my-auto rounded-lg">
                                 <div class="text-center w-full flex items-center relative">
@@ -1201,8 +1203,9 @@
                                 </div>
                                 <div class="flex-1 mx-auto flex max-w-2xl flex-row">
                                     <img src="cdmx_central_norte.webp" class="h-24 w-1/2 flex-1"
-                                        alt="CDMX Central Norte" />
-                                    <img src="Altamira_Tam.webp" class="h-24 w-1/2 flex-1" alt="Altamira Tamaulipas" />
+                                        alt="CDMX Central Norte" loading="lazy" />
+                                    <img src="Altamira_Tam.webp" class="h-24 w-1/2 flex-1" alt="Altamira Tamaulipas"
+                                        loading="lazy" />
                                 </div>
                                 <div
                                     class="flex-2 mx-auto px-3 pt-3 flex w-full max-w-md flex-row bg-white justify-center">
@@ -1232,7 +1235,7 @@
                     </div>
                     <!-- Imagen 3 -->
                     <div class="flex  w-auto">
-                        <div class="relative flex flex-col justify-center overflow-hidden bg-[#1583C9]">
+                        <div class="relative flex flex-col justify-center overflow-hidden bg-[#1D93D2]">
                             <div
                                 class="relative flex h-auto w-64 flex-col bg-white sm:mx-auto sm:max-w-2xl mx-auto my-auto rounded-lg">
                                 <div class="text-center w-full flex items-center relative">
@@ -1254,9 +1257,9 @@
                                     </div>
                                 </div>
                                 <div class="flex-1 mx-auto flex max-w-2xl flex-row">
-                                    <img src="Catedral_culiacan.webp" class="h-24 w-1/2 flex-1"
-                                        alt="Catedral Culiacán" />
-                                    <img src="Tijuana.webp" class="h-24 w-1/2 flex-1" alt="Tijuana" />
+                                    <img src="Catedral_culiacan.webp" class="h-24 w-1/2 flex-1" alt="Catedral Culiacán"
+                                        loading="lazy" />
+                                    <img src="Tijuana.webp" class="h-24 w-1/2 flex-1" alt="Tijuana" loading="lazy" />
                                 </div>
                                 <div
                                     class="flex-2 mx-auto px-3 pt-3 flex w-full max-w-md flex-row bg-white justify-center">
@@ -1291,8 +1294,8 @@
 
 
 
-        <div class="flex justify-center items-center py-3 pl-8 pr-8 bg-[#1583C9]">
-            <div class="w-full sm:w-9/12 md:w-3/4 lg:w-10/12 xl:w-9/12 rounded-lg overflow-hidden bg-[#1583C9]">
+        <div class="flex justify-center items-center py-3 pl-8 pr-8 bg-[#1D93D2]">
+            <div class="w-full sm:w-9/12 md:w-3/4 lg:w-10/12 xl:w-9/12 rounded-lg overflow-hidden bg-[#1D93D2]">
                 <div class="slider-container lg:hidden">
                     <div class="slider slider-3">
                         <div class="slide">
@@ -1321,8 +1324,8 @@
             </div>
         </div>
 
-        <div class="flex justify-center items-center py-3 pl-8 pr-8 bg-[#1583C9]">
-            <div class="w-full sm:w-9/12 md:w-3/4 lg:w-10/12 xl:w-9/12 rounded-lg overflow-hidden bg-[#1583C9]">
+        <div class="flex justify-center items-center py-3 pl-8 pr-8 bg-[#1D93D2]">
+            <div class="w-full sm:w-9/12 md:w-3/4 lg:w-10/12 xl:w-9/12 rounded-lg overflow-hidden bg-[#1D93D2]">
                 <div class="slider-container">
                     <div class="slider slider-4">
                         <div class="slide">
