@@ -128,13 +128,29 @@
         </div>
     </div>
     <h1 class="text-white text-xl text-center font-bold lg:text-3xl px-5 py-3 w-full bg-[#1D93D2] lg:pt-8">Selecciona
-        una o todas las operaciones para intercambiar</h1>
-    <div class="text-white text-xl text-center px-5 py-5 w-full bg-[#C82333]">
-        <h1 class="font-bold">Origen: <span class="uppercase font-medium">Manzanillo, Col</span></h1>
-        <h1 class=" font-bold">Destino: <span class="uppercase font-medium">México Central Norte</span></h1>
+        una o todas las operaciones para intercambiar.</h1>
+    <div class="w-full bg-[#1D93D2] px-0 lg:px-28">
+        <div
+            class="text-white text-xl text-center px-5 lg:px-32 py-5 w-full bg-[#C82333] flex flex-col lg:flex-row justify-between items-center">
+            <div class="mb-3 lg:mb-0 flex flex-nowrap lg:block">
+                <h1 class="font-bold">Origen:</h1>
+                <span class="uppercase font-medium">Manzanillo, Col</span>
+            </div>
+            <div class="hidden lg:flex items-center flex ">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white mx-4" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                </svg>
+            </div>
+            <div class="flex flex-nowrap lg:block">
+                <h1 class="font-bold">Destino:</h1>
+                <span class="uppercase font-medium">México Central Norte</span>
+            </div>
+        </div>
     </div>
     <div class="bg-[#1D93D2]">
-        <div class="overflow-x-auto">
+        <div class="overflow-x-auto px-0 lg:px-32">
             <table class="table-auto min-w-full mx-auto bg-gray-200">
                 <thead class="bg-[#1D93D2] text-white">
                     <tr>
@@ -193,7 +209,7 @@
 
     <div class="bg-[#1D93D2] text-white text-base text-center px-5 py-8 w-full">
         <button id="buscar-btn"
-            class="p-3 w-11/12 bg-[#C82333] rounded-lg text-white text-center cursor-pointer border border-white"
+            class="p-3 w-11/12 lg:w-2/5 bg-[#C82333] rounded-lg text-white text-center cursor-pointer border border-white"
             disabled>Aceptar</button>
     </div>
 
