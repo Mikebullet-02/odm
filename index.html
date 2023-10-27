@@ -556,14 +556,14 @@
                                                     class="input-with-svg mr-2 sm:mr-28 sm:ml-0 lg:col-span-1 w-full lg:mr-0">
                                                     <div class="relative">
                                                         <img src="calendario.svg" alt=""
-                                                            class="absolute w-8 h-8 ml-3 mt-1.5 sm:ml-8 lg:ml-2">
+                                                            class="hidden absolute w-8 h-8 ml-3 mt-1.5 sm:ml-8 lg:ml-2">
                                                         <input type="text"
                                                             @click="endToShow = 'from'; init(); showDatepicker = true"
                                                             :value="formatDate(dateFrom)"
                                                             :class="{'font-semibold': endToShow == 'from' }"
                                                             autocomplete="off" id="fecha-ida"
-                                                            class="w-full border border-gray-300 rounded-lg py-2 lg:w-[125%] xl:w-[115%] 2xl:w-full pl-11 pr-3 focus:outline-none h-12"
-                                                            placeholder="FECHA DE IDA" />
+                                                            class="w-full border border-gray-300 rounded-lg py-2 lg:w-[125%] xl:w-[115%] 2xl:w-[125%] text-center pr-3 focus:outline-none h-12 text-base placeholder-gray-800"
+                                                            placeholder="Fecha de ida" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -576,9 +576,9 @@
                                                             :class="{'font-semibold': endToShow == 'to' }"
                                                             id="fechaEspecifica" @click="selectDateFrom"
                                                             autocomplete="off"
-                                                            class="focus:outline-none border-none pl-5 sm:pl-7 lg:pl-3 w-full lg:w-[115%] 2xl:w-[110%] rounded-md border border-gray-300 h-12 placeholder-center"
+                                                            class="w-full border border-gray-300 rounded-lg py-2 lg:w-[118%] xl:w-[115%] 2xl:w-[118%] text-center pr-3 focus:outline-none h-12 text-base placeholder-gray-800"
                                                             :value="boletoAbierto ? 'FECHA ABIERTA' : formatDate(dateTo)"
-                                                            :placeholder="boletoAbierto ? 'ABIERTO' : 'FECHA DE REGRESO'" />
+                                                            :placeholder="boletoAbierto ? 'ABIERTO' : 'Fecha de regreso'" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -672,9 +672,9 @@
                                                     :value="formatDate(dateFrom)"
                                                     :class="{'font-semibold': endToShow == 'from' }"
                                                     @click="selectDateFrom"
-                                                    class="focus:outline-none border-none pl-12 w-full rounded-md border-r border-gray-300 h-12 sm:w-full lg:w-[310px] 2xl:w-[370px] md:w-full"
-                                                    placeholder="FECHA DE IDA" />
-                                                <img src="calendario.svg" alt="" class="absolute w-8 h-8 ml-8">
+                                                    class="focus:outline-none border-none w-full text-center text-base placeholder-gray-800 rounded-md border-r border-gray-300 h-12 sm:w-full lg:w-[310px] 2xl:w-[370px] md:w-full"
+                                                    placeholder="Fecha de ida" />
+                                                <img src="calendario.svg" alt="" class="absolute w-8 h-8 ml-8 lg:ml-7">
                                             </div>
                                         </div>
 
@@ -946,13 +946,13 @@
                     <div class="slider slider-1">
                         <img src="Banner_App.webp" alt="Banner Aplicacion" loading="lazy"
                             class="w-full h-auto md:w-1/2 rounded-lg object-cover" width="30px" height="30px">
-                        <img src="Banner_servicios_DD.webp" alt="Servicios" loading="lazy"
+                        <img src="Banner_servicios_DD(1).webp" alt="Servicios" loading="lazy"
                             class="w-full h-auto md:w-1/2 rounded-lg object-cover" width="30px" height="30px">
-                        <img src="seguridad.webp" alt="Aviso de seguridad" loading="lazy"
+                        <img src="seguridad(1).webp" alt="Aviso de seguridad" loading="lazy"
                             class="w-full h-auto md:w-1/2 rounded-lg object-cover" width="30px" height="30px">
-                        <img src="Banner_ODM_pacifico.webp" alt="Banner pacifico" loading="lazy"
+                        <img src="Banner_ODM_pacifico_(1).webp" alt="Banner pacifico" loading="lazy"
                             class="w-full h-auto md:w-1/2 rounded-lg object-cover" width="30px" height="30px">
-                        <img src="Banner_Viaja_DD.webp" alt="Euro 6" loading="lazy"
+                        <img src="Banner_Viaja_DD_(1).webp" alt="Euro 6" loading="lazy"
                             class="w-full h-auto md:w-1/2 rounded-lg object-cover" width="30px" height="30px">
                     </div>
 
@@ -1131,7 +1131,7 @@
                     <div class="flex xl:flex-1 w-auto">
                         <div class="relative flex flex-col justify-center overflow-hidden bg-[#1D93D2]">
                             <div
-                                class="relative flex h-auto w-64 flex-col bg-white sm:mx-auto sm:max-w-2xl mx-auto my-auto rounded-lg">
+                                class="relative flex h-auto w-64 2xl:w-72 flex-col bg-white sm:mx-auto sm:max-w-2xl mx-auto my-auto rounded-lg">
                                 <div class="text-center w-full flex items-center relative">
                                     <div class="bg-[#003368] py-1 relative w-full">
                                         <!-- Luna amarilla -->
@@ -1185,7 +1185,7 @@
                     <div class="flex xl:flex-1 w-auto">
                         <div class="relative flex flex-col justify-center overflow-hidden bg-[#1D93D2]">
                             <div
-                                class="relative flex h-auto w-64 flex-col bg-white sm:mx-auto sm:max-w-2xl mx-auto my-auto rounded-lg">
+                                class="relative flex h-auto w-64 2xl:w-72 flex-col bg-white sm:mx-auto sm:max-w-2xl mx-auto my-auto rounded-lg">
                                 <div class="text-center w-full flex items-center relative">
                                     <div class="bg-[#C82333] py-1 relative w-full">
                                         <!-- Luna amarilla -->
@@ -1240,7 +1240,7 @@
                     <div class="flex  w-auto">
                         <div class="relative flex flex-col justify-center overflow-hidden bg-[#1D93D2]">
                             <div
-                                class="relative flex h-auto w-64 flex-col bg-white sm:mx-auto sm:max-w-2xl mx-auto my-auto rounded-lg">
+                                class="relative flex h-auto w-64 2xl:w-72 flex-col bg-white sm:mx-auto sm:max-w-2xl mx-auto my-auto rounded-lg">
                                 <div class="text-center w-full flex items-center relative">
                                     <div class="bg-[#C82333] py-1 relative w-full">
                                         <!-- Luna amarilla -->
