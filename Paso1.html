@@ -55,8 +55,8 @@
     </div>
 
 
-    <div class="bg-[#1583C9]  py-4">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-2 mx-8 sm:mx-20 md:mx-24 lg:mx-28 mb-8">
+    <div class="bg-[#1583C9] h-screen">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-2 mx-8 sm:mx-20 md:mx-24 lg:mx-28 mb-8 pt-5">
             <div class="bg-[#003368] p-4 pt-5 mx-0 text-white text-center font-bold rounded-lg h-fit text-lg">
                 <p class="uppercase">Origen: México Central Norte</p>
                 <p class="uppercase">Destino: Colima, Col.</p>
@@ -64,7 +64,7 @@
             <input type="hidden" id="tipoBoleto" name="tipoBoleto" value="" />
 
             <div class="lg:col-span-1">
-                <div class="flex w-full flex-2 mb-5 lg:col-span-1 lg:w-full lg:mt-8" id="datepickerRange">
+                <div class="flex w-full flex-2 mb-5 lg:mb-0 lg:col-span-1 lg:w-full lg:-mt-20" id="datepickerRange">
                     <div x-data="app" x-cloak class="w-full">
                         <div class="container mx-auto py-0 md:py-0">
                             <div class="flex items-center sm:ml-0 lg:ml-0">
@@ -272,42 +272,86 @@
             </div>
 
 
-            <div class="lg:col-span-1 lg:col-start-2 lg:row-start-1 space-y-3"
-                style="max-height: 350px; overflow-y: auto;">
+            <div
+                class="lg:col-span-1 lg:col-start-2 lg:row-start-1 space-y-3 lg:w-[450px] min-h-40 overflow-y-auto h-44">
                 <div class="bg-white border rounded-lg text-center">
                     <div class="bg-white mx-8 text-center">
-                        <!-- Logo en el centro -->
-                        <div class="p-0">
-                            <img src="logoODMplus.svg" alt="LogoODM" class="w-48 sm:w-52 h-12 sm:h-14 mx-auto">
-                        </div>
 
-                        <!-- Contenedor de filas -->
+                        <div class="p-0">
+                            <img src="logoODMplus.svg" alt="LogoODM" class="w-48 h-12 mx-auto">
+                        </div>
                         <div class="flex justify-center">
 
-                            <!-- Primera fila -->
                             <div class="flex px-2 pb-2">
                                 <div class="text-base text-[#003565]">
                                     <p class="font-bold mb-2 text-sm sm:text-base">Salida</p>
-                                    <p class="text-sm sm:text-base">01:30 Hrs</p>
+                                    <p class="text-sm sm:text-base">05:30 Hrs</p>
                                     <p class="text-sm sm:text-base">15/03/2023</p>
                                 </div>
                             </div>
 
-                            <!-- Segunda fila -->
                             <div class="flex px-2 pb-2">
                                 <div class="text-base text-[#003565]">
                                     <p class="font-bold mb-2 text-sm sm:text-base">Llegada</p>
-                                    <p class="text-sm sm:text-base">12:00 Hrs</p>
+                                    <p class="text-sm sm:text-base">16:00 Hrs</p>
                                     <p class="text-sm sm:text-base">15/03/2023</p>
                                 </div>
                             </div>
 
-                            <!-- Tercera fila (Amenidades) -->
-                            <div class="hidden md:flex px-3 md:px-0 pb-2">
+                            <div class="hidden md:flex px-3 pb-2">
                                 <img src="amenidades.svg" alt="Amenidades" class="w-48 h-20">
                             </div>
 
-                            <!-- Cuarta fila (Precios) -->
+                            <div class="flex px-2 pb-2">
+                                <div class="text-[#003565]">
+                                    <p class="text-gray-500 line-through text-sm sm:text-base">$1,440.00</p>
+                                    <p class="text-xs sm:text-base">Precio normal</p>
+                                    <p class="text-red-500 font-bold  text-sm sm:text-base">$1,295.00</p>
+                                    <p class="text-xs sm:text-base whitespace-nowrap">Precio internet</p>
+                                </div>
+                            </div>
+                            <div class="flex px-1 pr-2 items-center justify-center pb-10">
+                                <div class="flex items-center">
+                                    <svg width="20" height="35" viewBox="0 0 17 31" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M1.18958 30L14.1101 15.5L1.18958 1" stroke="#003565"
+                                            stroke-width="3" />
+                                    </svg>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="bg-white border rounded-lg text-center">
+                    <div class="bg-white mx-8 text-center">
+
+                        <div class="p-0">
+                            <img src="logoODMplus.svg" alt="LogoODM" class="w-48 h-12 mx-auto">
+                        </div>
+                        <div class="flex justify-center">
+
+                            <div class="flex px-2 pb-2">
+                                <div class="text-base text-[#003565]">
+                                    <p class="font-bold mb-2 text-sm sm:text-base">Salida</p>
+                                    <p class="text-sm sm:text-base">05:30 Hrs</p>
+                                    <p class="text-sm sm:text-base">15/03/2023</p>
+                                </div>
+                            </div>
+
+                            <div class="flex px-2 pb-2">
+                                <div class="text-base text-[#003565]">
+                                    <p class="font-bold mb-2 text-sm sm:text-base">Llegada</p>
+                                    <p class="text-sm sm:text-base">16:00 Hrs</p>
+                                    <p class="text-sm sm:text-base">15/03/2023</p>
+                                </div>
+                            </div>
+
+                            <div class="hidden md:flex px-3 pb-2">
+                                <img src="amenidades.svg" alt="Amenidades" class="w-48 h-20">
+                            </div>
+
                             <div class="flex px-2 pb-2">
                                 <div class="text-[#003565]">
                                     <p class="text-gray-500 line-through text-sm sm:text-base">$1,440.00</p>
@@ -541,7 +585,7 @@
 
 
         <!-- FOOTER -->
-        <section class="bg-[#003368]">
+        <footer class="bg-[#003368]">
             <div class="max-w-screen-xl px-4 py-10 mx-auto space-y-8 overflow-hidden sm:px-6 lg:px-8">
                 <nav class="flex flex-wrap justify-center -mx-5 -my-2">
                     <div class="px-5 py-2">
@@ -609,7 +653,19 @@
                     © 2023 Ómnibus de México. Todos los derechos reservados.
                 </p>
             </div>
-        </section>
+        </footer>
+        <style>
+            footer {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background-color: #003368;
+                color: white;
+                padding: 20px;
+                text-align: center;
+            }
+        </style>
         <script>
             // Función para iniciar el contador
             function iniciarContador() {
