@@ -727,7 +727,7 @@
                     }), this.$search.val(t.text), this.handleSearch()
                 }, i.prototype.resizeSearch = function () {
                     this.$search.css("width", "25px");
-                    var e = "";
+                    var e;
                     e = "" !== this.$search.attr("placeholder") ? this.$selection.find(".select2-selection__rendered").innerWidth() : .75 * (this.$search.val().length + 1) + "em", this.$search.css("width", e)
                 }, i
             }), t.define("select2/selection/eventRelay", ["jquery"], function (e) {
@@ -1713,11 +1713,10 @@
                     }
                     return (i = this._normalizeItem(i)).element = e[0], t.StoreData(e[0], "data", i), i
                 }, i.prototype._normalizeItem = function (e) {
-                    e !== Object(e) && (e = {
+                    return e !== Object(e) && (e = {
                         id: e,
                         text: e
-                    });
-                    return null != (e = n.extend({}, {
+                    }), null != (e = n.extend({}, {
                         text: ""
                     }, e)).id && (e.id = e.id.toString()), null != e.text && (e.text = e.text.toString()), null == e._resultId && e.id && null != this.container && (e._resultId = this.generateResultId(this.container, e)), n.extend({}, {
                         selected: !1,
@@ -2307,12 +2306,10 @@
                     }
                 }
                 return r.prototype.fromElement = function (e) {
-                    var n = ["select2"];
-                    null == this.options.multiple && (this.options.multiple = e.prop("multiple")), null == this.options.disabled && (this.options.disabled = e.prop("disabled")), null == this.options.language && (e.prop("lang") ? this.options.language = e.prop("lang").toLowerCase() : e.closest("[lang]").prop("lang") && (this.options.language = e.closest("[lang]").prop("lang"))), null == this.options.dir && (e.prop("dir") ? this.options.dir = e.prop("dir") : e.closest("[dir]").prop("dir") ? this.options.dir = e.closest("[dir]").prop("dir") : this.options.dir = "ltr"), e.prop("disabled", this.options.disabled), e.prop("multiple", this.options.multiple), i.GetData(e[0], "select2Tags") && (this.options.debug && window.console && console.warn && console.warn('Select2: The `data-select2-tags` attribute has been changed to use the `data-data` and `data-tags="true"` attributes and will be removed in future versions of Select2.'), i.StoreData(e[0], "data", i.GetData(e[0], "select2Tags")), i.StoreData(e[0], "tags", !0)), i.GetData(e[0], "ajaxUrl") && (this.options.debug && window.console && console.warn && console.warn("Select2: The `data-ajax-url` attribute has been changed to `data-ajax--url` and support for the old attribute will be removed in future versions of Select2."), e.attr("ajax--url", i.GetData(e[0], "ajaxUrl")), i.StoreData(e[0], "ajax-Url", i.GetData(e[0], "ajaxUrl")));
-                    var r;
-                    r = t.fn.jquery && "1." == t.fn.jquery.substr(0, 2) && e[0].dataset ? t.extend(!0, {}, e[0].dataset, i.GetData(e[0])) : i.GetData(e[0]);
-                    var o = t.extend(!0, {}, r);
-                    for (var s in o = i._convertData(o)) t.inArray(s, n) > -1 || (t.isPlainObject(this.options[s]) ? t.extend(this.options[s], o[s]) : this.options[s] = o[s]);
+                    var n, r = ["select2"];
+                    null == this.options.multiple && (this.options.multiple = e.prop("multiple")), null == this.options.disabled && (this.options.disabled = e.prop("disabled")), null == this.options.language && (e.prop("lang") ? this.options.language = e.prop("lang").toLowerCase() : e.closest("[lang]").prop("lang") && (this.options.language = e.closest("[lang]").prop("lang"))), null == this.options.dir && (e.prop("dir") ? this.options.dir = e.prop("dir") : e.closest("[dir]").prop("dir") ? this.options.dir = e.closest("[dir]").prop("dir") : this.options.dir = "ltr"), e.prop("disabled", this.options.disabled), e.prop("multiple", this.options.multiple), i.GetData(e[0], "select2Tags") && (this.options.debug && window.console && console.warn && console.warn('Select2: The `data-select2-tags` attribute has been changed to use the `data-data` and `data-tags="true"` attributes and will be removed in future versions of Select2.'), i.StoreData(e[0], "data", i.GetData(e[0], "select2Tags")), i.StoreData(e[0], "tags", !0)), i.GetData(e[0], "ajaxUrl") && (this.options.debug && window.console && console.warn && console.warn("Select2: The `data-ajax-url` attribute has been changed to `data-ajax--url` and support for the old attribute will be removed in future versions of Select2."), e.attr("ajax--url", i.GetData(e[0], "ajaxUrl")), i.StoreData(e[0], "ajax-Url", i.GetData(e[0], "ajaxUrl"))), n = t.fn.jquery && "1." == t.fn.jquery.substr(0, 2) && e[0].dataset ? t.extend(!0, {}, e[0].dataset, i.GetData(e[0])) : i.GetData(e[0]);
+                    var o = t.extend(!0, {}, n);
+                    for (var s in o = i._convertData(o)) t.inArray(s, r) > -1 || (t.isPlainObject(this.options[s]) ? t.extend(this.options[s], o[s]) : this.options[s] = o[s]);
                     return this
                 }, r.prototype.get = function (e) {
                     return this.options[e]
@@ -2451,10 +2448,9 @@
                     if (!e || !e.target || "OPTION" === e.target.nodeName || "OPTGROUP" === e.target.nodeName) {
                         if (t)
                             if (t.addedNodes && t.addedNodes.length > 0)
-                                for (var r = 0; r < t.addedNodes.length; r++) {
-                                    t.addedNodes[r].selected && (n = !0)
-                                } else t.removedNodes && t.removedNodes.length > 0 && (n = !0);
-                            else n = !0;
+                                for (var r = 0; r < t.addedNodes.length; r++) t.addedNodes[r].selected && (n = !0);
+                            else t.removedNodes && t.removedNodes.length > 0 && (n = !0);
+                        else n = !0;
                         n && this.dataAdapter.current(function (e) {
                             i.trigger("selection:update", {
                                 data: e
@@ -2658,16 +2654,14 @@
             }), t.define("select2/dropdown/stopPropagation", [], function () {
                 function e() {}
                 return e.prototype.bind = function (e, t, n) {
-                    e.call(this, t, n);
-                    this.$dropdown.on(["blur", "change", "click", "dblclick", "focus", "focusin", "focusout", "input", "keydown", "keyup", "keypress", "mousedown", "mouseenter", "mouseleave", "mousemove", "mouseover", "mouseup", "search", "touchend", "touchstart"].join(" "), function (e) {
+                    e.call(this, t, n), this.$dropdown.on(["blur", "change", "click", "dblclick", "focus", "focusin", "focusout", "input", "keydown", "keyup", "keypress", "mousedown", "mouseenter", "mouseleave", "mousemove", "mouseover", "mouseup", "search", "touchend", "touchstart"].join(" "), function (e) {
                         e.stopPropagation()
                     })
                 }, e
             }), t.define("select2/selection/stopPropagation", [], function () {
                 function e() {}
                 return e.prototype.bind = function (e, t, n) {
-                    e.call(this, t, n);
-                    this.$selection.on(["blur", "change", "click", "dblclick", "focus", "focusin", "focusout", "input", "keydown", "keyup", "keypress", "mousedown", "mouseenter", "mouseleave", "mousemove", "mouseover", "mouseup", "search", "touchend", "touchstart"].join(" "), function (e) {
+                    e.call(this, t, n), this.$selection.on(["blur", "change", "click", "dblclick", "focus", "focusin", "focusout", "input", "keydown", "keyup", "keypress", "mousedown", "mouseenter", "mouseleave", "mousemove", "mouseover", "mouseup", "search", "touchend", "touchstart"].join(" "), function (e) {
                         e.stopPropagation()
                     })
                 }, e

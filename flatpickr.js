@@ -1267,9 +1267,7 @@
                 n && Object.keys(n).forEach(function (t) {
                     return e[t] = n[t]
                 })
-            }, i = 0, o = n; i < o.length; i++) {
-            a(o[i])
-        }
+            }, i = 0, o = n; i < o.length; i++) a(o[i]);
         return e
     }), "undefined" != typeof HTMLElement && "undefined" != typeof HTMLCollection && "undefined" != typeof NodeList && (HTMLCollection.prototype.flatpickr = NodeList.prototype.flatpickr = function (e) {
         return x(this, e)
