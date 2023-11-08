@@ -56,7 +56,8 @@
 
 
     <div class="bg-[#1583C9]  h-screen">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-2 mx-8 sm:mx-20 md:mx-24 lg:mx-28 mb-8 pt-5">
+        <div
+            class="grid grid-cols-1 lg:grid-cols-2 gap-2 mx-8 2xl:gap-8 sm:mx-20 md:mx-24 lg:mx-28 mb-8 pt-5 2xl:mx-40">
             <div class="bg-[#003368] p-4 pt-5 mx-0 text-white text-center font-bold rounded-lg h-fit text-lg">
                 <p class="uppercase">Origen: México Central Norte</p>
                 <p class="uppercase">Destino: Colima, Col.</p>
@@ -273,313 +274,206 @@
             </div>
 
 
-            <div
-                class="lg:col-span-1 lg:col-start-2 lg:row-start-1 space-y-3 lg:w-[450px] min-h-40 overflow-y-auto h-44">
-                <button id="openModalButton" class="bg-white border rounded-lg text-center">
-                    <div class="bg-white border rounded-lg text-center">
-                        <div class="bg-white mx-8 text-center">
+            <div class="lg:col-span-1 lg:col-start-2 lg:row-start-1 space-y-3 min-h-40 overflow-y-auto h-52">
+                <div class="mb-4">
+                    <button id="openModalButton" class="bg-white border rounded-lg text-center w-full">
+                        <div class="bg-white border rounded-lg text-center">
+                            <div class="bg-white mx-8 lg:mx-0 xl:mx-5 text-center">
 
-                            <div class="p-0">
-                                <img src="logoODMplus.svg" alt="LogoODM" class="w-48 h-12 mx-auto">
-                            </div>
-                            <div class="flex justify-center">
+                                <div class="p-0">
+                                    <img src="logoODMplus.svg" alt="LogoODM" class="w-56 h-12 mx-auto">
+                                </div>
+                                <div class="flex justify-center">
 
-                                <div class="flex px-2 pb-2">
-                                    <div class="text-base text-[#003565]">
-                                        <p class="font-bold mb-2 text-sm sm:text-base">Salida</p>
-                                        <p class="text-sm sm:text-base">05:30 Hrs</p>
-                                        <p class="text-sm sm:text-base">15/03/2023</p>
+                                    <div class="flex px-2 pb-2 lg:px-1">
+                                        <div class="text-base text-[#003565]">
+                                            <p class="font-bold lg:font-semibold mb-2 text-sm sm:text-base">Sale</p>
+                                            <p class="text-sm sm:text-base lg:text-sm">05:30 Hrs</p>
+                                            <p class="text-sm sm:text-base lg:text-sm">15/03/2023</p>
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="flex px-2 pb-2">
-                                    <div class="text-base text-[#003565]">
-                                        <p class="font-bold mb-2 text-sm sm:text-base">Llegada</p>
-                                        <p class="text-sm sm:text-base">16:00 Hrs</p>
-                                        <p class="text-sm sm:text-base">15/03/2023</p>
+                                    <div class="flex px-2 pb-2 lg:px-1">
+                                        <div class="text-base text-[#003565]">
+                                            <p class="font-bold lg:font-semibold mb-2 text-sm sm:text-base">Llega</p>
+                                            <p class="text-sm sm:text-base lg:text-sm">16:00 Hrs</p>
+                                            <p class="text-sm sm:text-base lg:text-sm">15/03/2023</p>
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="hidden md:flex px-3 pb-2">
-                                    <img src="amenidades.svg" alt="Amenidades" class="w-48 h-20">
-                                </div>
-
-                                <div class="flex px-2 pb-2">
-                                    <div class="text-[#003565]">
-                                        <p class="text-gray-500 line-through text-sm sm:text-base">$1,440.00</p>
-                                        <p class="text-xs sm:text-base">Precio normal</p>
-                                        <p class="text-red-500 font-bold  text-sm sm:text-base">$1,295.00</p>
-                                        <p class="text-xs sm:text-base whitespace-nowrap">Precio internet</p>
-                                    </div>
-                                </div>
-                                <div class="flex px-1 pr-2 items-center justify-center pb-10">
-                                    <div class="flex items-center">
-                                        <svg width="20" height="35" viewBox="0 0 17 31" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M1.18958 30L14.1101 15.5L1.18958 1" stroke="#003565"
-                                                stroke-width="3" />
-                                        </svg>
+                                    <div class="hidden md:flex px-3 pb-2 lg:px-0 flex-wrap w-full justify-center">
+                                        <img src="amenidades.svg" alt="Amenidades"
+                                            class="w-48 h-20 md:w-32 md:h-auto xl:w-40">
 
                                     </div>
+
+                                    <div class="flex px-2 pb-2 lg:px-1">
+                                        <div class="text-[#003565]">
+                                            <p class="text-gray-500 line-through text-sm sm:text-base lg:text-sm">
+                                                $1,440.00
+                                            </p>
+                                            <p class="text-xs sm:text-base lg:text-sm">Precio normal</p>
+                                            <p class="text-red-500 font-bold  text-sm sm:text-base lg:text-sm">$1,295.00
+                                            </p>
+                                            <p class="text-xs sm:text-base whitespace-nowrap lg:text-sm">Precio internet
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="flex px-1 pr-2 items-center justify-center pb-10">
+                                        <div class="flex items-center">
+                                            <svg width="20" height="35" viewBox="0 0 17 31" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M1.18958 30L14.1101 15.5L1.18958 1" stroke="#003565"
+                                                    stroke-width="3" />
+                                            </svg>
+
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </button>
-
-
-                <div class="bg-white border rounded-lg text-center">
-                    <div class="bg-white mx-8 text-center">
-
-                        <div class="p-0">
-                            <img src="logoODMplus.svg" alt="LogoODM" class="w-48 h-12 mx-auto">
-                        </div>
-                        <div class="flex justify-center">
-
-                            <div class="flex px-2 pb-2">
-                                <div class="text-base text-[#003565]">
-                                    <p class="font-bold mb-2 text-sm sm:text-base">Salida</p>
-                                    <p class="text-sm sm:text-base">05:30 Hrs</p>
-                                    <p class="text-sm sm:text-base">15/03/2023</p>
-                                </div>
-                            </div>
-
-                            <div class="flex px-2 pb-2">
-                                <div class="text-base text-[#003565]">
-                                    <p class="font-bold mb-2 text-sm sm:text-base">Llegada</p>
-                                    <p class="text-sm sm:text-base">16:00 Hrs</p>
-                                    <p class="text-sm sm:text-base">15/03/2023</p>
-                                </div>
-                            </div>
-
-                            <div class="hidden md:flex px-3 pb-2">
-                                <img src="amenidades.svg" alt="Amenidades" class="w-48 h-20">
-                            </div>
-
-                            <div class="flex px-2 pb-2">
-                                <div class="text-[#003565]">
-                                    <p class="text-gray-500 line-through text-sm sm:text-base">$1,440.00</p>
-                                    <p class="text-xs sm:text-base">Precio normal</p>
-                                    <p class="text-red-500 font-bold  text-sm sm:text-base">$1,295.00</p>
-                                    <p class="text-xs sm:text-base whitespace-nowrap">Precio internet</p>
-                                </div>
-                            </div>
-                            <div class="flex px-1 pr-2 items-center justify-center pb-10">
-                                <div class="flex items-center">
-                                    <svg width="20" height="35" viewBox="0 0 17 31" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M1.18958 30L14.1101 15.5L1.18958 1" stroke="#003565"
-                                            stroke-width="3" />
-                                    </svg>
-
+                                <div class="p-0 hidden md:block">
+                                    <p class="text-xs text-center mb-2 text-[#003565]">Servicios pueden cambiar según
+                                        ruta</p>
                                 </div>
                             </div>
                         </div>
-
-                    </div>
+                    </button>
                 </div>
-                <div class="bg-white border rounded-lg text-center">
-                    <div class="bg-white mx-8 text-center">
+                <div class="mb-4">
+                    <button id="openModalButton" class="bg-white border rounded-lg text-center w-full">
+                        <div class="bg-white border rounded-lg text-center">
+                            <div class="bg-white mx-8 lg:mx-0 xl:mx-5 text-center">
 
-                        <div class="p-0">
-                            <img src="logoODMplus.svg" alt="LogoODM" class="w-48 h-12 mx-auto">
+                                <div class="p-0">
+                                    <img src="logoODMplus.svg" alt="LogoODM" class="w-56 h-12 mx-auto">
+                                </div>
+                                <div class="flex justify-center">
+
+                                    <div class="flex px-2 pb-2 lg:px-1">
+                                        <div class="text-base text-[#003565]">
+                                            <p class="font-bold lg:font-semibold mb-2 text-sm sm:text-base">Sale</p>
+                                            <p class="text-sm sm:text-base lg:text-sm">05:30 Hrs</p>
+                                            <p class="text-sm sm:text-base lg:text-sm">15/03/2023</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex px-2 pb-2 lg:px-1">
+                                        <div class="text-base text-[#003565]">
+                                            <p class="font-bold lg:font-semibold mb-2 text-sm sm:text-base">Llega</p>
+                                            <p class="text-sm sm:text-base lg:text-sm">16:00 Hrs</p>
+                                            <p class="text-sm sm:text-base lg:text-sm">15/03/2023</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="hidden md:flex px-3 pb-2 lg:px-0 flex-wrap w-full justify-center">
+                                        <img src="amenidades.svg" alt="Amenidades"
+                                            class="w-48 h-20 md:w-32 md:h-auto xl:w-40">
+
+                                    </div>
+
+                                    <div class="flex px-2 pb-2 lg:px-1">
+                                        <div class="text-[#003565]">
+                                            <p class="text-gray-500 line-through text-sm sm:text-base lg:text-sm">
+                                                $1,440.00
+                                            </p>
+                                            <p class="text-xs sm:text-base lg:text-sm">Precio normal</p>
+                                            <p class="text-red-500 font-bold  text-sm sm:text-base lg:text-sm">$1,295.00
+                                            </p>
+                                            <p class="text-xs sm:text-base whitespace-nowrap lg:text-sm">Precio internet
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="flex px-1 pr-2 items-center justify-center pb-10">
+                                        <div class="flex items-center">
+                                            <svg width="20" height="35" viewBox="0 0 17 31" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M1.18958 30L14.1101 15.5L1.18958 1" stroke="#003565"
+                                                    stroke-width="3" />
+                                            </svg>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="p-0 hidden md:block">
+                                    <p class="text-xs text-center mb-2 text-[#003565]">Servicios pueden cambiar según
+                                        ruta</p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="flex justify-center">
-
-                            <div class="flex px-2 pb-2">
-                                <div class="text-base text-[#003565]">
-                                    <p class="font-bold mb-2 text-sm sm:text-base">Salida</p>
-                                    <p class="text-sm sm:text-base">05:30 Hrs</p>
-                                    <p class="text-sm sm:text-base">15/03/2023</p>
-                                </div>
-                            </div>
-
-                            <div class="flex px-2 pb-2">
-                                <div class="text-base text-[#003565]">
-                                    <p class="font-bold mb-2 text-sm sm:text-base">Llegada</p>
-                                    <p class="text-sm sm:text-base">16:00 Hrs</p>
-                                    <p class="text-sm sm:text-base">15/03/2023</p>
-                                </div>
-                            </div>
-
-                            <div class="hidden md:flex px-3 pb-2">
-                                <img src="amenidades.svg" alt="Amenidades" class="w-48 h-20">
-                            </div>
-
-                            <div class="flex px-2 pb-2">
-                                <div class="text-[#003565]">
-                                    <p class="text-gray-500 line-through text-sm sm:text-base">$1,440.00</p>
-                                    <p class="text-xs sm:text-base">Precio normal</p>
-                                    <p class="text-red-500 font-bold  text-sm sm:text-base">$1,295.00</p>
-                                    <p class="text-xs sm:text-base whitespace-nowrap">Precio internet</p>
-                                </div>
-                            </div>
-                            <div class="flex px-1 pr-2 items-center justify-center pb-10">
-                                <div class="flex items-center">
-                                    <svg width="20" height="35" viewBox="0 0 17 31" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M1.18958 30L14.1101 15.5L1.18958 1" stroke="#003565"
-                                            stroke-width="3" />
-                                    </svg>
-
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
+                    </button>
                 </div>
-                <div class="bg-white border rounded-lg text-center">
-                    <div class="bg-white mx-8 text-center">
+                <div class="mb-4">
+                    <button id="openModalButton" class="bg-white border rounded-lg text-center w-full">
+                        <div class="bg-white border rounded-lg text-center">
+                            <div class="bg-white mx-8 lg:mx-0 xl:mx-5 text-center">
 
-                        <div class="p-0">
-                            <img src="logoODMplus.svg" alt="LogoODM" class="w-48 h-12 mx-auto">
+                                <div class="p-0">
+                                    <img src="logoODMplus.svg" alt="LogoODM" class="w-56 h-12 mx-auto">
+                                </div>
+                                <div class="flex justify-center">
+
+                                    <div class="flex px-2 pb-2 lg:px-1">
+                                        <div class="text-base text-[#003565]">
+                                            <p class="font-bold lg:font-semibold mb-2 text-sm sm:text-base">Sale</p>
+                                            <p class="text-sm sm:text-base lg:text-sm">05:30 Hrs</p>
+                                            <p class="text-sm sm:text-base lg:text-sm">15/03/2023</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex px-2 pb-2 lg:px-1">
+                                        <div class="text-base text-[#003565]">
+                                            <p class="font-bold lg:font-semibold mb-2 text-sm sm:text-base">Llega</p>
+                                            <p class="text-sm sm:text-base lg:text-sm">16:00 Hrs</p>
+                                            <p class="text-sm sm:text-base lg:text-sm">15/03/2023</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="hidden md:flex px-3 pb-2 lg:px-0 flex-wrap w-full justify-center">
+                                        <img src="amenidades.svg" alt="Amenidades"
+                                            class="w-48 h-20 md:w-32 md:h-auto xl:w-40">
+
+                                    </div>
+
+                                    <div class="flex px-2 pb-2 lg:px-1">
+                                        <div class="text-[#003565]">
+                                            <p class="text-gray-500 line-through text-sm sm:text-base lg:text-sm">
+                                                $1,440.00
+                                            </p>
+                                            <p class="text-xs sm:text-base lg:text-sm">Precio normal</p>
+                                            <p class="text-red-500 font-bold  text-sm sm:text-base lg:text-sm">$1,295.00
+                                            </p>
+                                            <p class="text-xs sm:text-base whitespace-nowrap lg:text-sm">Precio internet
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="flex px-1 pr-2 items-center justify-center pb-10">
+                                        <div class="flex items-center">
+                                            <svg width="20" height="35" viewBox="0 0 17 31" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M1.18958 30L14.1101 15.5L1.18958 1" stroke="#003565"
+                                                    stroke-width="3" />
+                                            </svg>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="p-0 hidden md:block">
+                                    <p class="text-xs text-center mb-2 text-[#003565]">Servicios pueden cambiar según
+                                        ruta</p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="flex justify-center">
-
-                            <div class="flex px-2 pb-2">
-                                <div class="text-base text-[#003565]">
-                                    <p class="font-bold mb-2 text-sm sm:text-base">Salida</p>
-                                    <p class="text-sm sm:text-base">05:30 Hrs</p>
-                                    <p class="text-sm sm:text-base">15/03/2023</p>
-                                </div>
-                            </div>
-
-                            <div class="flex px-2 pb-2">
-                                <div class="text-base text-[#003565]">
-                                    <p class="font-bold mb-2 text-sm sm:text-base">Llegada</p>
-                                    <p class="text-sm sm:text-base">16:00 Hrs</p>
-                                    <p class="text-sm sm:text-base">15/03/2023</p>
-                                </div>
-                            </div>
-
-                            <div class="hidden md:flex px-3 pb-2">
-                                <img src="amenidades.svg" alt="Amenidades" class="w-48 h-20">
-                            </div>
-
-                            <div class="flex px-2 pb-2">
-                                <div class="text-[#003565]">
-                                    <p class="text-gray-500 line-through text-sm sm:text-base">$1,440.00</p>
-                                    <p class="text-xs sm:text-base">Precio normal</p>
-                                    <p class="text-red-500 font-bold  text-sm sm:text-base">$1,295.00</p>
-                                    <p class="text-xs sm:text-base whitespace-nowrap">Precio internet</p>
-                                </div>
-                            </div>
-                            <div class="flex px-1 pr-2 items-center justify-center pb-10">
-                                <div class="flex items-center">
-                                    <svg width="20" height="35" viewBox="0 0 17 31" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M1.18958 30L14.1101 15.5L1.18958 1" stroke="#003565"
-                                            stroke-width="3" />
-                                    </svg>
-
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
+                    </button>
                 </div>
-                <div class="bg-white border rounded-lg text-center">
-                    <div class="bg-white mx-8 text-center">
-
-                        <div class="p-0">
-                            <img src="logoODMplus.svg" alt="LogoODM" class="w-48 h-12 mx-auto">
-                        </div>
-                        <div class="flex justify-center">
-
-                            <div class="flex px-2 pb-2">
-                                <div class="text-base text-[#003565]">
-                                    <p class="font-bold mb-2 text-sm sm:text-base">Salida</p>
-                                    <p class="text-sm sm:text-base">05:30 Hrs</p>
-                                    <p class="text-sm sm:text-base">15/03/2023</p>
-                                </div>
-                            </div>
-
-                            <div class="flex px-2 pb-2">
-                                <div class="text-base text-[#003565]">
-                                    <p class="font-bold mb-2 text-sm sm:text-base">Llegada</p>
-                                    <p class="text-sm sm:text-base">16:00 Hrs</p>
-                                    <p class="text-sm sm:text-base">15/03/2023</p>
-                                </div>
-                            </div>
-
-                            <div class="hidden md:flex px-3 pb-2">
-                                <img src="amenidades.svg" alt="Amenidades" class="w-48 h-20">
-                            </div>
-
-                            <div class="flex px-2 pb-2">
-                                <div class="text-[#003565]">
-                                    <p class="text-gray-500 line-through text-sm sm:text-base">$1,440.00</p>
-                                    <p class="text-xs sm:text-base">Precio normal</p>
-                                    <p class="text-red-500 font-bold  text-sm sm:text-base">$1,295.00</p>
-                                    <p class="text-xs sm:text-base whitespace-nowrap">Precio internet</p>
-                                </div>
-                            </div>
-                            <div class="flex px-1 pr-2 items-center justify-center pb-10">
-                                <div class="flex items-center">
-                                    <svg width="20" height="35" viewBox="0 0 17 31" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M1.18958 30L14.1101 15.5L1.18958 1" stroke="#003565"
-                                            stroke-width="3" />
-                                    </svg>
-
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="bg-white border rounded-lg text-center">
-                    <div class="bg-white mx-8 text-center">
-
-                        <div class="p-0">
-                            <img src="logoODMplus.svg" alt="LogoODM" class="w-48 h-12 mx-auto">
-                        </div>
-                        <div class="flex justify-center">
-
-                            <div class="flex px-2 pb-2">
-                                <div class="text-base text-[#003565]">
-                                    <p class="font-bold mb-2 text-sm sm:text-base">Salida</p>
-                                    <p class="text-sm sm:text-base">05:30 Hrs</p>
-                                    <p class="text-sm sm:text-base">15/03/2023</p>
-                                </div>
-                            </div>
-
-                            <div class="flex px-2 pb-2">
-                                <div class="text-base text-[#003565]">
-                                    <p class="font-bold mb-2 text-sm sm:text-base">Llegada</p>
-                                    <p class="text-sm sm:text-base">16:00 Hrs</p>
-                                    <p class="text-sm sm:text-base">15/03/2023</p>
-                                </div>
-                            </div>
-
-                            <div class="hidden md:flex px-3 pb-2">
-                                <img src="amenidades.svg" alt="Amenidades" class="w-48 h-20">
-                            </div>
-
-                            <div class="flex px-2 pb-2">
-                                <div class="text-[#003565]">
-                                    <p class="text-gray-500 line-through text-sm sm:text-base">$1,440.00</p>
-                                    <p class="text-xs sm:text-base">Precio normal</p>
-                                    <p class="text-red-500 font-bold  text-sm sm:text-base">$1,295.00</p>
-                                    <p class="text-xs sm:text-base whitespace-nowrap">Precio internet</p>
-                                </div>
-                            </div>
-                            <div class="flex px-1 pr-2 items-center justify-center pb-10">
-                                <div class="flex items-center">
-                                    <svg width="20" height="35" viewBox="0 0 17 31" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M1.18958 30L14.1101 15.5L1.18958 1" stroke="#003565"
-                                            stroke-width="3" />
-                                    </svg>
-
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
+                <style>
+                    button#openModalButton {
+                        max-width: 100%;
+                        /* Limita el ancho máximo del botón */
+                        margin: 0 auto;
+                        /* Centra el botón horizontalmente */
+                        overflow: hidden;
+                        /* Oculta cualquier contenido que se desborde */
+                    }
+                </style>
                 <div id="myModal"
                     class="fixed bottom-0 left-0 right-0 bg-black bg-opacity-50 h-screen flex justify-center items-center z-50 rounded-lg hidden">
                     <div class="modal-content bg-white rounded-lg shadow-lg p-6 w-3/4 space-y-8">
@@ -594,7 +488,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
