@@ -1290,3 +1290,120 @@
         return new Date(this.getFullYear(), this.getMonth(), this.getDate() + ("string" == typeof e ? parseInt(e, 10) : e))
     }, "undefined" != typeof window && (window.flatpickr = E), E
 });
+const MONTH_NAMES = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Novimiembre", "Diciembre"],
+    DAYS = ["Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab"];
+document.addEventListener("alpine:init", () => {
+    Alpine.data("app", () => ({
+        dateFrom: null,
+        showDatepicker: !1,
+        showFromHourPicker: !1,
+        showToHourPicker: !1,
+        timePickerDisabled: !0,
+        outputDateToValue: "",
+        currentDate: null,
+        dateFrom: null,
+        dateTo: null,
+        endToShow: "",
+        hour24FromValue: 0,
+        hour24ToValue: 23,
+        minuteFromValue: "00",
+        minuteToValue: "59",
+        selecting: !1,
+        month: "",
+        year: "",
+        no_of_days: [],
+        blankdays: [],
+        hoursFrom: [],
+        hoursTo: [],
+        minutesFrom: [],
+        minutesTo: [],
+        meridiemsFrom: [],
+        meridiemsTo: [],
+        showDatepickerRange: !1,
+        showDatepickerSingle: !1,
+        boletoAbierto: !1,
+        showTicketSelector: !1,
+        openDatepickerRange() {
+            this.showDatepickerRange = !0
+        },
+        openDatepickerSingle() {
+            this.showDatepickerSingle = !0
+        },
+        convertFromYmd(t) {
+            const e = Number(t.substr(0, 4)),
+                o = Number(t.substr(5, 2)) - 1,
+                i = Number(t.substr(8, 2));
+            return new Date(e, o, i)
+        },
+        convertToYmd(t) {
+            const e = t.getFullYear(),
+                o = t.getMonth() + 1,
+                i = t.getDate();
+            return e + "-" + ("0" + o).slice(-2) + "-" + ("0" + i).slice(-2)
+        },
+        init() {
+            this.boletoAbierto = !1, this.dateFrom || this.dateFromYmd && (this.dateFrom = this.convertFromYmd(this.dateFromYmd)), this.dateTo || this.dateToYmd && (this.dateTo = this.convertFromYmd(this.dateToYmd)), this.dateFrom || (this.dateFrom = this.dateTo), this.dateTo || (this.dateTo = this.dateFrom), "from" === this.endToShow && this.dateFrom ? this.currentDate = this.dateFrom : "to" === this.endToShow && this.dateTo ? this.currentDate = this.dateTo : this.currentDate = new Date, currentMonth = this.currentDate.getMonth(), currentYear = this.currentDate.getFullYear(), this.month === currentMonth && this.year === currentYear || (this.month = currentMonth, this.year = currentYear, this.getNoOfDays())
+        },
+        isToday(t) {
+            const e = new Date,
+                o = new Date(this.year, this.month, t);
+            return e.toDateString() === o.toDateString()
+        },
+        isDateFrom(t) {
+            const e = new Date(this.year, this.month, t);
+            return !!this.dateFrom && e.getTime() === this.dateFrom.getTime()
+        },
+        isDateTo(t) {
+            const e = new Date(this.year, this.month, t);
+            return !!this.dateTo && e.getTime() === this.dateTo.getTime()
+        },
+        isInRange(t) {
+            const e = new Date(this.year, this.month, t);
+            return e > this.dateFrom && e < this.dateTo
+        },
+        outputDateValues() {
+            if (this.dateFrom) {
+                const t = this.getTimeString("from"),
+                    e = this.convertToYmd(this.dateFrom);
+                new Date(e + "T" + t)
+            }
+            this.boletoAbierto && (this.outputDateToValue = "ABIERTO"), this.showDatepickerSingle = !this.showDatepickerSingle, this.endToShow = "", this.showDatepickerSingle = !this.showDatepickerSingle, this.endToShow = "", this.showTicketSelector = !0, document.getElementById("ticketSelector").classList.remove("hidden")
+        },
+        formatDateTime: (t, e) => DAYS[t.getDay()] + " " + MONTH_NAMES[t.getMonth()] + " " + t.getDate() + " " + t.getFullYear() + " " + hourString + ":" + minute + e,
+        getTimeString(t) {
+            const e = "from" === t ? this.hour24FromValue : this.hour24ToValue,
+                o = "from" === t ? this.minuteFromValue : this.minuteToValue,
+                i = "from" === t ? "00" : "59";
+            return e.toString().padStart(2, "0") + ":" + o + ":" + i
+        },
+        getDateValue(t, e) {
+            if (e && !this.selecting) return;
+            let o = new Date(this.year, this.month, t);
+            const i = new Date;
+            i.setHours(0, 0, 0, 0), o < i || ("from" === this.endToShow ? (this.dateFrom = o, this.dateTo ? o > this.dateTo && (this.endToShow = "to", this.dateFrom = this.dateTo, this.dateTo = o) : this.dateTo = o) : "to" === this.endToShow && (this.dateTo = o, this.dateFrom ? o < this.dateFrom && (this.endToShow = "from", this.dateTo = this.dateFrom, this.dateFrom = o) : this.dateFrom = o), this.timePickerDisabled = !this.dateFrom, this.showDatepicker = !1, e || (this.selecting = !this.selecting), this.showTicketSelector = !0)
+        },
+        getNoOfDays() {
+            let t = new Date(this.year, this.month + 1, 0).getDate(),
+                e = new Date(this.year, this.month).getDay(),
+                o = [];
+            for (var i = 1; i <= e; i++) o.push(i);
+            let r = [];
+            for (i = 1; i <= t; i++) r.push(i);
+            this.blankdays = o, this.no_of_days = r
+        },
+        closeDatepicker() {
+            this.endToShow = "", this.showDatepicker = !1
+        },
+        formatDate(t) {
+            if (null === t) return "";
+            return `${("0" + t.getDate()).slice(-2)}/${("0" + (t.getMonth() + 1)).slice(-2)}/${t.getFullYear()}`
+        },
+        dateFrom: null,
+        dateTo: null
+    }))
+}), document.addEventListener("DOMContentLoaded", function () {
+    document.querySelector("form").addEventListener("submit", function () {
+        const t = document.getElementById("fechaEspecifica").value;
+        document.getElementById("tipoBoleto").value = "FECHA ABIERTA" === t ? "regreso_abierto" : "" !== t ? "fecha_especifica" : "solo_ida"
+    })
+});
