@@ -229,7 +229,7 @@
                 <div
                     class="lg:grid lg:grid-cols-3 lg:gap-1 mx-0 lg:mx-36 xl:mx-56 2xl:mx-96 justify-center items-center p-0 space-y-3 lg:space-y-0">
                     <div class="input-with-svg mx-8 lg:mx-0  lg:col-span-1 px-0 sm:mx-10 lg:ml-0">
-                        <select id="origenSelect">
+                        <select id="origenSelect" name="origenCode">
                             <option selected="selected" disabled="">¿De Dónde Sales?</option>
                             <option value="ACR">Acambaro Gto</option>
                             <option value="ACT">Actopan Hgo</option>
@@ -492,7 +492,7 @@
 
 
                     <div class="input-with-svg mx-8 lg:mx-0 lg:col-span-1 px-0 sm:mx-10 lg:ml-0">
-                        <select id="destinoSelect">
+                        <select id="destinoSelect" name="destinoCode">
                             <option selected="selected" disabled="">¿A dónde viajas?</option>
                         </select>
                         <img class="bus-logo" src="icono_descenso.svg" alt="Autobús"
@@ -568,7 +568,7 @@
                                                         <input type="text"
                                                             @click="endToShow = 'to'; init(); showDatepicker = true"
                                                             :class="{'font-semibold': endToShow == 'to' }"
-                                                            id="fechaEspecifica" @click="selectDateFrom"
+                                                            name="fechRegreso" id="fecharegreso" @click="selectDateFrom"
                                                             autocomplete="off"
                                                             class="w-full border border-gray-300 rounded-lg py-2 lg:w-[118%] xl:w-[115%] 2xl:w-[118%] text-center pr-3 focus:outline-none h-12 text-base placeholder-gray-800"
                                                             :value="boletoAbierto ? 'FECHA ABIERTA' : formatDate(dateTo)"
@@ -667,7 +667,7 @@
                                                     :class="{'font-semibold': endToShow == 'from' }"
                                                     @click="selectDateFrom"
                                                     class="focus:outline-none border-none w-full text-center text-base placeholder-gray-800 rounded-md border-r border-gray-300 h-12 sm:w-full lg:w-[310px] 2xl:w-[370px] md:w-full"
-                                                    placeholder="Fecha de ida" />
+                                                    placeholder="Fecha de ida" id="fechasalida1" name="fechSalida" />
                                                 <img src="calendario.svg" alt="" class="absolute w-8 h-8 ml-8 lg:ml-7">
                                             </div>
                                         </div>
@@ -797,7 +797,7 @@
                                         data-type="decrement-child">-</button>
                                     <span class="mx-2 text-base font-semibold" id="childCount">0</span>
                                     <button type="button" class="px-4 py-3 text-xs bg-[#0D8BFF] text-white rounded-full"
-                                        data-type="increment-child">+</button>
+                                        data-type="increment-child" id="contadorNino">+</button>
                                 </div>
                             </div>
 
@@ -1480,6 +1480,32 @@
 
     <!-- SCRIPT DEL CALENDARIO -->
     <script src="flatpickr.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Función para verificar la selección
+            function verificarSeleccion() {
+                const childCount = parseInt(document.getElementById('childCount').textContent);
+                const totalBoletos = parseInt(document.getElementById('adultCount').textContent) +
+                    parseInt(document.getElementById('inapamCount').textContent) +
+                    parseInt(document.getElementById('professorCount').textContent) +
+                    parseInt(document.getElementById('studentCount').textContent);
+
+                return totalBoletos > 0 || childCount === 0;
+            }
+
+            // Añade este evento al botón de cierre del modal
+            document.getElementById('contadorNino').addEventListener('click', function () {
+                if (!verificarSeleccion()) {
+                    alert('Un menor no puede viajar solo. Por favor, elija un boleto de acompañante mayor de edad.');
+                    return false; // Detiene la ejecución de la función si se muestra la alerta.
+                }
+
+                // Resto del código para cerrar el modal y cualquier otra acción que desees realizar.
+                habilitarBotonBuscarViaje();
+            });
+
+        });
+    </script>
     <script>
         document.getElementById('origenSelect').addEventListener('change', function () {
             var origenSeleccionado = this.value;
