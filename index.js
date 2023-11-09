@@ -179,3 +179,10 @@ function redireccionarPaso1() {
     // Redirigir a la página paso1
     window.location.href = "Paso1.html?tipoViaje=" + tipoViaje;
 }
+function RedireccionarPaso1() {
+    // Obtener el tipo de viaje seleccionado
+    var tipoViaje = document.getElementById("tipoViaje").value;
+
+    // Redirigir a la página paso1
+    window.location.href = "Paso1.html?tipoViaje=" + tipoViaje;
+}

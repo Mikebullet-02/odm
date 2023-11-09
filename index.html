@@ -873,7 +873,7 @@
                             <div class="input-with-svg mx-8 sm:mx-10">
                                 <button
                                     class="w-full bg-[#C82333] text-white font-bold text-lg rounded-lg py-3 px-7 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
-                                    id="buscarViajeBtn" onclick="redireccionarPaso1()" disabled>
+                                    id="buscarViajeBtn" onclick="RedireccionarPaso1()">
                                     BUSCAR VIAJE
                                 </button>
                             </div>
@@ -1288,10 +1288,6 @@
                 </div>
             </div>
         </div>
-
-
-
-
         <div class="flex justify-center items-center py-3 pl-8 pr-8 bg-[#1D93D2]">
             <div class="w-full sm:w-9/12 md:w-3/4 lg:w-10/12 xl:w-9/12 rounded-lg overflow-hidden bg-[#1D93D2]">
                 <div class="slider-container lg:hidden">
@@ -1484,100 +1480,21 @@
 
     <!-- SCRIPT DEL CALENDARIO -->
     <script src="flatpickr.js"></script>
+    <script>
+        document.getElementById('origenSelect').addEventListener('change', function () {
+            var origenSeleccionado = this.value;
+            window.location.href = 'paso1.html?origen=' + encodeURIComponent(origenSeleccionado);
+        });
 
+        document.getElementById('destinoSelect').addEventListener('change', function () {
+            var destinoSeleccionado = this.value;
+            window.location.href = 'Paso1.html?destino=' + encodeURIComponent(destinoSeleccionado);
+        });
+    </script>
 
     <!-- SCRIPT DE SELECCION DE ORIGEN -->
     <script>
-        $(document).ready(function () {
-            // Inicializar select2 para el selector de origen
-            $('#origenSelect').select2();
-
-            var isButtonDisabled = false; // Variable para rastrear si el botón está deshabilitado
-
-            $('#origenSelect').on('select2:select', function (e) {
-                if (!isButtonDisabled) {
-                    isButtonDisabled = true; // Deshabilitar el botón
-                    setTimeout(function () {
-                        isButtonDisabled = false; // Habilitar el botón después de un tiempo
-                    }, 2000); // Después de 2 segundos (puedes ajustar el tiempo según tus necesidades)
-
-                    const selectedValue = e.params.data.id;
-                    $('#origenSelect').val(selectedValue).trigger('change');
-                }
-            });
-
-            // Asociar evento change al selector de origen
-            $('#origenSelect').on('change', function () {
-                var selectedValue = $(this).val(); // Obtener el valor seleccionado del origen
-
-                // Realizar una consulta AJAX para obtener los destinos asociados al origen
-                $.getJSON('destinos69/' + selectedValue + '.json', function (jsonRaw, textStatus) {
-                    var json = jsonRaw.filter((data, index, j) => index === j.findIndex((t) => (t.id === data.id)));
-
-                    // Limpiar y llenar el selector de destinos
-                    var destinoSelect = $('#destinoSelect');
-                    destinoSelect.empty(); // Limpiar opciones anteriores
-
-                    // Agregar la opción predeterminada
-                    destinoSelect.append($('<option>').val('¿A dónde viajas?').text('¿A dónde viajas?'));
-
-                    // Agregar opciones de destinos
-                    $.each(json, function (i, val) {
-                        var id = json[i].id;
-                        var valor = json[i].value;
-                        destinoSelect.append($('<option>').val(id).text(valor));
-                    });
-
-                    // Actualizar el selector de destinos usando select2
-                    destinoSelect.trigger('change.select2');
-                });
-            });
-
-            // Inicializar select2 para el selector de destino
-            $('#destinoSelect').select2();
-
-            // Asociar eventos change a los selectores de origen y destino
-            $('#origenSelect, #destinoSelect').on('change', function () {
-                var origenValue = $('#origenSelect').val();
-                var destinoValue = $('#destinoSelect').val();
-
-                // Mostrar el datepicker correspondiente solo si ambos valores están seleccionados
-                if (origenValue && destinoValue) {
-                    if ($('#redondo').prop('checked')) {
-                        $('#datepickerRange').removeClass('hidden');
-                        $('#datepickerSingle').addClass('hidden');
-                    } else if ($('#sencillo').prop('checked')) {
-                        $('#datepickerSingle').removeClass('hidden');
-                        $('#datepickerRange').addClass('hidden');
-                    }
-                } else {
-                    // Ocultar ambos datepickers si no hay selección de origen y destino
-                    $('#datepickerRange').addClass('hidden');
-                    $('#datepickerSingle').addClass('hidden');
-                }
-            });
-
-            $('input[type="radio"][name="opcion"]').on('change', function () {
-                var origenValue = $('#origenSelect').val();
-                var destinoValue = $('#destinoSelect').val();
-
-                // Mostrar el datepicker correspondiente solo si ambos valores están seleccionados
-                if (origenValue && destinoValue) {
-                    if ($(this).attr('id') === 'redondo') {
-                        $('#datepickerRange').removeClass('hidden');
-                        $('#datepickerSingle').addClass('hidden');
-                    } else if ($(this).attr('id') === 'sencillo') {
-                        $('#datepickerSingle').removeClass('hidden');
-                        $('#datepickerRange').addClass('hidden');
-                    }
-                } else {
-                    // Ocultar ambos datepickers si no hay selección de origen y destino
-                    $('#datepickerRange').addClass('hidden');
-                    $('#datepickerSingle').addClass('hidden');
-                }
-            });
-        });
-
+        $(document).ready(function () { $("#origenSelect").select2(); var e = !1; $("#origenSelect").on("select2:select", function (d) { if (!e) { e = !0, setTimeout(function () { e = !1 }, 2e3); const n = d.params.data.id; $("#origenSelect").val(n).trigger("change") } }), $("#origenSelect").on("change", function () { var e = $(this).val(); $.getJSON("destinos69/" + e + ".json", function (e, d) { var n = e.filter((e, d, n) => d === n.findIndex(d => d.id === e.id)), i = $("#destinoSelect"); i.empty(), i.append($("<option>").val("¿A dónde viajas?").text("¿A dónde viajas?")), $.each(n, function (e, d) { var a = n[e].id, t = n[e].value; i.append($("<option>").val(a).text(t)) }), i.trigger("change.select2") }) }), $("#destinoSelect").select2(), $("#origenSelect, #destinoSelect").on("change", function () { var e = $("#origenSelect").val(), d = $("#destinoSelect").val(); e && d ? $("#redondo").prop("checked") ? ($("#datepickerRange").removeClass("hidden"), $("#datepickerSingle").addClass("hidden")) : $("#sencillo").prop("checked") && ($("#datepickerSingle").removeClass("hidden"), $("#datepickerRange").addClass("hidden")) : ($("#datepickerRange").addClass("hidden"), $("#datepickerSingle").addClass("hidden")) }), $('input[type="radio"][name="opcion"]').on("change", function () { var e = $("#origenSelect").val(), d = $("#destinoSelect").val(); e && d ? "redondo" === $(this).attr("id") ? ($("#datepickerRange").removeClass("hidden"), $("#datepickerSingle").addClass("hidden")) : "sencillo" === $(this).attr("id") && ($("#datepickerSingle").removeClass("hidden"), $("#datepickerRange").addClass("hidden")) : ($("#datepickerRange").addClass("hidden"), $("#datepickerSingle").addClass("hidden")) }) });
     </script>
     <!-- SCRIPT DEL CAROUSEL -->
     <script type="text/javascript" src="slick-carousel.js"></script>
