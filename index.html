@@ -133,7 +133,7 @@
 
     <div id="modal-overlay"
         class="hidden fixed top-0 right-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center z-50">
-        <div id="modal" class="bg-white p-4 rounded-lg ml-48 mb-80 sm:ml-auto sm:mb-[295px] md:ml-[430px]">
+        <div id="modal" class="bg-white p-4 rounded-lg ml-36 mb-80 sm:ml-auto sm:mb-[295px] md:ml-[430px]">
             <img src="logoODMplus.svg" alt="logoODM" class="w-full">
             <a href="https://odm.com.mx/envios/dist"
                 class="text-blue-800 sm:text-gray-600 hover:bg-gray-200 block mt-4 px-0 py-2">
@@ -640,10 +640,10 @@
                                                     </p>
 
                                                     <button type="button"
-                                                        @click="boletoAbierto = true; outputDateValues(); showDatepicker=false"
-                                                        @click="showTicketSelector = true" id="boletoAbiertoButton"
-                                                        class="px-10 py-1 border border-blue-600 bg-[#C82333] hover:bg-blue-300 text-white rounded-md">
-                                                        Boleto abierto
+                                                        @click="boletoAbierto = true; outputDateValues(); showDatepicker=false; showTicketSelector = true"
+                                                        id="boletoAbiertoButton"
+                                                        class="px-10 py-1 border border-blue-600 bg-[#C82333] hover:bg-blue-300 text-white rounded-md">Boleto
+                                                        abierto
                                                     </button>
                                                 </div>
                                             </div>
