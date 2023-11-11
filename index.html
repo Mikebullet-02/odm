@@ -14,6 +14,8 @@
 
     <!-- Select2 CSS -->
     <link href="select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="slick-carousel.css" />
+    <link rel="stylesheet" type="text/css" href="slick-theme.css" />
 
     <style>
         /* Estilo para el logo de autobús */
@@ -554,7 +556,7 @@
                                                         <input type="text"
                                                             @click="endToShow = 'from'; init(); showDatepicker = true"
                                                             :value="formatDate(dateFrom)"
-                                                            :class="{'font-semibold': endToShow == 'from' }"
+                                                            :class="{'font-normal': endToShow == 'from' }"
                                                             autocomplete="off" id="fecha-ida"
                                                             class="w-full border border-gray-300 rounded-lg py-2 lg:w-[125%] xl:w-[115%] 2xl:w-[125%] text-center pr-3 focus:outline-none h-12 text-base placeholder-gray-800"
                                                             placeholder="Fecha de ida" />
@@ -567,7 +569,7 @@
                                                     <div class="relative">
                                                         <input type="text"
                                                             @click="endToShow = 'to'; init(); showDatepicker = true"
-                                                            :class="{'font-semibold': endToShow == 'to' }"
+                                                            :class="{'font-normal': endToShow == 'to' }"
                                                             name="fechRegreso" id="fecharegreso" @click="selectDateFrom"
                                                             autocomplete="off"
                                                             class="w-full border border-gray-300 rounded-lg py-2 lg:w-[118%] xl:w-[115%] 2xl:w-[118%] text-center pr-3 focus:outline-none h-12 text-base placeholder-gray-800"
@@ -664,7 +666,7 @@
                                                 <input type="text"
                                                     @click="endToShow = 'from'; init(); showDatepicker = true"
                                                     :value="formatDate(dateFrom)"
-                                                    :class="{'font-semibold': endToShow == 'from' }"
+                                                    :class="{'font-normal': endToShow == 'from' }"
                                                     @click="selectDateFrom"
                                                     class="focus:outline-none border-none w-full text-center text-base placeholder-gray-800 rounded-md border-r border-gray-300 h-12 sm:w-full lg:w-[310px] 2xl:w-[370px] md:w-full"
                                                     placeholder="Fecha de ida" id="fechasalida1" name="fechSalida" />
@@ -1470,8 +1472,7 @@
         </div>
     </section>
 
-    <link rel="stylesheet" type="text/css" href="slick-carousel.css" />
-    <link rel="stylesheet" type="text/css" href="slick-theme.css" />
+
     <script src="jQuery360.js"></script>
     <script src="select2min.js"></script>
     <script defer src="alpine.js"></script>
