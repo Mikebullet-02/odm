@@ -47,16 +47,15 @@
             </div>
         </div>
     </div>
-    <div class="h-full bg-[#1D93D2]">
-        <div class="mt-5"></div>
-        <div class="bg-[#C82333] w-72 rounded-lg mx-auto my-5">
+    <div class="bg-[#1D93D2] py-5">
+        <div class="bg-[#C82333] w-80 rounded-lg mx-auto">
             <p class="text-white text-xl font-bold text-center">Favor de revisar información</p>
         </div>
 
-        <div class="bg-gray-300 text-center mx-auto w-72 mt-5 uppercase font-bold">
+        <div class="bg-gray-300 text-center mx-auto w-80 mt-5 uppercase font-bold border-b border-white">
             Confirmación de compra
         </div>
-        <div class="bg-gray-300 text-center mx-auto w-72">
+        <div class="bg-gray-300 text-center mx-auto w-80">
             <div class="flex flex-nowrap w-full outline-dashed outline-1">
                 <div class="flex-1 w-1/2">
                     <p class="text-base font-semibold ">Origen</p>
@@ -98,7 +97,7 @@
                     <div class="row-start-4 text-[#003368]">1C</div>
                     <div class="row-start-4 text-[#003368]">Juanito Alimaña Perenganito</div>
                     <div class="row-start-4 text-[#003368] font-semibold uppercase">Menor</div>
-                    <div class="row-start-4 text-[#003368]">$286.00</div>
+                    <div class="row-start-4 text-[#003368]">$286</div>
                 </div>
             </div>
             <div class="flex flex-nowrap w-full outline-dashed outline-1 mt-5">
@@ -107,35 +106,38 @@
                 </div>
             </div>
         </div>
-        <div class="bg-[#C82333] w-72 rounded-lg mx-auto my-5">
+        <div class="bg-[#C82333] w-80 rounded-lg mx-auto my-5">
             <p class="text-white text-xl font-bold text-center">Seleccione una forma de pago</p>
         </div>
-        <div class="bg-[#1D93D2] w-72 mx-auto flex justify-around">
+        <div class="bg-[#1D93D2] w-80 mx-auto flex justify-around">
             <div class="text-center">
-                <img src="tarjeta.svg" alt="Pago con tarjeta" class="w-full">
+                <img src="tarjeta.svg" alt="Pago con tarjeta" class="w-10/12 mx-auto">
                 <p class="text-white text-xs">Tarjeta de crédito o débito</p>
             </div>
             <div class="text-center">
-                <img src="Pago_efectivo.svg" alt="Pago con tarjeta" class="w-full">
+                <img src="Pago_efectivo.svg" alt="Pago con tarjeta" class="w-10/12 mx-auto">
                 <p class="text-white text-xs">Reservación</p>
             </div>
             <div class="text-center">
-                <img src="CoppelPay.svg" alt="Pago con tarjeta" class="w-full">
+                <img src="CoppelPay.svg" alt="Pago con tarjeta" class="w-10/12 mx-auto">
                 <p class="text-white text-xs">Pago en Coppel</p>
             </div>
         </div>
-        <div class="bg-[#1D93D2]">
-            <div class="flex flex-col mb-4">
-                <label for="correo" class="text-white font-bold mb-2">Correo electrónico</label>
-                <input type="email" name="email" id="correo" class="p-2 border border-white rounded" required>
+        <div class="bg-[#1D93D2] py-5">
+            <div class="flex flex-col mb-4 w-full">
+                <label for="correo" class="text-white font-bold mb-2 mx-8 text-lg">Correo electrónico</label>
+                <input type="email" name="email" id="correo" class="p-2 border border-white rounded mx-auto w-10/12"
+                    placeholder="Escribe tu correo electrónico" required>
             </div>
             <div class="flex flex-col">
-                <label for="emailConfirmado" class="text-white font-bold mb-2">Confirmar correo electrónico</label>
-                <input type="email" name="emailConfirmado" id="emailConfirmado" class="p-2 border border-white rounded"
+                <label for="emailConfirmado" class="text-white font-bold mb-2 mx-auto text-lg">Confirmar correo
+                    electrónico</label>
+                <input type="email" name="emailConfirmado" id="emailConfirmado"
+                    class="p-2 border border-white rounded mx-8 w-10/12" placeholder="Confirmar correo electrónico"
                     required>
             </div>
         </div>
-        <div class="bg-[#003368] mx-auto p-8 text-white">
+        <div class="bg-[#003368] mx-auto p-8 text-white w-10/12 rounded-lg">
             <div class="mb-4">
                 <input type="checkbox" id="avisoPrivacidad" class="mr-2">
                 <label for="avisoPrivacidad">He leído y acepto el aviso de privacidad.</label>
@@ -145,14 +147,20 @@
                 <label for="terminosCondiciones">He leído y aceptado los términos y condiciones.</label>
             </div>
             <p class="text-center mb-4">Deseo recibir promociones</p>
-            <div class="flex justify-center">
-                <div class="rounded-full border border-white p-3 mr-4">Sí</div>
-                <div class="rounded-full border border-white p-3">No</div>
+            <div class="flex justify-center space-x-5">
+                <button
+                    class="flex items-center rounded-full border border-white p-3 bg-white text-[#003368]">SI</button>
+                <button
+                    class="flex items-center rounded-full border border-white p-3 bg-white text-[#003368]">NO</button>
             </div>
+
+
         </div>
-        <div class="flex justify-between my-8 mx-8 pb-5 bg-[#1D93D2]">
-            <button class="bg-[#C82333] text-white px-6 py-2 rounded">Regresar</button>
-            <button class="bg-[#C82333] text-white px-6 py-2 rounded">Continuar</button>
+        <div class="flex justify-between mx-8 py-5 bg-[#1D93D2]">
+            <button
+                class="bg-[#C82333] text-white px-6 py-2 rounded border-white border-2 font-semibold">Regresar</button>
+            <button
+                class="bg-[#C82333] text-white px-6 py-2 rounded border-white border-2 font-semibold">Continuar</button>
         </div>
     </div>
 
