@@ -558,7 +558,7 @@
                                                             :value="formatDate(dateFrom)"
                                                             :class="{'font-normal': endToShow == 'from' }"
                                                             autocomplete="off" id="fecha-ida"
-                                                            class="w-full border border-gray-300 rounded-lg py-2 lg:w-[125%] xl:w-[115%] 2xl:w-[125%] text-center pr-3 focus:outline-none h-12 text-base placeholder-gray-800"
+                                                            class="w-full border border-gray-300 rounded-lg py-2 lg:w-[125%] w-125 xl:w-[115%] w-115 2xl:w-[125%] text-center pr-3 focus:outline-none h-12 text-base placeholder-gray-800"
                                                             placeholder="Fecha de ida" />
                                                     </div>
                                                 </div>
@@ -572,7 +572,7 @@
                                                             :class="{'font-normal': endToShow == 'to' }"
                                                             name="fechRegreso" id="fecharegreso" @click="selectDateFrom"
                                                             autocomplete="off"
-                                                            class="w-full border border-gray-300 rounded-lg py-2 lg:w-[118%] xl:w-[115%] 2xl:w-[118%] text-center pr-3 focus:outline-none h-12 text-base placeholder-gray-800"
+                                                            class="w-full border border-gray-300 rounded-lg py-2 lg:w-[118%] w-118 xl:w-[115%] w-115 2xl:w-[118%] text-center pr-3 focus:outline-none h-12 text-base placeholder-gray-800"
                                                             :value="boletoAbierto ? 'FECHA ABIERTA' : formatDate(dateTo)"
                                                             :placeholder="boletoAbierto ? 'ABIERTO' : 'Fecha de regreso'" />
                                                     </div>
@@ -636,7 +636,7 @@
                                                         </div>
                                                     </template>
                                                 </div>
-                                                <div class="flex inline-flex">
+                                                <div class="flex items-center">
                                                     <p class="px-0 py-1 text-blue-500 text-xs">
                                                         ¿No conoces tu fecha de regreso? Puedes dejar tu boleto abierto
                                                     </p>
@@ -648,6 +648,7 @@
                                                         abierto
                                                     </button>
                                                 </div>
+
                                             </div>
                                         </div>
                                     </div>
