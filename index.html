@@ -9,19 +9,18 @@
     <title> Omnibus de México | Boletos de Autobús con Descuento </title>
     <meta name="description"
         content="Omnibus de México  compra tus boletos de autobús en línea y obten 10% de descuento en viaje sencillo ó 15% en viaje redondo *Aplican restricciones. *" />
-    <script src="3.3.3.js"></script>
-    <script src="fontawesome.js"></script>
 
+    <script src="fontawesome.js"></script>
+    <link rel="stylesheet" href="styles1.css">
+    <link rel="stylesheet" href="style.css">
     <!-- Select2 CSS -->
     <link href="select2.min.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="slick-carousel.css" />
     <link rel="stylesheet" type="text/css" href="slick-theme.css" />
-
     <style>
         /* Estilo para el logo de autobús */
         .input-with-svg {
             position: relative;
-
         }
 
         .input-with-svg .bus-logo {
@@ -31,8 +30,7 @@
             top: 50%;
             transform: translateY(-50%);
         }
-    </style>
-    <style>
+
         /* Ajusta la altura del select al mostrar la opción seleccionada */
         .select2-container--default .select2-selection--single {
             height: 50px;
@@ -54,70 +52,31 @@
             right: 1px;
             width: 20px;
         }
-    </style>
 
-    <style type="text/css">
-        .slide {
-            position: relative;
-            /* Asegura que el contenedor de la slide sea relativo */
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .select2-container--default {
+            width: 100% !important;
         }
 
-        .slider-container {
-            width: 100%;
-            padding: 5px;
-
+        @media (min-width: 1024px) {
+            .input-with-svg {
+                width: 100%;
+                /* Cambia el valor de acuerdo a tus necesidades */
+                margin: 0 0.5rem;
+                /* Margen parejo en ambos lados */
+                padding: 0 0.5rem;
+                /* Relleno parejo en ambos lados */
+            }
         }
 
-        .slider img {
-            width: 100%;
-        }
-
-        .slide-text {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: transparent;
-            color: white;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: flex-start;
-
-            /* Inicialmente, el texto estará oculto */
-            transition: opacity 0.3s ease-in-out;
-            align-items: center;
-        }
-
-
-
-
-        .slide-text1 p,
-        .slide-text2 p {
-            white-space: nowrap;
-        }
-
-        .text-left {
-            align-items: flex-end;
-        }
-
-        @font-face {
-            font-family: 'Slick';
-            src: url('fonts/slick.woff') format('woff');
-            font-weight: normal;
-            font-style: normal;
-            font-display: swap;
-        }
-    </style>
-
-    <style>
-        [x-cloak] {
-            display: none;
+        @media (min-width: 1280x) {
+            .input-with-svg {
+                width: 100%;
+                /* Cambia el valor de acuerdo a tus necesidades */
+                margin: 0 0.5rem;
+                /* Margen parejo en ambos lados */
+                padding: 0 0.5rem;
+                /* Relleno parejo en ambos lados */
+            }
         }
     </style>
 </head>
@@ -191,18 +150,7 @@
             </button>
         </div>
     </div>
-    <style>
-        @media (min-width: 1024px) {
-            #navbar {
-                display: flex;
-                justify-content: center;
-            }
 
-            #navbar>* {
-                flex-shrink: 0;
-            }
-        }
-    </style>
 
     <hr class="w-full h-1.5 bg-[#C82333] pt-0 pb-0">
 
@@ -500,34 +448,7 @@
                         <img class="bus-logo" src="icono_descenso.svg" alt="Autobús"
                             style="width: 50px; height: 50px; margin-left: 10px">
                     </div>
-                    <style>
-                        .select2-container--default {
-                            width: 100% !important;
 
-                        }
-
-                        @media (min-width: 1024px) {
-                            .input-with-svg {
-                                width: 100%;
-                                /* Cambia el valor de acuerdo a tus necesidades */
-                                margin: 0 0.5rem;
-                                /* Margen parejo en ambos lados */
-                                padding: 0 0.5rem;
-                                /* Relleno parejo en ambos lados */
-                            }
-                        }
-
-                        @media (min-width: 1280x) {
-                            .input-with-svg {
-                                width: 100%;
-                                /* Cambia el valor de acuerdo a tus necesidades */
-                                margin: 0 0.5rem;
-                                /* Margen parejo en ambos lados */
-                                padding: 0 0.5rem;
-                                /* Relleno parejo en ambos lados */
-                            }
-                        }
-                    </style>
                     <div class="hidden lg:flex p-0">
                         <div class="mt-0 w-full">
                             <div class="input-with-svg mx-9 sm:ml-[50px] lg:ml-0">
