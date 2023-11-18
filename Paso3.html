@@ -110,17 +110,96 @@
             <p class="text-white text-xl font-bold text-center">Seleccione una forma de pago</p>
         </div>
         <div class="bg-[#1D93D2] w-80 mx-auto flex justify-around">
-            <div class="text-center">
-                <img src="tarjeta.svg" alt="Pago con tarjeta" class="w-10/12 mx-auto">
+            <div class="text-center" onclick="mostrarFormulario('tarjeta-formulario')">
+                <img src="tarjeta.svg" alt="Pago con tarjeta" class="w-10/12 mx-auto opacity-70 cursor-pointer"
+                    id="tarjeta-imagen">
                 <p class="text-white text-xs">Tarjeta de crédito o débito</p>
             </div>
-            <div class="text-center">
-                <img src="Pago_efectivo.svg" alt="Pago con tarjeta" class="w-10/12 mx-auto">
+            <div class="text-center" onclick="mostrarFormulario('reservacion-formulario')">
+                <img src="Pago_efectivo.svg" alt="Pago con tarjeta" class="w-10/12 mx-auto opacity-70 cursor-pointer"
+                    id="reservacion-imagen">
                 <p class="text-white text-xs">Reservación</p>
             </div>
-            <div class="text-center">
-                <img src="CoppelPay.svg" alt="Pago con tarjeta" class="w-10/12 mx-auto">
+            <div class="text-center" onclick="mostrarFormulario('coppel-formulario')">
+                <img src="CoppelPay.svg" alt="Pago con tarjeta" class="w-10/12 mx-auto opacity-70 cursor-pointer"
+                    id="coppel-imagen">
                 <p class="text-white text-xs">Pago en Coppel</p>
+            </div>
+        </div>
+        <div class="bg-[#1D93D2] w-80 mx-auto flex justify-around py-5">
+            <!-- Formularios ocultos -->
+            <div id="tarjeta-formulario" class="formulario" style="display:none;">
+                <!-- Contenido del formulario de tarjeta -->
+                <div class="flex flex-col">
+                    <!-- Primer nivel -->
+                    <div class="flex">
+                        <div class="flex-1"></div>
+                        <div class="flex-1 text-white font-semibold text-xs text-center">Banco</div>
+                        <div class="flex-1 text-white font-semibold text-xs text-center">Débito o Crédito</div>
+                    </div>
+
+                    <!-- Segundo nivel -->
+                    <div class="flex bg-white rounded-lg">
+                        <!-- Primer cuadrante vacío -->
+                        <div class="flex-1 flex items-center justify-center">
+                            <label for="debito" class="flex items-center justify-center">
+                                <input type="radio" id="debito" name="tipoTarjeta" value="debito">
+                            </label>
+                        </div>
+
+                        <!-- Segundo cuadrante: Input radio -->
+                        <div class="flex-1">
+                            <img src="tarjeta.svg" alt="Pago con tarjeta" class="w-full mx-auto">
+                        </div>
+
+                        <!-- Tercer cuadrante: Imagen y texto -->
+                        <div class="flex-1 text-center">
+                            <p class="text-xs mt-2 font-medium text-[#003368]">Pago en una exhibición</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="reservacion-formulario" class="formulario text-center text-white font-semibold text-xl"
+                style="display:none;">
+                <!-- Contenido del formulario de reservación -->
+                Paga en efectivo en cualquiera de estos establecimientos
+                <img src="ReservacionColor2.webp" alt="Reservacion" class="pt-5">
+            </div>
+            <div id="coppel-formulario" class="formulario" style="display:none;">
+                <!-- Contenido del formulario de Coppel -->
+
+                <div class="flex flex-col">
+                    <!-- Primer nivel -->
+                    <div class="flex">
+                        <div class="flex-1"></div>
+                        <div class="flex-1 text-white font-semibold text-xs text-center">Banco</div>
+                        <div class="flex-1 text-white font-semibold text-xs text-center">Débito</div>
+                        <div class="flex-1 text-white font-semibold text-xs text-center">Crédito</div>
+                    </div>
+
+                    <!-- Segundo nivel -->
+                    <div class="flex bg-white rounded-lg">
+                        <!-- Primer cuadrante vacío -->
+                        <div class="flex-1 flex items-center justify-center">
+                            <label for="debito" class="flex items-center justify-center">
+                                <input type="radio" id="debito" name="tipoTarjeta" value="debito">
+                            </label>
+                        </div>
+
+                        <!-- Segundo cuadrante: Input radio -->
+                        <div class="flex-1">
+                            <img src="CoppelPay.svg" alt="Pago con tarjeta" class="w-full mx-auto">
+                        </div>
+
+                        <!-- Tercer cuadrante: Imagen y texto -->
+                        <div class="flex-1 text-center">
+                            <p class="text-xs mt-2 font-medium text-[#003368]">1 Pago</p>
+                        </div>
+                        <div class="flex-1 text-center">
+                            <p class="text-xs mt-2 font-bold text-[#C82333]">12 meses</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="bg-[#1D93D2] py-5">
@@ -130,31 +209,22 @@
                     placeholder="Escribe tu correo electrónico" required>
             </div>
             <div class="flex flex-col">
-                <label for="emailConfirmado" class="text-white font-bold mb-2 mx-auto text-lg">Confirmar correo
+                <label for="emailConfirmado" class="text-white font-bold mb-2 mx-8 text-lg">Confirmar correo
                     electrónico</label>
                 <input type="email" name="emailConfirmado" id="emailConfirmado"
                     class="p-2 border border-white rounded mx-8 w-10/12" placeholder="Confirmar correo electrónico"
                     required>
             </div>
         </div>
-        <div class="bg-[#003368] mx-auto p-8 text-white w-10/12 rounded-lg">
-            <div class="mb-4">
+        <div class="bg-[#003368] mx-auto p-7 text-white w-10/12 rounded-lg">
+            <div class="mb-3">
                 <input type="checkbox" id="avisoPrivacidad" class="mr-2">
                 <label for="avisoPrivacidad">He leído y acepto el aviso de privacidad.</label>
             </div>
-            <div class="mb-4">
+            <div class="mb-3">
                 <input type="checkbox" id="terminosCondiciones" class="mr-2">
                 <label for="terminosCondiciones">He leído y aceptado los términos y condiciones.</label>
             </div>
-            <p class="text-center mb-4">Deseo recibir promociones</p>
-            <div class="flex justify-center space-x-5">
-                <button
-                    class="flex items-center rounded-full border border-white p-3 bg-white text-[#003368]">SI</button>
-                <button
-                    class="flex items-center rounded-full border border-white p-3 bg-white text-[#003368]">NO</button>
-            </div>
-
-
         </div>
         <div class="flex justify-between mx-8 py-5 bg-[#1D93D2]">
             <button
@@ -266,6 +336,26 @@
         window.onload = function () {
             iniciarContador();
         }
+    </script>
+    <script>
+        function mostrarFormulario(idFormulario) {
+            // Oculta todos los formularios
+            document.querySelectorAll('.formulario').forEach(formulario => {
+                formulario.style.display = 'none';
+            });
+
+            // Restaura la opacidad de todas las imágenes
+            document.querySelectorAll('.imagen-formulario').forEach(imagen => {
+                imagen.style.opacity = '0.7';
+            });
+
+            // Muestra el formulario correspondiente
+            document.getElementById(idFormulario).style.display = 'block';
+
+            // Ajusta la opacidad de la imagen clicada
+            document.getElementById(idFormulario.replace('-formulario', '-imagen')).style.opacity = '1';
+        }
+
     </script>
 </body>
 
