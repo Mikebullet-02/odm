@@ -27,13 +27,13 @@
             <div class="flex items-center space-x-4 md:space-x-10 lg:space-x-20">
                 <img src="celularB.svg" alt="celular" class="w-5 lg:w-6">
                 <div
-                    class="w-6 h-6 bg-transparent border border-white rounded-full flex items-center justify-center relative">
-                    <div class="bg-transparent border border-white w-6 h-6 rounded-full"></div>
+                    class="w-6 h-6 bg-white border border-white rounded-full flex items-center justify-center relative">
+                    <div class="bg-white border border-white w-6 h-6 rounded-full"></div>
                 </div>
                 <hr class="border-white border-2 flex-grow">
                 <div
-                    class="w-6 h-6 bg-transparent border border-white rounded-full flex items-center justify-center relative">
-                    <div class="bg-transparent border border-white w-6 h-6 rounded-full"></div>
+                    class="w-6 h-6 bg-white border border-white rounded-full flex items-center justify-center relative">
+                    <div class="bg-white border border-white w-6 h-6 rounded-full"></div>
                 </div>
                 <hr class="border-white border-2 flex-grow">
                 <div
@@ -48,189 +48,217 @@
         </div>
     </div>
     <div class="bg-[#1D93D2] py-5">
-        <div class="bg-[#C82333] w-80 rounded-lg mx-auto">
-            <p class="text-white text-xl font-bold text-center">Favor de revisar información</p>
-        </div>
+        <div class="grid lg:grid-cols-2 gap-0 lg:mx-28">
+            <div class="bg-[#C82333] w-80 rounded-lg mx-auto p-2 lg:p-4">
+                <p class="text-white text-xl font-bold text-center">Favor de revisar información</p>
+            </div>
+            <div class="bg-gray-300 text-center mx-auto w-80  lg:col-start-1 mt-5 h-fit">
 
-        <div class="bg-gray-300 text-center mx-auto w-80 mt-5 uppercase font-bold border-b border-white">
-            Confirmación de compra
-        </div>
-        <div class="bg-gray-300 text-center mx-auto w-80">
-            <div class="flex flex-nowrap w-full outline-dashed outline-1">
-                <div class="flex-1 w-1/2">
-                    <p class="text-base font-semibold ">Origen</p>
-                    <p class="text-base font-semibold text-[#003368]">México Central Norte</p>
+                <div class="bg-gray-300 text-center mx-auto w-80  mt-5 uppercase font-bold border-b border-white ">
+                    Confirmación de compra
                 </div>
-                <div class="flex-2 w-1/2">
-                    <p class="text-base font-semibold ">Destino</p>
-                    <p class="text-base font-semibold text-[#003368]">Colima, Col</p>
-                </div>
-            </div>
-            <div class="flex flex-nowrap w-full outline-dashed outline-1 mt-5">
-                <div class="flex-1 w-1/2">
-                    <p class="text-base font-semibold ">Sale</p>
-                    <p class="text-base font-semibold text-[#003368]">Miércoles 15 de marzo de 2023 01:30 HRS</p>
-                </div>
-                <div class="flex-2 w-1/2">
-                    <p class="text-base font-semibold ">Llega</p>
-                    <p class="text-base font-semibold text-[#003368]">Miércoles 15 de marzo de 2023 12:00 HRS</p>
-                </div>
-            </div>
-            <div class="bg-gray-300 text-center mx-auto w-72 p-2">
-                <div class="grid grid-cols-4 gap-4">
-                    <div class="font-semibold">Asiento</div>
-                    <div class="font-semibold">Nombre</div>
-                    <div class="font-semibold">Categoría</div>
-
-                    <!-- Ejemplo de una fila -->
-                    <div class="row-start-2 text-[#003368]">1A</div>
-                    <div class="row-start-2 text-[#003368]">John Doe</div>
-                    <div class="row-start-2 text-[#003368] font-semibold uppercase">INAPAM</div>
-                    <div class="row-start-2 text-[#003368]">$286</div>
-
-                    <!-- Fila 2-->
-                    <div class="row-start-3 text-[#003368]">1B</div>
-                    <div class="row-start-3 text-[#003368]">Jane Doe</div>
-                    <div class="row-start-3 text-[#003368] font-semibold uppercase">Adulto</div>
-                    <div class="row-start-3 text-[#003368]">$513</div>
-                    <!-- Fila 3-->
-                    <div class="row-start-4 text-[#003368]">1C</div>
-                    <div class="row-start-4 text-[#003368]">Juanito Alimaña Perenganito</div>
-                    <div class="row-start-4 text-[#003368] font-semibold uppercase">Menor</div>
-                    <div class="row-start-4 text-[#003368]">$286</div>
-                </div>
-            </div>
-            <div class="flex flex-nowrap w-full outline-dashed outline-1 mt-5">
-                <div class="flex-1">
-                    <p class="text-2xl font-semibold text-[#003368] m-4">Total a pagar: $2,170</p>
-                </div>
-            </div>
-        </div>
-        <div class="bg-[#C82333] w-80 rounded-lg mx-auto my-5">
-            <p class="text-white text-xl font-bold text-center">Seleccione una forma de pago</p>
-        </div>
-        <div class="bg-[#1D93D2] w-80 mx-auto flex justify-around">
-            <div class="text-center" onclick="mostrarFormulario('tarjeta-formulario')">
-                <img src="tarjeta.svg" alt="Pago con tarjeta" class="w-10/12 mx-auto opacity-70 cursor-pointer"
-                    id="tarjeta-imagen">
-                <p class="text-white text-xs">Tarjeta de crédito o débito</p>
-            </div>
-            <div class="text-center" onclick="mostrarFormulario('reservacion-formulario')">
-                <img src="Pago_efectivo.svg" alt="Pago con tarjeta" class="w-10/12 mx-auto opacity-70 cursor-pointer"
-                    id="reservacion-imagen">
-                <p class="text-white text-xs">Reservación</p>
-            </div>
-            <div class="text-center" onclick="mostrarFormulario('coppel-formulario')">
-                <img src="CoppelPay.svg" alt="Pago con tarjeta" class="w-10/12 mx-auto opacity-70 cursor-pointer"
-                    id="coppel-imagen">
-                <p class="text-white text-xs">Pago en Coppel</p>
-            </div>
-        </div>
-        <div class="bg-[#1D93D2] w-80 mx-auto flex justify-around py-5">
-            <!-- Formularios ocultos -->
-            <div id="tarjeta-formulario" class="formulario" style="display:none;">
-                <!-- Contenido del formulario de tarjeta -->
-                <div class="flex flex-col">
-                    <!-- Primer nivel -->
-                    <div class="flex">
-                        <div class="flex-1"></div>
-                        <div class="flex-1 text-white font-semibold text-xs text-center">Banco</div>
-                        <div class="flex-1 text-white font-semibold text-xs text-center">Débito o Crédito</div>
+                <div class="flex flex-nowrap w-full outline-dashed outline-1">
+                    <div class="flex-1 w-1/2">
+                        <p class="text-base font-semibold ">Origen</p>
+                        <p class="text-base font-semibold text-[#003368]">México Central Norte</p>
                     </div>
+                    <div class="flex-2 w-1/2">
+                        <p class="text-base font-semibold ">Destino</p>
+                        <p class="text-base font-semibold text-[#003368]">Colima, Col</p>
+                    </div>
+                </div>
+                <div class="flex flex-nowrap w-full outline-dashed outline-1 mt-5">
+                    <div class="flex-1 w-1/2">
+                        <p class="text-base font-semibold ">Sale</p>
+                        <p class="text-base font-semibold text-[#003368] lg:mx-5">Miércoles 15 de marzo de 2023 01:30
+                            HRS
+                        </p>
+                    </div>
+                    <div class="flex-2 w-1/2">
+                        <p class="text-base font-semibold ">Llega</p>
+                        <p class="text-base font-semibold text-[#003368] lg:mx-5">Miércoles 15 de marzo de 2023 12:00
+                            HRS
+                        </p>
+                    </div>
+                </div>
+                <div class="bg-gray-300 text-center mx-auto w-72 lg:w-full p-2">
+                    <div class="grid grid-cols-4 gap-4">
+                        <div class="font-semibold">Asiento</div>
+                        <div class="font-semibold">Nombre</div>
+                        <div class="font-semibold">Categoría</div>
 
-                    <!-- Segundo nivel -->
-                    <div class="flex bg-white rounded-lg">
-                        <!-- Primer cuadrante vacío -->
-                        <div class="flex-1 flex items-center justify-center">
-                            <label for="debito" class="flex items-center justify-center">
-                                <input type="radio" id="debito" name="tipoTarjeta" value="debito">
-                            </label>
-                        </div>
+                        <!-- Ejemplo de una fila -->
+                        <div class="row-start-2 text-[#003368]">1A</div>
+                        <div class="row-start-2 text-[#003368]">John Doe</div>
+                        <div class="row-start-2 text-[#003368] font-semibold uppercase">INAPAM</div>
+                        <div class="row-start-2 text-[#003368]">$286</div>
 
-                        <!-- Segundo cuadrante: Input radio -->
-                        <div class="flex-1">
-                            <img src="tarjeta.svg" alt="Pago con tarjeta" class="w-full mx-auto">
-                        </div>
-
-                        <!-- Tercer cuadrante: Imagen y texto -->
-                        <div class="flex-1 text-center">
-                            <p class="text-xs mt-2 font-medium text-[#003368]">Pago en una exhibición</p>
-                        </div>
+                        <!-- Fila 2-->
+                        <div class="row-start-3 text-[#003368]">1B</div>
+                        <div class="row-start-3 text-[#003368]">Jane Doe</div>
+                        <div class="row-start-3 text-[#003368] font-semibold uppercase">Adulto</div>
+                        <div class="row-start-3 text-[#003368]">$513</div>
+                        <!-- Fila 3-->
+                        <div class="row-start-4 text-[#003368]">1C</div>
+                        <div class="row-start-4 text-[#003368]">Juanito Alimaña Perenganito</div>
+                        <div class="row-start-4 text-[#003368] font-semibold uppercase">Menor</div>
+                        <div class="row-start-4 text-[#003368]">$286</div>
+                    </div>
+                </div>
+                <div class="flex flex-nowrap w-full outline-dashed outline-1 mt-5">
+                    <div class="flex-1 text-2xl font-semibold text-[#003368] m-4">
+                        Total a pagar: $2,170
                     </div>
                 </div>
             </div>
-            <div id="reservacion-formulario" class="formulario text-center text-white font-semibold text-xl"
-                style="display:none;">
-                <!-- Contenido del formulario de reservación -->
-                Paga en efectivo en cualquiera de estos establecimientos
-                <img src="ReservacionColor2.webp" alt="Reservacion" class="pt-5">
-            </div>
-            <div id="coppel-formulario" class="formulario" style="display:none;">
-                <!-- Contenido del formulario de Coppel -->
-
-                <div class="flex flex-col">
-                    <!-- Primer nivel -->
-                    <div class="flex">
-                        <div class="flex-1"></div>
-                        <div class="flex-1 text-white font-semibold text-xs text-center">Banco</div>
-                        <div class="flex-1 text-white font-semibold text-xs text-center">Débito</div>
-                        <div class="flex-1 text-white font-semibold text-xs text-center">Crédito</div>
+            <div class="lg:-mt-20 lg:w-full">
+                <div class="bg-[#C82333] w-80 lg:w-full rounded-lg mx-auto my-5 p-4">
+                    <p class="text-white text-xl font-bold text-center">Seleccione una forma de pago</p>
+                </div>
+                <div class="bg-[#1D93D2] w-80 lg:w-full mx-auto flex justify-around lg:col-start-2">
+                    <div class="text-center" onclick="mostrarFormulario('tarjeta-formulario', 'tarjeta-imagen')">
+                        <img src="tarjeta.svg" alt="Pago con tarjeta"
+                            class="w-10/12 lg:w-11/12 mx-auto opacity-70 cursor-pointer" id="tarjeta-imagen">
+                        <p class="text-white text-xs">Tarjeta de crédito o débito</p>
                     </div>
+                    <div class="text-center"
+                        onclick="mostrarFormulario('reservacion-formulario', 'reservacion-imagen')">
+                        <img src="Pago_efectivo.svg" alt="Pago con tarjeta"
+                            class="w-10/12 lg:w-11/12 mx-auto opacity-70 cursor-pointer" id="reservacion-imagen">
+                        <p class="text-white text-xs">Reservación</p>
+                    </div>
+                    <div class="text-center" onclick="mostrarFormulario('coppel-formulario', 'coppel-imagen')">
+                        <img src="CoppelPay.svg" alt="Pago con tarjeta"
+                            class="w-10/12 lg:w-11/12 mx-auto opacity-70 cursor-pointer" id="coppel-imagen">
+                        <p class="text-white text-xs">Pago en Coppel</p>
+                    </div>
+                </div>
+                <div class="bg-[#1D93D2] w-80 lg:w-full mx-auto flex justify-around py-5 lg:col-start-2">
+                    <!-- Formularios ocultos -->
+                    <div id="tarjeta-formulario" class="formulario" style="display:none;">
+                        <!-- Contenido del formulario de tarjeta -->
+                        <div class="flex flex-col">
+                            <!-- Primer nivel -->
+                            <div class="flex">
+                                <div class="flex-1"></div>
+                                <div class="flex-1 text-white font-semibold text-xs text-center">Banco</div>
+                                <div class="flex-1 text-white font-semibold text-xs text-center">Débito o Crédito</div>
+                            </div>
 
-                    <!-- Segundo nivel -->
-                    <div class="flex bg-white rounded-lg">
-                        <!-- Primer cuadrante vacío -->
-                        <div class="flex-1 flex items-center justify-center">
-                            <label for="debito" class="flex items-center justify-center">
-                                <input type="radio" id="debito" name="tipoTarjeta" value="debito">
-                            </label>
-                        </div>
+                            <!-- Segundo nivel -->
+                            <div class="flex bg-white rounded-lg">
+                                <!-- Primer cuadrante vacío -->
+                                <div class="flex-1 flex items-center justify-center">
+                                    <label for="debito" class="flex items-center justify-center">
+                                        <input type="radio" id="debito" name="tipoTarjeta" value="debito">
+                                    </label>
+                                </div>
 
-                        <!-- Segundo cuadrante: Input radio -->
-                        <div class="flex-1">
-                            <img src="CoppelPay.svg" alt="Pago con tarjeta" class="w-full mx-auto">
-                        </div>
+                                <!-- Segundo cuadrante: Input radio -->
+                                <div class="flex-1">
+                                    <img src="tarjeta.svg" alt="Pago con tarjeta" class="w-full mx-auto">
+                                </div>
 
-                        <!-- Tercer cuadrante: Imagen y texto -->
-                        <div class="flex-1 text-center">
-                            <p class="text-xs mt-2 font-medium text-[#003368]">1 Pago</p>
+                                <!-- Tercer cuadrante: Imagen y texto -->
+                                <div class="flex-1 text-center">
+                                    <p class="text-xs mt-2 font-medium text-[#003368]">Pago en una exhibición</p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="flex-1 text-center">
-                            <p class="text-xs mt-2 font-bold text-[#C82333]">12 meses</p>
+                    </div>
+                    <div id="reservacion-formulario" class="formulario text-center text-white font-semibold text-xl"
+                        style="display:none;">
+                        <!-- Contenido del formulario de reservación -->
+                        Paga en efectivo en cualquiera de estos establecimientos
+                        <img src="ReservacionColor2.webp" alt="Reservacion" class="pt-5">
+                    </div>
+                    <div id="coppel-formulario" class="formulario" style="display:none;">
+                        <!-- Contenido del formulario de Coppel -->
+
+                        <div class="flex flex-col">
+                            <!-- Primer nivel -->
+                            <div class="flex">
+                                <div class="flex-1"></div>
+                                <div class="flex-1 text-white font-semibold text-xs text-center">Banco</div>
+                                <div class="flex-1 text-white font-semibold text-xs text-center">Débito</div>
+                                <div class="flex-1 text-white font-semibold text-xs text-center">Crédito</div>
+                            </div>
+
+                            <!-- Segundo nivel -->
+                            <div class="flex bg-white rounded-lg">
+                                <!-- Primer cuadrante vacío -->
+                                <div class="flex-1 flex items-center justify-center">
+                                    <label for="debito" class="flex items-center justify-center">
+                                        <input type="radio" id="debito" name="tipoTarjeta" value="debito">
+                                    </label>
+                                </div>
+
+                                <!-- Segundo cuadrante: Input radio -->
+                                <div class="flex-1">
+                                    <img src="CoppelPay.svg" alt="Pago con tarjeta" class="w-full mx-auto">
+                                </div>
+
+                                <!-- Tercer cuadrante: Imagen y texto -->
+                                <div class="flex-1 text-center">
+                                    <p class="text-xs mt-2 font-medium text-[#003368]">1 Pago</p>
+                                </div>
+                                <div class="flex-1 text-center">
+                                    <p class="text-xs mt-2 font-bold text-[#C82333]">12 meses</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-[#1D93D2] py-5 pt-0 lg:col-start-2">
+                    <div class="flex flex-col mb-4 w-full">
+                        <label for="correo" class="text-white font-bold mb-2 mx-8 lg:mx-0 text-lg">Correo
+                            electrónico</label>
+                        <input type="email" name="email" id="correo"
+                            class="p-2 border border-white rounded mx-auto w-10/12 lg:w-full"
+                            placeholder="Escribe tu correo electrónico" required>
+                    </div>
+                    <div class="flex flex-col">
+                        <label for="emailConfirmado" class="text-white font-bold mb-2 mx-8 lg:mx-0 text-lg">Confirmar
+                            correo
+                            electrónico</label>
+                        <input type="email" name="emailConfirmado" id="emailConfirmado"
+                            class="p-2 border border-white rounded mx-auto w-10/12 lg:w-full"
+                            placeholder="Confirmar correo electrónico" required>
+                    </div>
+                </div>
+                <div id="resultado" class="font-bold mx-8 lg:mx-0 mt-0 mb-5"></div>
+                <div class="bg-[#003368] mx-auto p-7 text-white w-10/12 lg:w-full rounded-lg lg:col-start-2">
+                    <div class="mb-3">
+                        <input type="checkbox" id="avisoPrivacidad" class="mr-2">
+                        <label for="avisoPrivacidad">He leído y acepto el aviso de privacidad.</label>
+                    </div>
+                    <div class="mb-3">
+                        <input type="checkbox" id="terminosCondiciones" class="mr-2">
+                        <label for="terminosCondiciones">He leído y aceptado los términos y condiciones.</label>
+                    </div>
+                </div>
+                <div class="flex justify-between mx-8 py-5 bg-[#1D93D2] lg:col-start-2">
+                    <button id="regresarBtn"
+                        class="bg-[#C82333] text-white px-6 py-2 lg:px-8 lg:py-4 rounded border-white border-2 font-semibold lg:font-bold lg:text-xl button">Regresar</button>
+                    <button id="continuarBtn"
+                        class="bg-[#C82333] text-white px-6 py-2 lg:px-8 lg:py-4 rounded border-white border-2 font-semibold lg:font-bold lg:text-xl cursor-not-allowed opacity-50 button"
+                        disabled>Continuar</button>
+                </div>
+                <div id="myModal"
+                    class="fixed bottom-0 left-0 right-0 bg-black bg-opacity-50 h-screen flex justify-center items-center z-50 rounded-lg hidden">
+                    <div class="modal-content bg-white rounded-lg shadow-lg p-6 w-3/4 space-y-8">
+                        <span id="closeModal" class="close cursor-pointer absolute top-0 right-0 p-4">&times;</span>
+                        <p class="text-center text-lg text-[#003368] font-bold">GRACIAS POR TU COMPRA.</p>
+                        <p class="text-center text-[#003368] text-base font-semibold">Tu pase de abordar ha sido enviado
+                            por correo electrónico. También puedes descargarlo en el siguiente enlace.</p>
+                        <div class="text-center">
+                            <button id="redirectToPage"
+                                class="bg-[#C82333] text-white px-4 py-2 rounded text-center mx-auto w-3/4">Descargar
+                                pase de abordar</button>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="bg-[#1D93D2] py-5">
-            <div class="flex flex-col mb-4 w-full">
-                <label for="correo" class="text-white font-bold mb-2 mx-8 text-lg">Correo electrónico</label>
-                <input type="email" name="email" id="correo" class="p-2 border border-white rounded mx-auto w-10/12"
-                    placeholder="Escribe tu correo electrónico" required>
-            </div>
-            <div class="flex flex-col">
-                <label for="emailConfirmado" class="text-white font-bold mb-2 mx-8 text-lg">Confirmar correo
-                    electrónico</label>
-                <input type="email" name="emailConfirmado" id="emailConfirmado"
-                    class="p-2 border border-white rounded mx-8 w-10/12" placeholder="Confirmar correo electrónico"
-                    required>
-            </div>
-        </div>
-        <div class="bg-[#003368] mx-auto p-7 text-white w-10/12 rounded-lg">
-            <div class="mb-3">
-                <input type="checkbox" id="avisoPrivacidad" class="mr-2">
-                <label for="avisoPrivacidad">He leído y acepto el aviso de privacidad.</label>
-            </div>
-            <div class="mb-3">
-                <input type="checkbox" id="terminosCondiciones" class="mr-2">
-                <label for="terminosCondiciones">He leído y aceptado los términos y condiciones.</label>
-            </div>
-        </div>
-        <div class="flex justify-between mx-8 py-5 bg-[#1D93D2]">
-            <button
-                class="bg-[#C82333] text-white px-6 py-2 rounded border-white border-2 font-semibold">Regresar</button>
-            <button
-                class="bg-[#C82333] text-white px-6 py-2 rounded border-white border-2 font-semibold">Continuar</button>
         </div>
     </div>
 
@@ -338,7 +366,7 @@
         }
     </script>
     <script>
-        function mostrarFormulario(idFormulario) {
+        function mostrarFormulario(idFormulario, idImagen) {
             // Oculta todos los formularios
             document.querySelectorAll('.formulario').forEach(formulario => {
                 formulario.style.display = 'none';
@@ -353,10 +381,86 @@
             document.getElementById(idFormulario).style.display = 'block';
 
             // Ajusta la opacidad de la imagen clicada
-            document.getElementById(idFormulario.replace('-formulario', '-imagen')).style.opacity = '1';
+            document.getElementById(idImagen).style.opacity = '1';
         }
-
     </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Obtener referencias a los elementos del DOM
+            var correoInput = document.getElementById('correo');
+            var emailConfirmadoInput = document.getElementById('emailConfirmado');
+            var avisoPrivacidadCheckbox = document.getElementById('avisoPrivacidad');
+            var terminosCondicionesCheckbox = document.getElementById('terminosCondiciones');
+            var continuarBtn = document.getElementById('continuarBtn');
+
+            // Agregar event listeners para detectar cambios en los elementos
+            correoInput.addEventListener('input', toggleContinuarBtn);
+            emailConfirmadoInput.addEventListener('input', toggleContinuarBtn);
+            avisoPrivacidadCheckbox.addEventListener('change', toggleContinuarBtn);
+            terminosCondicionesCheckbox.addEventListener('change', toggleContinuarBtn);
+
+            function validarCorreo(correo) {
+                // Expresión regular para validar un correo electrónico básico
+                var regexCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+                return regexCorreo.test(correo);
+            }
+
+            function toggleContinuarBtn() {
+                var correoValido = validarCorreo(correoInput.value);
+                var confirmacionCorreoVacia = emailConfirmadoInput.value === '';
+
+                if (correoInput.value !== '' && correoInput.value === emailConfirmadoInput.value &&
+                    correoValido && avisoPrivacidadCheckbox.checked && terminosCondicionesCheckbox.checked) {
+                    continuarBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                    continuarBtn.removeAttribute('disabled');
+                    mostrarResultado('Las direcciones de correo electrónico son válidas y coinciden.', 'button-green', 'white');
+                } else {
+                    continuarBtn.classList.add('opacity-50', 'cursor-not-allowed');
+                    continuarBtn.setAttribute('disabled', 'disabled');
+                    if (!correoValido && !confirmacionCorreoVacia) {
+                        mostrarResultado('Por favor, ingrese un correo electrónico válido.', 'button-red', 'red');
+                    } else if (!confirmacionCorreoVacia) {
+                        mostrarResultado('Las direcciones de correo electrónico no coinciden.', 'button-red', 'red');
+                    }
+                }
+            }
+
+            function mostrarResultado(mensaje, estiloBoton, colorTexto) {
+                // Mostrar el mensaje de resultado
+                var resultadoDiv = document.getElementById('resultado');
+                resultadoDiv.innerHTML = mensaje;
+
+                // Cambiar el estilo del botón según el resultado
+                var buttonClass = document.querySelector('.button');
+                buttonClass.classList.remove('button-green', 'button-red');
+                buttonClass.classList.add(estiloBoton);
+
+                // Cambiar el color del texto
+                resultadoDiv.style.color = colorTexto;
+            }
+
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Abre el modal cuando se hace clic en el ícono
+            document.getElementById('continuarBtn').addEventListener('click', function () {
+                document.getElementById('myModal').classList.remove('hidden');
+            });
+
+            // Cierra el modal cuando se hace clic en la "x"
+            document.getElementById('closeModal').addEventListener('click', function () {
+                document.getElementById('myModal').classList.add('hidden');
+            });
+
+            // Redirige a otra página cuando se hace clic en el botón dentro del modal
+            document.getElementById('redirectToPage').addEventListener('click', function () {
+                window.location.href = "tu_otra_pagina.html";
+            });
+        });
+    </script>
+
 </body>
 
 </html>
