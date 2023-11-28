@@ -48,22 +48,23 @@
         </div>
     </div>
     <div class="bg-[#1D93D2] py-5">
-        <div class="grid lg:grid-cols-2 gap-0 lg:mx-28">
-            <div class="bg-[#C82333] w-80 rounded-lg mx-auto p-2 lg:p-4">
-                <p class="text-white text-xl font-bold text-center">Favor de revisar información</p>
+        <div class="grid lg:grid-cols-2 lg:grid-rows-[auto,1fr] gap-0 lg:mx-28">
+            <div class="bg-[#C82333] w-80 sm:w-96 rounded-lg mx-auto p-2 lg:p-4">
+                <p class="text-white text-xl font-bold text-center sm:text-2xl">Favor de revisar información</p>
             </div>
-            <div class="bg-gray-300 text-center mx-auto w-80  lg:col-start-1 mt-5 h-fit">
+            <div class="bg-gray-300 text-center mx-auto w-80 sm:w-96 lg:col-start-1 mt-5 h-fit">
 
-                <div class="bg-gray-300 text-center mx-auto w-80  mt-5 uppercase font-bold border-b border-white ">
+                <div
+                    class="bg-gray-300 text-center mx-auto w-80 sm:w-96 sm:text-lg  mt-5 uppercase font-bold border-b border-white ">
                     Confirmación de compra
                 </div>
-                <div class="flex flex-nowrap w-full outline-dashed outline-1">
-                    <div class="flex-1 w-1/2">
-                        <p class="text-base font-semibold ">Origen</p>
+                <div class="grid grid-cols-2 gap-4 mt-5">
+                    <div class="text-[#003368]">
+                        <p class="text-base font-semibold">Origen</p>
                         <p class="text-base font-semibold text-[#003368]">México Central Norte</p>
                     </div>
-                    <div class="flex-2 w-1/2">
-                        <p class="text-base font-semibold ">Destino</p>
+                    <div class="text-[#003368]">
+                        <p class="text-base font-semibold">Destino</p>
                         <p class="text-base font-semibold text-[#003368]">Colima, Col</p>
                     </div>
                 </div>
@@ -81,7 +82,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="bg-gray-300 text-center mx-auto w-72 lg:w-full p-2">
+                <div class="bg-gray-300 text-center mx-auto w-72 sm:w-80 lg:w-full p-2">
                     <div class="grid grid-cols-4 gap-4">
                         <div class="font-semibold">Asiento</div>
                         <div class="font-semibold">Nombre</div>
@@ -111,29 +112,29 @@
                     </div>
                 </div>
             </div>
-            <div class="lg:-mt-20 lg:w-full">
-                <div class="bg-[#C82333] w-80 lg:w-full rounded-lg mx-auto my-5 p-4">
-                    <p class="text-white text-xl font-bold text-center">Seleccione una forma de pago</p>
+            <div class="lg:-mt-20 lg:w-full lg:ml-5">
+                <div class="bg-[#C82333] w-80 sm:w-96 lg:w-full rounded-lg mx-auto my-5 p-4">
+                    <p class="text-white text-xl font-bold text-center sm:text-2xl">Seleccione una forma de pago</p>
                 </div>
-                <div class="bg-[#1D93D2] w-80 lg:w-full mx-auto flex justify-around lg:col-start-2">
+                <div class="bg-[#1D93D2] w-80 sm:w-96 lg:w-full mx-auto flex justify-around lg:col-start-2 space-x-4">
                     <div class="text-center" onclick="mostrarFormulario('tarjeta-formulario', 'tarjeta-imagen')">
-                        <img src="tarjeta.svg" alt="Pago con tarjeta"
-                            class="w-10/12 lg:w-11/12 mx-auto opacity-70 cursor-pointer" id="tarjeta-imagen">
+                        <img src="tarjeta.svg" alt="Pago con tarjeta" class="w-full mx-auto opacity-70 cursor-pointer"
+                            id="tarjeta-imagen">
                         <p class="text-white text-xs">Tarjeta de crédito o débito</p>
                     </div>
                     <div class="text-center"
                         onclick="mostrarFormulario('reservacion-formulario', 'reservacion-imagen')">
                         <img src="Pago_efectivo.svg" alt="Pago con tarjeta"
-                            class="w-10/12 lg:w-11/12 mx-auto opacity-70 cursor-pointer" id="reservacion-imagen">
+                            class="w-full mx-auto opacity-70 cursor-pointer" id="reservacion-imagen">
                         <p class="text-white text-xs">Reservación</p>
                     </div>
                     <div class="text-center" onclick="mostrarFormulario('coppel-formulario', 'coppel-imagen')">
-                        <img src="CoppelPay.svg" alt="Pago con tarjeta"
-                            class="w-10/12 lg:w-11/12 mx-auto opacity-70 cursor-pointer" id="coppel-imagen">
+                        <img src="CoppelPay.svg" alt="Pago con tarjeta" class="w-full mx-auto opacity-70 cursor-pointer"
+                            id="coppel-imagen">
                         <p class="text-white text-xs">Pago en Coppel</p>
                     </div>
                 </div>
-                <div class="bg-[#1D93D2] w-80 lg:w-full mx-auto flex justify-around py-5 lg:col-start-2">
+                <div class="bg-[#1D93D2] w-80 sm:w-96 lg:w-full mx-auto flex justify-around py-5 lg:col-start-2">
                     <!-- Formularios ocultos -->
                     <div id="tarjeta-formulario" class="formulario" style="display:none;">
                         <!-- Contenido del formulario de tarjeta -->
@@ -141,8 +142,12 @@
                             <!-- Primer nivel -->
                             <div class="flex">
                                 <div class="flex-1"></div>
-                                <div class="flex-1 text-white font-semibold text-xs text-center">Banco</div>
-                                <div class="flex-1 text-white font-semibold text-xs text-center">Débito o Crédito</div>
+                                <div
+                                    class="flex-1 text-white font-semibold text-xs text-center sm:text-sm sm:font-bold">
+                                    Banco</div>
+                                <div
+                                    class="flex-1 text-white font-semibold text-xs text-center sm:text-sm sm:font-bold">
+                                    Débito o Crédito</div>
                             </div>
 
                             <!-- Segundo nivel -->
@@ -161,7 +166,9 @@
 
                                 <!-- Tercer cuadrante: Imagen y texto -->
                                 <div class="flex-1 text-center">
-                                    <p class="text-xs mt-2 font-medium text-[#003368]">Pago en una exhibición</p>
+                                    <p class="text-xs sm:text-sm mt-2 font-medium text-[#003368] sm:font-bold">
+                                        Pago en una exhibición
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -179,9 +186,15 @@
                             <!-- Primer nivel -->
                             <div class="flex">
                                 <div class="flex-1"></div>
-                                <div class="flex-1 text-white font-semibold text-xs text-center">Banco</div>
-                                <div class="flex-1 text-white font-semibold text-xs text-center">Débito</div>
-                                <div class="flex-1 text-white font-semibold text-xs text-center">Crédito</div>
+                                <div
+                                    class="flex-1 text-white font-semibold text-xs text-center sm:text-sm sm:font-bold">
+                                    Banco</div>
+                                <div
+                                    class="flex-1 text-white font-semibold text-xs text-center sm:text-sm sm:font-bold">
+                                    Débito</div>
+                                <div
+                                    class="flex-1 text-white font-semibold text-xs text-center sm:text-sm sm:font-bold">
+                                    Crédito</div>
                             </div>
 
                             <!-- Segundo nivel -->
@@ -200,10 +213,12 @@
 
                                 <!-- Tercer cuadrante: Imagen y texto -->
                                 <div class="flex-1 text-center">
-                                    <p class="text-xs mt-2 font-medium text-[#003368]">1 Pago</p>
+                                    <p class="text-xs mt-2 font-medium text-[#003368] sm:text-sm sm:font-bold">1 Pago
+                                    </p>
                                 </div>
                                 <div class="flex-1 text-center">
-                                    <p class="text-xs mt-2 font-bold text-[#C82333]">12 meses</p>
+                                    <p class="text-xs mt-2 font-bold text-[#C82333] sm:text-sm sm:font-bold">12 meses
+                                    </p>
                                 </div>
                             </div>
                         </div>
