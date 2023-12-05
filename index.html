@@ -163,7 +163,8 @@
             </div>
         </div>
         <div class="bg-[#1D93D2]">
-            <form action="Paso1.html">
+            <form action="https://venta.odm.com.mx/odm/PASO1/paso1.aspx" enctype="multipart/form-data"
+                name="formulario">
                 <div
                     class="ml-8 sm:ml-14 lg:ml-40 xl:ml-64 2xl:ml-[400px] pt-3 lg:pt-5 py-3 space-x-5 flex max-w-2xl mx-auto">
                     <label class="flex items-center">
@@ -480,7 +481,7 @@
                                                             :class="{'font-normal': endToShow == 'from' }"
                                                             autocomplete="off" id="fecha-ida"
                                                             class="w-full border border-gray-300 rounded-lg py-2 lg:w-[125%] w-125 xl:w-[115%] w-115 2xl:w-[125%] text-center pr-3 focus:outline-none h-12 text-base placeholder-gray-800"
-                                                            placeholder="Fecha de ida" />
+                                                            placeholder="Fecha de ida" name="fechSalida" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -577,6 +578,16 @@
                             </div>
                         </div>
                     </div>
+                    <input type="hidden" name="origenText" value="MEX">
+                    <input type="hidden" name="destinoText" value="TIJ">
+                    <input type="hidden" name="viajeredondo" value="1">
+                    <input type="hidden" name="promociones" value="1">
+
+                    <!-- VARIABLES IMPORTANTEs -->
+                    <!-- <input type="hidden" value="ACR" name="destinoCode" id="destinos" /> -->
+                    <input type="hidden" value="ODM" name="marca" id="marca" />
+                    <input type="hidden" value="escritorio" name="version" id="version" />
+                    <input type="hidden" value="_" name="reservacionText" id="reservacionText" />
                     <div class="flex w-full hidden lg:col-span-1" id="datepickerSingle" x-show="showDatepicker">
                         <div x-data="app" x-cloak class="w-full">
                             <div class="container py-0 md:py-0">
@@ -673,11 +684,12 @@
                                         <div id="totalMessage" id="openTicketModal" class="text-center mt-0 mr-48">
                                         </div>
                                     </button>
-                                    <input type="text" id="adultInput" class="hidden form-control">
-                                    <input type="text" id="childInput" class="hidden form-control">
-                                    <input type="text" id="inapamInput" class="hidden form-control">
-                                    <input type="text" id="professorInput" class="hidden form-control">
-                                    <input type="text" id="studentInput" class="hidden form-control">
+                                    <input type="text" name="adultos" id="adultInput" class="hidden form-control">
+                                    <input type="text" name="menores" id="childInput" class="hidden form-control">
+                                    <input type="text" name="senectud" id="inapamInput" class="hidden form-control">
+                                    <input type="text" name="estudiantes" id="professorInput"
+                                        class="hidden form-control">
+                                    <input type="text" name="profesores" id="studentInput" class="hidden form-control">
                                     <img class="bus-logo ml-3" src="icono_pasajeros.svg" alt="Autobús"
                                         style="width: 40px; height: 40px; margin-left:20px;">
                                 </div>
@@ -1443,7 +1455,64 @@
 
     <!-- SCRIPT DE SELECCION DE ORIGEN -->
     <script>
-        $(document).ready(function () { $("#origenSelect").select2(); var e = !1; $("#origenSelect").on("select2:select", function (d) { if (!e) { e = !0, setTimeout(function () { e = !1 }, 2e3); const n = d.params.data.id; $("#origenSelect").val(n).trigger("change") } }), $("#origenSelect").on("change", function () { var e = $(this).val(); $.getJSON("destinos69/" + e + ".json", function (e, d) { var n = e.filter((e, d, n) => d === n.findIndex(d => d.id === e.id)), i = $("#destinoSelect"); i.empty(), i.append($("<option>").val("¿A dónde viajas?").text("¿A dónde viajas?")), $.each(n, function (e, d) { var a = n[e].id, t = n[e].value; i.append($("<option>").val(a).text(t)) }), i.trigger("change.select2") }) }), $("#destinoSelect").select2(), $("#origenSelect, #destinoSelect").on("change", function () { var e = $("#origenSelect").val(), d = $("#destinoSelect").val(); e && d ? $("#redondo").prop("checked") ? ($("#datepickerRange").removeClass("hidden"), $("#datepickerSingle").addClass("hidden")) : $("#sencillo").prop("checked") && ($("#datepickerSingle").removeClass("hidden"), $("#datepickerRange").addClass("hidden")) : ($("#datepickerRange").addClass("hidden"), $("#datepickerSingle").addClass("hidden")) }), $('input[type="radio"][name="opcion"]').on("change", function () { var e = $("#origenSelect").val(), d = $("#destinoSelect").val(); e && d ? "redondo" === $(this).attr("id") ? ($("#datepickerRange").removeClass("hidden"), $("#datepickerSingle").addClass("hidden")) : "sencillo" === $(this).attr("id") && ($("#datepickerSingle").removeClass("hidden"), $("#datepickerRange").addClass("hidden")) : ($("#datepickerRange").addClass("hidden"), $("#datepickerSingle").addClass("hidden")) }) });
+        $(document).ready(function () { $("#origenSelect").select2(); var e = !1; $("#origenSelect").on("select2:select", function (d) { if (!e) { e = !0, setTimeout(function () { e = !1 }, 2e3); const n = d.params.data.id; $("#origenSelect").val(n).trigger("change") } }), $("#origenSelect").on("change", function () { var e = $(this).val(); $.getJSON("destinos71/" + e + ".json", function (e, d) { var n = e.filter((e, d, n) => d === n.findIndex(d => d.id === e.id)), i = $("#destinoSelect"); i.empty(), i.append($("<option>").val("¿A dónde viajas?").text("¿A dónde viajas?")), $.each(n, function (e, d) { var a = n[e].id, t = n[e].value; i.append($("<option>").val(a).text(t)) }), i.trigger("change.select2") }) }), $("#destinoSelect").select2(), $("#origenSelect, #destinoSelect").on("change", function () { var e = $("#origenSelect").val(), d = $("#destinoSelect").val(); e && d ? $("#redondo").prop("checked") ? ($("#datepickerRange").removeClass("hidden"), $("#datepickerSingle").addClass("hidden")) : $("#sencillo").prop("checked") && ($("#datepickerSingle").removeClass("hidden"), $("#datepickerRange").addClass("hidden")) : ($("#datepickerRange").addClass("hidden"), $("#datepickerSingle").addClass("hidden")) }), $('input[type="radio"][name="opcion"]').on("change", function () { var e = $("#origenSelect").val(), d = $("#destinoSelect").val(); e && d ? "redondo" === $(this).attr("id") ? ($("#datepickerRange").removeClass("hidden"), $("#datepickerSingle").addClass("hidden")) : "sencillo" === $(this).attr("id") && ($("#datepickerSingle").removeClass("hidden"), $("#datepickerRange").addClass("hidden")) : ($("#datepickerRange").addClass("hidden"), $("#datepickerSingle").addClass("hidden")) }) });
+    </script>
+    <script>
+        $('html').on('change', 'select[name="origenCode"]', function (event) {
+            let origenElegido = $(this).val();
+
+            let hijoTxt = $('select[name="origenCode"] option:selected').text();
+            $('input[name="origenText"]').attr('value', hijoTxt);
+
+            console.log("texto_ruta", hijoTxt);
+            console.log("colocar", origenElegido);
+            destinosLocales(origenElegido);
+        });
+        function destinosLocales(dest) {
+
+            $.getJSON('destinos71/' + dest + '.json?3', function (jsonRaw, textStatus) {
+
+                $('#cbx_municipio').html('<option selected="selected" disabled>¿A Dónde Viajas?</option>');
+
+                //filtra duplicados
+                var json = jsonRaw.filter((data, index, j) => index === j.findIndex((t) => (t.id === data.id)))
+
+                $.each(json, function (i, val) {
+
+
+                    var id = json[i].id;
+                    var valor = json[i].value;
+                    $('#cbx_municipio').append('<option value=' + id + '>' + valor + '</option>');
+
+
+                });
+
+            });
+        }
+        function fichas(data) {
+
+            let nomorig = $(data).attr('nomorig');
+            let textorig = $(data).attr('textorig');
+            let nomdest = $(data).attr('nomdest');
+            let textdest = $(data).attr('textdest');
+
+            $('#select2-cbx_estado-container').text(textorig);
+            $('input[name="origenText"]').val(textorig);
+
+
+            $('#select2-cbx_municipio-container').text(textdest);
+            $('input[name="destinoText"]').val(textdest);
+
+            window.scroll({
+                top: 0,
+                left: 0,
+                behavior: 'smooth'
+            });
+
+            $('#cbx_estado').html('<option value="' + nomorig + '">' + textorig + '</option>');
+            $('#cbx_municipio').html('<option value="' + nomdest + '">' + textdest + '</option>');
+
+        }
     </script>
     <!-- SCRIPT DEL CAROUSEL -->
     <script type="text/javascript" src="slick-carousel.js"></script>

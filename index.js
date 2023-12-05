@@ -104,6 +104,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const incrementStudentButton = document.querySelector('[data-type="increment-student"]');
         const decrementStudentButton = document.querySelector('[data-type="decrement-student"]');
 
+
         incrementProfessorButton.disabled = true;
         decrementProfessorButton.disabled = true;
         incrementStudentButton.disabled = true;
@@ -179,6 +180,7 @@ function redireccionarPaso1() {
     // Redirigir a la página paso1
     window.location.href = "Paso1.html?tipoViaje=" + tipoViaje;
 }
+
 function RedireccionarPaso1() {
     // Obtener el tipo de viaje seleccionado
     var tipoViaje = document.getElementById("tipoViaje").value;
