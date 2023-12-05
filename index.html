@@ -168,11 +168,11 @@
                 <div
                     class="ml-8 sm:ml-14 lg:ml-40 xl:ml-64 2xl:ml-[400px] pt-3 lg:pt-5 py-3 space-x-5 flex max-w-2xl mx-auto">
                     <label class="flex items-center">
-                        <input type="radio" name="opcion" id="redondo" class="form-radio text-green-400" checked>
+                        <input type="radio" id="redondo" class="form-radio text-green-400" checked>
                         <span class="ml-2 text-white font-bold text-lg">Redondo</span>
                     </label>
                     <label class="flex items-center">
-                        <input type="radio" name="opcion" id="sencillo" class="form-radio text-green-400">
+                        <input type="radio" id="sencillo" class="form-radio text-green-400">
                         <span class="ml-2 text-white font-bold text-lg">Sencillo</span>
                     </label>
                 </div>
@@ -481,7 +481,7 @@
                                                             :class="{'font-normal': endToShow == 'from' }"
                                                             autocomplete="off" id="fecha-ida"
                                                             class="w-full border border-gray-300 rounded-lg py-2 lg:w-[125%] w-125 xl:w-[115%] w-115 2xl:w-[125%] text-center pr-3 focus:outline-none h-12 text-base placeholder-gray-800"
-                                                            placeholder="Fecha de ida" name="fechSalida" />
+                                                            placeholder="Fecha de ida" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -1455,7 +1455,7 @@
 
     <!-- SCRIPT DE SELECCION DE ORIGEN -->
     <script>
-        $(document).ready(function () { $("#origenSelect").select2(); var e = !1; $("#origenSelect").on("select2:select", function (d) { if (!e) { e = !0, setTimeout(function () { e = !1 }, 2e3); const n = d.params.data.id; $("#origenSelect").val(n).trigger("change") } }), $("#origenSelect").on("change", function () { var e = $(this).val(); $.getJSON("destinos71/" + e + ".json", function (e, d) { var n = e.filter((e, d, n) => d === n.findIndex(d => d.id === e.id)), i = $("#destinoSelect"); i.empty(), i.append($("<option>").val("¿A dónde viajas?").text("¿A dónde viajas?")), $.each(n, function (e, d) { var a = n[e].id, t = n[e].value; i.append($("<option>").val(a).text(t)) }), i.trigger("change.select2") }) }), $("#destinoSelect").select2(), $("#origenSelect, #destinoSelect").on("change", function () { var e = $("#origenSelect").val(), d = $("#destinoSelect").val(); e && d ? $("#redondo").prop("checked") ? ($("#datepickerRange").removeClass("hidden"), $("#datepickerSingle").addClass("hidden")) : $("#sencillo").prop("checked") && ($("#datepickerSingle").removeClass("hidden"), $("#datepickerRange").addClass("hidden")) : ($("#datepickerRange").addClass("hidden"), $("#datepickerSingle").addClass("hidden")) }), $('input[type="radio"][name="opcion"]').on("change", function () { var e = $("#origenSelect").val(), d = $("#destinoSelect").val(); e && d ? "redondo" === $(this).attr("id") ? ($("#datepickerRange").removeClass("hidden"), $("#datepickerSingle").addClass("hidden")) : "sencillo" === $(this).attr("id") && ($("#datepickerSingle").removeClass("hidden"), $("#datepickerRange").addClass("hidden")) : ($("#datepickerRange").addClass("hidden"), $("#datepickerSingle").addClass("hidden")) }) });
+        $(document).ready(function () { $("#origenSelect").select2(); var e = !1; $("#origenSelect").on("select2:select", function (d) { if (!e) { e = !0, setTimeout(function () { e = !1 }, 2e3); const n = d.params.data.id; $("#origenSelect").val(n).trigger("change") } }), $("#origenSelect").on("change", function () { var e = $(this).val(); $.getJSON("destinos71/" + e + ".json", function (e, d) { var n = e.filter((e, d, n) => d === n.findIndex(d => d.id === e.id)), i = $("#destinoSelect"); i.empty(), i.append($("<option>").val("¿A dónde viajas?").text("¿A dónde viajas?")), $.each(n, function (e, d) { var a = n[e].id, t = n[e].value; i.append($("<option>").val(a).text(t)) }), i.trigger("change.select2") }) }), $("#destinoSelect").select2(), $("#origenSelect, #destinoSelect").on("change", function () { var e = $("#origenSelect").val(), d = $("#destinoSelect").val(); e && d ? $("#redondo").prop("checked") ? ($("#datepickerRange").removeClass("hidden"), $("#datepickerSingle").addClass("hidden")) : $("#sencillo").prop("checked") && ($("#datepickerSingle").removeClass("hidden"), $("#datepickerRange").addClass("hidden")) : ($("#datepickerRange").addClass("hidden"), $("#datepickerSingle").addClass("hidden")) }), function () { var e = $("#origenSelect").val(), d = $("#destinoSelect").val(); e && d ? "redondo" === $(this).attr("id") ? ($("#datepickerRange").removeClass("hidden"), $("#datepickerSingle").addClass("hidden")) : "sencillo" === $(this).attr("id") && ($("#datepickerSingle").removeClass("hidden"), $("#datepickerRange").addClass("hidden")) : ($("#datepickerRange").addClass("hidden"), $("#datepickerSingle").addClass("hidden")) }) });
     </script>
     <script>
         $('html').on('change', 'select[name="origenCode"]', function (event) {
