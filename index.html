@@ -163,18 +163,20 @@
             </div>
         </div>
         <div class="bg-[#1D93D2]">
-            <form action="https://venta.odm.com.mx/odm/PASO1/paso1.aspx" enctype="multipart/form-data"
-                name="formulario">
+            <form action="https://venta.odm.com.mx/odm/PASO1/paso1.aspx" enctype="multipart/form-data" name="formulario"
+                id="formulario" method="post">
                 <div
                     class="ml-8 sm:ml-14 lg:ml-40 xl:ml-64 2xl:ml-[400px] pt-3 lg:pt-5 py-3 space-x-5 flex max-w-2xl mx-auto">
+
                     <label class="flex items-center">
-                        <input type="radio" name="opcion" id="redondo" class="form-radio text-green-400" checked>
-                        <span class="ml-2 text-white font-bold text-lg">Redondo</span>
-                    </label>
-                    <label class="flex items-center">
-                        <input type="radio" name="opcion" id="sencillo" class="form-radio text-green-400">
+                        <input type="radio" name="opcion" id="sencillo" class="form-radio text-green-400" checked>
                         <span class="ml-2 text-white font-bold text-lg">Sencillo</span>
                     </label>
+                    <label class="flex items-center">
+                        <input type="radio" name="opcion" id="redondo" class="form-radio text-green-400">
+                        <span class="ml-2 text-white font-bold text-lg">Redondo</span>
+                    </label>
+
                 </div>
 
                 <div
@@ -441,7 +443,6 @@
                             style="width: 50px; height: 50px; margin-left: 10px">
                     </div>
 
-
                     <div class="input-with-svg mx-8 lg:mx-0 lg:col-span-1 px-0 sm:mx-10 lg:ml-0">
                         <select id="destinoSelect" name="destinoCode">
                             <option selected="selected" disabled="">¿A dónde viajas?</option>
@@ -454,13 +455,97 @@
                         <div class="mt-0 w-full">
                             <div class="input-with-svg mx-9 sm:ml-[50px] lg:ml-0">
                                 <button id="buscarViajeBtn"
-                                    class="w-full bg-[#C82333] text-white font-bold text-lg rounded-lg py-3 px-7"
-                                    onclick="redireccionarPaso1()" disabled>
+                                    class="w-full bg-[#C82333] uppercase text-white font-bold text-lg rounded-lg py-3 px-7"
+                                    type="submit" disabled>
                                     Buscar viaje
                                 </button>
                             </div>
                         </div>
                     </div>
+                    <div class="flex w-full hidden lg:col-span-1" id="datepickerSingle" x-show="showDatepicker">
+                        <div x-data="app" x-cloak class="w-full">
+                            <div class="container py-0 md:py-0">
+                                <div class="flex items-center mx-0 sm:ml-0 w-full">
+                                    <div class="flex space-x-8 lg:space-x-4 w-full" @keydown.escape="closeDatepicker()"
+                                        @click.outside="closeDatepicker()">
+                                        <div class="input-with-svg mx-6 sm:mx-10 lg:col-span-1 px-2 sm:px-0 w-full">
+                                            <div class="relative flex items-center">
+                                                <input type="text"
+                                                    @click="endToShow = 'from'; init(); showDatepicker = true"
+                                                    :value="formatDate(dateFrom)"
+                                                    :class="{'font-normal': endToShow == 'from' }"
+                                                    @click="selectDateFrom" autocomplete="off"
+                                                    class="focus:outline-none border-none w-full text-center text-base placeholder-gray-800 rounded-md border-r border-gray-300 h-12 sm:w-full lg:w-[310px] 2xl:w-[370px] md:w-full"
+                                                    placeholder="Fecha de ida" id="fechasalida1" name="fechSalida" />
+                                                <img src="calendario.svg" alt="" class="absolute w-8 h-8 ml-8 lg:ml-7">
+                                            </div>
+                                        </div>
+
+                                        <div class="absolute bg-white mt-2 rounded-lg shadow p-4 sm:w-80 w-10/12 z-50"
+                                            x-show="showDatepicker" x-transition>
+                                            <div class="flex flex-col items-center">
+
+                                                <div class="w-full flex justify-between items-center mb-2">
+                                                    <span x-text="MONTH_NAMES[month]"
+                                                        class="text-lg font-bold text-gray-800"></span>
+                                                    <span x-text="year"
+                                                        class="ml-1 text-lg text-gray-600 font-normal"></span>
+                                                    <div class="pl-16">
+                                                        <button type="button"
+                                                            class="transition ease-in-out duration-100 inline-flex cursor-pointer hover:bg-gray-200 p-1 rounded-full"
+                                                            @click="if (month == 0) {year--; month=11;} else {month--;} getNoOfDays()">
+                                                            <svg class="h-6 w-6 text-gray-500 inline-flex" fill="none"
+                                                                viewBox="0 0 24 24" stroke="currentColor">
+                                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                                    stroke-width="2" d="M15 19l-7-7 7-7" />
+                                                            </svg>
+                                                        </button>
+                                                        <button type="button"
+                                                            class="transition ease-in-out duration-100 inline-flex cursor-pointer hover:bg-gray-200 p-1 rounded-full"
+                                                            @click="if (month == 11) {year++; month=0;} else {month++;}; getNoOfDays()">
+                                                            <svg class="h-6 w-6 text-gray-500 inline-flex" fill="none"
+                                                                viewBox="0 0 24 24" stroke="currentColor">
+                                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                                    stroke-width="2" d="M9 5l7 7-7 7" />
+                                                            </svg>
+                                                        </button>
+                                                    </div>
+                                                </div>
+
+                                                <div class="w-full flex flex-wrap mb-3 -mx-1">
+                                                    <template x-for="(day, index) in DAYS" :key="index">
+                                                        <div style="width: 14.26%" class="px-1">
+                                                            <div x-text="day"
+                                                                class="text-gray-800 font-medium text-center text-xs">
+                                                            </div>
+                                                        </div>
+                                                    </template>
+                                                </div>
+
+                                                <div class="flex flex-wrap -mx-1">
+                                                    <template x-for="blankday in blankdays">
+                                                        <div style="width: 14.28%"
+                                                            class="text-center border p-1 border-transparent text-sm">
+                                                        </div>
+                                                    </template>
+                                                    <template x-for="(date, dateIndex) in no_of_days" :key="dateIndex">
+                                                        <div style="width: 14.28%">
+                                                            <div @click="getDateValue(date, false); showTicketSelector = true"
+                                                                @mouseenter="getDateValue(date, true)" x-text="date"
+                                                                class="p-1 cursor-pointer text-center text-sm leading-none leading-loose transition ease-in-out duration-100"
+                                                                :class="{'font-bold': isToday(date) == true, 'bg-blue-800 text-white rounded-l-full': isDateFrom(date) == true, 'bg-blue-800 text-white rounded-r-full': isDateFrom(date) == true, 'bg-blue-200': isInRange(date) == true }">
+                                                            </div>
+                                                        </div>
+                                                    </template>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="flex w-full hidden lg:col-span-1" id="datepickerRange">
                         <div x-data="app" x-cloak class="w-full">
                             <div class="container mx-auto py-0 md:py-0">
@@ -480,8 +565,8 @@
                                                             :value="formatDate(dateFrom)"
                                                             :class="{'font-normal': endToShow == 'from' }"
                                                             autocomplete="off" id="fecha-ida"
-                                                            class="w-full border border-gray-300 rounded-lg py-2 lg:w-[125%] w-125 xl:w-[115%] w-115 2xl:w-[125%] text-center pr-3 focus:outline-none h-12 text-base placeholder-gray-800"
-                                                            placeholder="Fecha de ida" name="fechSalida" />
+                                                            class="w-full border border-gray-300 rounded-lg py-2 lg:w-[125%] w-125 xl:w-[115%] w-115 2xl:max-w-4xl text-center pr-3 focus:outline-none h-12 text-base placeholder-gray-800"
+                                                            placeholder="Fecha de ida" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -493,8 +578,8 @@
                                                             @click="endToShow = 'to'; init(); showDatepicker = true"
                                                             :class="{'font-normal': endToShow == 'to' }"
                                                             name="fechRegreso" id="fecharegreso" @click="selectDateFrom"
-                                                            autocomplete="off"
-                                                            class="w-full border border-gray-300 rounded-lg py-2 lg:w-[118%] w-118 xl:w-[115%] w-115 2xl:w-[118%] text-center pr-3 focus:outline-none h-12 text-base placeholder-gray-800"
+                                                            autocomplete="off" value="_"
+                                                            class="w-full border border-gray-300 rounded-lg py-2 lg:w-[118%] w-118 xl:w-[115%] w-115 2xl:max-w-10/12 text-center pr-3 2xl:pr-0 focus:outline-none h-12 text-base placeholder-gray-800"
                                                             :value="boletoAbierto ? 'FECHA ABIERTA' : formatDate(dateTo)"
                                                             :placeholder="boletoAbierto ? 'ABIERTO' : 'Fecha de regreso'" />
                                                     </div>
@@ -588,90 +673,6 @@
                     <input type="hidden" value="ODM" name="marca" id="marca" />
                     <input type="hidden" value="escritorio" name="version" id="version" />
                     <input type="hidden" value="_" name="reservacionText" id="reservacionText" />
-                    <div class="flex w-full hidden lg:col-span-1" id="datepickerSingle" x-show="showDatepicker">
-                        <div x-data="app" x-cloak class="w-full">
-                            <div class="container py-0 md:py-0">
-                                <div class="flex items-center mx-0 sm:ml-0 w-full">
-                                    <div class="flex space-x-8 lg:space-x-4 w-full" @keydown.escape="closeDatepicker()"
-                                        @click.outside="closeDatepicker()">
-                                        <div class="input-with-svg mx-6 sm:mx-10 lg:col-span-1 px-2 sm:px-0 w-full">
-                                            <div class="relative flex items-center">
-                                                <input type="text"
-                                                    @click="endToShow = 'from'; init(); showDatepicker = true"
-                                                    :value="formatDate(dateFrom)"
-                                                    :class="{'font-normal': endToShow == 'from' }"
-                                                    @click="selectDateFrom"
-                                                    class="focus:outline-none border-none w-full text-center text-base placeholder-gray-800 rounded-md border-r border-gray-300 h-12 sm:w-full lg:w-[310px] 2xl:w-[370px] md:w-full"
-                                                    placeholder="Fecha de ida" id="fechasalida1" name="fechSalida" />
-                                                <img src="calendario.svg" alt="" class="absolute w-8 h-8 ml-8 lg:ml-7">
-                                            </div>
-                                        </div>
-
-                                        <div class="absolute bg-white mt-2 rounded-lg shadow p-4 sm:w-80 w-10/12 z-50"
-                                            x-show="showDatepicker" x-transition>
-                                            <div class="flex flex-col items-center">
-
-                                                <div class="w-full flex justify-between items-center mb-2">
-                                                    <span x-text="MONTH_NAMES[month]"
-                                                        class="text-lg font-bold text-gray-800"></span>
-                                                    <span x-text="year"
-                                                        class="ml-1 text-lg text-gray-600 font-normal"></span>
-                                                    <div class="pl-16">
-                                                        <button type="button"
-                                                            class="transition ease-in-out duration-100 inline-flex cursor-pointer hover:bg-gray-200 p-1 rounded-full"
-                                                            @click="if (month == 0) {year--; month=11;} else {month--;} getNoOfDays()">
-                                                            <svg class="h-6 w-6 text-gray-500 inline-flex" fill="none"
-                                                                viewBox="0 0 24 24" stroke="currentColor">
-                                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                                    stroke-width="2" d="M15 19l-7-7 7-7" />
-                                                            </svg>
-                                                        </button>
-                                                        <button type="button"
-                                                            class="transition ease-in-out duration-100 inline-flex cursor-pointer hover:bg-gray-200 p-1 rounded-full"
-                                                            @click="if (month == 11) {year++; month=0;} else {month++;}; getNoOfDays()">
-                                                            <svg class="h-6 w-6 text-gray-500 inline-flex" fill="none"
-                                                                viewBox="0 0 24 24" stroke="currentColor">
-                                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                                    stroke-width="2" d="M9 5l7 7-7 7" />
-                                                            </svg>
-                                                        </button>
-                                                    </div>
-                                                </div>
-
-                                                <div class="w-full flex flex-wrap mb-3 -mx-1">
-                                                    <template x-for="(day, index) in DAYS" :key="index">
-                                                        <div style="width: 14.26%" class="px-1">
-                                                            <div x-text="day"
-                                                                class="text-gray-800 font-medium text-center text-xs">
-                                                            </div>
-                                                        </div>
-                                                    </template>
-                                                </div>
-
-                                                <div class="flex flex-wrap -mx-1">
-                                                    <template x-for="blankday in blankdays">
-                                                        <div style="width: 14.28%"
-                                                            class="text-center border p-1 border-transparent text-sm">
-                                                        </div>
-                                                    </template>
-                                                    <template x-for="(date, dateIndex) in no_of_days" :key="dateIndex">
-                                                        <div style="width: 14.28%">
-                                                            <div @click="getDateValue(date, false); showTicketSelector = true"
-                                                                @mouseenter="getDateValue(date, true)" x-text="date"
-                                                                class="p-1 cursor-pointer text-center text-sm leading-none leading-loose transition ease-in-out duration-100"
-                                                                :class="{'font-bold': isToday(date) == true, 'bg-blue-800 text-white rounded-l-full': isDateFrom(date) == true, 'bg-blue-800 text-white rounded-r-full': isDateFrom(date) == true, 'bg-blue-200': isInRange(date) == true }">
-                                                            </div>
-                                                        </div>
-                                                    </template>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
 
                     <div class="lg:col-span-1 lg:row-span-2" id="ticketSelector" :x-show="true">
                         <div class="mx-auto p-0 text-center lg:col-span-2">
@@ -800,7 +801,7 @@
                                     ACEPTAR
                                 </button>
                             </div>
-                            <input type="hidden" id="tipoViaje" name="tipoViaje" value="ida">
+                            <!-- <input type="hidden" id="tipoViaje" name="tipoViaje" value="ida">-->
                         </div>
                     </div>
                     <div class="mx-auto p-0">
@@ -809,7 +810,7 @@
                             <div class="input-with-svg mx-8 sm:mx-10">
                                 <button
                                     class="w-full bg-[#C82333] text-white font-bold text-lg rounded-lg py-3 px-7 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
-                                    id="buscarViajeBtn" onclick="RedireccionarPaso1()">
+                                    id="buscarViajeBtn" type="submit">
                                     BUSCAR VIAJE
                                 </button>
                             </div>
@@ -1454,10 +1455,57 @@
     </script>
 
     <!-- SCRIPT DE SELECCION DE ORIGEN -->
+
     <script>
-        $(document).ready(function () { $("#origenSelect").select2(); var e = !1; $("#origenSelect").on("select2:select", function (d) { if (!e) { e = !0, setTimeout(function () { e = !1 }, 2e3); const n = d.params.data.id; $("#origenSelect").val(n).trigger("change") } }), $("#origenSelect").on("change", function () { var e = $(this).val(); $.getJSON("destinos71/" + e + ".json", function (e, d) { var n = e.filter((e, d, n) => d === n.findIndex(d => d.id === e.id)), i = $("#destinoSelect"); i.empty(), i.append($("<option>").val("¿A dónde viajas?").text("¿A dónde viajas?")), $.each(n, function (e, d) { var a = n[e].id, t = n[e].value; i.append($("<option>").val(a).text(t)) }), i.trigger("change.select2") }) }), $("#destinoSelect").select2(), $("#origenSelect, #destinoSelect").on("change", function () { var e = $("#origenSelect").val(), d = $("#destinoSelect").val(); e && d ? $("#redondo").prop("checked") ? ($("#datepickerRange").removeClass("hidden"), $("#datepickerSingle").addClass("hidden")) : $("#sencillo").prop("checked") && ($("#datepickerSingle").removeClass("hidden"), $("#datepickerRange").addClass("hidden")) : ($("#datepickerRange").addClass("hidden"), $("#datepickerSingle").addClass("hidden")) }), $('input[type="radio"][name="opcion"]').on("change", function () { var e = $("#origenSelect").val(), d = $("#destinoSelect").val(); e && d ? "redondo" === $(this).attr("id") ? ($("#datepickerRange").removeClass("hidden"), $("#datepickerSingle").addClass("hidden")) : "sencillo" === $(this).attr("id") && ($("#datepickerSingle").removeClass("hidden"), $("#datepickerRange").addClass("hidden")) : ($("#datepickerRange").addClass("hidden"), $("#datepickerSingle").addClass("hidden")) }) });
-    </script>
-    <script>
+
+        $(document).ready(function () {
+            $("#origenSelect").select2();
+            var e = !1;
+            $("#origenSelect").on("select2:select", function (d) {
+                if (!e) {
+                    e = !0, setTimeout(function () {
+                        e = !1
+                    }, 2e3);
+                    const n = d.params.data.id;
+                    $("#origenSelect").val(n).trigger("change")
+                }
+            }), $("#origenSelect").on("change", function () {
+                var e = $(this).val();
+                $.getJSON("destinos71/" + e + ".json", function (e, d) {
+                    var n = e.filter((e, d, n) => d === n.findIndex(d => d.id === e.id)),
+                        i = $("#destinoSelect");
+                    i.empty(), i.append($("<option>").val("¿A dónde viajas?").text("¿A dónde viajas?")), $.each(n, function (e, d) {
+                        var a = n[e].id,
+                            t = n[e].value;
+                        i.append($("<option>").val(a).text(t))
+                    }), i.trigger("change.select2")
+                })
+            }), $("#destinoSelect").select2(), $("#origenSelect, #destinoSelect").on("change", function () {
+                var e = $("#origenSelect").val(),
+                    d = $("#destinoSelect").val();
+                e && d ? $("#redondo").prop("checked") ? ($("#datepickerRange").removeClass("hidden"), $("#datepickerSingle").addClass("hidden")) : $("#sencillo").prop("checked") && ($("#datepickerSingle").removeClass("hidden"), $("#datepickerRange").addClass("hidden")) : ($("#datepickerRange").addClass("hidden"), $("#datepickerSingle").addClass("hidden"))
+            }), $('input[type="radio"][name="opcion"]').on("change", function () {
+                var e = $("#origenSelect").val(),
+                    d = $("#destinoSelect").val();
+                e && d ? "redondo" === $(this).attr("id") ? ($("#datepickerRange").removeClass("hidden"), $("#datepickerSingle").addClass("hidden")) : "sencillo" === $(this).attr("id") && ($("#datepickerSingle").removeClass("hidden"), $("#datepickerRange").addClass("hidden")) : ($("#datepickerRange").addClass("hidden"), $("#datepickerSingle").addClass("hidden"))
+            })
+            $("#formulario").on("submit", function (event) {
+                // Evitar el envío del formulario
+                var radioValue = $('input[type="radio"]:checked').val();
+
+                // Desvincular los elementos de radio del formulario
+                var radioButtons = $('input[type="radio"]');
+                radioButtons.prop('name', '');
+
+                // Enviar el formulario después de desvincular los elementos de radio
+                $(this).submit();
+                setTimeout(function () {
+                    radioButtons.prop('name', 'opcion');
+                }, 100);
+                // Prevenir el envío del formulario por defecto
+                event.preventDefault();
+            });
+        });
         $('html').on('change', 'select[name="origenCode"]', function (event) {
             let origenElegido = $(this).val();
 
@@ -1472,7 +1520,7 @@
 
             $.getJSON('destinos71/' + dest + '.json?3', function (jsonRaw, textStatus) {
 
-                $('#cbx_municipio').html('<option selected="selected" disabled>¿A Dónde Viajas?</option>');
+                $('#destinoSelect').html('<option selected="selected" disabled>¿A Dónde Viajas?</option>');
 
                 //filtra duplicados
                 var json = jsonRaw.filter((data, index, j) => index === j.findIndex((t) => (t.id === data.id)))
@@ -1482,13 +1530,58 @@
 
                     var id = json[i].id;
                     var valor = json[i].value;
-                    $('#cbx_municipio').append('<option value=' + id + '>' + valor + '</option>');
+                    $('#destinoSelect').append('<option value=' + id + '>' + valor + '</option>');
 
 
                 });
 
             });
         }
+
+    </script>
+    <script type="text/javascript">
+        $('.basico').fadeIn();
+        let orig = false;
+        let peticion = 'XXX';
+
+        $('html').on('change', 'select[name="origenCode"]', function (event) {
+            let eleccion = $(this).val();
+            orig = (eleccion == peticion) ? true : false;
+            descuentosControl(eleccion);
+
+        });
+
+        $('html').on('change', 'select[name="destinoCode"]', function (event) {
+            let eleccion = $(this).val();
+            descuentosControl(eleccion);
+
+            let hijoTxt2 = $('select[name="destinoCode"] option:selected').text();
+            console.log({
+                hijoTxt2
+            });
+            $('input[name="destinoText"]').attr('value', hijoTxt2);
+
+
+        });
+
+
+        function descuentosControl(NOM) {
+            let visibles = (NOM == peticion) ? '.basico,.basico2' : '.basico';
+            $(visibles).fadeIn();
+            if (!orig) {
+                if (NOM !== peticion) {
+                    //$('.basico2').fadeOut();
+                }
+            }
+        }
+
+
+
+        $('#tarjprueba button').click(function (event) {
+            //f();
+        });
+    </script>
+    <script type="text/javascript">
         function fichas(data) {
 
             let nomorig = $(data).attr('nomorig');
@@ -1496,12 +1589,24 @@
             let nomdest = $(data).attr('nomdest');
             let textdest = $(data).attr('textdest');
 
-            $('#select2-cbx_estado-container').text(textorig);
+            $('#select2-origenSelect-container').text(textorig);
             $('input[name="origenText"]').val(textorig);
 
 
-            $('#select2-cbx_municipio-container').text(textdest);
+            $('#select2-destinoSelect-container').text(textdest);
             $('input[name="destinoText"]').val(textdest);
+            $('html').on('change', 'select[name="destinoCode"]', function (event) {
+                let eleccion = $(this).val();
+                descuentosControl(eleccion);
+
+                let hijoTxt2 = $('select[name="destinoCode"] option:selected').text();
+                console.log({
+                    hijoTxt2
+                });
+                $('input[name="destinoText"]').attr('value', hijoTxt2);
+
+
+            });
 
             window.scroll({
                 top: 0,
@@ -1509,8 +1614,8 @@
                 behavior: 'smooth'
             });
 
-            $('#cbx_estado').html('<option value="' + nomorig + '">' + textorig + '</option>');
-            $('#cbx_municipio').html('<option value="' + nomdest + '">' + textdest + '</option>');
+            $('#origenSelect').html('<option value="' + nomorig + '">' + textorig + '</option>');
+            $('#destinoSelect').html('<option value="' + nomdest + '">' + textdest + '</option>');
 
         }
     </script>

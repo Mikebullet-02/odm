@@ -173,7 +173,7 @@ function updateCount(type, increment) {
     countElement.textContent = selectedCounts[type];
 }
 
-function redireccionarPaso1() {
+/* function redireccionarPaso1() {
     // Obtener el tipo de viaje seleccionado
     var tipoViaje = document.getElementById("tipoViaje").value;
 
@@ -187,4 +187,4 @@ function RedireccionarPaso1() {
 
     // Redirigir a la página paso1
     window.location.href = "Paso1.html?tipoViaje=" + tipoViaje;
-}
+} */
