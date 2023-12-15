@@ -172,6 +172,24 @@ function updateCount(type, increment) {
     const countElement = document.getElementById(`${type}Count`);
     countElement.textContent = selectedCounts[type];
 }
+document.addEventListener('DOMContentLoaded', function () {
+    $("#formulario").on("submit", function (event) {
+        event.preventDefault();
+
+        const tipoViaje = $('input[type="radio"][name="opcion"]:checked').val();
+        const fechSalida = $("#fechasalida" + (tipoViaje === "redondo" ? "2" : "1")).val();
+        const fechRegreso = tipoViaje === "redondo" ? $("#fecharegreso").val() : "_";
+
+        const datosAEnviar = {
+            tipoViaje: tipoViaje,
+            fechSalida: fechSalida,
+            fechRegreso: fechRegreso
+        };
+
+        console.log(datosAEnviar);
+        // Envía los datos al servidor o realiza las operaciones que necesites
+    });
+});
 
 /* function redireccionarPaso1() {
     // Obtener el tipo de viaje seleccionado

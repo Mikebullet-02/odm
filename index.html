@@ -564,7 +564,7 @@
                                                             @click="endToShow = 'from'; init(); showDatepicker = true"
                                                             :value="formatDate(dateFrom)"
                                                             :class="{'font-normal': endToShow == 'from' }"
-                                                            autocomplete="off" id="fecha-ida"
+                                                            autocomplete="off" id="fechasalida2" name="fechSalida"
                                                             class="w-full border border-gray-300 rounded-lg py-2 lg:w-[125%] w-125 xl:w-[115%] w-115 2xl:max-w-4xl text-center pr-3 focus:outline-none h-12 text-base placeholder-gray-800"
                                                             placeholder="Fecha de ida" />
                                                     </div>
@@ -1489,22 +1489,6 @@
                     d = $("#destinoSelect").val();
                 e && d ? "redondo" === $(this).attr("id") ? ($("#datepickerRange").removeClass("hidden"), $("#datepickerSingle").addClass("hidden")) : "sencillo" === $(this).attr("id") && ($("#datepickerSingle").removeClass("hidden"), $("#datepickerRange").addClass("hidden")) : ($("#datepickerRange").addClass("hidden"), $("#datepickerSingle").addClass("hidden"))
             })
-            $("#formulario").on("submit", function (event) {
-                // Evitar el envío del formulario
-                var radioValue = $('input[type="radio"]:checked').val();
-
-                // Desvincular los elementos de radio del formulario
-                var radioButtons = $('input[type="radio"]');
-                radioButtons.prop('name', '');
-
-                // Enviar el formulario después de desvincular los elementos de radio
-                $(this).submit();
-                setTimeout(function () {
-                    radioButtons.prop('name', 'opcion');
-                }, 100);
-                // Prevenir el envío del formulario por defecto
-                event.preventDefault();
-            });
         });
         $('html').on('change', 'select[name="origenCode"]', function (event) {
             let origenElegido = $(this).val();

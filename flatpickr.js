@@ -1403,7 +1403,11 @@ document.addEventListener("alpine:init", () => {
     }))
 }), document.addEventListener("DOMContentLoaded", function () {
     document.querySelector("form").addEventListener("submit", function () {
-        const t = document.getElementById("fechaEspecifica").value;
-        document.getElementById("tipoBoleto").value = "FECHA ABIERTA" === t ? "regreso_abierto" : "" !== t ? "fecha_especifica" : "solo_ida"
-    })
+        const fechaEspecificaInput = document.getElementById("fecharegreso");
+
+        // Verificar si el elemento existe antes de acceder a su propiedad value
+        const t = fechaEspecificaInput ? fechaEspecificaInput.value : "";
+
+        document.getElementById("tipoBoleto").value = "FECHA ABIERTA" === t ? "regreso_abierto" : "" !== t ? "fecha_especifica" : "solo_ida";
+    });
 });
