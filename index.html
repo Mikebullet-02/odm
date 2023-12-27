@@ -478,6 +478,9 @@
                                                     class="focus:outline-none border-none w-full text-center text-base placeholder-gray-800 rounded-md border-r border-gray-300 h-12 sm:w-full lg:w-[310px] 2xl:w-[370px] md:w-full"
                                                     placeholder="Fecha de ida" id="fechasalida1" name="fechSalida" />
                                                 <img src="calendario.svg" alt="" class="absolute w-8 h-8 ml-8 lg:ml-7">
+                                                <input type="text" aria-label="fechaRegreso" style="display: none;"
+                                                    class="form-control" name="fechRegreso" id="fecharegreso"
+                                                    autocomplete="off" readonly="readonly" value="_" required>
                                             </div>
                                         </div>
 
@@ -545,7 +548,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="flex w-full hidden lg:col-span-1" id="datepickerRange">
                         <div x-data="app" x-cloak class="w-full">
                             <div class="container mx-auto py-0 md:py-0">
@@ -663,6 +665,8 @@
                             </div>
                         </div>
                     </div>
+
+
                     <input type="hidden" name="origenText" value="MEX">
                     <input type="hidden" name="destinoText" value="TIJ">
                     <input type="hidden" name="viajeredondo" value="1">
@@ -1487,8 +1491,22 @@
             }), $('input[type="radio"][name="opcion"]').on("change", function () {
                 var e = $("#origenSelect").val(),
                     d = $("#destinoSelect").val();
-                e && d ? "redondo" === $(this).attr("id") ? ($("#datepickerRange").removeClass("hidden"), $("#datepickerSingle").addClass("hidden")) : "sencillo" === $(this).attr("id") && ($("#datepickerSingle").removeClass("hidden"), $("#datepickerRange").addClass("hidden")) : ($("#datepickerRange").addClass("hidden"), $("#datepickerSingle").addClass("hidden"))
-            })
+                var tipoViaje = $(this).attr("id"); // Obtén el tipo de viaje seleccionado
+
+                // Actualiza el estado de los datepickers según el tipo de viaje
+                if (e && d) {
+                    if (tipoViaje === "redondo") {
+                        $("#datepickerRange").removeClass("hidden");
+                        $("#datepickerSingle").addClass("hidden");
+                    } else if (tipoViaje === "sencillo") {
+                        $("#datepickerSingle").removeClass("hidden");
+                        $("#datepickerRange").addClass("hidden");
+                    }
+                } else {
+                    $("#datepickerRange").addClass("hidden");
+                    $("#datepickerSingle").addClass("hidden");
+                }
+            });
         });
         $('html').on('change', 'select[name="origenCode"]', function (event) {
             let origenElegido = $(this).val();
@@ -1522,7 +1540,44 @@
             });
         }
 
+
+
     </script>
+    <!-- SCRIPT PA VER SI YA JALA ESTO-->
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function () {
+            $("#formulario").on("submit", function (event) {
+                event.preventDefault();
+
+                const tipoViaje = $('input[type="radio"][name="opcion"]:checked').attr('id');
+                let fechSalida;
+                let fechRegreso;
+
+                if (tipoViaje === 'redondo') {
+                    // Si es viaje redondo, recopila las fechas del datepickerRange
+                    fechSalida = $("#datepickerRange input[name='fechSalida']").val();
+                    fechRegreso = $("#datepickerRange input[name='fechRegreso']").val();
+                } else {
+                    // Si es viaje sencillo, recopila las fechas del datepickerSingle
+                    fechSalida = $("#datepickerSingle input[name='fechSalida']").val();
+                    fechRegreso = null; // Envia null o algún valor que indique que no se seleccionó para fechRegreso
+                }
+
+                const datosAEnviar = {
+                    tipoViaje: tipoViaje,
+                    fechSalida: fechSalida,
+                    fechRegreso: fechRegreso
+                };
+                this.submit();
+            });
+        });
+
+
+
+
+    </script>
+
     <script type="text/javascript">
         $('.basico').fadeIn();
         let orig = false;
