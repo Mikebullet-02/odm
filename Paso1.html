@@ -31,7 +31,7 @@
         <p class="text-center text-white text-xl lg:text-2xl font-bold mt-3">Selecciona tu horario</p>
 
         <div class="w-full max-w-screen-2xl mx-auto mt-3 mb-3 flex items-center justify-center">
-            <div class="flex items-center space-x-4 md:space-x-10 lg:space-x-20">
+            <div class="flex items-center space-x-4 md:space-x-10 lg:space-x-20 xl:space-x-28">
                 <img src="celularB.svg" alt="celular" class="w-5 lg:w-6">
                 <div class="w-6 h-6 bg-green-500 text-white rounded-full flex items-center justify-center relative">
                     <div class="bg-[#00FF29] w-6 h-6 rounded-full"></div>
@@ -57,7 +57,7 @@
 
     <div class="bg-[#1583C9]  h-screen">
         <div
-            class="grid grid-cols-1 lg:grid-cols-2 gap-2 mx-8 2xl:gap-8 sm:mx-20 md:mx-24 lg:mx-28 mb-8 pt-5 2xl:mx-40">
+            class="grid grid-cols-1 lg:grid-cols-2 gap-2 mx-8 2xl:gap-8 sm:mx-20 md:mx-24 lg:mx-28 mb-8 pt-5 xl:mx-36 2xl:mx-40">
             <div class="bg-[#003368] p-4 pt-5 mx-0 text-white text-center font-bold rounded-lg h-fit text-lg">
                 <p class="uppercase">Origen: México Central Norte</p>
                 <p class="uppercase">Destino: Colima, Col.</p>
@@ -867,6 +867,28 @@
                 window.location.href = "tu_otra_pagina.html";
             });
         });
+    </script>
+    <script>
+        // URL de la API
+        const apiUrl = 'https://venta.odm.com.mx/netScripts/Request.aspx?APPNAME=Navegante&PRGNAME=RecuperaCorridasVRARGUMENTS&ARGUMENTS=-AMEX,-AGDL,-A30/12/2023,-A2,-A0,-A1,-A0,-A0,-AV1,-A,-A,-A,-A,-A,-A,-A,-A,-A,-A1,-A15027046,-A1';
+
+        // Realizar la solicitud fetch
+        fetch(apiUrl)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.text(); // Cambiar a text() en lugar de json()
+            })
+            .then(data => {
+                // Imprimir la respuesta completa
+                console.log('Respuesta completa:', data);
+            })
+            .catch(error => {
+                // Manejar errores
+                console.error('Error en la solicitud:', error);
+            });
+
     </script>
 </body>
 
