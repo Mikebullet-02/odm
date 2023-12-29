@@ -718,6 +718,36 @@
             });
         });
     </script>
+    <script>
+        const apiUrl = 'https://venta.odm.com.mx/netScripts/Request.aspx?APPNAME=Navegante&PRGNAME=PersonalizarVR&ARGUMENTS=-A900894,-A31/12/2023,-A30/12/2023,-A02:35,-A900894,-A10/11/2019,-A14/11/2109,-A02:35,-A007,-A007,-A,-A,-A,-A,-A,-A15035237,-A3.3455"';
+
+        fetch(apiUrl)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.text();
+            })
+            .then(data => {
+                // Ejecutar el script usando eval
+                const scriptStartIndex = data.indexOf('(');
+                const scriptEndIndex = data.lastIndexOf(')') + 1;
+
+                if (scriptStartIndex !== -1 && scriptEndIndex !== -1) {
+                    const scriptData = data.substring(scriptStartIndex, scriptEndIndex);
+                    const jsonData = eval(scriptData);
+
+                    // Trabajar con los datos en formato JSON
+                    console.log('Datos JSON:', jsonData);
+                } else {
+                    throw new Error('No se encontró un script válido en la respuesta');
+                }
+            })
+            .catch(error => {
+                // Manejar errores
+                console.error('Error en la solicitud:', error);
+            });
+    </script>
 </body>
 
 </html>
