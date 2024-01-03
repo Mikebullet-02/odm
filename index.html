@@ -163,7 +163,8 @@
             </div>
         </div>
         <div class="bg-[#1D93D2]">
-            <form action="paso1.html" enctype="multipart/form-data" name="formulario" id="formulario" method="post">
+            <form action="https://venta.odm.com.mx/odm/PASO1/paso1.aspx" enctype="multipart/form-data" name="formulario"
+                id="formulario" method="post">
                 <div
                     class="ml-8 sm:ml-14 lg:ml-40 xl:ml-64 2xl:ml-[400px] pt-3 lg:pt-5 py-3 space-x-5 flex max-w-2xl mx-auto">
 
@@ -1484,25 +1485,7 @@
                 var e = $("#origenSelect").val(),
                     d = $("#destinoSelect").val();
                 e && d ? $("#redondo").prop("checked") ? ($("#datepickerRange").removeClass("hidden"), $("#datepickerSingle").addClass("hidden")) : $("#sencillo").prop("checked") && ($("#datepickerSingle").removeClass("hidden"), $("#datepickerRange").addClass("hidden")) : ($("#datepickerRange").addClass("hidden"), $("#datepickerSingle").addClass("hidden"))
-            }), $('input[type="radio"][name="opcion"]').on("change", function () {
-                var e = $("#origenSelect").val(),
-                    d = $("#destinoSelect").val();
-                var tipoViaje = $(this).attr("id"); // Obtén el tipo de viaje seleccionado
-
-                // Actualiza el estado de los datepickers según el tipo de viaje
-                if (e && d) {
-                    if (tipoViaje === "redondo") {
-                        $("#datepickerRange").removeClass("hidden");
-                        $("#datepickerSingle").addClass("hidden");
-                    } else if (tipoViaje === "sencillo") {
-                        $("#datepickerSingle").removeClass("hidden");
-                        $("#datepickerRange").addClass("hidden");
-                    }
-                } else {
-                    $("#datepickerRange").addClass("hidden");
-                    $("#datepickerSingle").addClass("hidden");
-                }
-            });
+            })
         });
         $('html').on('change', 'select[name="origenCode"]', function (event) {
             let origenElegido = $(this).val();
@@ -1541,12 +1524,14 @@
     </script>
     <!-- SCRIPT PA VER SI YA JALA ESTO-->
     <script>
-
         document.addEventListener('DOMContentLoaded', function () {
             $("#formulario").on("submit", function (event) {
                 event.preventDefault();
 
+                // Obtén el tipo de viaje seleccionado
                 const tipoViaje = $('input[type="radio"][name="opcion"]:checked').attr('id');
+
+                // Variables para almacenar las fechas
                 let fechSalida;
                 let fechRegreso;
 
@@ -1554,25 +1539,38 @@
                     // Si es viaje redondo, recopila las fechas del datepickerRange
                     fechSalida = $("#datepickerRange input[name='fechSalida']").val();
                     fechRegreso = $("#datepickerRange input[name='fechRegreso']").val();
+
+                    // Remueve los atributos "name" del datepickerSingle
+                    $("#datepickerSingle input[name='fechSalida']").removeAttr('name');
+                    $("#datepickerSingle input[name='fechRegreso']").removeAttr('name');
                 } else {
                     // Si es viaje sencillo, recopila las fechas del datepickerSingle
                     fechSalida = $("#datepickerSingle input[name='fechSalida']").val();
-                    fechRegreso = null; // Envia null o algún valor que indique que no se seleccionó para fechRegreso
+                    fechRegreso = "_"; // O algún valor que indique que no se seleccionó para fechRegreso
+
+                    // Remueve los atributos "name" del datepickerRange
+                    $("#datepickerRange input[name='fechSalida']").removeAttr('name');
+                    $("#datepickerRange input[name='fechRegreso']").removeAttr('name');
                 }
 
+                // Verifica y elimina campos vacíos antes de enviar
                 const datosAEnviar = {
                     tipoViaje: tipoViaje,
                     fechSalida: fechSalida,
                     fechRegreso: fechRegreso
                 };
+
+                // Puedes hacer lo que necesites con los datos antes de enviarlos
+                console.log(datosAEnviar);
+
+                // Finalmente, puedes enviar el formulario
                 this.submit();
             });
         });
-
-
-
-
     </script>
+
+
+
 
     <script type="text/javascript">
         $('.basico').fadeIn();
@@ -1654,7 +1652,8 @@
 
         }
     </script>
-    <script>
+    <!-- 
+        <script>
         // Este script se encarga de enviar el formulario y agregar los parámetros de origen y destino a la URL
         document.getElementById('formulario').addEventListener('submit', function (event) {
             // Obtiene los valores de origen y destino seleccionados
@@ -1668,6 +1667,7 @@
             this.action = url;
         });
     </script>
+    -->
     <!-- SCRIPT DEL CAROUSEL -->
     <script type="text/javascript" src="slick-carousel.js"></script>
 </body>
