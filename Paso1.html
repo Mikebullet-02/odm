@@ -11,6 +11,39 @@
     <meta name="keywords"
         content="Viaja a destinos en Estados Unidos, Houston, Dallas, San Antonio, El Paso, 10% de descuento comprando por internet">
     <script src="3.3.3.js"></script>
+    <script>
+
+        const consecutivo = 'https://venta.odm.com.mx/netScripts/Request.aspx?APPNAME=Navegante&PRGNAME=CreaSesion&ARGUMENTS=-A1';
+
+        fetch(consecutivo)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.text();
+            })
+            .then(data => {
+                // Ejecutar el script usando eval
+                const scriptStartIndex = data.indexOf('(');
+                const scriptEndIndex = data.lastIndexOf(')') + 1;
+
+                if (scriptStartIndex !== -1 && scriptEndIndex !== -1) {
+                    const scriptData = data.substring(scriptStartIndex, scriptEndIndex);
+                    const jsonData = eval(scriptData);
+
+
+                    // Trabajar con los datos en formato JSON
+                    console.log('Consecutivo:', jsonData);
+
+                } else {
+                    throw new Error('No se encontró un script válido en la respuesta');
+                }
+            })
+            .catch(error => {
+                // Manejar errores
+                console.error('Error en la solicitud:', error);
+            });
+    </script>
     <link rel="shortcut icon" href="pagmaestra-favicon.ico">
 
 
@@ -21,9 +54,10 @@
             display: none;
         }
     </style>
+
 </head>
 
-<body>
+<body class="flex flex-col min-h-screen">
     <div class="bg-white p-4 md:p-2">
         <img src="logoODMplus.svg" alt="logoODM" class="w-full sm:w-2/3 lg:w-1/3 h-auto mx-auto">
     </div>
@@ -55,201 +89,117 @@
     </div>
 
 
-    <div class="bg-[#1583C9]  h-screen">
+    <div class="bg-[#1583C9]">
         <div
-            class="grid grid-cols-1 lg:grid-cols-2 gap-2 mx-8 2xl:gap-8 sm:mx-20 md:mx-24 lg:mx-28 mb-8 pt-5 xl:mx-36 2xl:mx-40">
+            class="grid grid-cols-1 lg:grid-cols-2 grid-rows-[auto,1fr] gap-2 mx-8 2xl:gap-8 sm:mx-20 md:mx-24 lg:mx-28 mb-8 pt-5 xl:mx-36 2xl:mx-40">
             <div id="infoContainer"
-                class="bg-[#003368] p-4 pt-5 mx-0 text-white text-center font-bold rounded-lg h-fit text-lg">
+                class="bg-[#003368] p-4 pt-5 mx-0 text-white text-center font-bold rounded-lg h-fit text-lg flex-shrink-0">
                 <p id="origenInfo" class="uppercase">Origen: México Central Norte</p>
                 <p id="destinoInfo" class="uppercase">Destino: Colima, Col.</p>
             </div>
-            <input type="hidden" id="tipoBoleto" name="tipoBoleto" value="" />
 
-            <div class="lg:col-span-1">
-                <div class="flex w-full  lg:col-span-1" id="datepickerRange">
-                    <div x-data="app" x-cloak class="w-full">
-                        <div class="container mx-auto py-0 md:py-0">
-                            <div class="flex items-center sm:ml-0 lg:ml-0">
-                                <div class="flex space-x-0 lg:space-x-4 w-full" @keydown.escape="closeDatepicker()"
-                                    @click.outside="closeDatepicker()">
-                                    <div
-                                        class="input-container flex justify-between flex-nowrap mx-0 sm:mx-0 lg:mx-0 w-full max-w-[1500px]">
-                                        <div class="input-container flex items-center">
-                                            <div
-                                                class="input-with-svg mr-2 sm:mr-28 sm:ml-0 lg:col-span-1 w-full lg:mr-0">
-                                                <p class="text-center text-white uppercase font-bold">SALIDA</p>
-                                                <div class="relative">
-                                                    <img src="calendario.svg" alt=""
-                                                        class="hidden absolute w-8 h-8 ml-3 mt-1.5 sm:ml-8 lg:ml-2">
-                                                    <input type="text"
-                                                        @click="endToShow = 'from'; init(); showDatepicker = true"
-                                                        :value="formatDate(dateFrom)"
-                                                        :class="{'font-normal': endToShow == 'from' }"
-                                                        autocomplete="off" id="fechasalida2" name="fechSalida"
-                                                        class="w-full border border-gray-300 rounded-lg py-2 lg:w-full w-125 xl:w-[115%] w-115 2xl:max-w-4xl text-center pr-0 focus:outline-none h-12 text-base placeholder-white bg-[#C82333] text-white"
-                                                        placeholder="Fecha de ida" />
+            <div class="datepickers">
+                <div class="lg:col-span-1">
+                    <div class="flex w-full  lg:col-span-1" id="datepickerRange">
+                        <div x-data="app" x-cloak class="w-full">
+                            <div class="container mx-auto py-0 md:py-0">
+                                <div class="flex items-center sm:ml-0 lg:ml-0">
+                                    <div class="flex space-x-0 lg:space-x-4 w-full" @keydown.escape="closeDatepicker()"
+                                        @click.outside="closeDatepicker()">
+                                        <div
+                                            class="input-container flex justify-between flex-nowrap mx-0 sm:mx-0 lg:mx-0 w-full max-w-[1500px]">
+                                            <div class="input-container flex items-center">
+                                                <div
+                                                    class="input-with-svg mr-2 sm:mr-28 sm:ml-0 lg:col-span-1 w-full lg:mr-0">
+                                                    <p class="text-center text-white uppercase font-bold">SALIDA</p>
+                                                    <div class="relative">
+                                                        <img src="calendario.svg" alt=""
+                                                            class="hidden absolute w-8 h-8 ml-3 mt-1.5 sm:ml-8 lg:ml-2">
+                                                        <input type="text"
+                                                            @click="endToShow = 'from'; init(); showDatepicker = true"
+                                                            :value="formatDate(dateFrom)"
+                                                            :class="{'font-normal': endToShow == 'from' }"
+                                                            autocomplete="off" id="fechasalida2" name="fechSalida"
+                                                            class="w-full border border-gray-300 rounded-lg py-2 lg:w-full w-125 xl:w-[115%] w-115 2xl:max-w-4xl text-center pr-0 focus:outline-none h-12 text-base placeholder-white bg-[#C82333] text-white"
+                                                            placeholder="Fecha de ida" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="input-container flex items-center">
+                                                <div
+                                                    class="input-with-svg mx-0 sm:ml-0 mr-0 sm:mr-0 lg:col-span-1 px-0 w-full">
+                                                    <p class="text-center text-white uppercase font-bold">REGRESO</p>
+                                                    <div class="relative">
+                                                        <input type="text"
+                                                            @click="endToShow = 'to'; init(); showDatepicker = true"
+                                                            :class="{'font-normal text-white': endToShow == 'to' }"
+                                                            name="fechRegreso" id="fecharegreso" @click="selectDateFrom"
+                                                            autocomplete="off" value="_"
+                                                            class="w-full border border-gray-300 rounded-lg py-2 lg:w-full w-118 xl:w-[115%] w-115 2xl:max-w-10/12 text-center pr-0 2xl:pr-0 focus:outline-none h-12 text-base placeholder-white bg-transparent"
+                                                            :value="boletoAbierto ? 'FECHA ABIERTA' : formatDate(dateTo)"
+                                                            placeholder="Fecha de regreso" />
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="input-container flex items-center">
-                                            <div
-                                                class="input-with-svg mx-0 sm:ml-0 mr-0 sm:mr-0 lg:col-span-1 px-0 w-full">
-                                                <p class="text-center text-white uppercase font-bold">REGRESO</p>
-                                                <div class="relative">
-                                                    <input type="text"
-                                                        @click="endToShow = 'to'; init(); showDatepicker = true"
-                                                        :class="{'font-normal text-white': endToShow == 'to' }"
-                                                        name="fechRegreso" id="fecharegreso" @click="selectDateFrom"
-                                                        autocomplete="off" value="_"
-                                                        class="w-full border border-gray-300 rounded-lg py-2 lg:w-full w-118 xl:w-[115%] w-115 2xl:max-w-10/12 text-center pr-0 2xl:pr-0 focus:outline-none h-12 text-base placeholder-white bg-transparent"
-                                                        :value="boletoAbierto ? 'FECHA ABIERTA' : formatDate(dateTo)"
-                                                        placeholder="Fecha de regreso" />
+
+                                        <div class="absolute bg-white mt-2 rounded-lg shadow p-4 sm:w-80 w-10/12 z-50"
+                                            x-show="showDatepicker" x-transition>
+                                            <div class="flex flex-col items-center">
+
+                                                <div class="w-full flex justify-between items-center mb-2">
+                                                    <span x-text="MONTH_NAMES[month]"
+                                                        class="text-lg font-bold text-gray-800"></span>
+                                                    <span x-text="year"
+                                                        class="ml-1 text-lg text-gray-600 font-normal"></span>
+                                                    <div class="pl-16">
+                                                        <button type="button"
+                                                            class="transition ease-in-out duration-100 inline-flex cursor-pointer hover:bg-gray-200 p-1 rounded-full"
+                                                            @click="if (month == 0) {year--; month=11;} else {month--;} getNoOfDays()">
+                                                            <svg class="h-6 w-6 text-gray-500 inline-flex" fill="none"
+                                                                viewBox="0 0 24 24" stroke="currentColor">
+                                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                                    stroke-width="2" d="M15 19l-7-7 7-7" />
+                                                            </svg>
+                                                        </button>
+                                                        <button type="button"
+                                                            class="transition ease-in-out duration-100 inline-flex cursor-pointer hover:bg-gray-200 p-1 rounded-full"
+                                                            @click="if (month == 11) {year++; month=0;} else {month++;}; getNoOfDays()">
+                                                            <svg class="h-6 w-6 text-gray-500 inline-flex" fill="none"
+                                                                viewBox="0 0 24 24" stroke="currentColor">
+                                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                                    stroke-width="2" d="M9 5l7 7-7 7" />
+                                                            </svg>
+                                                        </button>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                    </div>
 
-                                    <div class="absolute bg-white mt-2 rounded-lg shadow p-4 sm:w-80 w-10/12 z-50"
-                                        x-show="showDatepicker" x-transition>
-                                        <div class="flex flex-col items-center">
-
-                                            <div class="w-full flex justify-between items-center mb-2">
-                                                <span x-text="MONTH_NAMES[month]"
-                                                    class="text-lg font-bold text-gray-800"></span>
-                                                <span x-text="year"
-                                                    class="ml-1 text-lg text-gray-600 font-normal"></span>
-                                                <div class="pl-16">
-                                                    <button type="button"
-                                                        class="transition ease-in-out duration-100 inline-flex cursor-pointer hover:bg-gray-200 p-1 rounded-full"
-                                                        @click="if (month == 0) {year--; month=11;} else {month--;} getNoOfDays()">
-                                                        <svg class="h-6 w-6 text-gray-500 inline-flex" fill="none"
-                                                            viewBox="0 0 24 24" stroke="currentColor">
-                                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                                stroke-width="2" d="M15 19l-7-7 7-7" />
-                                                        </svg>
-                                                    </button>
-                                                    <button type="button"
-                                                        class="transition ease-in-out duration-100 inline-flex cursor-pointer hover:bg-gray-200 p-1 rounded-full"
-                                                        @click="if (month == 11) {year++; month=0;} else {month++;}; getNoOfDays()">
-                                                        <svg class="h-6 w-6 text-gray-500 inline-flex" fill="none"
-                                                            viewBox="0 0 24 24" stroke="currentColor">
-                                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                                stroke-width="2" d="M9 5l7 7-7 7" />
-                                                        </svg>
-                                                    </button>
+                                                <div class="w-full flex flex-wrap mb-3 -mx-1">
+                                                    <template x-for="(day, index) in DAYS" :key="index">
+                                                        <div style="width: 14.26%" class="px-1">
+                                                            <div x-text="day"
+                                                                class="text-gray-800 font-medium text-center text-xs">
+                                                            </div>
+                                                        </div>
+                                                    </template>
                                                 </div>
-                                            </div>
 
-                                            <div class="w-full flex flex-wrap mb-3 -mx-1">
-                                                <template x-for="(day, index) in DAYS" :key="index">
-                                                    <div style="width: 14.26%" class="px-1">
-                                                        <div x-text="day"
-                                                            class="text-gray-800 font-medium text-center text-xs">
+                                                <div class="flex flex-wrap -mx-1">
+                                                    <template x-for="blankday in blankdays">
+                                                        <div style="width: 14.28%"
+                                                            class="text-center border p-1 border-transparent text-sm">
                                                         </div>
-                                                    </div>
-                                                </template>
-                                            </div>
-
-                                            <div class="flex flex-wrap -mx-1">
-                                                <template x-for="blankday in blankdays">
-                                                    <div style="width: 14.28%"
-                                                        class="text-center border p-1 border-transparent text-sm">
-                                                    </div>
-                                                </template>
-                                                <template x-for="(date, dateIndex) in no_of_days" :key="dateIndex">
-                                                    <div style="width: 14.28%">
-                                                        <div @click="getDateValue(date, false)" x-text="date"
-                                                            class="p-1 cursor-pointer text-center text-sm leading-none leading-loose transition ease-in-out duration-100"
-                                                            :class="{'font-bold': isToday(date) == true, 'bg-blue-800 text-white rounded-l-full': isDateFrom(date) == true, 'bg-blue-800 text-white rounded-r-full': isDateTo(date) == true, 'bg-blue-200': isInRange(date) == true }">
+                                                    </template>
+                                                    <template x-for="(date, dateIndex) in no_of_days" :key="dateIndex">
+                                                        <div style="width: 14.28%">
+                                                            <div @click="getDateValue(date, false)" x-text="date"
+                                                                class="p-1 cursor-pointer text-center text-sm leading-none leading-loose transition ease-in-out duration-100"
+                                                                :class="{'font-bold': isToday(date) == true, 'bg-blue-800 text-white rounded-l-full': isDateFrom(date) == true, 'bg-blue-800 text-white rounded-r-full': isDateTo(date) == true, 'bg-blue-200': isInRange(date) == true }">
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                </template>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="lg:col-span-2">
-                <div class="flex w-full  lg:col-span-1" id="datepickerSingle" x-show="showDatepicker">
-                    <div x-data="app" x-cloak class="w-full">
-                        <div class="container py-0 md:py-0">
-                            <div class="flex items-center mx-0 sm:ml-0 w-full">
-                                <div class="flex space-x-0 lg:space-x-4 w-full" @keydown.escape="closeDatepicker()"
-                                    @click.outside="closeDatepicker()">
-                                    <div class="input-with-svg mx-0 sm:mx-0 lg:col-span-1 px-2 sm:px-0 w-full">
-                                        <div class="relative flex items-center">
-                                            <input type="text"
-                                                @click="endToShow = 'from'; init(); showDatepicker = true"
-                                                :value="formatDate(dateFrom)" @click="selectDateFrom" autocomplete="off"
-                                                class="focus:outline-none border-none w-full text-center text-base bg-[#C82333] text-white rounded-md border-r border-gray-300 h-12 sm:w-full lg:w-1/2 2xl:w-[370px] md:w-full"
-                                                placeholder="Fecha de ida" id="fechasalida1" name="fechSalida"
-                                                :class="{'font-bold text-white': endToShow == 'from' }" />
-
-                                            <img src="calendario.svg" alt="" class="absolute w-8 h-8 ml-8 lg:ml-7">
-                                        </div>
-                                    </div>
-
-                                    <div class="absolute bg-white mt-2 rounded-lg shadow p-4 sm:w-80 w-10/12 z-50"
-                                        x-show="showDatepicker" x-transition>
-                                        <div class="flex flex-col items-center">
-
-                                            <div class="w-full flex justify-between items-center mb-2">
-                                                <span x-text="MONTH_NAMES[month]"
-                                                    class="text-lg font-bold text-gray-800"></span>
-                                                <span x-text="year"
-                                                    class="ml-1 text-lg text-gray-600 font-normal"></span>
-                                                <div class="pl-16">
-                                                    <button type="button"
-                                                        class="transition ease-in-out duration-100 inline-flex cursor-pointer hover:bg-gray-200 p-1 rounded-full"
-                                                        @click="if (month == 0) {year--; month=11;} else {month--;} getNoOfDays()">
-                                                        <svg class="h-6 w-6 text-gray-500 inline-flex" fill="none"
-                                                            viewBox="0 0 24 24" stroke="currentColor">
-                                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                                stroke-width="2" d="M15 19l-7-7 7-7" />
-                                                        </svg>
-                                                    </button>
-                                                    <button type="button"
-                                                        class="transition ease-in-out duration-100 inline-flex cursor-pointer hover:bg-gray-200 p-1 rounded-full"
-                                                        @click="if (month == 11) {year++; month=0;} else {month++;}; getNoOfDays()">
-                                                        <svg class="h-6 w-6 text-gray-500 inline-flex" fill="none"
-                                                            viewBox="0 0 24 24" stroke="currentColor">
-                                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                                stroke-width="2" d="M9 5l7 7-7 7" />
-                                                        </svg>
-                                                    </button>
+                                                    </template>
                                                 </div>
-                                            </div>
 
-                                            <div class="w-full flex flex-wrap mb-3 -mx-1">
-                                                <template x-for="(day, index) in DAYS" :key="index">
-                                                    <div style="width: 14.26%" class="px-1">
-                                                        <div x-text="day"
-                                                            class="text-gray-800 font-medium text-center text-xs">
-                                                        </div>
-                                                    </div>
-                                                </template>
-                                            </div>
-
-                                            <div class="flex flex-wrap -mx-1">
-                                                <template x-for="blankday in blankdays">
-                                                    <div style="width: 14.28%"
-                                                        class="text-center border p-1 border-transparent text-sm">
-                                                    </div>
-                                                </template>
-                                                <template x-for="(date, dateIndex) in no_of_days" :key="dateIndex">
-                                                    <div style="width: 14.28%">
-                                                        <div @click="getDateValue(date, false); showTicketSelector = true"
-                                                            @mouseenter="getDateValue(date, true)" x-text="date"
-                                                            class="p-1 cursor-pointer text-center text-sm leading-none leading-loose transition ease-in-out duration-100"
-                                                            :class="{'font-bold': isToday(date) == true, 'bg-blue-800 text-white rounded-l-full': isDateFrom(date) == true, 'bg-blue-800 text-white rounded-r-full': isDateFrom(date) == true, 'bg-blue-200': isInRange(date) == true }">
-                                                        </div>
-                                                    </div>
-                                                </template>
                                             </div>
                                         </div>
                                     </div>
@@ -258,136 +208,99 @@
                         </div>
                     </div>
                 </div>
+                <div class="lg:col-span-1">
+                    <div class="flex w-full  lg:col-span-1" id="datepickerSingle" x-show="showDatepicker">
+                        <div x-data="app" x-cloak class="w-full">
+                            <div class="container py-0 md:py-0">
+                                <div class="flex items-center mx-0 sm:ml-0 w-full">
+                                    <div class="flex space-x-0 lg:space-x-4 w-full" @keydown.escape="closeDatepicker()"
+                                        @click.outside="closeDatepicker()">
+                                        <div class="input-with-svg mx-0 sm:mx-0 lg:col-span-1 px-2 sm:px-0 w-full">
+                                            <div class="relative flex items-center">
+                                                <input type="text"
+                                                    @click="endToShow = 'from'; init(); showDatepicker = true"
+                                                    :value="formatDate(dateFrom)" @click="selectDateFrom"
+                                                    autocomplete="off"
+                                                    class="focus:outline-none border-none w-full text-center text-base bg-[#C82333] text-white rounded-md border-r border-gray-300 h-12 sm:w-full lg:w-full 2xl:w-[370px] md:w-full"
+                                                    placeholder="Fecha de ida" id="fechasalida1" name="fechSalida"
+                                                    :class="{'font-bold text-white': endToShow == 'from' }" />
+
+                                                <img src="calendario.svg" alt="" class="absolute w-8 h-8 ml-8 lg:ml-7">
+                                            </div>
+                                        </div>
+
+                                        <div class="absolute bg-white mt-2 rounded-lg shadow p-4 sm:w-80 w-10/12 z-50"
+                                            x-show="showDatepicker" x-transition>
+                                            <div class="flex flex-col items-center">
+
+                                                <div class="w-full flex justify-between items-center mb-2">
+                                                    <span x-text="MONTH_NAMES[month]"
+                                                        class="text-lg font-bold text-gray-800"></span>
+                                                    <span x-text="year"
+                                                        class="ml-1 text-lg text-gray-600 font-normal"></span>
+                                                    <div class="pl-16">
+                                                        <button type="button"
+                                                            class="transition ease-in-out duration-100 inline-flex cursor-pointer hover:bg-gray-200 p-1 rounded-full"
+                                                            @click="if (month == 0) {year--; month=11;} else {month--;} getNoOfDays()">
+                                                            <svg class="h-6 w-6 text-gray-500 inline-flex" fill="none"
+                                                                viewBox="0 0 24 24" stroke="currentColor">
+                                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                                    stroke-width="2" d="M15 19l-7-7 7-7" />
+                                                            </svg>
+                                                        </button>
+                                                        <button type="button"
+                                                            class="transition ease-in-out duration-100 inline-flex cursor-pointer hover:bg-gray-200 p-1 rounded-full"
+                                                            @click="if (month == 11) {year++; month=0;} else {month++;}; getNoOfDays()">
+                                                            <svg class="h-6 w-6 text-gray-500 inline-flex" fill="none"
+                                                                viewBox="0 0 24 24" stroke="currentColor">
+                                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                                    stroke-width="2" d="M9 5l7 7-7 7" />
+                                                            </svg>
+                                                        </button>
+                                                    </div>
+                                                </div>
+
+                                                <div class="w-full flex flex-wrap mb-3 -mx-1">
+                                                    <template x-for="(day, index) in DAYS" :key="index">
+                                                        <div style="width: 14.26%" class="px-1">
+                                                            <div x-text="day"
+                                                                class="text-gray-800 font-medium text-center text-xs">
+                                                            </div>
+                                                        </div>
+                                                    </template>
+                                                </div>
+
+                                                <div class="flex flex-wrap -mx-1">
+                                                    <template x-for="blankday in blankdays">
+                                                        <div style="width: 14.28%"
+                                                            class="text-center border p-1 border-transparent text-sm">
+                                                        </div>
+                                                    </template>
+                                                    <template x-for="(date, dateIndex) in no_of_days" :key="dateIndex">
+                                                        <div style="width: 14.28%">
+                                                            <div @click="getDateValue(date, false); showTicketSelector = true"
+                                                                @mouseenter="getDateValue(date, true)" x-text="date"
+                                                                class="p-1 cursor-pointer text-center text-sm leading-none leading-loose transition ease-in-out duration-100"
+                                                                :class="{'font-bold': isToday(date) == true, 'bg-blue-800 text-white rounded-l-full': isDateFrom(date) == true, 'bg-blue-800 text-white rounded-r-full': isDateFrom(date) == true, 'bg-blue-200': isInRange(date) == true }">
+                                                            </div>
+                                                        </div>
+                                                    </template>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
 
 
-            <div class="lg:col-span-1 lg:col-start-2 lg:row-start-1 space-y-3 min-h-40 lg:overflow-y-auto h-52">
-                <div class="mb-4">
-                    <button id="openModalButton" class="bg-white border rounded-lg text-center w-full">
-                        <div class="bg-white border rounded-lg text-center">
-                            <div class="bg-white mx-8 lg:mx-0 xl:mx-5 text-center">
-
-                                <div class="p-0">
-                                    <img src="logoODMplus.svg" alt="LogoODM" class="w-56 h-12 mx-auto">
-                                </div>
-                                <div class="flex justify-center">
-
-                                    <div class="flex px-2 pb-2 lg:px-1">
-                                        <div class="text-base text-[#003565]">
-                                            <p class="font-bold lg:font-semibold mb-2 text-sm sm:text-base">Sale</p>
-                                            <p class="text-sm sm:text-base lg:text-sm">05:30 Hrs</p>
-                                            <p class="text-sm sm:text-base lg:text-sm">15/03/2023</p>
-                                        </div>
-                                    </div>
-
-                                    <div class="flex px-2 pb-2 lg:px-1">
-                                        <div class="text-base text-[#003565]">
-                                            <p class="font-bold lg:font-semibold mb-2 text-sm sm:text-base">Llega</p>
-                                            <p class="text-sm sm:text-base lg:text-sm">16:00 Hrs</p>
-                                            <p class="text-sm sm:text-base lg:text-sm">15/03/2023</p>
-                                        </div>
-                                    </div>
-
-                                    <div class="hidden md:flex px-3 pb-2 lg:px-0 flex-wrap w-full justify-center">
-                                        <img src="amenidades.svg" alt="Amenidades"
-                                            class="w-48 h-20 md:w-32 md:h-auto xl:w-40">
-
-                                    </div>
-
-                                    <div class="flex px-2 pb-2 lg:px-1">
-                                        <div class="text-[#003565]">
-                                            <p class="text-gray-500 line-through text-sm sm:text-base lg:text-sm">
-                                                $1,440.00
-                                            </p>
-                                            <p class="text-xs sm:text-base lg:text-sm">Precio normal</p>
-                                            <p class="text-red-500 font-bold  text-sm sm:text-base lg:text-sm">$1,295.00
-                                            </p>
-                                            <p class="text-xs sm:text-base whitespace-nowrap lg:text-sm">Precio internet
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="flex px-1 pr-2 items-center justify-center pb-10">
-                                        <div class="flex items-center">
-                                            <svg width="20" height="35" viewBox="0 0 17 31" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M1.18958 30L14.1101 15.5L1.18958 1" stroke="#003565"
-                                                    stroke-width="3" />
-                                            </svg>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="p-0 hidden md:block">
-                                    <p class="text-xs text-center mb-2 text-[#003565]">Servicios pueden cambiar según
-                                        ruta</p>
-                                </div>
-                            </div>
-                        </div>
-                    </button>
-                </div>
-                <div class="mb-4">
-                    <button id="openModalButton" class="bg-white border rounded-lg text-center w-full">
-                        <div class="bg-white border rounded-lg text-center">
-                            <div class="bg-white mx-8 lg:mx-0 xl:mx-5 text-center">
-
-                                <div class="p-0">
-                                    <img src="logoODMplus.svg" alt="LogoODM" class="w-56 h-12 mx-auto">
-                                </div>
-                                <div class="flex justify-center">
-
-                                    <div class="flex px-2 pb-2 lg:px-1">
-                                        <div class="text-base text-[#003565]">
-                                            <p class="font-bold lg:font-semibold mb-2 text-sm sm:text-base">Sale</p>
-                                            <p class="text-sm sm:text-base lg:text-sm">05:30 Hrs</p>
-                                            <p class="text-sm sm:text-base lg:text-sm">15/03/2023</p>
-                                        </div>
-                                    </div>
-
-                                    <div class="flex px-2 pb-2 lg:px-1">
-                                        <div class="text-base text-[#003565]">
-                                            <p class="font-bold lg:font-semibold mb-2 text-sm sm:text-base">Llega</p>
-                                            <p class="text-sm sm:text-base lg:text-sm">16:00 Hrs</p>
-                                            <p class="text-sm sm:text-base lg:text-sm">15/03/2023</p>
-                                        </div>
-                                    </div>
-
-                                    <div class="hidden md:flex px-3 pb-2 lg:px-0 flex-wrap w-full justify-center">
-                                        <img src="amenidades.svg" alt="Amenidades"
-                                            class="w-48 h-20 md:w-32 md:h-auto xl:w-40">
-
-                                    </div>
-
-                                    <div class="flex px-2 pb-2 lg:px-1">
-                                        <div class="text-[#003565]">
-                                            <p class="text-gray-500 line-through text-sm sm:text-base lg:text-sm">
-                                                $1,440.00
-                                            </p>
-                                            <p class="text-xs sm:text-base lg:text-sm">Precio normal</p>
-                                            <p class="text-red-500 font-bold  text-sm sm:text-base lg:text-sm">$1,295.00
-                                            </p>
-                                            <p class="text-xs sm:text-base whitespace-nowrap lg:text-sm">Precio internet
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="flex px-1 pr-2 items-center justify-center pb-10">
-                                        <div class="flex items-center">
-                                            <svg width="20" height="35" viewBox="0 0 17 31" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M1.18958 30L14.1101 15.5L1.18958 1" stroke="#003565"
-                                                    stroke-width="3" />
-                                            </svg>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="p-0 hidden md:block">
-                                    <p class="text-xs text-center mb-2 text-[#003565]">Servicios pueden cambiar según
-                                        ruta</p>
-                                </div>
-                            </div>
-                        </div>
-                    </button>
+            <div class="lg:col-span-1 lg:col-start-2 lg:row-start-1 space-y-3 min-h-40">
+                <div class="my-4 lg:my-0">
+                    <div id="buttonsContainer" class="my-4 lg:my-0"></div>
                 </div>
 
                 <style>
@@ -400,8 +313,15 @@
                         /* Oculta cualquier contenido que se desborde */
                     }
                 </style>
+                <style>
+                    /* Agregar estilos CSS para los botones */
+                    #buttonsContainer button {
+                        margin-bottom: 15px;
+                        /* Puedes ajustar este valor según la separación que desees */
+                    }
+                </style>
                 <div id="myModal"
-                    class="fixed bottom-0 left-0 right-0 bg-black bg-opacity-50 h-screen flex justify-center items-center z-50 rounded-lg hidden">
+                    class="fixed bottom-0 left-0 right-0 bg-black bg-opacity-50 h-screen flex justify-center items-center z-50 hidden">
                     <div class="modal-content bg-white rounded-lg shadow-lg p-6 w-3/4 space-y-8">
                         <span id="closeModal" class="close cursor-pointer absolute top-0 right-0 p-4">&times;</span>
                         <p class="text-center text-lg text-[#003368] font-bold">AVISO IMPORTANTE.</p>
@@ -416,11 +336,12 @@
                 </div>
             </div>
         </div>
+
     </div>
 
 
     <!-- FOOTER -->
-    <section class="bg-[#003368]">
+    <footer class="bg-[#003368] mt-auto">
         <div class="max-w-screen-xl px-4 py-10 mx-auto space-y-8 overflow-hidden sm:px-6 lg:px-8">
             <nav class="flex flex-wrap justify-center -mx-5 -my-2">
                 <div class="px-5 py-2">
@@ -488,7 +409,7 @@
                 © 2023 Ómnibus de México. Todos los derechos reservados.
             </p>
         </div>
-    </section>
+    </footer>
 
     <script>
         // Función para iniciar el contador
@@ -763,39 +684,9 @@
             }))
         })
     </script>
+    <!-- CORRIDAS RECUPERADAS -->
     <script>
-        /**document.addEventListener('DOMContentLoaded', function () {
-            const tipoBoleto = document.getElementById('tipoBoleto').value;
- 
-            if (tipoBoleto === "regreso_abierto") {
-                document.getElementById('datepickerSingle').style.display = 'block';
-            } else if (tipoBoleto === "fecha_especifica") {
-                document.getElementById('datepickerRange').style.display = 'block';
-            } else {
-                document.getElementById('datepickerSingle').style.display = 'block';
-            }
-        });**/
-    </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Abre el modal cuando se hace clic en el ícono
-            document.getElementById('openModalButton').addEventListener('click', function () {
-                document.getElementById('myModal').classList.remove('hidden');
-            });
-
-            // Cierra el modal cuando se hace clic en la "x"
-            document.getElementById('closeModal').addEventListener('click', function () {
-                document.getElementById('myModal').classList.add('hidden');
-            });
-
-            // Redirige a otra página cuando se hace clic en el botón dentro del modal
-            document.getElementById('redirectToPage').addEventListener('click', function () {
-                window.location.href = "paso2.html";
-            });
-        });
-    </script>
-    <script>
-        const apiUrl = 'https://venta.odm.com.mx/netScripts/Request.aspx?APPNAME=Navegante&PRGNAME=RecuperaCorridasVRARGUMENTS&ARGUMENTS=-AMEX,-AGDL,-A30/12/2023,-A1,-A0,-A0,-A0,-A0,-AV1,-A,-A,-A,-A,-A,-A,-A,-A,-A,-A1,-A15035237,-A1';
+        const apiUrl = 'https://venta.odm.com.mx/netScripts/Request.aspx?APPNAME=Navegante&PRGNAME=RecuperaCorridasVRARGUMENTS&ARGUMENTS=-AMEX,-AMTY,-A10/01/2024,-A1,-A0,-A0,-A0,-A0,-AV1,-A,-A,-A,-A,-A,-A,-A,-A,-A,-A1,-A15035237,-A1';
 
         fetch(apiUrl)
             .then(response => {
@@ -812,9 +703,88 @@
                 if (scriptStartIndex !== -1 && scriptEndIndex !== -1) {
                     const scriptData = data.substring(scriptStartIndex, scriptEndIndex);
                     const jsonData = eval(scriptData);
+                    // Crear botones y agregarlos al contenedor
+                    const buttonsContainer = document.getElementById('buttonsContainer');
+
+                    jsonData.forEach(corrida => {
+                        const buttonElement = document.createElement('button');
+                        buttonElement.className = 'bg-white border rounded-lg text-center w-full';
+                        buttonElement.addEventListener('click', () => {
+                            // Construye la URL de destino, puedes ajustarla según sea necesario
+                            const url = `paso2.html?param1=${corrida.Parametro1}&param2=${corrida.Parametro2}`;
+
+                            // Redirige a la página paso2.html
+                            window.location.href = url;
+                        });
+                        buttonElement.innerHTML = `
+                        <div class="bg-white border rounded-lg text-center">
+                            <div class="bg-white mx-8 lg:mx-0 xl:mx-5 text-center">
+
+                                <div class="p-0">
+                                    <img src="logoODMplus.svg" alt="LogoODM" class="w-56 h-12 mx-auto">
+                                </div>
+                                <div class="flex justify-center">
+
+                                    <div class="flex px-2 pb-2 lg:px-1">
+                                        <div class="text-base text-[#003565]">
+                                            <p class="font-bold lg:font-semibold mb-2 text-sm sm:text-base">Sale</p>
+                                            <p class="text-sm sm:text-base lg:text-sm">${corrida.HoraSalida} Hrs</p>
+                                            <p class="text-sm sm:text-base lg:text-sm">${corrida.FechaSalidaBoleto}</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex px-2 pb-2 lg:px-1">
+                                        <div class="text-base text-[#003565]">
+                                            <p class="font-bold lg:font-semibold mb-2 text-sm sm:text-base">Llega</p>
+                                            <p class="text-sm sm:text-base lg:text-sm">${corrida.HoraLlegada} Hrs</p>
+                                            <p class="text-sm sm:text-base lg:text-sm">${corrida.FechaLlegada}</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="hidden md:flex px-3 pb-2 lg:px-0 flex-wrap w-full justify-center">
+                                        <img src="amenidades.svg" alt="Amenidades"
+                                            class="w-48 h-20 md:w-32 md:h-auto xl:w-40">
+
+                                    </div>
+
+                                    <div class="flex px-2 pb-2 lg:px-1">
+                                        <div class="text-[#003565]">
+                                            <p class="text-gray-500 line-through text-sm sm:text-base lg:text-sm">
+                                                ${corrida.Tarifa}
+                                            </p>
+                                            <p class="text-xs sm:text-base lg:text-sm">Precio normal</p>
+                                            <p class="text-red-500 font-bold  text-sm sm:text-base lg:text-sm">${corrida.TarifaPromo}
+                                            </p>
+                                            <p class="text-xs sm:text-base whitespace-nowrap lg:text-sm">Precio internet
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="flex px-1 pr-2 items-center justify-center pb-10">
+                                        <div class="flex items-center">
+                                            <svg width="20" height="35" viewBox="0 0 17 31" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M1.18958 30L14.1101 15.5L1.18958 1" stroke="#003565"
+                                                    stroke-width="3" />
+                                            </svg>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="p-0 md:block">
+                                    <p class="text-xs text-center mb-2 text-[#003565]">Servicios pueden cambiar según
+                                        ruta</p>
+                                </div>
+                            </div>
+                        </div>
+             `;
+                        buttonsContainer.appendChild(buttonElement);
+
+
+                    });
 
                     // Trabajar con los datos en formato JSON
                     console.log('Datos JSON:', jsonData);
+
                 } else {
                     throw new Error('No se encontró un script válido en la respuesta');
                 }
@@ -823,7 +793,9 @@
                 // Manejar errores
                 console.error('Error en la solicitud:', error);
             });
+
     </script>
+
     <script src="jQuery360.js"></script>
     <script>
         $(document).ready(function () {

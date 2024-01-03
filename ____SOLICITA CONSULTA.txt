@@ -3,11 +3,6 @@
 1.- controlPrecios.php -> lista de corridas mostradas
 2.- cotizaPrecios.html -> precios reales de cada ruta mostrada
 
-/////SOLICITA DESTINOS
-
-https://venta.odm.com.mx/netScripts/Request.aspx?APPNAME=Navegante&PRGNAME=OrigenDestino&ARGUMENTS=-AMTY
-
-
 
 
 ////SOLICITA CONSECUTIV0 07/11/2019
@@ -18,12 +13,12 @@ https://venta.odm.com.mx/netScripts/Request.aspx?APPNAME=Navegante&PRGNAME=Orige
 
 'https://venta.odm.com.mx/netScripts/Request.aspx?APPNAME=Navegante&PRGNAME=RecuperaCorridasVRARGUMENTS&ARGUMENTS=-A'.$origencode.',-A'.$destinocode.',-A'.$salida.',-A'.$adultos.',-A'.$insen.',-A'.$nino.',-A'.$estudiante.',-A'.$maestro.',-A'.$redondo.',-A0,-A,-A,-ANO,-A,-A,-A,-A,-A,-A1,-A'.$consecutivo.',-A1;
 
-https://venta.odm.com.mx/netScripts/Request.aspx?APPNAME=Navegante&PRGNAME=RecuperaCorridasVRARGUMENTS&ARGUMENTS=-AMEX,-AGDL,-A30/11/2023,-A2,-A0,-A1,-A0,-A0,-AV1,-A,-A,-A,-A,-A,-A,-A,-A,-A,-A1,-A15027046,-A1
+https://venta.odm.com.mx/netScripts/Request.aspx?APPNAME=Navegante&PRGNAME=RecuperaCorridasVRARGUMENTS&ARGUMENTS=-AMEX,-AGDL,-A10/11/2019,-A2,-A0,-A1,-A0,-A0,-AV1,-A,-A,-A,-A,-A,-A,-A,-A,-A,-A1,-A15027046,-A1
 
 
 
 SENCILLO
-https://venta.odm.com.mx/netScripts/Request.aspx?APPNAME=Navegante&PRGNAME=RecuperaCorridasVRARGUMENTS&ARGUMENTS=-AMEX,-AGDL,-A30/11/2023,-A1,-A0,-A0,-A0,-A0,-AV1,-A,-A,-A,-A,-A,-A,-A,-A,-A,-A1,-A15035237,-A1
+https://venta.odm.com.mx/netScripts/Request.aspx?APPNAME=Navegante&PRGNAME=RecuperaCorridasVRARGUMENTS&ARGUMENTS=-AMEX,-AGDL,-A10/11/2019,-A1,-A0,-A0,-A0,-A0,-AV1,-A,-A,-A,-A,-A,-A,-A,-A,-A,-A1,-A15035237,-A1
 REDONDO
 https://venta.odm.com.mx/netScripts/Request.aspx?APPNAME=Navegante&PRGNAME=RecuperaCorridasVRARGUMENTS&ARGUMENTS=-AGDL,-AMEX,-A10/04/2019,-A1,-A0,-A0,-A0,-A0,-AV2,-A0,-A0,-A,-A,-A,-A,-A,-A,-A,-A2,-A";
 
@@ -136,26 +131,3 @@ https://venta.odm.com.mx/netScripts/Request.aspx?APPNAME=navegante3&PRGNAME=Merg
           	{ "Leyenda" : "1 Promocion", "Costo": 513.00, "CostoOri": 57.00}, 
           	{ "Leyenda" : "1 Promocion", "Costo": 513.00, "CostoOri": 57.00}, 
           	{ "Leyenda" : "1 Menores", "Costo": 285.00, "CostoOri": 0.00} ] })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -163,8 +163,7 @@
             </div>
         </div>
         <div class="bg-[#1D93D2]">
-            <form action="https://venta.odm.com.mx/odm/PASO1/paso1.aspx" enctype="multipart/form-data" name="formulario"
-                id="formulario" method="post">
+            <form action="paso1.html" enctype="multipart/form-data" name="formulario" id="formulario" method="post">
                 <div
                     class="ml-8 sm:ml-14 lg:ml-40 xl:ml-64 2xl:ml-[400px] pt-3 lg:pt-5 py-3 space-x-5 flex max-w-2xl mx-auto">
 
@@ -926,9 +925,8 @@
                                 </div>
                                 <div class="flex-1 mx-auto flex max-w-2xl flex-row">
                                     <img src="cdmx_central_norte.webp" class="h-24 w-1/2 flex-1"
-                                        alt="CDMX Central Norte" loading="lazy" />
-                                    <img src="Altamira_Tam.webp" class="h-24 w-1/2 flex-1" alt="Altamira Tamaulipas"
-                                        loading="lazy" />
+                                        alt="CDMX Central Norte" />
+                                    <img src="Altamira_Tam.webp" class="h-24 w-1/2 flex-1" alt="Altamira Tamaulipas" />
                                 </div>
                                 <div
                                     class="flex-2 mx-auto px-3 pt-3 flex w-full max-w-md flex-row bg-white justify-center">
@@ -979,9 +977,8 @@
                                 </div>
                                 <div class="flex-1 mx-auto flex max-w-2xl flex-row">
                                     <img src="Palacio_CD_OBREGON.webp" class="h-24 w-1/2 flex-1 object-cover"
-                                        alt="Palacio Cd. Obregon" loading="lazy" />
-                                    <img src="Tijuana.webp" class="h-24 w-1/2 flex-1 object-cover" alt="Tijuana"
-                                        loading="lazy" />
+                                        alt="Palacio Cd. Obregon" />
+                                    <img src="Tijuana.webp" class="h-24 w-1/2 flex-1 object-cover" alt="Tijuana" />
                                 </div>
                                 <div
                                     class="flex-2 mx-auto px-3 pt-3 flex w-full max-w-md flex-row bg-white justify-center">
@@ -1030,9 +1027,9 @@
                                     </div>
                                 </div>
                                 <div class="flex-1 mx-auto flex max-w-2xl flex-row">
-                                    <img src="Catedral_culiacan.webp" class="h-24 w-1/2 flex-1" alt="Catedral Culiacán"
-                                        loading="lazy" />
-                                    <img src="Tijuana.webp" class="h-24 w-1/2 flex-1" alt="Tijuana" loading="lazy" />
+                                    <img src="Catedral_culiacan.webp" class="h-24 w-1/2 flex-1"
+                                        alt="Catedral Culiacán" />
+                                    <img src="Tijuana.webp" class="h-24 w-1/2 flex-1" alt="Tijuana" />
                                 </div>
                                 <div
                                     class="flex-2 mx-auto px-3 pt-3 flex w-full max-w-md flex-row bg-white justify-center">
@@ -1088,9 +1085,8 @@
                                 </div>
                                 <div class="flex-1 mx-auto flex max-w-2xl flex-row">
                                     <img src="cdmx_central_norte.webp" class="h-24 w-1/2 flex-1"
-                                        alt="CDMX Central Norte" loading="lazy" />
-                                    <img src="Altamira_Tam.webp" class="h-24 w-1/2 flex-1" alt="Altamira Tamaulipas"
-                                        loading="lazy" />
+                                        alt="CDMX Central Norte" />
+                                    <img src="Altamira_Tam.webp" class="h-24 w-1/2 flex-1" alt="Altamira Tamaulipas" />
                                 </div>
                                 <div
                                     class="flex-2 mx-auto px-3 pt-3 flex w-full max-w-md flex-row bg-white justify-center">
@@ -1143,8 +1139,8 @@
                                 </div>
                                 <div class="flex-1 mx-auto flex max-w-2xl flex-row">
                                     <img src="Palacio_CD_OBREGON.webp" class="h-24 w-1/2 flex-1"
-                                        alt="Palacio Cd. Obregon" loading="lazy" />
-                                    <img src="Tijuana.webp" class="h-24 w-1/2 flex-1" alt="Tijuana" loading="lazy" />
+                                        alt="Palacio Cd. Obregon" />
+                                    <img src="Tijuana.webp" class="h-24 w-1/2 flex-1" alt="Tijuana" />
                                 </div>
                                 <div
                                     class="flex-2 mx-auto px-3 pt-3 flex w-full max-w-md flex-row bg-white justify-center">
@@ -1196,9 +1192,9 @@
                                     </div>
                                 </div>
                                 <div class="flex-1 mx-auto flex max-w-2xl flex-row">
-                                    <img src="Catedral_culiacan.webp" class="h-24 w-1/2 flex-1" alt="Catedral Culiacán"
-                                        loading="lazy" />
-                                    <img src="Tijuana.webp" class="h-24 w-1/2 flex-1" alt="Tijuana" loading="lazy" />
+                                    <img src="Catedral_culiacan.webp" class="h-24 w-1/2 flex-1"
+                                        alt="Catedral Culiacán" />
+                                    <img src="Tijuana.webp" class="h-24 w-1/2 flex-1" alt="Tijuana" />
                                 </div>
                                 <div
                                     class="flex-2 mx-auto px-3 pt-3 flex w-full max-w-md flex-row bg-white justify-center">
@@ -1657,6 +1653,20 @@
             $('#destinoSelect').html('<option value="' + nomdest + '">' + textdest + '</option>');
 
         }
+    </script>
+    <script>
+        // Este script se encarga de enviar el formulario y agregar los parámetros de origen y destino a la URL
+        document.getElementById('formulario').addEventListener('submit', function (event) {
+            // Obtiene los valores de origen y destino seleccionados
+            const origen = document.getElementById('origenSelect').value;
+            const destino = document.getElementById('destinoSelect').value;
+
+            // Construye la URL con los parámetros
+            const url = `paso1.html?p_origen=${origen}&p_destino=${destino}`;
+
+            // Modifica el atributo "action" del formulario para redirigirlo a la nueva URL
+            this.action = url;
+        });
     </script>
     <!-- SCRIPT DEL CAROUSEL -->
     <script type="text/javascript" src="slick-carousel.js"></script>
