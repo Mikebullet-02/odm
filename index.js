@@ -115,28 +115,6 @@ document.addEventListener('DOMContentLoaded', function () {
         fechaEspecificaInput.value = ""; // Limpiar el valor del input al cambiar a "Boleto Abierto"
     });
 
-    fechaEspecificaInput.addEventListener('change', function () {
-        const selectedDate = this.value;
-
-        if (selectedDate) {
-            // Habilitar los contadores y los botones según lo que necesites
-            const incrementProfessorButton = document.querySelector('[data-type="increment-professor"]');
-            const decrementProfessorButton = document.querySelector('[data-type="decrement-professor"]');
-            const incrementStudentButton = document.querySelector('[data-type="increment-student"]');
-            const decrementStudentButton = document.querySelector('[data-type="decrement-student"]');
-
-            incrementProfessorButton.disabled = false;
-            decrementProfessorButton.disabled = false;
-            incrementStudentButton.disabled = false;
-            decrementStudentButton.disabled = false;
-
-            // Deshabilitar el input de fecha específica si lo deseas
-            fechaEspecificaInput.disabled = true;
-
-            // Habilitar el botón de "Boleto Abierto"
-            boletoAbiertoButton.disabled = false;
-        }
-    });
     // Añadir un evento al botón de "Boleto Abierto" para limpiar el valor del input al hacer clic
     boletoAbiertoButton.addEventListener('click', function () {
         fechaEspecificaInput.value = "";
@@ -172,19 +150,3 @@ function updateCount(type, increment) {
     const countElement = document.getElementById(`${type}Count`);
     countElement.textContent = selectedCounts[type];
 }
-
-/* function redireccionarPaso1() {
-    // Obtener el tipo de viaje seleccionado
-    var tipoViaje = document.getElementById("tipoViaje").value;
-
-    // Redirigir a la página paso1
-    window.location.href = "Paso1.html?tipoViaje=" + tipoViaje;
-}
-
-function RedireccionarPaso1() {
-    // Obtener el tipo de viaje seleccionado
-    var tipoViaje = document.getElementById("tipoViaje").value;
-
-    // Redirigir a la página paso1
-    window.location.href = "Paso1.html?tipoViaje=" + tipoViaje;
-} */

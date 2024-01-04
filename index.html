@@ -1443,17 +1443,6 @@
 
         });
     </script>
-    <script>
-        document.getElementById('origenSelect').addEventListener('change', function () {
-            var origenSeleccionado = this.value;
-            window.location.href = 'paso1.html?origen=' + encodeURIComponent(origenSeleccionado);
-        });
-
-        document.getElementById('destinoSelect').addEventListener('change', function () {
-            var destinoSeleccionado = this.value;
-            window.location.href = 'Paso1.html?destino=' + encodeURIComponent(destinoSeleccionado);
-        });
-    </script>
 
     <!-- SCRIPT DE SELECCION DE ORIGEN -->
 
@@ -1519,10 +1508,8 @@
             });
         }
 
-
-
     </script>
-    <!-- SCRIPT PA VER SI YA JALA ESTO-->
+    <!-- ENVIO DE DATOS DEPENDIENDO EL TIPO DE VIAJE-->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             $("#formulario").on("submit", function (event) {
@@ -1560,17 +1547,14 @@
                     fechRegreso: fechRegreso
                 };
 
-                // Puedes hacer lo que necesites con los datos antes de enviarlos
+                //Datos en consola
                 console.log(datosAEnviar);
 
-                // Finalmente, puedes enviar el formulario
+                // enviar el formulario
                 this.submit();
             });
         });
     </script>
-
-
-
 
     <script type="text/javascript">
         $('.basico').fadeIn();
@@ -1597,7 +1581,6 @@
 
         });
 
-
         function descuentosControl(NOM) {
             let visibles = (NOM == peticion) ? '.basico,.basico2' : '.basico';
             $(visibles).fadeIn();
@@ -1607,8 +1590,6 @@
                 }
             }
         }
-
-
 
         $('#tarjprueba button').click(function (event) {
             //f();
@@ -1652,22 +1633,6 @@
 
         }
     </script>
-    <!-- 
-        <script>
-        // Este script se encarga de enviar el formulario y agregar los parámetros de origen y destino a la URL
-        document.getElementById('formulario').addEventListener('submit', function (event) {
-            // Obtiene los valores de origen y destino seleccionados
-            const origen = document.getElementById('origenSelect').value;
-            const destino = document.getElementById('destinoSelect').value;
-
-            // Construye la URL con los parámetros
-            const url = `paso1.html?p_origen=${origen}&p_destino=${destino}`;
-
-            // Modifica el atributo "action" del formulario para redirigirlo a la nueva URL
-            this.action = url;
-        });
-    </script>
-    -->
     <!-- SCRIPT DEL CAROUSEL -->
     <script type="text/javascript" src="slick-carousel.js"></script>
 </body>
