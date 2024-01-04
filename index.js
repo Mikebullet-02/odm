@@ -1,5 +1,6 @@
 function habilitarBotonBuscarViaje() {
     document.getElementById('buscarViajeBtn').removeAttribute('disabled');
+    document.getElementById('buscarViajeBtn1').removeAttribute('disabled');
 }
 
 document.addEventListener("DOMContentLoaded", function () {
