@@ -163,8 +163,7 @@
             </div>
         </div>
         <div class="bg-[#1D93D2]">
-            <form action="https://venta.odm.com.mx/odm/PASO1/paso1.aspx" enctype="multipart/form-data" name="formulario"
-                id="formulario" method="post">
+            <form action="/paso1.html" enctype="multipart/form-data" name="formulario" id="formulario" method="get">
                 <div
                     class="ml-8 sm:ml-14 lg:ml-40 xl:ml-64 2xl:ml-[400px] pt-3 lg:pt-5 py-3 space-x-5 flex max-w-2xl mx-auto">
 
@@ -814,7 +813,7 @@
                             <div class="input-with-svg mx-8 sm:mx-10">
                                 <button
                                     class="w-full bg-[#C82333] text-white font-bold text-lg rounded-lg py-3 px-7 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
-                                    id="buscarViajeBtn" type="submit">
+                                    id="buscarViajeBtn1" disabled type="submit">
                                     BUSCAR VIAJE
                                 </button>
                             </div>
@@ -1053,7 +1052,7 @@
                                 </div>
                                 <div class="text-center">
                                     <button
-                                        class="bg-transparenttext-2xl px-16 py-1 my-3 rounded-lg border-blue-900 border-2 text-blue-900 font-normal">Comprar</button>
+                                        class="bg-transparent text-2xl px-16 py-1 my-3 rounded-lg border-blue-900 border-2 text-blue-900 font-normal">Comprar</button>
                                 </div>
                             </div>
                         </div>
@@ -1633,6 +1632,29 @@
 
         }
     </script>
+    <!-- index.html -->
+    <script>
+        function guardarDatos() {
+            var origenCode = document.getElementById('origenSelect').value;
+            var destinoCode = document.getElementById('destinoSelect').value;
+            var fecha = document.getElementById('datepickerSingle').value;
+            var adultos = document.getElementById('adultInput').value;
+            var menores = document.getElementById('childInput').value;
+            var senectud = document.getElementById('inapamInput').value;
+            var profesor = document.getElementById('professorInput').value;
+            var estudiante = document.getElementById('studentInput').value;
+            // O guardar datos en almacenamiento local
+            localStorage.setItem('origenCode', origenCode);
+            localStorage.setItem('destinoCode', destinoCode);
+            localStorage.setItem('fechSalida', fechSalida);
+            localStorage.setItem('adultos', adultos);
+            localStorage.setItem('menores', menores);
+            localStorage.setItem('senectud', senectud);
+            localStorage.setItem('profesor', profesor);
+            localStorage.setItem('estudiante', estudiante);
+        }
+    </script>
+
     <!-- SCRIPT DEL CAROUSEL -->
     <script type="text/javascript" src="slick-carousel.js"></script>
 </body>

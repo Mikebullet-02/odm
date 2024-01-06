@@ -95,8 +95,8 @@
             <!-- Columna 1: Información -->
             <div id="infoContainer"
                 class="bg-[#003368] p-4 pt-5 mx-0 text-white text-center font-bold rounded-lg h-fit text-lg">
-                <p id="origenInfo" class="uppercase">Origen: México Central Norte</p>
-                <p id="destinoInfo" class="uppercase">Destino: Colima, Col.</p>
+                <p id="origenInfo" class="uppercase">Origen:</p>
+                <p id="destinoInfo" class="uppercase">Destino:</p>
             </div>
             <div class="lg:grid lg:grid-cols-1 lg:col-start-1 lg:grid-rows-1 gap-2">
                 <div class="flex w-full" id="datepickerRange">
@@ -817,7 +817,7 @@
 
     <script src="jQuery360.js"></script>
     <script>
-        $(document).ready(function () {
+        document.addEventListener('DOMContentLoaded', function () {
             // Obtener parámetros de la URL
             const urlParams = new URLSearchParams(window.location.search);
 
@@ -830,10 +830,34 @@
             const destinoText = urlParams.get('destinoText');
 
             // Modificar el contenido de los elementos con los valores obtenidos
-            $('#origenInfo').text('Origen: ' + origenText + ' (' + origenCode + ')');
-            $('#destinoInfo').text('Destino: ' + destinoText + ' (' + destinoCode + ')');
+            $('#origenInfo').text('Origen: ' + origenText);
+            $('#destinoInfo').text('Destino: ' + destinoText);
         });
     </script>
+
+    <!-- paso1.html -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var origenCode = localStorage.getItem('origenCode');
+            var destinoCode = localStorage.getItem('destinoCode');
+            var fecha = localStorage.getItem('fechSalida');
+            var adultos = document.getElementById('adultInput').value;
+            var menores = document.getElementById('childInput').value;
+            var senectud = document.getElementById('inapamInput').value;
+            var profesor = document.getElementById('professorInput').value;
+            var estudiante = document.getElementById('studentInput').value;
+
+            console.log(document.getElementById('adultInput'));
+            console.log(document.getElementById('childInput'));
+            console.log(document.getElementById('inapamInput'));
+            console.log(document.getElementById('professorInput'));
+            console.log(document.getElementById('studentInput'));
+
+        });
+    </script>
+
+
+
 </body>
 
 </html>
