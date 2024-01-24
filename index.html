@@ -805,6 +805,9 @@
                                 </button>
                             </div>
                             <!-- <input type="hidden" id="tipoViaje" name="tipoViaje" value="ida">-->
+                            <input type="hidden" name="consecutivo" id="consecutivoInput" value="">
+                            <!-- Otros campos ocultos para otros parámetros -->
+
                         </div>
                     </div>
                     <div class="mx-auto p-0">
@@ -1539,6 +1542,12 @@
                     $("#datepickerRange input[name='fechRegreso']").removeAttr('name');
                 }
 
+                localStorage.setItem('tipoViaje', tipoViaje);
+                localStorage.setItem('fechSalida', fechSalida);
+                localStorage.setItem('fechRegreso', fechRegreso);
+
+                // Redirige a paso1.html
+                window.location.href = 'paso1.html';
                 // Verifica y elimina campos vacíos antes de enviar
                 const datosAEnviar = {
                     tipoViaje: tipoViaje,
