@@ -94,7 +94,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const studentCount = document.getElementById('studentCount');
 
     boletoAbiertoButton.addEventListener('click', function () {
-        fechaEspecificaInput.disabled = true;
         professorCount.textContent = '0';
         studentCount.textContent = '0';
         selectedCounts.professor = 0;
@@ -116,10 +115,6 @@ document.addEventListener('DOMContentLoaded', function () {
         fechaEspecificaInput.value = ""; // Limpiar el valor del input al cambiar a "Boleto Abierto"
     });
 
-    // Añadir un evento al botón de "Boleto Abierto" para limpiar el valor del input al hacer clic
-    boletoAbiertoButton.addEventListener('click', function () {
-        fechaEspecificaInput.value = "";
-    });
 });
 incrementButtons.forEach((button) => {
     button.addEventListener('click', (event) => {

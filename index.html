@@ -163,7 +163,8 @@
             </div>
         </div>
         <div class="bg-[#1D93D2]">
-            <form action="/paso1.html" enctype="multipart/form-data" name="formulario" id="formulario" method="get">
+            <form action="http://webq.odm.com.mx/odm/PASO1/paso1.aspx" enctype="multipart/form-data" name="formulario"
+                id="formulario" method="get">
                 <div
                     class="ml-8 sm:ml-14 lg:ml-40 xl:ml-64 2xl:ml-[400px] pt-3 lg:pt-5 py-3 space-x-5 flex max-w-2xl mx-auto">
 
@@ -805,7 +806,7 @@
                                 </button>
                             </div>
                             <!-- <input type="hidden" id="tipoViaje" name="tipoViaje" value="ida">-->
-                            <input type="hidden" name="consecutivo" id="consecutivoInput" value="">
+                            <!--<input type="hidden" name="consecutivo" id="consecutivoInput" value="">-->
                             <!-- Otros campos ocultos para otros parámetros -->
 
                         </div>
@@ -1523,23 +1524,33 @@
                 // Variables para almacenar las fechas
                 let fechSalida;
                 let fechRegreso;
+                let boletosProfesores;
+                let boletosEstudiantes;
 
                 if (tipoViaje === 'redondo') {
                     // Si es viaje redondo, recopila las fechas del datepickerRange
                     fechSalida = $("#datepickerRange input[name='fechSalida']").val();
                     fechRegreso = $("#datepickerRange input[name='fechRegreso']").val();
+                    boletosProfesores = $("#datepickerRange input[name='profesores']").val();
+                    boletosEstudiantes = $("#datepickerRange input[name='estudiantes']").val();
 
                     // Remueve los atributos "name" del datepickerSingle
                     $("#datepickerSingle input[name='fechSalida']").removeAttr('name');
                     $("#datepickerSingle input[name='fechRegreso']").removeAttr('name');
+                    $("#datepickerSingle input[name='profesores']").removeAttr('name');
+                    $("#datepickerSingle input[name='estudiantes']").removeAttr('name');
                 } else {
                     // Si es viaje sencillo, recopila las fechas del datepickerSingle
                     fechSalida = $("#datepickerSingle input[name='fechSalida']").val();
                     fechRegreso = "_"; // O algún valor que indique que no se seleccionó para fechRegreso
+                    boletosProfesores = $("#datepickerSingle input[name='profesores']").val();
+                    boletosEstudiantes = $("#datepickerSingle input[name='estudiantes']").val();
 
                     // Remueve los atributos "name" del datepickerRange
                     $("#datepickerRange input[name='fechSalida']").removeAttr('name');
                     $("#datepickerRange input[name='fechRegreso']").removeAttr('name');
+                    $("#datepickerRange input[name='profesores']").removeAttr('name');
+                    $("#datepickerRange input[name='estudiantes']").removeAttr('name');
                 }
 
                 localStorage.setItem('tipoViaje', tipoViaje);
@@ -1561,8 +1572,27 @@
                 // enviar el formulario
                 this.submit();
             });
+            // Agrega un evento al botón "FECHA ABIERTA"
+            document.getElementById('fechaAbiertaButton').addEventListener('click', function () {
+                // Obtén el valor actual del botón
+                const fechaAbierta = $('input[name="fechRegreso"]').val();
+
+                // Si el valor actual es "FECHA ABIERTA", cambia el atributo name
+                if (fechaAbierta === 'FECHA ABIERTA') {
+                    // Cambia el atributo name a lo que necesitas
+                    $('input[name="fechRegreso"]').attr('name', 'fechaAbierta');
+                }
+            });
+            if (fechRegreso === 'FECHA ABIERTA') {
+                // Ajusta los valores de boletos de profesores y estudiantes a cero
+                $("input[name='profesores']").val(0);
+                $("input[name='estudiantes']").val(0);
+                boletosProfesores = 0;
+                boletosEstudiantes = 0;
+            }
         });
     </script>
+
 
     <script type="text/javascript">
         $('.basico').fadeIn();
