@@ -472,7 +472,7 @@
                                             <div class="relative flex items-center">
                                                 <input type="text"
                                                     @click="endToShow = 'from'; init(); showDatepicker = true"
-                                                    :value="formatDate(dateFrom)"
+                                                    :value="boletoAbierto ? 'FECHA ABIERTA' : formatDate(dateTo)"
                                                     :class="{'font-normal': endToShow == 'from' }"
                                                     @click="selectDateFrom" autocomplete="off"
                                                     class="focus:outline-none border-none w-full text-center text-base placeholder-gray-800 rounded-md border-r border-gray-300 h-12 sm:w-full lg:w-[310px] 2xl:w-[370px] md:w-full"
@@ -540,6 +540,18 @@
                                                             </div>
                                                         </div>
                                                     </template>
+                                                </div>
+                                                <div class="flex items-center">
+                                                    <p class="px-0 py-1 text-blue-500 text-xs">
+                                                        ¿No conoces tu fecha de salidas? Puedes dejar tu boleto abierto
+                                                    </p>
+
+                                                    <button type="button"
+                                                        @click="boletoAbierto = true; outputDateValues(); showDatepicker=false; showTicketSelector = true"
+                                                        id="boletoAbiertoButton"
+                                                        class="px-10 py-1 border border-blue-600 bg-[#C82333] hover:bg-blue-300 text-white rounded-md">Boleto
+                                                        abierto
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
@@ -1265,7 +1277,7 @@
                     <div class="slider slider-4">
                         <div class="slide">
                             <img src="omnibus_mexico_destinos(1).webp" alt="ODM Destinos"
-                                class="max-w-screen-xl h-full rounded-lg" width="301px" height="102px">
+                                class="max-w-screen-xl h-full rounded-lg img-slider" width="301px" height="102px">
                             <div class="slide-text text-sm">
                                 <p
                                     class="text-white font-semibold text-xs text-center sm:text-base lg:text-lg xl:text-xl">
@@ -1286,7 +1298,7 @@
                         </div>
                         <div class="slide">
                             <img src="omnibus_mexico_gastronomia(1).webp" alt="ODM Gastronomia"
-                                class="max-w-screen-xl h-full rounded-lg" width="301px" height="102px">
+                                class="max-w-screen-xl h-full rounded-lg img-slider" width="301px" height="102px">
                             <div class="slide-text text-sm">
                                 <p
                                     class=" text-white font-semibold text-xs text-center sm:text-base lg:text-lg xl:text-xl">
@@ -1301,8 +1313,8 @@
                             </div>
                         </div>
                         <div class="slide">
-                            <img src="eventos-odm(1).webp" alt="ODM Eventos" class="max-w-screen-xl h-full rounded-lg"
-                                width="301px" height="102px">
+                            <img src="eventos-odm(1).webp" alt="ODM Eventos"
+                                class="max-w-screen-xl h-full rounded-lg img-slider" width="301px" height="102px">
                             <div
                                 class="slide-text text-sm text-center sm:text-base lg:text-lg xl:text-xl font-semibold">
                                 EVENTOS
@@ -1340,6 +1352,11 @@
             </div>
         </div>
     </div>
+    <style>
+        .img-slider {
+            max-width: 1458px;
+        }
+    </style>
     <!-- FOOTER -->
     <section class="bg-[#003368]">
         <div class="max-w-screen-xl px-4 py-10 mx-auto space-y-8 overflow-hidden sm:px-6 lg:px-8">
